@@ -5,13 +5,8 @@
     <meta charset="utf-8">
     <title>OSCL - New Connection Registration Form</title>
       <!-- Font Kohinoor  -->
-  <link rel="stylesheet" href="{{ asset('frontendAssets') }}/css/font_style.css">
 </head>
 <style type="text/css">
-    body {
-          font-family: "Roboto", sans-serif;
-    }
-
     .m-0 {
         margin: 0px;
     }
@@ -121,7 +116,6 @@
                 <td>
                     <div class="box-text">
                         <p class="m-0 pt-5 text-bold w-100">Registration Date : <span class="gray-color">{{ $userInfo->created_at->format('d F Y') }} </span></p>
-                        <p class="m-0 pt-5 text-bold w-100">Package Category: <span class="gray-color">{{ $userInfo->category }} </span></p>
                     </div>
                 </td>
             </tr>
@@ -150,20 +144,10 @@
     <div class="table-section bill-tbl w-100 mt-10">
         <table class="table w-100 mt-10">
             <tr>
-                <th class="w-50">NID Front Side</th>
-                <th class="w-50">NID Back Side</th>
+                <th class="w-50">Remarks</th>
             </tr>
             <tr>
-                <td>
-                    <div class="box-text" style="margin-right: 10px;">
-                        {{-- <img src="{{ asset($userInfo->nid_front) }}" alt="" style="height: 160px; width: 320px;"> --}}
-                    </div>
-                </td>
-                <td>
-                    <div class="box-text">
-                        {{-- <img src="{{ asset($userInfo->nid_back) }}" alt="" style="height: 160px; width: 320px;"> --}}
-                    </div>
-                </td>
+                <td>{{ $userInfo->remarks }}</td>
             </tr>
         </table>
     </div>
@@ -216,32 +200,52 @@
         </table>
     </div>
     <div style="position: fixed; bottom: 0px;">
-        <p style="line-height: 20px;"><strong>Office Address:</strong> {{ $address }}</p>
+        {{-- <p style="line-height: 20px;"><strong>Office Address:</strong> {{ $address }}</p> --}}
     </div>
     <br>
     <div class="table-section bill-tbl w-100 mt-10">
         <table class="table w-100 mt-10">
             <tr>
-                <td style="font-size: 14px;">
+                <td style="font-size: 12px;">
                     <h3 class="text-center">Terms & Conditions</h3> {!! $tc->en_payment_mode !!}
                 </td>
             </tr>
             <tr>
-                <td style="font-size: 14px;"> {!! $tc->en_documentation !!} </td>
+                <td style="font-size: 12px;"> {!! $tc->en_documentation !!} </td>
             </tr>
             <tr>
-                <td style="font-size: 14px;"> {!! $tc->en_after_sales_service !!} </td>
+                <td style="font-size: 12px;"> {!! $tc->en_after_sales_service !!} </td>
             </tr>
             <tr>
-                <td style="font-size: 14px;"> {!! $tc->en_client_responsibility !!} </td>
+                <td style="font-size: 12px;"> {!! $tc->en_client_responsibility !!} </td>
             </tr>
             <tr>
-                <td style="font-size: 14px;"> {!! $tc->en_others !!} </td>
+                <td style="font-size: 12px;"> {!! $tc->en_others !!} </td>
             </tr>
             <tr>
-                <td style="font-size: 16px;"> <mark>*Terms & conditions approved by client, this is why doesn’t require any signature</mark> </td>
+                <td style="font-size: 14px;"> <mark>*Terms & conditions approved by client, this is why doesn't require any signature</mark> </td>
             </tr>
         </table>
+        <div class="table-section bill-tbl w-100 mt-10">
+            <table class="table w-100 mt-10">
+                <tr>
+                    <th class="w-50">NID Front Side</th>
+                    <th class="w-50">NID Back Side</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="box-text" style="margin-right: 10px;">
+                            {{-- <img src="{{ asset($userInfo->nid_front) }}" alt="" style="height: 160px; width: 320px;"> --}}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="box-text">
+                            {{-- <img src="{{ asset($userInfo->nid_back) }}" alt="" style="height: 160px; width: 320px;"> --}}
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
 </html>

@@ -42,7 +42,7 @@
     }
 </style>
 
-<body class="app ltr landing-page horizontal">
+<body class="app ltr landing-page horizontal light-mode">
     @include('sweetalert::alert')
     <!-- GLOBAL-LOADER -->
     <div id="global-loader">
@@ -57,46 +57,21 @@
             <!-- app-Header -->
             <div class="hor-header header">
                 <div class="container main-container">
-                    <div class="d-flex">
+                    <div class="mobile_nav">
                         <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar"
                             href="javascript:void(0)"></a>
                         <!-- sidebar-toggle-->
                         <a class="logo-horizontal" href="{{ route('/') }}">
-                            <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/logo.png"
+                            <img src="{{ asset('backendAssets') }}/static_images/logo.png"
                                 class="header-brand-img light-logo1" alt="logo"
                                 style="max-width: 165px; height: auto;">
+                                <img src="{{ asset('backendAssets') }}/static_images/logo_white.png" class="logo-3" style="height: auto; max-width: 165px;">
                         </a>
                         <!-- LOGO -->
-                        <div class="d-flex order-lg-2 ms-auto header-right-icons">
-                            <button class="navbar-toggler navresponsive-toggler d-lg-none ms-auto" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4"
-                                aria-controls="navbarSupportedContent-4" aria-expanded="false"
-                                aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon fe fe-more-vertical"></span>
-                            </button>
-                            <div class="navbar navbar-collapse responsive-navbar p-0">
-                                <div class="collapse navbar-collapse bg-white px-0" id="navbarSupportedContent-4">
-                                    <!-- SEARCH -->
-                                    <div class="header-nav-right p-5">
-                                        @if (Auth::check())
-                                            <a href="{{ url('/dashboard') }}"
-                                                class="btn ripple btn-min w-sm btn-danger me-2 my-auto"
-                                                target="_blank">Dashboard
-                                            </a>
-                                        @else
-                                            <a href="{{ route('login') }}"
-                                                class="btn ripple btn-min w-sm btn-danger me-2 my-auto"
-                                                target="_blank">Login
-                                            </a>
-                                            <a href="{{ route('register') }}"
-                                                class="btn ripple btn-min w-sm btn-dark me-2 my-auto"
-                                                target="_blank">Register
-                                            </a>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <a class="nav-link icon theme-layout nav-link-bg layout-setting" id="theme-toggle">
+                            <span class="dark-layout"><i class="fe fe-moon"></i></span>
+                            <span class="light-layout"><i class="fe fe-sun"></i></span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -148,19 +123,12 @@
     <script src="{{ asset('backendAssets') }}/plugins/fileuploads/js/fileupload.js"></script>
     <script src="{{ asset('backendAssets') }}/plugins/fileuploads/js/file-upload.js"></script>
 
-    <!-- Star Rating Js-->
-    <script src="{{ asset('backendAssets') }}/plugins/rating/jquery-rate-picker.js"></script>
-    <script src="{{ asset('backendAssets') }}/plugins/rating/rating-picker.js"></script>
-
-    <!-- Star Rating-1 Js-->
-    <script src="{{ asset('backendAssets') }}/plugins/ratings-2/jquery.star-rating.js"></script>
-    <script src="{{ asset('backendAssets') }}/plugins/ratings-2/star-rating.js"></script>
-
     <!-- Sticky js -->
     <script src="{{ asset('backendAssets') }}/js/sticky.js"></script>
 
     <!-- CUSTOM JS -->
     <script src="{{ asset('backendAssets') }}/js/landing.js"></script>
+    <script src="{{ asset('backendAssets') }}/js/custom.js"></script>
 
 </body>
 

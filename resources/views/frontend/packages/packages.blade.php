@@ -7,10 +7,12 @@
     <div class="row justify-content-center">
         @foreach ($packages as $package)
         <div class="col-lg-4 col-md-6 mt-5 wow fadeInUp reveal revealleft">
-            <div class="card card-shadow">
-                <div class="package_header">
+            <div class="card card-shadow package_card">
+                <div class="package_header bg-primary-transparent">
                     <div class="package_icon_mbps">
-                        <img src="{{ asset('backendAssets/static_images/pricing_icon.png') }}" alt="">
+                        <div class="icon_box">
+                            <i class="fe fe-wifi"></i>
+                        </div>
                         <p>{{ $package->en_mbps_value }}</p>
                     </div>
                     <div class="package_name">

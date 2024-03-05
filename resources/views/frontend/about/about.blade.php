@@ -3,16 +3,16 @@
     One Net || About Us
 @endsection
 @section('content')
-<div class="section bg-landing pb-0 bg-image-style">
+<div class="section bg-landing pb-0 bg-image-style about_page">
     <div class="container">
         <div class="row">
-            <h4 class="text-center fw-semibold">Our Mission</h4>
+            <h4 class="text-center fw-semibold about_titles">Our Mission</h4>
             <span class="landing-title"></span>
             <div class="col-lg-12">
-                <div class="card bg-transparent">
+                <div class="card">
                     <div class="card-body text-dark">
                         <div class="statistics-info2">
-                            <div class="row">
+                            <div class="row align-items-center">
                                 <div class="col-xl-6 col-lg-6 ps-0">
                                     <div class="text-center reveal revealleft mb-3">
                                         <img class="img-fluid" src="{{ asset('backendAssets/static_images/mission.png') }}"
@@ -22,7 +22,7 @@
                                 <div class="col-xl-6 col-lg-6">
 
                                     <div class="reveal revealright">
-                                        <div class="">
+                                        <div class="mission_description">
                                             <p>OneNet mission is to champion for the advancement of internet connectivity and data communication as a leading Internet Service Provider in Bangladesh by offering high-quality information and communication technology services affordable to all Bangladeshi.
 
                                                 OneNet believe in looking towards the future with great visions and endless inventions in developing technologies and services to suit our customers needs both today and in the future to live up to the Company's motto - "Most Reliable, Secure and Affordable: Amazing Experience".</p>
@@ -37,16 +37,16 @@
         </div>
     </div>
 </div>
-<div class="section bg-landing pb-0 bg-image-style">
+<div class="section bg-landing pb-0 bg-image-style about_page">
     <div class="container">
         <div class="row">
-            <h4 class="text-center fw-semibold">Our Vison</h4>
+            <h4 class="text-center fw-semibold about_titles">Our Vison</h4>
             <span class="landing-title"></span>
             <div class="col-lg-12">
-                <div class="card bg-transparent">
+                <div class="card">
                     <div class="card-body text-dark">
                         <div class="statistics-info2">
-                            <div class="row">
+                            <div class="row align-items-center">
                                 <div class="col-xl-6 col-lg-6 ps-0">
                                     <div class="text-center reveal revealleft mb-3">
                                         <img class="img-fluid" src="{{ asset('backendAssets/static_images/vision.png') }}"
@@ -56,7 +56,7 @@
                                 <div class="col-xl-6 col-lg-6">
 
                                     <div class="reveal revealright">
-                                        <div class="">
+                                        <div class="vision_description">
                                             <p>To become the preferred choice for the delivery of innovative and integrative ICT solutions in Bangladesh.OneNet strongly believes that Information and Communication Technology (ICT) is crucial in today’s operating environment. Innovation is an improvedtant enabler of new business opportunities and improved customer relationships.</p>
                                         </div>
                                     </div>

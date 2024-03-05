@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BuyPackage;
+use App\Models\TC;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
+
+use \Mpdf\Mpdf;
 
 require_once app_path('Helper/image.php');
 
@@ -180,27 +183,89 @@ class PacakgeBuyController extends Controller
         }
     }
     
-    public function exportPackagePdf(Request $request, $id)
-    {
-        $userInfo = BuyPackage::where('id', $id)->first();
-        $tc = TC::latest('id')->first();
-        $footerAddress = Footer::value('en_footer_address');
-        $menuImage = Menu::value('image');
+    // public function exportPackagePdf(Request $request, $id)
+    // {
+    //     $userInfo = BuyPackage::where('id', $id)->first();
+    //     $tc = TC::latest('id')->first();
+    //     $footerAddress = Footer::value('en_footer_address');
+    //     $menuImage = Menu::value('image');
         
-        $recipientName = $userInfo->name;
-        $pdfFileName = $recipientName . '_registration_form.pdf';
+    //     $recipientName = $userInfo->name;
+    //     $pdfFileName = $recipientName . '_registration_form.pdf';
     
-        // Generate the PDF
-        $pdf = PDF::loadView('frontend.packages.user_registration', [
-            'userInfo' => $userInfo,
-            'tc' => $tc,
-            'image' => $menuImage, 
-            'address' => $footerAddress
-        ]);
+    //     $pdf = PDF::loadView('frontend.packages.user_registration', [
+    //         'userInfo' => $userInfo,
+    //         'tc' => $tc,
+    //         'image' => $menuImage, 
+    //         'address' => $footerAddress
+    //     ]);
     
-        // Download the PDF with the specified filename
-        return $pdf->download($pdfFileName);
-    }
+    //     return $pdf->download($pdfFileName);
+    // }
+    
+    
+    // public function sendRegistrationEmail($id)
+    // {
+    //     $userInfo = BuyPackage::where('id', $id)->first();
+    //     $tc = TC::latest('id')->first();
+    //     $footerAddress = Footer::value('en_footer_address');
+    //     $menuImage = Menu::value('image');
+    
+    //     $pdf = PDF::loadView('frontend.packages.user_registration', [
+    //         'userInfo' => $userInfo,
+    //         'tc' => $tc,
+    //         'image' => $menuImage, 
+    //         'address' => $footerAddress
+    //     ]);
+    
+    //     $recipientEmail = $userInfo->email;
+    //     $recipientName = $userInfo->name;
+        
+    //     $pdfFileName = $userInfo->name . '_registration_form.pdf';
+    
+    //     $greetings = "Congratulations, $recipientName! \n\n";
+    //     $greetings .= "Thank you for registering for the new connection. We have initiated the process and created a ticket for your new connection. Please be patient as we work to complete your request. If you have any questions or need assistance, feel free to contact us at any time. Our hotline number is 09611 344 344. 
+    // .";
+    
+    //     Mail::send([], [], function ($message) use ($pdf, $recipientEmail, $recipientName, $pdfFileName, $greetings) {
+    //         $message->to($recipientEmail, $recipientName)
+    //                 ->subject('One Sky New Connection Registration Details')
+    //                 ->text($greetings)
+    //                 ->attachData($pdf->output(), $pdfFileName, [
+    //                     'mime' => 'application/pdf',
+    //                 ]);
+    //     });
+    
+    //     return redirect()->route('manage_buy_package')->with('message', 'Email Successfully Sent!');
+    // }
+
+    public function exportPackagePdf(Request $request, $id)
+{
+    $userInfo = BuyPackage::where('id', $id)->first();
+    $tc = TC::latest('id')->first();
+    // $footerAddress = Footer::value('en_footer_address');
+    // $menuImage = Menu::value('image');
+
+    // Lazy load images or cache them before passing to the view
+
+    // Create mPDF instance
+    $mpdf = new Mpdf([
+        'default_font' => 'kohinoor',
+    ]);
+
+    // Load the view and pass data to it
+    $html = view('frontend.packages.user_registration', [
+        'userInfo' => $userInfo,
+        'tc' => $tc,
+    ])->render();
+
+    // Write HTML content to mPDF
+    $mpdf->WriteHTML($html);
+
+    // Output the PDF
+    $mpdf->Output('user_registration.pdf', \Mpdf\Output\Destination::DOWNLOAD);
+}
+
     
     
     public function sendRegistrationEmail($id)
@@ -222,25 +287,19 @@ class PacakgeBuyController extends Controller
         $recipientName = $userInfo->name;
         
         // Dynamically generate the PDF filename based on the username
-        $pdfFileName = $userInfo->name . '_registration_form.pdf';
+        $pdfFileName = $userInfo->name . '_registration.pdf';
     
-        // Personalized message
-        $greetings = "Congratulations, $recipientName! \n\n";
-        $greetings .= "Thank you for registering for the new connection. We have initiated the process and created a ticket for your new connection. Please be patient as we work to complete your request. If you have any questions or need assistance, feel free to contact us at any time. Our hotline number is 09611 344 344. 
-    .";
-    
-        // Send email with PDF attachment and personalized message
-        Mail::send([], [], function ($message) use ($pdf, $recipientEmail, $recipientName, $pdfFileName, $greetings) {
+        // Send email with PDF attachment
+        Mail::send([], [], function ($message) use ($pdf, $recipientEmail, $recipientName, $pdfFileName) {
             $message->to($recipientEmail, $recipientName)
-                    ->subject('One Sky New Connection Registration Details')
-                    ->text($greetings)
+                    ->subject('Registration Details')
                     ->attachData($pdf->output(), $pdfFileName, [
                         'mime' => 'application/pdf',
                     ]);
         });
     
         // Optionally, you can redirect back to a specific route and include a success message
-        return redirect()->route('manage_buy_package')->with('message', 'Email Successfully Sent!');
+        return redirect()->route('manage_buy_package')->with('message', 'Successfully Sent!');
     }
     
 }

@@ -70,14 +70,16 @@
   border: none;
   outline: none;
 }
-.package_header{
+.package_card .bg-primary-transparent{
   padding: 35px 40px 36px;
-  background: #f4f5fa;
 }
 .package_header .package_icon_mbps{
   display: flex;
   align-items: center;
   gap: 15px;
+}
+.package_header .package_title strong{
+  color: #84858d;
 }
 .package_header .package_icon_mbps p{
   margin: 0;
@@ -85,9 +87,19 @@
   font-weight: bold;
   color: #cc050c;
 }
-.package_header .package_icon_mbps img{
-  height: 84px;
-  mix-blend-mode: darken;
+.package_header .package_icon_mbps .icon_box{
+  border-radius: 50px 50px 0 50px;
+  background-color: rgba(108, 95, 252, 0.1);
+  margin-block-end: 1.5rem;
+  margin-block-start: 14px;
+  display: inline-flex;
+  width: 4rem;
+  height: 4rem;
+  padding: 1.3rem 1.4rem;
+  text-align: center;
+}
+.package_header .package_icon_mbps i{
+  font-size: 23px;
 }
 .package_header .package_title h1{
   letter-spacing: -.04em;
@@ -126,13 +138,11 @@
   padding: 30px 40px;
 }
 .package_body p{
-  color: #84858d;
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 15px
 }
 .package_body ul li{
-  color: #525258;
   font-size: 15px;
   font-weight: 500;
   letter-spacing: -.02em;
@@ -174,6 +184,26 @@ iframe {
 form .error_form{
   color: red;
 }
+.contact_form .error_text{
+  margin-top: -10px;
+  display: block;
+  margin-bottom: 10px;
+}
 form .no-resize{
   resize: none;
+}
+.dark-mode .about_page .about_titles{
+  color: black;
+}
+.mobile_nav {
+  display: flex;
+  justify-content: space-between;
+}
+.light-mode .light-logo1{
+  display: block;
+}
+@media (max-width: 992px){
+  .dark-mode .logo-3{
+    display: none;
+  }
 }
