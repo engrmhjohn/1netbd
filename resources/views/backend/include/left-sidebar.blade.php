@@ -80,170 +80,31 @@
                         </li>
                     </ul>
                 </li>
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                        <i class="side-menu__icon fa fa-heartbeat"></i>
+                        <span class="side-menu__label">Contact Query</span><i
+                            class="angle fe fe-chevron-right"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <li class="panel sidetab-menu">
+                            <div class="panel-body tabs-menu-body p-0 border-0">
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="side21">
+                                        <ul class="sidemenu-list">
+                                            <li class="side-menu-label1"></li>
+                                            <li><a href="{{ route('admin.manage_contact_message') }}"
+                                                    class="slide-item">Manage Contact Query</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
                 @if (Auth::user()->role == '2')
                     <li class="sub-category">
                         <h3>Content Manage</h3>
-                    </li>
-                    <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                            <i class="side-menu__icon fa fa-map"></i>
-                            <span class="side-menu__label">Region</span><i class="angle fe fe-chevron-right"></i>
-                        </a>
-                        <ul class="slide-menu">
-                            <li class="panel sidetab-menu">
-                                <div class="panel-body tabs-menu-body p-0 border-0">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="side21">
-                                            <ul class="sidemenu-list">
-                                                <li class="side-menu-label1"></li>
-                                                <li><a href="{{ route('admin.add_region') }}" class="slide-item">Add
-                                                        Region</a></li>
-                                                <li><a href="{{ route('admin.manage_region') }}"
-                                                        class="slide-item">Manage Region</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                            <i class="side-menu__icon fa fa-map-marker"></i>
-                            <span class="side-menu__label">Area</span><i class="angle fe fe-chevron-right"></i>
-                        </a>
-                        <ul class="slide-menu">
-                            <li class="panel sidetab-menu">
-                                <div class="panel-body tabs-menu-body p-0 border-0">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="side21">
-                                            <ul class="sidemenu-list">
-                                                <li class="side-menu-label1"></li>
-                                                <li><a href="{{ route('admin.add_area') }}" class="slide-item">Add
-                                                        Area</a></li>
-                                                <li><a href="{{ route('admin.manage_area') }}"
-                                                        class="slide-item">Manage Area</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                            <i class="side-menu__icon fa fa-user"></i>
-                            <span class="side-menu__label">Client Type</span><i class="angle fe fe-chevron-right"></i>
-                        </a>
-                        <ul class="slide-menu">
-                            <li class="panel sidetab-menu">
-                                <div class="panel-body tabs-menu-body p-0 border-0">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="side21">
-                                            <ul class="sidemenu-list">
-                                                <li class="side-menu-label1"></li>
-                                                <li><a href="{{ route('admin.add_client_type') }}"
-                                                        class="slide-item">Add Client Type</a></li>
-                                                <li><a href="{{ route('admin.manage_client_type') }}"
-                                                        class="slide-item">Manage Client Type</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                            <i class="side-menu__icon fa fa-users"></i>
-                            <span class="side-menu__label">Whom Meet</span><i class="angle fe fe-chevron-right"></i>
-                        </a>
-                        <ul class="slide-menu">
-                            <li class="panel sidetab-menu">
-                                <div class="panel-body tabs-menu-body p-0 border-0">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="side21">
-                                            <ul class="sidemenu-list">
-                                                <li class="side-menu-label1"></li>
-                                                <li><a href="{{ route('admin.add_whom_meet') }}"
-                                                        class="slide-item">Add Whom Meet</a></li>
-                                                <li><a href="{{ route('admin.manage_whom_meet') }}"
-                                                        class="slide-item">Manage Whom Meet</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                            <i class="side-menu__icon fa fa-pencil"></i>
-                            <span class="side-menu__label">Client Feedback</span><i
-                                class="angle fe fe-chevron-right"></i>
-                        </a>
-                        <ul class="slide-menu">
-                            <li class="panel sidetab-menu">
-                                <div class="panel-body tabs-menu-body p-0 border-0">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="side21">
-                                            <ul class="sidemenu-list">
-                                                <li class="side-menu-label1"></li>
-                                                <li><a href="{{ route('admin.add_feedback') }}"
-                                                        class="slide-item">Add Client Feedback</a></li>
-                                                <li><a href="{{ route('admin.manage_feedback') }}"
-                                                        class="slide-item">Manage Client Feedback</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                            <i class="side-menu__icon fa fa-heartbeat"></i>
-                            <span class="side-menu__label">Contact Query</span><i
-                                class="angle fe fe-chevron-right"></i>
-                        </a>
-                        <ul class="slide-menu">
-                            <li class="panel sidetab-menu">
-                                <div class="panel-body tabs-menu-body p-0 border-0">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="side21">
-                                            <ul class="sidemenu-list">
-                                                <li class="side-menu-label1"></li>
-                                                <li><a href="{{ route('admin.manage_contact_message') }}"
-                                                        class="slide-item">Manage Contact Query</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                            <i class="side-menu__icon fa fa-magic"></i>
-                            <span class="side-menu__label">Work Record</span><i class="angle fe fe-chevron-right"></i>
-                        </a>
-                        <ul class="slide-menu">
-                            <li class="panel sidetab-menu">
-                                <div class="panel-body tabs-menu-body p-0 border-0">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="side21">
-                                            <ul class="sidemenu-list">
-                                                <li class="side-menu-label1"></li>
-                                                <li><a href="{{ route('admin.add_work') }}" class="slide-item">Add
-                                                        Work</a></li>
-                                                <li><a href="{{ route('admin.manage_work') }}"
-                                                        class="slide-item">Manage Work</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
@@ -295,7 +156,7 @@
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                            <i class="side-menu__icon fa fa-shopping-bag"></i>
+                            <i class="side-menu__icon fa fa-file-word-o"></i>
                             <span class="side-menu__label">Terms & Conditions</span><i
                                 class="angle fe fe-chevron-right"></i>
                         </a>

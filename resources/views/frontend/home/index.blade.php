@@ -641,7 +641,7 @@
     <div class="bg-landing section bg-image-style">
         <div class="container">
             <div class="row">
-                <h2 class="text-center fw-semibold">Our Services</h2>
+                <h2 class="text-center fw-semibold day_night_titles">Our Services</h2>
                 <span class="landing-title"></span>
                 <div class="pricing-tabs">
                     <div class="tab-content">

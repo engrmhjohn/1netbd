@@ -6,7 +6,7 @@
 <div class="section bg-landing pb-0 bg-image-style about_page">
     <div class="container">
         <div class="row">
-            <h4 class="text-center fw-semibold about_titles">Our Mission</h4>
+            <h4 class="text-center fw-semibold day_night_titles">Our Mission</h4>
             <span class="landing-title"></span>
             <div class="col-lg-12">
                 <div class="card">
@@ -40,7 +40,7 @@
 <div class="section bg-landing pb-0 bg-image-style about_page">
     <div class="container">
         <div class="row">
-            <h4 class="text-center fw-semibold about_titles">Our Vison</h4>
+            <h4 class="text-center fw-semibold day_night_titles">Our Vison</h4>
             <span class="landing-title"></span>
             <div class="col-lg-12">
                 <div class="card">
