@@ -1,3 +1,6 @@
+@php
+    $company_info = \App\Models\CompanyInfo::first();
+@endphp
 <div class="app-header header sticky">
     <div class="container-fluid main-container">
         <div class="d-flex">
@@ -5,10 +8,10 @@
                 href="javascript:void(0)"></a>
             <!-- sidebar-toggle-->
             <a class="logo-horizontal " href="{{ url('/') }}">
-                <img src="{{ asset('backendAssets') }}/static_images/logo_white.png" class="header-brand-img desktop-logo"
+                <img src="{{ asset($company_info->white_logo) }}" class="header-brand-img desktop-logo"
                     alt="logo" style="height: auto; max-width: 165px;">
-                <img src="{{ asset('backendAssets') }}/static_images/logo.png" class="header-brand-img light-logo1"
-                    alt="logo" style="height: auto; max-width: 165px;">
+                <img src="{{ asset($company_info->color_logo) }}" class="header-brand-img light-logo1"
+                    alt="Color logo" style="height: auto; max-width: 165px;">
             </a>
             <!-- LOGO -->
 

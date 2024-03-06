@@ -1,11 +1,14 @@
+@php
+    $company_info = \App\Models\CompanyInfo::first();
+@endphp
 <div class="sticky">
     <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
     <div class="app-sidebar">
         <div class="side-header">
             <a class="header-brand1" href="{{ url('/') }}">
-                <img src="{{ asset('backendAssets') }}/static_images/logo_white.png" class="header-brand-img desktop-logo"
+                <img src="{{ asset($company_info->white_logo) }}" class="header-brand-img desktop-logo"
                     alt="logo" style="height: auto; max-width: 165px;">
-                <img src="{{ asset('backendAssets') }}/static_images/logo.png" class="header-brand-img light-logo1"
+                <img src="{{ asset($company_info->color_logo) }}" class="header-brand-img light-logo1"
                     alt="logo" style="height: auto; max-width: 165px;">
             </a>
             <!-- LOGO -->

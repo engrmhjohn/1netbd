@@ -44,7 +44,9 @@
 </head>
 
 <body class="app sidebar-mini ltr login-img">
-
+    @php
+    $company_info = \App\Models\CompanyInfo::first();
+@endphp
     <!-- BACKGROUND-IMAGE -->
     <div class="">
 
@@ -62,8 +64,8 @@
                 <!-- CONTAINER OPEN -->
                 <div class="col col-login mx-auto">
                     <div class="text-center">
-                        <a href="index.html"><img src="../assets/images/brand/logo-white.png"
-                                class="header-brand-img m-0" alt=""></a>
+                        <a href="{{ route('/') }}"><img src="{{ asset($company_info->color_logo) }}"
+                                class="header-brand-img m-0" alt="" style="height: auto; max-width: 165px;"></a>
                     </div>
                 </div>
 

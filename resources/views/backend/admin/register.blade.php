@@ -37,7 +37,9 @@
 </head>
 
 <body class="app sidebar-mini ltr login-img">
-
+    @php
+    $company_info = \App\Models\CompanyInfo::first();
+@endphp
     <!-- BACKGROUND-IMAGE -->
     <div class="">
 
@@ -56,8 +58,8 @@
                 <div class="col col-login mx-auto mt-7">
                     <div class="text-center">
                         <a href="{{ url('/') }}"><img
-                                src="{{ asset('backendAssets') }}/images/brand/logo.png" class="header-brand-img"
-                                alt=""></a>
+                                src="{{ asset($company_info->color_logo) }}" class="header-brand-img"
+                                alt="" style="height: auto; max-width: 165px;"></a>
                     </div>
                 </div>
 
