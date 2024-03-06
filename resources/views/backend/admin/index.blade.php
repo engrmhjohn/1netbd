@@ -36,11 +36,11 @@
                                                 </div>
                                             @elseif($user->role == 1)
                                                 <div class="mt-sm-1 d-block">
-                                                    <span class="tag tag-rounded text-primary">Employee</span>
+                                                    <span class="tag tag-rounded text-primary">Admin</span>
                                                 </div>
                                             @else
                                                 <div class="mt-sm-1 d-block">
-                                                    <span class="tag tag-rounded text-danger">Not Employee</span>
+                                                    <span class="tag tag-rounded text-danger">Not Admin</span>
                                                 </div>
                                             @endif
                                         </td>
@@ -50,7 +50,7 @@
                                                     <a class="btn btn-sm btn-success"
                                                         href="{{ route('role', ['id' => $user->id, 'newRole' => 1]) }}" data-bs-toggle="tooltip"
                                                         data-bs-original-title="Make Employee">
-                                                        <span class="fe fe-check-circle"> </span> Employee
+                                                        <span class="fe fe-check-circle"> </span> Admin
                                                     </a>
                                                     <a class="btn btn-sm btn-danger"
                                                         href="{{ route('role', ['id' => $user->id, 'newRole' => 2]) }}" data-bs-toggle="tooltip"
@@ -61,7 +61,7 @@
                                                     <a class="btn btn-sm btn-danger"
                                                         href="{{ route('role', ['id' => $user->id, 'newRole' => 0]) }}" data-bs-toggle="tooltip"
                                                         data-bs-original-title="Remove Employee">
-                                                        <span class="fe fe-user-x"> </span> Employee
+                                                        <span class="fe fe-user-x"> </span> Admin
                                                     </a>
                                                     <a class="btn btn-sm btn-danger"
                                                         href="{{ route('role', ['id' => $user->id, 'newRole' => 2]) }}" data-bs-toggle="tooltip"
@@ -77,7 +77,7 @@
                                                     <a class="btn btn-sm btn-success"
                                                         href="{{ route('role', ['id' => $user->id, 'newRole' => 1]) }}" data-bs-toggle="tooltip"
                                                         data-bs-original-title="Make Employee">
-                                                        <span class="fe fe-check-circle"> </span> Employee
+                                                        <span class="fe fe-check-circle"> </span> Admin
                                                     </a>
                                                 @endif
                                                 <form action="{{ route('admin.delete_admin', ['id' => $user->id]) }}"
