@@ -7,8 +7,8 @@
                 <div class="row">
                     <div class="main-sidemenu navbar px-0">
                         <a class="navbar-brand ps-0 d-none d-lg-block" href="{{ route('/') }}">
-                            <img src="{{ asset('backendAssets') }}/static_images/logo.png" alt="logo" class="light-logo1" style="height: auto; max-width: 165px;">
-                            <img src="{{ asset('backendAssets') }}/static_images/logo_white.png" alt="logo" class="logo-3" style="height: auto; max-width: 165px;">
+                            <img src="{{ asset($company_info->color_logo) }}" alt="Color logo" class="light-logo1" style="height: auto; max-width: 165px;">
+                            <img src="{{ asset($company_info->white_logo) }}" alt="White logo" class="logo-3" style="height: auto; max-width: 165px;">
                         </a>
                         <ul class="side-menu">
                             <li class="slide">

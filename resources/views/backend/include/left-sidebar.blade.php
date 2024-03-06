@@ -178,11 +178,11 @@
                             </li>
                         </ul>
                     </li>
-                @else
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                            <i class="side-menu__icon fa fa-magic"></i>
-                            <span class="side-menu__label">Add Work</span><i class="angle fe fe-chevron-right"></i>
+                            <i class="side-menu__icon fa fa-wpforms"></i>
+                            <span class="side-menu__label">Company Information</span><i
+                                class="angle fe fe-chevron-right"></i>
                         </a>
                         <ul class="slide-menu">
                             <li class="panel sidetab-menu">
@@ -191,10 +191,10 @@
                                         <div class="tab-pane active" id="side21">
                                             <ul class="sidemenu-list">
                                                 <li class="side-menu-label1"></li>
-                                                <li><a href="{{ route('admin.add_work') }}" class="slide-item">Add
-                                                        Work</a></li>
-                                                <li><a href="{{ route('admin.manage_work') }}"
-                                                        class="slide-item">Manage Work</a></li>
+                                                <li><a href="{{ route('admin.add_company_info') }}" class="slide-item">Add
+                                                        Company Information</a></li>
+                                                <li><a href="{{ route('admin.manage_company_info') }}"
+                                                        class="slide-item">Manage Company Information</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -202,6 +202,7 @@
                             </li>
                         </ul>
                     </li>
+                @else
                 @endif
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"

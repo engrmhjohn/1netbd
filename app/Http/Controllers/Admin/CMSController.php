@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Package;
 use App\Models\BTRC;
 use App\Models\TC;
+use App\Models\CompanyInfo;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -258,6 +259,68 @@ class CMSController extends Controller
         $tc->en_contact_termination = $request->en_contact_termination;
         $tc->save();
         return redirect(route('admin.manage_tc'))->with('message', 'Successfully Updated!');
+    }
+
+    public function addCompanyInfo(){
+        return view('backend.cms.company_info.show');
+    }
+
+    public function saveCompanyInfo(Request $request){
+        $company_info = new CompanyInfo();
+        $company_info->en_name = $request->en_name;
+        $company_info->en_hotline = $request->en_hotline;
+        $company_info->en_sales_number = $request->en_sales_number;
+        $company_info->email = $request->email;
+        $company_info->fb_link = $request->fb_link;
+        $company_info->youtube_link = $request->youtube_link;
+        $company_info->linkedin_link = $request->linkedin_link;
+        $company_info->map_link = $request->map_link;
+        $company_info->en_address = $request->en_address;
+        $company_info->en_working_hours = $request->en_working_hours;
+        $company_info->color_logo = image_upload($request->color_logo);
+        $company_info->white_logo = image_upload($request->white_logo);
+        $company_info->save();
+        return redirect(route('admin.manage_company_info'))->with('message','Successfully Added');
+    }
+
+    public function manageCompanyInfo(){
+        $company_info = CompanyInfo::get();
+        return view('backend.cms.company_info.index',compact('company_info'));
+    }
+
+    public function editCompanyInfo($id){
+        $company_info = CompanyInfo::find($id);
+        return view('backend.cms.company_info.edit',compact('company_info'));
+    }
+
+    public function updateCompanyInfo(Request $request){
+       $company_info = CompanyInfo::find($request->company_info_id);
+       $company_info->en_name = $request->en_name;
+       $company_info->en_hotline = $request->en_hotline;
+       $company_info->en_sales_number = $request->en_sales_number;
+       $company_info->email = $request->email;
+       $company_info->fb_link = $request->fb_link;
+       $company_info->youtube_link = $request->youtube_link;
+       $company_info->linkedin_link = $request->linkedin_link;
+       $company_info->map_link = $request->map_link;
+       $company_info->en_address = $request->en_address;
+       $company_info->en_working_hours = $request->en_working_hours;
+        if ($request->file('color_logo')) {
+            if (isset($company_info)) {
+                delete_image($company_info->color_logo);
+                $company_info->delete();
+            }
+            $company_info->color_logo = image_upload($request->color_logo);
+        }
+        if ($request->file('white_logo')) {
+            if (isset($company_info)) {
+                delete_image($company_info->white_logo);
+                $company_info->delete();
+            }
+            $company_info->white_logo = image_upload($request->white_logo);
+        }
+       $company_info->save();
+       return redirect(route('admin.manage_company_info'))->with('message','Successfully Updated'); 
     }
 
 }

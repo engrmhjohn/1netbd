@@ -51,6 +51,17 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
             Route::get('/manage-terms-condition', 'manageTC')->name('manage_tc');
             Route::get('/edit-terms-condition/{id}', 'editTC')->name('edit_tc');
             Route::post('/update-terms-condition', 'updateTC')->name('update_tc');
+
+            Route::get('/manage-package', 'managePackage')->name('manage_package');
+            Route::get('/edit-package/{id}', 'editPackage')->name('edit_package');
+            Route::post('/update-package', 'updatePackage')->name('update_package');
+            Route::post('/delete-package', 'deletePackage')->name('delete_package');
+
+            Route::get('/add-company-info', 'addCompanyInfo')->name('add_company_info');
+            Route::post('/save-company-info', 'saveCompanyInfo')->name('save_company_info');
+            Route::get('/manage-company-info', 'manageCompanyInfo')->name('manage_company_info');
+            Route::get('/edit-company-info/{id}', 'editCompanyInfo')->name('edit_company_info');
+            Route::post('/update-company-info', 'updateCompanyInfo')->name('update_company_info');
         });
     });
 
@@ -61,7 +72,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
         Route::get('/pending-employee-list', 'pendingEmployeeList')->name('pending_employee_list');
     });
 
-    //both admin and employee will add work and change the avatar
+    //both admin and user will change the avatar and packge and add
     Route::controller(CMSController::class)->prefix('/admin')->name('admin.')->group(function () {
 
         Route::post('/update-user-name', 'updateUserName')->name('update_user_name');
@@ -73,17 +84,6 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
 
         Route::get('/add-package', 'addPackage')->name('add_package');
         Route::post('/save-package', 'savePackage')->name('save_package');
-        Route::get('/manage-package', 'managePackage')->name('manage_package');
-        Route::get('/edit-package/{id}', 'editPackage')->name('edit_package');
-        Route::post('/update-package', 'updatePackage')->name('update_package');
-        Route::post('/delete-package', 'deletePackage')->name('delete_package');
-
-        Route::get('/add-btrc', 'addPackage')->name('add_package');
-        Route::post('/save-package', 'savePackage')->name('save_package');
-        Route::get('/manage-package', 'managePackage')->name('manage_package');
-        Route::get('/edit-package/{id}', 'editPackage')->name('edit_package');
-        Route::post('/update-package', 'updatePackage')->name('update_package');
-        Route::post('/delete-package', 'deletePackage')->name('delete_package');
     });
 
     Route::controller(PacakgeBuyController::class)->group(function () {

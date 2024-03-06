@@ -62,10 +62,9 @@
                             href="javascript:void(0)"></a>
                         <!-- sidebar-toggle-->
                         <a class="logo-horizontal" href="{{ route('/') }}">
-                            <img src="{{ asset('backendAssets') }}/static_images/logo.png"
-                                class="header-brand-img light-logo1" alt="logo"
+                            <img src="{{ asset($company_info->color_logo) }}" class="header-brand-img light-logo1" alt="Color logo"
                                 style="max-width: 165px; height: auto;">
-                                <img src="{{ asset('backendAssets') }}/static_images/logo_white.png" class="logo-3" style="height: auto; max-width: 165px;">
+                            <img src="{{ asset($company_info->white_logo) }}" class="logo-3" style="height: auto; max-width: 165px;">
                         </a>
                         <!-- LOGO -->
                         <a class="nav-link icon theme-layout nav-link-bg layout-setting" id="theme-toggle">

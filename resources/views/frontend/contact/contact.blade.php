@@ -28,9 +28,8 @@
                                                                     </div>
                                                                     <h4 class="mb-2 fw-semibold">
                                                                         Office Address</h4>
-                                                                    <p>132/A Arambagh, Motijheel
-                                                                        (6th floor), Dhaka-1000,
-                                                                        Bangladesh.
+                                                                    <p>
+                                                                        {{ $company_info->en_address }}
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -47,8 +46,7 @@
                                                                     </div>
                                                                     <h4 class="mb-2 fw-semibold">
                                                                         Hotline</h4>
-                                                                    <p class="mb-0">09611 344
-                                                                        344</p>
+                                                                    <p class="mb-0">{{ $company_info->en_hotline }}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -63,7 +61,7 @@
                                                                     </div>
                                                                     <h4 class="mb-2 fw-semibold">
                                                                         Email</h4>
-                                                                    <p>info@1netbd.com</p>
+                                                                    <p>{{ $company_info->email }}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -78,10 +76,7 @@
                                                                     </div>
                                                                     <h4 class="mb-2 fw-semibold">
                                                                         Working Hours</h4>
-                                                                    <p class="mb-0">Support:
-                                                                        24/7 Hours</p>
-                                                                    <p>Office Time: Saturday -
-                                                                        Thursday (9AM - 6PM)</p>
+                                                                    <p class="mb-0">{!! $company_info->en_working_hours !!}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
