@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\BuyPackage;
 use App\Models\TC;
+use App\Models\CompanyInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -240,31 +241,37 @@ class PacakgeBuyController extends Controller
     // }
 
     public function exportPackagePdf(Request $request, $id)
-{
-    $userInfo = BuyPackage::where('id', $id)->first();
-    $tc = TC::latest('id')->first();
-    // $footerAddress = Footer::value('en_footer_address');
-    // $menuImage = Menu::value('image');
-
-    // Lazy load images or cache them before passing to the view
-
-    // Create mPDF instance
-    $mpdf = new Mpdf([
-        'default_font' => 'kohinoor',
-    ]);
-
-    // Load the view and pass data to it
-    $html = view('frontend.packages.user_registration', [
-        'userInfo' => $userInfo,
-        'tc' => $tc,
-    ])->render();
-
-    // Write HTML content to mPDF
-    $mpdf->WriteHTML($html);
-
-    // Output the PDF
-    $mpdf->Output('user_registration.pdf', \Mpdf\Output\Destination::DOWNLOAD);
-}
+    {
+        $userInfo = BuyPackage::where('id', $id)->first();
+        $tc = TC::latest('id')->first();
+        $companyAddress = CompanyInfo::value('en_address');
+        $logoImage = CompanyInfo::value('color_logo');
+    
+        // Lazy load images or cache them before passing to the view
+    
+        // Create mPDF instance
+        $mpdf = new Mpdf([
+            'default_font' => 'kohinoor',
+        ]);
+    
+        // Construct the PDF filename with the user's name
+        $pdfFileName = $userInfo->name . '_registration_form.pdf';
+    
+        // Load the view and pass data to it
+        $html = view('frontend.packages.user_registration', [
+            'userInfo' => $userInfo,
+            'tc' => $tc,
+            'color_logo' => $logoImage, 
+            'en_address' => $companyAddress
+        ])->render();
+        
+    
+        // Write HTML content to mPDF
+        $mpdf->WriteHTML($html);
+    
+        // Output the PDF with the constructed filename
+        $mpdf->Output($pdfFileName, \Mpdf\Output\Destination::DOWNLOAD);
+    }    
 
     
     
