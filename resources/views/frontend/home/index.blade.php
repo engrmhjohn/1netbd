@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="testimonial-carousel">
-                        <div class="slide text-center">
+                        <div class="slide">
                             <a class="desktop_slide" href="">
                                 <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/os web.jpg"
                                     style="height: auto; width: 100%; padding: 0px;" alt="">
@@ -18,8 +18,11 @@
                                 <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/1st.jpg"
                                     style="height: auto; width: 100%; padding: 0px;" alt="">
                             </a>
+                            <div class="package_button">
+                                <a class="btn btn-danger fw-bold d-block" href=""> Learn More <i class="fa fa-arrow-right"></i></a>
+                            </div>
                         </div>
-                        <div class="slide text-center">
+                        <div class="slide">
                             <a class="desktop_slide" href="">
                                 <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/tracker.jpg"
                                     style="height: auto; width: 100%; padding: 0px;" alt="">
@@ -28,8 +31,11 @@
                                 <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/2nd.jpg"
                                     style="height: auto; width: 100%; padding: 0px;" alt="">
                             </a>
+                            <div class="package_button">
+                                <a class="btn btn-danger fw-bold" href=""> Learn More <i class="fa fa-arrow-right"></i></a>
+                            </div>
                         </div>
-                        <div class="slide text-center">
+                        <div class="slide">
                             <a class="desktop_slide" href="">
                                 <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/internet.jpg"
                                     style="height: auto; width: 100%; padding: 0px;" alt="">
@@ -38,6 +44,9 @@
                                 <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/3rd.jpg"
                                     style="height: auto; width: 100%; padding: 0px;" alt="">
                             </a>
+                            <div class="package_button">
+                                <a class="btn btn-danger fw-bold" href=""> Learn More <i class="fa fa-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>

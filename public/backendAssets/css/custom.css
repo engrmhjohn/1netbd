@@ -204,3 +204,9 @@ form .no-resize{
 .light-mode .light-logo1{
   display: block;
 }
+.testimonial-carousel .package_button{
+  position: relative;
+  bottom: 75px;
+  left: 50px;
+  display: inline-block;
+}

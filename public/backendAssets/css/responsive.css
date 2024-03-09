@@ -67,4 +67,8 @@
     right: -17px;
     transform: translate(-50%, -50%);
   }
+  .testimonial-carousel .package_button{
+    bottom: 65px;
+    left: 10px;
+  }
 }
