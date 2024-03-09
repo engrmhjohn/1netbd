@@ -63,8 +63,8 @@
                         <!-- sidebar-toggle-->
                         <a class="logo-horizontal" href="{{ route('/') }}">
                             <img src="{{ asset($company_info->color_logo) }}" class="header-brand-img light-logo1" alt="Color logo"
-                                style="max-width: 165px; height: auto;">
-                            <img src="{{ asset($company_info->white_logo) }}" class="logo-3" style="height: auto; max-width: 165px;">
+                                style="max-width: 165px; height: auto; margin-top: -5px;">
+                            <img src="{{ asset($company_info->white_logo) }}" class="logo-3" style="height: auto; max-width: 165px; margin-top: -5px;">
                         </a>
                         <!-- LOGO -->
                         <a class="nav-link icon theme-layout nav-link-bg layout-setting" id="theme-toggle">

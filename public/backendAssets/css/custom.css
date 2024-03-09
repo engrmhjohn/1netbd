@@ -100,6 +100,8 @@
 }
 .package_header .package_icon_mbps i{
   font-size: 23px;
+  color: #cc050c;
+  font-weight: bold;
 }
 .package_header .package_title h1{
   letter-spacing: -.04em;
@@ -201,9 +203,4 @@ form .no-resize{
 }
 .light-mode .light-logo1{
   display: block;
-}
-@media (max-width: 992px){
-  .dark-mode .logo-3{
-    display: none;
-  }
 }

@@ -9,6 +9,9 @@
 }
 
 @media (max-width: 991px) {
+  .dark-mode .logo-3{
+    display: none;
+  }
     .logo-horizontal {
         display: flex;
         inset-inline-start: 0;
@@ -25,6 +28,10 @@
     .landing-top-header .side-menu .slide{
       padding: 10px 0px;
     }
+    .top_social_info .left {
+      padding-top: 20px;
+
+    }
 }
 @media (max-width: 768px) {
   .top_social_info .right {
@@ -32,10 +39,6 @@
       justify-content: center;
       flex-direction: row-reverse;
   }
-}
-
-.top_social_info .left {
-  padding-top: 6px;
 }
 @media (max-width: 576px){
   .package_body{
