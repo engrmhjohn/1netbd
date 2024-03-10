@@ -111,8 +111,8 @@
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                            <i class="side-menu__icon fa fa-shopping-bag"></i>
-                            <span class="side-menu__label">Internet Package</span><i
+                            <i class="side-menu__icon fa fa-wpforms"></i>
+                            <span class="side-menu__label">Company Information</span><i
                                 class="angle fe fe-chevron-right"></i>
                         </a>
                         <ul class="slide-menu">
@@ -122,34 +122,10 @@
                                         <div class="tab-pane active" id="side21">
                                             <ul class="sidemenu-list">
                                                 <li class="side-menu-label1"></li>
-                                                <li><a href="{{ route('admin.add_package') }}" class="slide-item">Add
-                                                        Package</a></li>
-                                                <li><a href="{{ route('admin.manage_package') }}"
-                                                        class="slide-item">Manage Package</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                            <i class="side-menu__icon fa fa-shopping-bag"></i>
-                            <span class="side-menu__label">BTRC Approved Package</span><i
-                                class="angle fe fe-chevron-right"></i>
-                        </a>
-                        <ul class="slide-menu">
-                            <li class="panel sidetab-menu">
-                                <div class="panel-body tabs-menu-body p-0 border-0">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="side21">
-                                            <ul class="sidemenu-list">
-                                                <li class="side-menu-label1"></li>
-                                                <li><a href="{{ route('admin.add_btrc_approved_packages') }}"
-                                                        class="slide-item">Add BTRC Approved Package</a></li>
-                                                <li><a href="{{ route('admin.manage_btrc_approved_packages') }}"
-                                                        class="slide-item">Manage BTRC Approved Package</a></li>
+                                                <li><a href="{{ route('admin.add_company_info') }}" class="slide-item">Add
+                                                        Company Information</a></li>
+                                                <li><a href="{{ route('admin.manage_company_info') }}"
+                                                        class="slide-item">Manage Company Information</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -183,8 +159,8 @@
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                            <i class="side-menu__icon fa fa-wpforms"></i>
-                            <span class="side-menu__label">Company Information</span><i
+                            <i class="side-menu__icon fa fa-paint-brush"></i>
+                            <span class="side-menu__label">Internet Package</span><i
                                 class="angle fe fe-chevron-right"></i>
                         </a>
                         <ul class="slide-menu">
@@ -194,10 +170,10 @@
                                         <div class="tab-pane active" id="side21">
                                             <ul class="sidemenu-list">
                                                 <li class="side-menu-label1"></li>
-                                                <li><a href="{{ route('admin.add_company_info') }}" class="slide-item">Add
-                                                        Company Information</a></li>
-                                                <li><a href="{{ route('admin.manage_company_info') }}"
-                                                        class="slide-item">Manage Company Information</a></li>
+                                                <li><a href="{{ route('admin.add_package') }}" class="slide-item">Add
+                                                        Package</a></li>
+                                                <li><a href="{{ route('admin.manage_package') }}"
+                                                        class="slide-item">Manage Package</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -207,7 +183,31 @@
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                            <i class="side-menu__icon fa fa-wpforms"></i>
+                            <i class="side-menu__icon fa fa-paint-brush"></i>
+                            <span class="side-menu__label">BTRC Approved Package</span><i
+                                class="angle fe fe-chevron-right"></i>
+                        </a>
+                        <ul class="slide-menu">
+                            <li class="panel sidetab-menu">
+                                <div class="panel-body tabs-menu-body p-0 border-0">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="side21">
+                                            <ul class="sidemenu-list">
+                                                <li class="side-menu-label1"></li>
+                                                <li><a href="{{ route('admin.add_btrc_approved_packages') }}"
+                                                        class="slide-item">Add BTRC Approved Package</a></li>
+                                                <li><a href="{{ route('admin.manage_btrc_approved_packages') }}"
+                                                        class="slide-item">Manage BTRC Approved Package</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                            <i class="side-menu__icon fa fa-paint-brush"></i>
                             <span class="side-menu__label">Home Slider</span><i
                                 class="angle fe fe-chevron-right"></i>
                         </a>
@@ -222,6 +222,54 @@
                                                         Slider</a></li>
                                                 <li><a href="{{ route('admin.manage_slider') }}"
                                                         class="slide-item">Manage Slider</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                            <i class="side-menu__icon fa fa-paint-brush"></i>
+                            <span class="side-menu__label">Counter</span><i
+                                class="angle fe fe-chevron-right"></i>
+                        </a>
+                        <ul class="slide-menu">
+                            <li class="panel sidetab-menu">
+                                <div class="panel-body tabs-menu-body p-0 border-0">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="side21">
+                                            <ul class="sidemenu-list">
+                                                <li class="side-menu-label1"></li>
+                                                <li><a href="{{ route('admin.add_counter') }}" class="slide-item">Add
+                                                        Counter</a></li>
+                                                <li><a href="{{ route('admin.manage_counter') }}"
+                                                        class="slide-item">Manage Counter</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                            <i class="side-menu__icon fa fa-paint-brush"></i>
+                            <span class="side-menu__label">Choose Us</span><i
+                                class="angle fe fe-chevron-right"></i>
+                        </a>
+                        <ul class="slide-menu">
+                            <li class="panel sidetab-menu">
+                                <div class="panel-body tabs-menu-body p-0 border-0">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="side21">
+                                            <ul class="sidemenu-list">
+                                                <li class="side-menu-label1"></li>
+                                                <li><a href="{{ route('admin.add_choose_us') }}" class="slide-item">Add
+                                                        Choose Us</a></li>
+                                                <li><a href="{{ route('admin.manage_choose_us') }}"
+                                                        class="slide-item">Manage Choose Us</a></li>
                                             </ul>
                                         </div>
                                     </div>

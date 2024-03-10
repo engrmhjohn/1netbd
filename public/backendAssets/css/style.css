@@ -16404,11 +16404,9 @@ ul.inbox-pagination li {
     margin-block-end: 1.5rem;
     margin-block-start: 14px;
     display: inline-flex;
-    width: 4rem;
-    height: 4rem;
-    padding: 1.3rem 1.4rem;
     border-radius: 7px;
     text-align: center;
+    padding: 10px;
 }
 
 .pickr .pcr-button {
@@ -19051,8 +19049,8 @@ img {
 }
 
 .landing-page .main-features .bg-img img {
-    width: 70px;
-    height: 50px;
+    width: 110px;
+    height: auto;
 }
 
 .landing-page .owl-item {

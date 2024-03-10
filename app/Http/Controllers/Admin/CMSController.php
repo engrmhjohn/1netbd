@@ -11,6 +11,8 @@ use App\Models\BTRC;
 use App\Models\TC;
 use App\Models\CompanyInfo;
 use App\Models\Slider;
+use App\Models\Counter;
+use App\Models\ChooseUs;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -397,6 +399,121 @@ class CMSController extends Controller
         $slider->delete();
 
         return redirect()->route('admin.manage_slider')->with('message', 'Successfully Deleted!');
+    }
+
+    public function addCounter(){
+        return view('backend.cms.counter.show');
+    }
+
+    public function saveCounter(Request $request){
+        $counter = new Counter();
+        $counter->en_name = $request->en_name;
+        $counter->en_number = $request->en_number;
+        $counter->icon = image_upload($request->icon);
+        $counter->position = $request->position;
+        $counter->status = $request->status;
+        $counter->save();
+        return redirect(route('admin.manage_counter'))->with('message', 'Successfully Added!');
+    }
+
+    public function manageCounter(){
+        $counter = Counter::orderBy('position','asc')->get();
+        return view('backend.cms.counter.index',compact('counter'));
+    }
+
+    public function editCounter($id){
+        $counter = Counter::find($id);
+        return view('backend.cms.counter.edit',compact('counter'));
+    }
+
+    public function updateCounter(Request $request){
+        $counter               = Counter::find($request->counter_id);
+        $counter->en_name = $request->en_name;
+        $counter->en_number = $request->en_number;
+        $counter->position = $request->position;
+        $counter->status = $request->status;
+        if ($request->file('icon')) {
+            if (isset($counter)) {
+                delete_image($counter->icon);
+                $counter->delete();
+            }
+            $counter->icon = image_upload($request->icon);
+        }
+        $counter->save();
+        return redirect(route('admin.manage_counter'))->with('message', 'Successfully Updated!');
+    }
+
+    public function deleteCounter(Request $request)
+    {
+        $counter = Counter::find($request->counter_id);
+
+        if (isset($counter)) {
+            delete_image($counter->icon);
+            $counter->delete();
+        }
+        $counter->delete();
+
+        return redirect()->route('admin.manage_counter')->with('message', 'Successfully Deleted!');
+    }
+
+    public function addChooseUS()
+    {
+        return view('backend.cms.choose_us.show');
+    }
+    public function saveChooseUS(Request $request)
+    {
+        $choose_us = new ChooseUs();
+        $choose_us->en_title = $request->en_title;
+        $choose_us->en_description = $request->en_description;
+        $choose_us->position = $request->position;
+        $choose_us->icon = image_upload($request->icon);
+        $choose_us->status = $request->status;
+        $choose_us->save();
+        return redirect(route('admin.manage_choose_us'))->with('message', 'Successfully Added!');
+    }
+    public function manageChooseUS()
+    {
+        return view('backend.cms.choose_us.index', [
+            'choose_us' => ChooseUs::orderBy('position', 'asc')->get(),
+        ]);
+    }
+    public function editChooseUS($id)
+    {
+        $choose_us = ChooseUs::find($id);
+
+        return view('backend.cms.choose_us.edit', [
+            'choose_us' => $choose_us
+        ]);
+    }
+    public function updateChooseUS(Request $request)
+    {
+        $choose_us               = ChooseUs::find($request->choose_us_id);
+        $choose_us->en_title = $request->en_title;
+        $choose_us->en_description = $request->en_description;
+        $choose_us->position = $request->position;
+        $choose_us->status = $request->status;
+        if ($request->file('icon')) {
+            if (isset($choose_us)) {
+                delete_image($choose_us->icon);
+                $choose_us->delete();
+            }    
+            $choose_us->icon = image_upload($request->icon);
+        }
+        $choose_us->save();
+        return redirect(route('admin.manage_choose_us'))->with('message', 'Successfully Updated!');
+    }
+    public function deleteChooseUS(Request $request)
+    {
+        $choose_us = ChooseUs::find($request->choose_us_id);
+
+        if (isset($choose_us)) {
+            delete_image($choose_us->icon);
+            $choose_us->delete();
+        }
+
+        $choose_us->delete();
+
+        return redirect()->route('admin.manage_choose_us')->with('message', 'Successfully Deleted!');
     }
 
 }

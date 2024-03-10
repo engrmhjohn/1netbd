@@ -70,6 +70,20 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
             Route::get('/edit-slider/{id}', 'editSlider')->name('edit_slider');
             Route::post('/update-slider', 'updateSlider')->name('update_slider');
             Route::post('/delete-slider', 'deleteSlider')->name('delete_slider');
+
+            Route::get('/add-counter', 'addCounter')->name('add_counter');
+            Route::post('/save-counter', 'saveCounter')->name('save_counter');
+            Route::get('/manage-counter', 'manageCounter')->name('manage_counter');
+            Route::get('/edit-counter/{id}', 'editCounter')->name('edit_counter');
+            Route::post('/update-counter', 'updateCounter')->name('update_counter');
+            Route::post('/delete-counter', 'deleteCounter')->name('delete_counter');
+
+            Route::get('/add-choose-us', 'addChooseUS')->name('add_choose_us');
+            Route::post('/save-choose-us', 'saveChooseUS')->name('save_choose_us');
+            Route::get('/manage-choose-us', 'manageChooseUS')->name('manage_choose_us');
+            Route::get('/edit-choose-us/{id}', 'editChooseUS')->name('edit_choose_us');
+            Route::post('/update-choose-us', 'updateChooseUS')->name('update_choose_us');
+            Route::post('/delete-choose-us', 'deleteChooseUS')->name('delete_choose_us');
         });
     });
 

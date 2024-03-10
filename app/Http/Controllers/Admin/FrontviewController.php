@@ -10,6 +10,8 @@ use App\Models\BTRC;
 use App\Models\TC;
 use App\Models\CompanyInfo;
 use App\Models\Slider;
+use App\Models\Counter;
+use App\Models\ChooseUs;
 
 class FrontviewController extends Controller
 {
@@ -17,8 +19,10 @@ class FrontviewController extends Controller
     public function index(){
         $packages = Package::where('status', 1)->where('top_package','1')->get();
         $sliders = Slider::where('status', 1)->orderBy('position','asc')->get();
+        $counters = Counter::where('status', 1)->orderBy('position','asc')->get();
+        $choose_uses = ChooseUs::where('status', 1)->orderBy('position','asc')->get();
         $company_info = CompanyInfo::first();
-        return view('frontend.home.index',compact('packages','company_info','sliders'));
+        return view('frontend.home.index',compact('packages','company_info','sliders','counters','choose_uses'));
     }
 
     public function campaignDetails($id){
