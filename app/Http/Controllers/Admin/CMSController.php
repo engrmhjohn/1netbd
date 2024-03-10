@@ -10,6 +10,7 @@ use App\Models\Package;
 use App\Models\BTRC;
 use App\Models\TC;
 use App\Models\CompanyInfo;
+use App\Models\Slider;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -321,6 +322,81 @@ class CMSController extends Controller
         }
        $company_info->save();
        return redirect(route('admin.manage_company_info'))->with('message','Successfully Updated'); 
+    }
+
+    public function addSlider()
+    {
+        return view('backend.cms.slider.show');
+    }
+    public function saveSlider(Request $request)
+    {
+        $slider = new Slider();
+        $slider->desktop_image = image_upload($request->desktop_image);
+        $slider->mobile_image = image_upload($request->mobile_image);
+        $slider->en_description = $request->en_description;
+        $slider->offer_last_date = $request->offer_last_date;
+        $slider->position = $request->position;
+        $slider->website_link = $request->website_link;
+        $slider->button_text = $request->button_text;
+        $slider->status = $request->status;
+        $slider->save();
+        return redirect(route('admin.manage_slider'))->with('message', 'Successfully Added!');
+    }
+    public function manageSlider()
+    {
+        return view('backend.cms.slider.index', [
+            'slider' => Slider::orderBy('position','asc')->get(),
+        ]);
+    }
+    public function editSlider($id)
+    {
+        $slider = Slider::find($id);
+
+        return view('backend.cms.slider.edit', [
+            'slider' => $slider
+        ]);
+    }
+    public function updateSlider(Request $request)
+    {
+        $slider               = Slider::find($request->slider_id);
+        $slider->en_description = $request->en_description;
+        $slider->offer_last_date = $request->offer_last_date;
+        $slider->position = $request->position;
+        $slider->website_link = $request->website_link;
+        $slider->button_text = $request->button_text;
+        $slider->status = $request->status;
+        if ($request->file('desktop_image')) {
+            if (isset($slider)) {
+                delete_image($slider->desktop_image);
+                $slider->delete();
+            }
+            $slider->desktop_image = image_upload($request->desktop_image);
+        }
+        if ($request->file('mobile_image')) {
+            if (isset($slider)) {
+                delete_image($slider->mobile_image);
+                $slider->delete();
+            }
+            $slider->mobile_image = image_upload($request->mobile_image);
+        }
+        $slider->save();
+        return redirect(route('admin.manage_slider'))->with('message', 'Successfully Updated!');
+    }
+    public function deleteSlider(Request $request)
+    {
+        $slider = Slider::find($request->slider_id);
+
+        if (isset($slider)) {
+            delete_image($slider->desktop_image);
+            $slider->delete();
+        }
+        if (isset($slider)) {
+            delete_image($slider->mobile_image);
+            $slider->delete();
+        }
+        $slider->delete();
+
+        return redirect()->route('admin.manage_slider')->with('message', 'Successfully Deleted!');
     }
 
 }

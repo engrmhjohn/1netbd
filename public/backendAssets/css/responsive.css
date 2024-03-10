@@ -71,4 +71,10 @@
     bottom: 65px;
     left: 10px;
   }
+  .desktop_slider{
+    display: none;
+}
+.mobile_slider{
+    display: block;
+}
 }

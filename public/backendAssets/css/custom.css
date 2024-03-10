@@ -1,6 +1,6 @@
 .testimonial-carousel .slick_right {
     position: absolute;
-    bottom: 25px;
+    bottom: 50px;
     right: 9px;
     width: 35px;
     height: 35px;
@@ -13,7 +13,7 @@
 
 .testimonial-carousel .slick_left {
     position: absolute;
-    bottom: 25px;
+    bottom: 50px;
     right: 55px;
     width: 35px;
     height: 35px;
@@ -209,4 +209,124 @@ form .no-resize{
   bottom: 75px;
   left: 50px;
   display: inline-block;
+}
+
+/* promo offer  */
+.promo_details_section {
+  padding: 30px 0;
+}
+
+.promo_details_section .discount_image {
+  height: auto;
+  width: 100%;
+}
+
+.offer_area {
+  padding: 30px 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+.offer_content .sub_title {
+  display: inline-block;
+  color: #cc050c;
+  font-size: 18px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.offer_content h2 {
+  color: black;
+  margin-bottom: 13px;
+  font-weight: 700;
+}
+
+.offer_content .list {
+  padding-left: 0;
+  margin-bottom: 20px;
+  list-style-type: none;
+  border-bottom: 1px solid #484850;
+  padding-bottom: 20px;
+}
+
+.offer_content .list li {
+  display: inline-block;
+  margin-right: 20px;
+  color: rgba(1, 0, 0, 0.78);
+  text-transform: uppercase;
+}
+
+.offer_content .price .old_price {
+  color: #cc050c;
+  text-decoration: line-through;
+  display: inline-block;
+  font-size: 24px;
+}
+
+.offer_content .price .new_price {
+  color: black;
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.offer_content .features_list {
+  padding-left: 0;
+  list-style-type: none;
+  margin-bottom: 0;
+  margin-top: 10px;
+  color: rgba(1, 0, 0, 0.78);
+}
+
+.offer_time {
+  background-color: #cc050c;
+  padding: 20px 10px;
+  position: relative;
+  z-index: 1;
+  color: white;
+  border-radius: 5px;
+}
+
+.offer_time h2 {
+  margin-bottom: 20px;
+}
+
+.offer_time span {
+  color: #e1ff19;
+}
+
+.coundown_area {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.offer_time h1 {
+  font-weight: normal;
+  letter-spacing: 0.125rem;
+  text-transform: uppercase;
+}
+
+.offer_time li {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  list-style-type: none;
+  padding: 2em 1em;
+  text-transform: uppercase;
+  border: 1px solid white;
+  height: 125px;
+  width: 125px;
+  border-radius: 50%;
+  color: whitesmoke;
+  margin-bottom: 10px;
+}
+
+.offer_time li span {
+  display: block;
+  font-size: 30px;
+  color: #e1ff19;
+}
+.mobile_slider {
+  display: none;
 }

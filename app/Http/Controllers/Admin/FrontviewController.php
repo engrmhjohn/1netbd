@@ -9,14 +9,22 @@ use App\Models\Package;
 use App\Models\BTRC;
 use App\Models\TC;
 use App\Models\CompanyInfo;
+use App\Models\Slider;
 
 class FrontviewController extends Controller
 {
 
     public function index(){
         $packages = Package::where('status', 1)->where('top_package','1')->get();
+        $sliders = Slider::where('status', 1)->orderBy('position','asc')->get();
         $company_info = CompanyInfo::first();
-        return view('frontend.home.index',compact('packages','company_info'));
+        return view('frontend.home.index',compact('packages','company_info','sliders'));
+    }
+
+    public function campaignDetails($id){
+        $company_info = CompanyInfo::first();
+        $campaign_details = Slider::where('id',$id)->where('status','1')->first();
+        return view('frontend.discount.campaign_details',compact('company_info','campaign_details'));
     }
 
     public function contact(){

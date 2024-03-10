@@ -16,6 +16,7 @@ Route::controller(FrontviewController::class)->group(function () {
     Route::get('/btrc-approved-packages', 'btrc')->name('front.btrc');
     Route::get('/buy-package/{id}', 'buyPackage')->name('buy_package');
     Route::get('/terms-condition', 'termsCondition')->name('terms_condition');
+    Route::get('/campaign-details/{id}', 'campaignDetails')->name('campaign_details');
 });
 
 Route::controller(PacakgeBuyController::class)->group(function () {
@@ -62,6 +63,13 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
             Route::get('/manage-company-info', 'manageCompanyInfo')->name('manage_company_info');
             Route::get('/edit-company-info/{id}', 'editCompanyInfo')->name('edit_company_info');
             Route::post('/update-company-info', 'updateCompanyInfo')->name('update_company_info');
+
+            Route::get('/add-slider', 'addSlider')->name('add_slider');
+            Route::post('/save-slider', 'saveSlider')->name('save_slider');
+            Route::get('/manage-slider', 'manageSlider')->name('manage_slider');
+            Route::get('/edit-slider/{id}', 'editSlider')->name('edit_slider');
+            Route::post('/update-slider', 'updateSlider')->name('update_slider');
+            Route::post('/delete-slider', 'deleteSlider')->name('delete_slider');
         });
     });
 

@@ -9,45 +9,39 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="testimonial-carousel">
-                        <div class="slide">
-                            <a class="desktop_slide" href="">
-                                <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/os web.jpg"
-                                    style="height: auto; width: 100%; padding: 0px;" alt="">
-                            </a>
-                            <a class="mobile_slide" href="">
-                                <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/1st.jpg"
-                                    style="height: auto; width: 100%; padding: 0px;" alt="">
-                            </a>
-                            <div class="package_button">
-                                <a class="btn btn-danger fw-bold d-block" href=""> Learn More <i class="fa fa-arrow-right"></i></a>
+                        @foreach ($sliders as $slider)
+                        @if ($slider->website_link)
+                            <div class="slide">
+                                <a class="desktop_slide" href="{{ $slider->website_link }}">
+                                    <img class="img-fluid" src="{{ asset($slider->desktop_image) }}"
+                                        style="height: auto; width: 100%; padding: 0px;" alt="Slider Desktop Image">
+                                </a>
+                                <a class="mobile_slide" href="{{ $slider->website_link }}">
+                                    <img class="img-fluid" src="{{ asset($slider->mobile_image) }}"
+                                        style="height: auto; width: 100%; padding: 0px;" alt="Slider Mobile Image">
+                                </a>
+                                <div class="package_button">
+                                    <a class="btn btn-danger fw-bold d-block" href="{{ $slider->website_link }}"> {{ $slider->button_text }} <i
+                                            class="fa fa-arrow-right"></i></a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="slide">
-                            <a class="desktop_slide" href="">
-                                <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/tracker.jpg"
-                                    style="height: auto; width: 100%; padding: 0px;" alt="">
-                            </a>
-                            <a class="mobile_slide" href="">
-                                <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/2nd.jpg"
-                                    style="height: auto; width: 100%; padding: 0px;" alt="">
-                            </a>
-                            <div class="package_button">
-                                <a class="btn btn-danger fw-bold" href=""> Learn More <i class="fa fa-arrow-right"></i></a>
+                            @else
+                            <div class="slide">
+                                <a class="desktop_slide" href="{{ route('campaign_details', $slider->id) }}">
+                                    <img class="img-fluid" src="{{ asset($slider->desktop_image) }}"
+                                        style="height: auto; width: 100%; padding: 0px;" alt="Slider Desktop Image">
+                                </a>
+                                <a class="mobile_slide" href="{{ route('campaign_details', $slider->id) }}">
+                                    <img class="img-fluid" src="{{ asset($slider->mobile_image) }}"
+                                        style="height: auto; width: 100%; padding: 0px;" alt="Slider Mobile Image">
+                                </a>
+                                <div class="package_button">
+                                    <a class="btn btn-danger fw-bold d-block" href="{{ route('campaign_details', $slider->id) }}"> {{ $slider->button_text }} <i
+                                            class="fa fa-arrow-right"></i></a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="slide">
-                            <a class="desktop_slide" href="">
-                                <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/internet.jpg"
-                                    style="height: auto; width: 100%; padding: 0px;" alt="">
-                            </a>
-                            <a class="mobile_slide" href="">
-                                <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/3rd.jpg"
-                                    style="height: auto; width: 100%; padding: 0px;" alt="">
-                            </a>
-                            <div class="package_button">
-                                <a class="btn btn-danger fw-bold" href=""> Learn More <i class="fa fa-arrow-right"></i></a>
-                            </div>
-                        </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -62,97 +56,101 @@
             </div>
             <div class="row">
                 @foreach ($packages as $package)
-                <div class="col-lg-4 col-md-6 mt-5 wow fadeInUp reveal revealleft">
-                    <div class="card card-shadow package_card">
-                        <div class="package_header bg-primary-transparent">
-                            <div class="package_icon_mbps">
-                                <div class="icon_box">
-                                    <i class="fe fe-wifi"></i>
+                    <div class="col-lg-4 col-md-6 mt-5 wow fadeInUp reveal revealleft">
+                        <div class="card card-shadow package_card">
+                            <div class="package_header bg-primary-transparent">
+                                <div class="package_icon_mbps">
+                                    <div class="icon_box">
+                                        <i class="fe fe-wifi"></i>
+                                    </div>
+                                    <p>{{ $package->en_mbps_value }}</p>
                                 </div>
-                                <p>{{ $package->en_mbps_value }}</p>
+                                <div class="package_name">
+                                    <strong>{{ $package->en_package_name }}</strong>
+                                </div>
+                                <div class="package_title mt-3">
+                                    <h1> <strong>{{ $package->en_amount_label }} {{ $package->en_amount }}</strong>
+                                        <span>/month</span></h1>
+                                </div>
                             </div>
-                            <div class="package_name">
-                                <strong>{{ $package->en_package_name }}</strong>
-                            </div>
-                            <div class="package_title mt-3">
-                                <h1> <strong>{{ $package->en_amount_label }} {{ $package->en_amount }}</strong> <span>/month</span></h1>
-                            </div>
-                        </div>
-                        <div class="package_body">
-                            <p>Package Includes:</p>
-                            <ul>
-                                @if ($package->en_short_info_one)
-                                <li class="d-flex justify-content-space-between">
-                                        <i class="fa fa-check-circle"></i>
-                                    {{ $package->en_short_info_one }}
-                                </li>
-                                @endif
-                                @if ($package->en_short_info_two)
-                                <li class="d-flex justify-content-space-between">
-                                        <i class="fa fa-check-circle"></i>
-                                    {{ $package->en_short_info_two }}
-                                </li>
-                                @endif
-                                @if ($package->en_short_info_three)
-                                <li class="d-flex justify-content-space-between">
-                                        <i class="fa fa-check-circle"></i>
-                                    {{ $package->en_short_info_three }}
-                                </li>
-                                @endif
-                                @if ($package->en_short_info_four)
-                                <li class="d-flex justify-content-space-between">
-                                        <i class="fa fa-check-circle"></i>
-                                        {{ $package->en_short_info_four }}
-                                    </li>
+                            <div class="package_body">
+                                <p>Package Includes:</p>
+                                <ul>
+                                    @if ($package->en_short_info_one)
+                                        <li class="d-flex justify-content-space-between">
+                                            <i class="fa fa-check-circle"></i>
+                                            {{ $package->en_short_info_one }}
+                                        </li>
                                     @endif
-                                @if ($package->en_short_info_five)
-                                <li class="d-flex justify-content-space-between">
-                                        <i class="fa fa-check-circle"></i>
-                                        {{ $package->en_short_info_five }}
-                                    </li>
+                                    @if ($package->en_short_info_two)
+                                        <li class="d-flex justify-content-space-between">
+                                            <i class="fa fa-check-circle"></i>
+                                            {{ $package->en_short_info_two }}
+                                        </li>
                                     @endif
-                                @if ($package->en_short_info_six)
-                                <li class="d-flex justify-content-space-between">
-                                        <i class="fa fa-check-circle"></i>
-                                    {{ $package->en_short_info_six }}
-                                </li>
-                                @endif
-                                @if ($package->en_short_info_seven)
-                                <li class="d-flex justify-content-space-between">
-                                        <i class="fa fa-check-circle"></i>
-                                    {{ $package->en_short_info_seven }}
-                                </li>
-                                @endif
-                                @if ($package->en_short_info_eight)
-                                <li class="d-flex justify-content-space-between">
-                                        <i class="fa fa-check-circle"></i>
-                                        {{ $package->en_short_info_eight }}
-                                    </li>
+                                    @if ($package->en_short_info_three)
+                                        <li class="d-flex justify-content-space-between">
+                                            <i class="fa fa-check-circle"></i>
+                                            {{ $package->en_short_info_three }}
+                                        </li>
                                     @endif
-                                @if ($package->en_short_info_nine)
-                                <li class="d-flex justify-content-space-between">
-                                        <i class="fa fa-check-circle"></i>
-                                        {{ $package->en_short_info_nine }}
-                                    </li>
+                                    @if ($package->en_short_info_four)
+                                        <li class="d-flex justify-content-space-between">
+                                            <i class="fa fa-check-circle"></i>
+                                            {{ $package->en_short_info_four }}
+                                        </li>
                                     @endif
-                                @if ($package->en_short_info_ten)
-                                <li class="d-flex justify-content-space-between">
-                                        <i class="fa fa-check-circle"></i>
-                                    {{ $package->en_short_info_ten }}
-                                </li>
-                                @endif
-                            </ul>
-                            <div class="package_button">
-                                <a class="btn btn-outline-success fw-bold" href="{{ route('buy_package', $package->id) }}"> {{ $package->en_button_text }}</a>
+                                    @if ($package->en_short_info_five)
+                                        <li class="d-flex justify-content-space-between">
+                                            <i class="fa fa-check-circle"></i>
+                                            {{ $package->en_short_info_five }}
+                                        </li>
+                                    @endif
+                                    @if ($package->en_short_info_six)
+                                        <li class="d-flex justify-content-space-between">
+                                            <i class="fa fa-check-circle"></i>
+                                            {{ $package->en_short_info_six }}
+                                        </li>
+                                    @endif
+                                    @if ($package->en_short_info_seven)
+                                        <li class="d-flex justify-content-space-between">
+                                            <i class="fa fa-check-circle"></i>
+                                            {{ $package->en_short_info_seven }}
+                                        </li>
+                                    @endif
+                                    @if ($package->en_short_info_eight)
+                                        <li class="d-flex justify-content-space-between">
+                                            <i class="fa fa-check-circle"></i>
+                                            {{ $package->en_short_info_eight }}
+                                        </li>
+                                    @endif
+                                    @if ($package->en_short_info_nine)
+                                        <li class="d-flex justify-content-space-between">
+                                            <i class="fa fa-check-circle"></i>
+                                            {{ $package->en_short_info_nine }}
+                                        </li>
+                                    @endif
+                                    @if ($package->en_short_info_ten)
+                                        <li class="d-flex justify-content-space-between">
+                                            <i class="fa fa-check-circle"></i>
+                                            {{ $package->en_short_info_ten }}
+                                        </li>
+                                    @endif
+                                </ul>
+                                <div class="package_button">
+                                    <a class="btn btn-outline-success fw-bold"
+                                        href="{{ route('buy_package', $package->id) }}">
+                                        {{ $package->en_button_text }}</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
             <div class="row">
                 <div class="col-lg-12 d-flex justify-content-end">
-                        <a class="btn btn-danger" href="{{ route('front.packages') }}"> <strong>More Pacakges</strong> <i class="fa fa-arrow-right ms-3"></i></a>
+                    <a class="btn btn-danger" href="{{ route('front.packages') }}"> <strong>More Pacakges</strong> <i
+                            class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </div>
@@ -260,7 +258,8 @@
                         <div class="card features main-features main-features-1 wow fadeInUp reveal revealleft"
                             data-wow-delay="0.1s">
                             <div class="bg-img mb-2 text-left">
-                                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 128 128">
                                     <circle cx="64" cy="64" r="64" fill="#42A3DB" />
                                     <path fill="#347CBE"
                                         d="M85.5 26.6L66.1 61 33.3 98.6 62.6 128H64c33.7 0 61.3-26 63.8-59.1L85.5 26.6z" />
@@ -609,7 +608,8 @@
                                 <div class="col-lg-12 px-0">
                                     <div class="feature-logos mt-5">
                                         <div class="slide">
-                                            <img src="{{ asset('backendAssets') }}/static_images/osit.png" alt="image">
+                                            <img src="{{ asset('backendAssets') }}/static_images/osit.png"
+                                                alt="image">
                                         </div>
                                         <div class="slide">
                                             <img src="{{ asset('backendAssets') }}/static_images/bdhub.png"
@@ -632,7 +632,8 @@
                                                 alt="image">
                                         </div>
                                         <div class="slide">
-                                            <img src="{{ asset('backendAssets') }}/static_images/osit.png" alt="image">
+                                            <img src="{{ asset('backendAssets') }}/static_images/osit.png"
+                                                alt="image">
                                         </div>
 
                                     </div>
