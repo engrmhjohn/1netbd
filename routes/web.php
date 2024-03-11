@@ -17,6 +17,7 @@ Route::controller(FrontviewController::class)->group(function () {
     Route::get('/buy-package/{id}', 'buyPackage')->name('buy_package');
     Route::get('/terms-condition', 'termsCondition')->name('terms_condition');
     Route::get('/campaign-details/{id}', 'campaignDetails')->name('campaign_details');
+    Route::get('/bkash-bill', 'bkashBill')->name('front.bkash_bill');
 });
 
 Route::controller(PacakgeBuyController::class)->group(function () {
@@ -84,6 +85,20 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
             Route::get('/edit-choose-us/{id}', 'editChooseUS')->name('edit_choose_us');
             Route::post('/update-choose-us', 'updateChooseUS')->name('update_choose_us');
             Route::post('/delete-choose-us', 'deleteChooseUS')->name('delete_choose_us');
+
+            Route::get('/add-client', 'addClient')->name('add_client');
+            Route::post('/save-client', 'saveClient')->name('save_client');
+            Route::get('/manage-client', 'manageClient')->name('manage_client');
+            Route::get('/edit-client/{id}', 'editClient')->name('edit_client');
+            Route::post('/update-client', 'updateClient')->name('update_client');
+            Route::post('/delete-client', 'deleteClient')->name('delete_client');
+
+            Route::get('/add-service', 'addService')->name('add_service');
+            Route::post('/save-service', 'saveService')->name('save_service');
+            Route::get('/manage-service', 'manageService')->name('manage_service');
+            Route::get('/edit-service/{id}', 'editService')->name('edit_service');
+            Route::post('/update-service', 'updateService')->name('update_service');
+            Route::post('/delete-service', 'deleteService')->name('delete_service');
         });
     });
 

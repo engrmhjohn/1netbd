@@ -1,6 +1,6 @@
 @extends('frontend.master')
 @section('title')
-    Terms & Conditions :: Net
+    Terms & Conditions :: One Net
 @endsection
 @section('content')
     <!-- Terms Condition start -->

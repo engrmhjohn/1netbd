@@ -30,9 +30,9 @@
                                 <ul class="slide-menu">
                                     <li class="side-menu-label1"><a href="javascript:void(0)">Submenu
                                             items</a></li>
-                                    <li><a href="https://onesky.com.bd" class="slide-item">bKash Payment
+                                    <li><a href="{{ route('front.bkash_bill') }}" class="slide-item">bKash Payment
                                             System</a></li>
-                                    <li><a href="https://skytrackerbd.com" class="slide-item">Online
+                                    <li><a href="https://onesky.com.bd/online-payment" class="slide-item">Online
                                             Payment System</a></li>
                                 </ul>
                             </li>

@@ -12,6 +12,8 @@ use App\Models\CompanyInfo;
 use App\Models\Slider;
 use App\Models\Counter;
 use App\Models\ChooseUs;
+use App\Models\Client;
+use App\Models\Service;
 
 class FrontviewController extends Controller
 {
@@ -21,8 +23,10 @@ class FrontviewController extends Controller
         $sliders = Slider::where('status', 1)->orderBy('position','asc')->get();
         $counters = Counter::where('status', 1)->orderBy('position','asc')->get();
         $choose_uses = ChooseUs::where('status', 1)->orderBy('position','asc')->get();
+        $clients = Client::where('status', 1)->orderBy('position','asc')->get();
+        $services = Service::where('status', 1)->orderBy('position','asc')->get();
         $company_info = CompanyInfo::first();
-        return view('frontend.home.index',compact('packages','company_info','sliders','counters','choose_uses'));
+        return view('frontend.home.index',compact('packages','company_info','sliders','counters','choose_uses','clients','services'));
     }
 
     public function campaignDetails($id){
@@ -66,6 +70,11 @@ class FrontviewController extends Controller
         $company_info = CompanyInfo::first();
         $tc = TC::first();
         return view('frontend.tc.tc',compact('tc', 'company_info'));
+    }
+
+    public function bkashBill(){
+        $company_info = CompanyInfo::first();
+        return view('frontend.billing-system.bkash_bill', compact('company_info'));
     }
 
 

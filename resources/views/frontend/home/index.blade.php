@@ -230,35 +230,12 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-12 px-0">
                                     <div class="feature-logos mt-5">
+                                        @foreach ($clients as $client)
                                         <div class="slide">
-                                            <img src="{{ asset('backendAssets') }}/static_images/osit.png"
-                                                alt="image">
+                                            <img src="{{ asset($client->image) }}"
+                                                alt="Client Image">
                                         </div>
-                                        <div class="slide">
-                                            <img src="{{ asset('backendAssets') }}/static_images/bdhub.png"
-                                                alt="image">
-                                        </div>
-                                        <div class="slide">
-                                            <img src="{{ asset('backendAssets') }}/static_images/fiber.png"
-                                                alt="image">
-                                        </div>
-                                        <div class="slide">
-                                            <img src="{{ asset('backendAssets') }}/static_images/onesky.png"
-                                                alt="image">
-                                        </div>
-                                        <div class="slide">
-                                            <img src="{{ asset('backendAssets') }}/static_images/skytracker.png"
-                                                alt="image">
-                                        </div>
-                                        <div class="slide">
-                                            <img src="{{ asset('backendAssets') }}/static_images/summit.png"
-                                                alt="image">
-                                        </div>
-                                        <div class="slide">
-                                            <img src="{{ asset('backendAssets') }}/static_images/osit.png"
-                                                alt="image">
-                                        </div>
-
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -280,67 +257,23 @@
                     <div class="tab-content">
                         <div class="tab-pane pb-0 active show" id="annualyear">
                             <div class="row d-flex align-items-center justify-content-center">
-                                <div class="col-lg-4 col-xl-4 col-md-8 col-sm-12">
-                                    <div class="card p-3 pricing-card reveal revealrotate">
-                                        <div class="card-header d-block text-justified pt-2 text-center">
-                                            <p class="fs-18 fw-semibold mb-1 pe-0">Corporate
-                                                Internet</p>
-                                        </div>
-                                        <div class="card-body pt-2 text-center">
-                                            <img src="https://onesky.com.bd/adminAssets/upload/169684737992.png"
-                                                alt="">
-                                            <p class="fs-13 mb-1 mt-5">In addition to broadband
-                                                internet services, we help our clients build,
-                                                connect, operate and maintain their own SOHO or
-                                                office network.</p>
-                                        </div>
-                                        <div class="card-footer text-center border-top-0 pt-1">
-                                            <a class="btn btn-danger btn-block" href="https://skytrackerbd.com">Explore <i
-                                                    class="text-white fa fa-paper-plane-o"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @foreach ($services as $service)
                                 <div class="col-lg-4 col-xl-4 col-md-8 col-sm-12">
                                     <div class="card p-3 border-primary pricing-card advanced reveal revealrotate">
                                         <div class="card-header d-block text-justified pt-2">
-                                            <p class="fs-18 fw-semibold mb-1 text-center">
-                                                Home Internet</p>
+                                            <p class="fs-18 fw-semibold mb-1 text-center"> {{ $service->en_title }} </p>
                                         </div>
                                         <div class="card-body pt-2 text-center">
-                                            <img src="https://onesky.com.bd/adminAssets/upload/1696847424640.png"
-                                                alt="">
-                                            <p class="fs-13 mb-1 mt-5">OneNet provides easy
-                                                solutions for small office and house office user
-                                                with high quality bandwidth and unlimited
-                                                download Speed.</p>
+                                            <img src="{{ asset($service->image) }}" alt="Service Icon">
+                                            <p class="fs-13 mb-1 mt-5">{{ $service->en_description }}</p>
                                         </div>
                                         <div class="card-footer text-center border-top-0 pt-1">
-                                            <a class="btn btn-danger btn-block" href="https://onesky.com.bd">Explore <i
+                                            <a class="btn btn-danger btn-block" href="https://onesky.com.bd">{{ $service->en_button_text }} <i
                                                     class="text-white fa fa-paper-plane-o"></i></a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-xl-4 col-md-8 col-sm-12">
-                                    <div class="card p-3 pricing-card reveal revealrotate">
-                                        <div class="card-header d-block text-center pt-2">
-                                            <p class="fs-18 fw-semibold mb-1">Network Solutions
-                                            </p>
-                                        </div>
-                                        <div class="card-body pt-2 text-center">
-                                            <img src="https://onesky.com.bd/adminAssets/upload/1696847337953.png"
-                                                alt="">
-                                            <p class="fs-13 mb-1 mt-3">With our Office Network
-                                                Solutions/ Services we can help you design,
-                                                build and maintain your office network
-                                                architecture as
-                                                you need.</p>
-                                        </div>
-                                        <div class="card-footer text-center border-top-0 pt-1">
-                                            <a class="btn btn-danger btn-block" href="https://ositbd.com">Explore <i
-                                                    class="text-white fa fa-paper-plane-o"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

@@ -13,6 +13,8 @@ use App\Models\CompanyInfo;
 use App\Models\Slider;
 use App\Models\Counter;
 use App\Models\ChooseUs;
+use App\Models\Client;
+use App\Models\Service;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -514,6 +516,126 @@ class CMSController extends Controller
         $choose_us->delete();
 
         return redirect()->route('admin.manage_choose_us')->with('message', 'Successfully Deleted!');
+    }
+
+    public function addClient()
+    {
+        return view('backend.cms.client.show');
+    }
+    public function saveClient(Request $request)
+    {
+        $client = new Client();
+        $client->status = $request->status;
+        $client->position = $request->position;
+        $client->image = image_upload($request->image);
+        $client->save();
+        return redirect(route('admin.manage_client'))->with('message', 'Successfully Added!');
+    }
+    public function manageClient()
+    {
+        return view('backend.cms.client.index', [
+            'client' => Client::get(),
+        ]);
+    }
+    public function editClient($id)
+    {
+        $client = Client::find($id);
+        return view('backend.cms.client.edit', [
+            'client' => $client
+        ]);
+    }
+    public function updateClient(Request $request)
+    {
+        $client               = Client::find($request->client_id);
+        $client->position = $request->position;
+        $client->status = $request->status;
+        if ($request->file('image')) {
+            if (isset($client)) {
+                delete_image($client->image);
+                $client->delete();
+            }    
+            $client->image = image_upload($request->image);
+        }
+        $client->save();
+        return redirect(route('admin.manage_client'))->with('message', 'Successfully Updated!');
+    }
+
+    public function deleteClient(Request $request)
+    {
+        $client = Client::find($request->client_id);
+
+        if (isset($client)) {
+            delete_image($client->image);
+            $client->delete();
+        }
+
+        $client->delete();
+
+        return redirect()->route('admin.manage_client')->with('message', 'Successfully Deleted!');
+    }
+
+    public function addService()
+    {
+        return view('backend.cms.service.show');
+    }
+    public function saveService(Request $request)
+    {
+        $service = new Service();
+        $service->en_title = $request->en_title;
+        $service->button_link = $request->button_link;
+        $service->en_description = $request->en_description;
+        $service->en_button_text = $request->en_button_text;
+        $service->position = $request->position;
+        $service->image = image_upload($request->image);
+        $service->status = $request->status;
+        $service->save();
+        return redirect(route('admin.manage_service'))->with('message', 'Successfully Added!');
+    }
+    public function manageService()
+    {
+        return view('backend.cms.service.index', [
+            'service' => Service::get(),
+        ]);
+    }
+    public function editService($id)
+    {
+        $service = Service::find($id);
+        return view('backend.cms.service.edit', [
+            'service' => $service
+        ]);
+    }
+    public function updateService(Request $request)
+    {
+        $service               = Service::find($request->service_id);
+        $service->en_title = $request->en_title;
+        $service->button_link = $request->button_link;
+        $service->en_description = $request->en_description;
+        $service->en_button_text = $request->en_button_text;
+        $service->position = $request->position;
+        $service->status = $request->status;
+        if ($request->file('image')) {
+            if (isset($service)) {
+                delete_image($service->image);
+                $service->delete();
+            }    
+            $service->image = image_upload($request->image);
+        }
+        $service->save();
+        return redirect(route('admin.manage_service'))->with('message', 'Successfully Updated!');
+    }
+
+    public function deleteService(Request $request)
+    {
+        $service = Service::find($request->service_id);
+
+        if (isset($service)) {
+            delete_image($service->image);
+            $service->delete();
+        }
+
+        $service->delete();
+
+        return redirect()->route('admin.manage_service')->with('message', 'Successfully Deleted!');
     }
 
 }
