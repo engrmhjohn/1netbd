@@ -14101,6 +14101,15 @@ a.icon:hover {
     border-radius: 50%;
     text-align: center;
 }
+.statistics-info .contact-icon {
+    margin-block-end: 1rem;
+    display: inline-flex;
+    width: 4rem;
+    height: 4rem;
+    padding: 1.3rem 1.4rem;
+    border-radius: 50%;
+    text-align: center;
+}
 
 .statistics-info .counter-icon i {
     font-size: 1.2rem;

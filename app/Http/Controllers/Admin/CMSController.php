@@ -17,6 +17,9 @@ use App\Models\Client;
 use App\Models\Service;
 use App\Models\PaymentCategory;
 use App\Models\Payment;
+use App\Models\Mission;
+use App\Models\Vision;
+use App\Models\Faq;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -853,12 +856,218 @@ class CMSController extends Controller
         $payment = Payment::find($request->payment_id);
 
         if (isset($payment)) {
-            delete_image($payment->image);
+            delete_image($payment->image_one);
+            $payment->delete();
+        }
+        if (isset($payment)) {
+            delete_image($payment->image_two);
+            $payment->delete();
+        }
+        if (isset($payment)) {
+            delete_image($payment->image_three);
+            $payment->delete();
+        }
+        if (isset($payment)) {
+            delete_image($payment->image_four);
+            $payment->delete();
+        }
+        if (isset($payment)) {
+            delete_image($payment->image_five);
+            $payment->delete();
+        }
+        if (isset($payment)) {
+            delete_image($payment->image_six);
+            $payment->delete();
+        }
+        if (isset($payment)) {
+            delete_image($payment->image_seven);
+            $payment->delete();
+        }
+        if (isset($payment)) {
+            delete_image($payment->image_eight);
             $payment->delete();
         }
         $payment->delete();
 
         return redirect()->route('admin.manage_payment')->with('message', 'Successfully Deleted!');
+    }
+
+    public function addMission()
+    {
+        return view('backend.cms.mission.show');
+    }
+    public function saveMission(Request $request)
+    {
+        $mission = new Mission();
+
+        $mission->en_title = $request->en_title;
+        $mission->en_description = $request->en_description;
+        $mission->image = image_upload($request->image);
+        $mission->save();
+        return redirect(route('admin.manage_mission'))->with('message', 'Successfully Added!');
+    }
+    public function manageMission()
+    {
+        return view('backend.cms.mission.index', [
+            'mission' => Mission::orderBy('id', 'desc')->get(),
+        ]);
+    }
+    public function editMission($id)
+    {
+        $mission = Mission::find($id);
+
+        return view('backend.cms.mission.edit', [
+            'mission' => $mission
+        ]);
+    }
+    public function updateMission(Request $request)
+    {
+        $mission               = Mission::find($request->mission_id);
+        $mission->en_title = $request->en_title;
+        $mission->en_description = $request->en_description;
+
+        if ($request->file('image')) {
+            if (isset($mission)) {
+                delete_image($mission->image);
+                $mission->delete();
+            }
+            $mission->image = image_upload($request->image);
+        }
+        $mission->save();
+        return redirect(route('admin.manage_mission'))->with('message', 'Successfully Updated!');
+    }
+
+    public function addVision()
+    {
+        return view('backend.cms.vision.show');
+    }
+    public function saveVision(Request $request)
+    {
+        $vision = new Vision();
+
+        $vision->en_title = $request->en_title;
+        $vision->en_description = $request->en_description;
+        $vision->image = image_upload($request->image);
+        $vision->save();
+        return redirect(route('admin.manage_vision'))->with('message', 'Successfully Added!');
+    }
+    public function manageVision()
+    {
+        return view('backend.cms.vision.index', [
+            'vision' => Vision::orderBy('id', 'desc')->get(),
+        ]);
+    }
+    public function editVision($id)
+    {
+        $vision = Vision::find($id);
+
+        return view('backend.cms.vision.edit', [
+            'vision' => $vision
+        ]);
+    }
+    public function updateVision(Request $request)
+    {
+        $vision               = Vision::find($request->vision_id);
+        $vision->en_title = $request->en_title;
+        $vision->en_description = $request->en_description;
+
+        if ($request->file('image')) {
+            if (isset($vision)) {
+                delete_image($vision->image);
+                $vision->delete();
+            }
+            $vision->image = image_upload($request->image);
+        }
+        $vision->save();
+        return redirect(route('admin.manage_vision'))->with('message', 'Successfully Updated!');
+    }
+
+    public function addFaq()
+    {
+        return view('backend.cms.faq.show');
+    }
+    public function saveFaq(Request $request)
+    {
+        $faq = new Faq();
+        $faq->en_question_one = $request->en_question_one;
+        $faq->en_answer_one = $request->en_answer_one;
+
+        $faq->en_question_two = $request->en_question_two;
+        $faq->en_answer_two = $request->en_answer_two;
+
+        $faq->en_question_three = $request->en_question_three;
+        $faq->en_answer_three = $request->en_answer_three;
+
+        $faq->en_question_four = $request->en_question_four;
+        $faq->en_answer_four = $request->en_answer_four;
+
+        $faq->en_question_five = $request->en_question_five;
+        $faq->en_answer_five = $request->en_answer_five;
+
+        $faq->image = image_upload($request->image);
+        $faq->save();
+        return redirect(route('admin.manage_faq'))->with('message', 'Successfully Added!');
+    }
+    public function manageFaq()
+    {
+        return view('backend.cms.faq.index', [
+            'faq' => Faq::orderBy('id', 'desc')->get(),
+        ]);
+    }
+    public function editFaq($id)
+    {
+        $faq = Faq::find($id);
+
+        return view('backend.cms.faq.edit', [
+            'faq' => $faq
+        ]);
+    }
+    public function updateFaq(Request $request)
+    {
+        $faq               = Faq::find($request->faq_id);
+
+        $faq->en_question_one = $request->en_question_one;
+        $faq->en_answer_one = $request->en_answer_one;
+
+        $faq->en_question_two = $request->en_question_two;
+        $faq->en_answer_two = $request->en_answer_two;
+
+        $faq->en_question_three = $request->en_question_three;
+        $faq->en_answer_three = $request->en_answer_three;
+
+        $faq->en_question_four = $request->en_question_four;
+        $faq->en_answer_four = $request->en_answer_four;
+
+        $faq->en_question_five = $request->en_question_five;
+        $faq->en_answer_five = $request->en_answer_five;
+
+        if ($request->file('image')) {
+            if (isset($faq)) {
+                delete_image($faq->image);
+                $faq->delete();
+            }
+            $faq->image = image_upload($request->image);
+        }
+
+        $faq->save();
+        return redirect(route('admin.manage_faq'))->with('message', 'Successfully Updated!');
+    }
+    public function deleteFaq(Request $request)
+    {
+        $faq = Faq::find($request->faq_id);
+
+        if (!$faq) {
+            return redirect()->route('admin.manage_faq')->with('error', 'Faq  not found.');
+        }
+
+        if (isset($faq)) {
+            delete_image($faq->image_eight);
+            $faq->delete();
+        }
+
+        $faq->delete();
+
+        return redirect()->route('admin.manage_faq')->with('message', 'Successfully Deleted!');
     }
 
 }

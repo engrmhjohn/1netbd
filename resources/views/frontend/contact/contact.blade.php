@@ -23,7 +23,7 @@
                                                             <div class="card-body p-0">
                                                                 <div class="counter-status">
                                                                     <div
-                                                                        class="counter-icon bg-primary-transparent box-shadow-primary">
+                                                                        class="contact-icon bg-primary-transparent box-shadow-primary">
                                                                         <i class="fe fe-map-pin text-primary fs-23"></i>
                                                                     </div>
                                                                     <h4 class="mb-2 fw-semibold">
@@ -40,7 +40,7 @@
                                                             <div class="card-body p-0">
                                                                 <div class="counter-status">
                                                                     <div
-                                                                        class="counter-icon bg-secondary-transparent box-shadow-secondary">
+                                                                        class="contact-icon bg-secondary-transparent box-shadow-secondary">
                                                                         <i
                                                                             class="fe fe-headphones text-secondary fs-23"></i>
                                                                     </div>
@@ -56,7 +56,7 @@
                                                             <div class="card-body p-0">
                                                                 <div class="counter-statuss">
                                                                     <div
-                                                                        class="counter-icon bg-success-transparent box-shadow-success">
+                                                                        class="contact-icon bg-success-transparent box-shadow-success">
                                                                         <i class="fe fe-mail text-success fs-23"></i>
                                                                     </div>
                                                                     <h4 class="mb-2 fw-semibold">
@@ -71,7 +71,7 @@
                                                             <div class="card-body p-0">
                                                                 <div class="counter-status">
                                                                     <div
-                                                                        class="counter-icon bg-danger-transparent box-shadow-danger">
+                                                                        class="contact-icon bg-danger-transparent box-shadow-danger">
                                                                         <i class="fe fe-airplay text-danger fs-23"></i>
                                                                     </div>
                                                                     <h4 class="mb-2 fw-semibold">

@@ -113,6 +113,25 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
             Route::get('/edit-payment/{id}', 'editPayment')->name('edit_payment');
             Route::post('/update-payment', 'updatePayment')->name('update_payment');
             Route::post('/delete-payment', 'deletePayment')->name('delete_payment');
+
+            Route::get('/add-mission', 'addMission')->name('add_mission');
+            Route::post('/save-mission', 'saveMission')->name('save_mission');
+            Route::get('/manage-mission', 'manageMission')->name('manage_mission');
+            Route::get('/edit-mission/{id}', 'editMission')->name('edit_mission');
+            Route::post('/update-mission', 'updateMission')->name('update_mission');
+
+            Route::get('/add-vision', 'addVision')->name('add_vision');
+            Route::post('/save-vision', 'saveVision')->name('save_vision');
+            Route::get('/manage-vision', 'manageVision')->name('manage_vision');
+            Route::get('/edit-vision/{id}', 'editVision')->name('edit_vision');
+            Route::post('/update-vision', 'updateVision')->name('update_vision');
+
+            Route::get('/add-faq', 'addFaq')->name('add_faq');
+            Route::post('/save-faq', 'saveFaq')->name('save_faq');
+            Route::get('/manage-faq', 'manageFaq')->name('manage_faq');
+            Route::get('/edit-faq/{id}', 'editFaq')->name('edit_faq');
+            Route::post('/update-faq', 'updateFaq')->name('update_faq');
+            Route::post('/delete-faq', 'deleteFaq')->name('delete_faq');
         });
     });
 

@@ -6,7 +6,7 @@
 <div class="section bg-landing pb-0 bg-image-style about_page">
     <div class="container">
         <div class="row">
-            <h4 class="text-center fw-semibold day_night_titles">Our Mission</h4>
+            <h4 class="text-center fw-semibold day_night_titles">{{ $mission->en_title }}</h4>
             <span class="landing-title"></span>
             <div class="col-lg-12">
                 <div class="card">
@@ -15,17 +15,15 @@
                             <div class="row align-items-center">
                                 <div class="col-xl-6 col-lg-6 ps-0">
                                     <div class="text-center reveal revealleft mb-3">
-                                        <img class="img-fluid" src="{{ asset('backendAssets/static_images/mission.png') }}"
-                                            alt="" class="br-5">
+                                        <img class="img-fluid" src="{{ asset($mission->image) }}"
+                                            alt="Mission Image" class="br-5">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
 
                                     <div class="reveal revealright">
                                         <div class="mission_description">
-                                            <p>OneNet mission is to champion for the advancement of internet connectivity and data communication as a leading Internet Service Provider in Bangladesh by offering high-quality information and communication technology services affordable to all Bangladeshi.
-
-                                                OneNet believe in looking towards the future with great visions and endless inventions in developing technologies and services to suit our customers needs both today and in the future to live up to the Company's motto - "Most Reliable, Secure and Affordable: Amazing Experience".</p>
+                                            <p>{{ $mission->en_description }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -40,7 +38,7 @@
 <div class="section bg-landing pb-0 bg-image-style about_page">
     <div class="container">
         <div class="row">
-            <h4 class="text-center fw-semibold day_night_titles">Our Vison</h4>
+            <h4 class="text-center fw-semibold day_night_titles">{{ $vision->en_title }}</h4>
             <span class="landing-title"></span>
             <div class="col-lg-12">
                 <div class="card">
@@ -49,15 +47,15 @@
                             <div class="row align-items-center">
                                 <div class="col-xl-6 col-lg-6 ps-0">
                                     <div class="text-center reveal revealleft mb-3">
-                                        <img class="img-fluid" src="{{ asset('backendAssets/static_images/vision.png') }}"
-                                            alt="" class="br-5">
+                                        <img class="img-fluid" src="{{ asset($vision->image) }}"
+                                            alt="Vision Image" class="br-5">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
 
                                     <div class="reveal revealright">
                                         <div class="vision_description">
-                                            <p>To become the preferred choice for the delivery of innovative and integrative ICT solutions in Bangladesh.OneNet strongly believes that Information and Communication Technology (ICT) is crucial in today’s operating environment. Innovation is an improvedtant enabler of new business opportunities and improved customer relationships.</p>
+                                            <p>{{ $vision->en_description }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +72,6 @@
         <div class="row">
             <h4 class="text-center fw-semibold">FAQ'S ?</h4>
             <span class="landing-title"></span>
-            <h2 class="text-center fw-semibold">We are here to help you</h2>
             <section class="sptb demo-screen-demo" id="faqs1">
                 <div class="row align-items-center">
                     <div class="col-md-12 col-lg-6">
@@ -85,11 +82,11 @@
                                     data-bs-toggle="card-collapse">
                                     <a href="#"
                                         class="card-options-collapse h5 fw-bold card-title mb-0"><span
-                                            class="me-3 fs-18 fw-bold text-primary">01.</span>What documents do I need to provide to connect to your internet service?</a>
+                                            class="me-3 fs-18 fw-bold text-primary">01.</span>{{ $faq->en_question_one }}</a>
                                 </div>
                                 <div class="card-body pt-0">
                                     <p>
-                                        You need to provide a copy of your National ID (NID) and a passport-sized photo for the connection process.
+                                        {{ $faq->en_answer_one }}
                                     </p>
                                 </div>
                             </div>
@@ -101,11 +98,11 @@
                                     data-bs-toggle="card-collapse">
                                     <a href="#"
                                         class="card-options-collapse  h5 fw-bold card-title mb-0"><span
-                                            class="me-3 fs-18 fw-bold text-success">02.</span>How can I check my internet speed?</a>
+                                            class="me-3 fs-18 fw-bold text-success">02.</span>{{ $faq->en_question_two }}</a>
                                 </div>
                                 <div class="card-body pt-0">
                                     <p>
-                                        You can check your internet speed by visiting the website fast.com.
+                                        {{ $faq->en_answer_two }}
                                     </p>
                                 </div>
                             </div>
@@ -117,11 +114,11 @@
                                     data-bs-toggle="card-collapse">
                                     <a href="#"
                                         class="card-options-collapse  h5 fw-bold card-title mb-0"><span
-                                            class="me-3 fs-18 fw-bold text-secondary">03.</span>What payment options do you offer for paying the bill?</a>
+                                            class="me-3 fs-18 fw-bold text-secondary">03.</span>{{ $faq->en_question_three }}</a>
                                 </div>
                                 <div class="card-body pt-0">
                                     <p>
-                                        We offer multiple payment options including BKash, Nagad, Rocket, and various debit/credit card payments.
+                                        {{ $faq->en_answer_three }}
                                     </p>
                                 </div>
                             </div>
@@ -133,11 +130,11 @@
                                     data-bs-toggle="card-collapse">
                                     <a href="#"
                                         class="card-options-collapse  h5 fw-bold card-title mb-0"><span
-                                            class="me-3 fs-18 fw-bold text-warning">04.</span>What is the procedure for closing my internet connection?</a>
+                                            class="me-3 fs-18 fw-bold text-warning">04.</span>{{ $faq->en_question_four }}</a>
                                 </div>
                                 <div class="card-body pt-0">
                                     <p>
-                                        To close your internet connection, please inform us before the closing month. You can initiate the cancellation process by contacting our Customer Support at 09611344344.
+                                        {{ $faq->en_answer_four }}
                                     </p>
                                 </div>
                             </div>
@@ -149,19 +146,18 @@
                                     data-bs-toggle="card-collapse">
                                     <a href="#"
                                         class="card-options-collapse  h5 fw-bold card-title mb-0"><span
-                                            class="me-3 fs-18 fw-bold text-danger">05.</span>How can I upgrade my internet plan if I need more speed or data?</a>
+                                            class="me-3 fs-18 fw-bold text-danger">05.</span>{{ $faq->en_question_five }}</a>
                                 </div>
                                 <div class="card-body pt-0">
                                     <p>
-                                        You can contact our helpline for plan upgrades. Upgradation is free of charge, but degradation may incur additional charges.
+                                        {{ $faq->en_answer_five }}
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-6 reveal revealright">
-                        <img class="img-fluid" src="{{ asset('backendAssets/static_images/faq.png') }}"
-                            alt="FAQ Image">
+                        <img class="img-fluid" src="{{ asset($faq->image) }}" alt="FAQ Image">
                     </div>
                 </div>
             </section>

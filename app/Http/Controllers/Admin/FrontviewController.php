@@ -16,6 +16,9 @@ use App\Models\Client;
 use App\Models\Service;
 use App\Models\PaymentCategory;
 use App\Models\Payment;
+use App\Models\Mission;
+use App\Models\Vision;
+use App\Models\Faq;
 
 class FrontviewController extends Controller
 {
@@ -47,8 +50,11 @@ class FrontviewController extends Controller
         return view('frontend.packages.packages',compact('packages','company_info'));
     }
     public function about(){
+        $mission = Mission::first();
+        $vision = Vision::first();
+        $faq = Faq::first();
         $company_info = CompanyInfo::first();
-        return view('frontend.about.about', compact('company_info'));
+        return view('frontend.about.about', compact('company_info','mission','vision','faq'));
     }
     public function btrc(){
         $company_info = CompanyInfo::first();
