@@ -17,7 +17,7 @@ Route::controller(FrontviewController::class)->group(function () {
     Route::get('/buy-package/{id}', 'buyPackage')->name('buy_package');
     Route::get('/terms-condition', 'termsCondition')->name('terms_condition');
     Route::get('/campaign-details/{id}', 'campaignDetails')->name('campaign_details');
-    Route::get('/bkash-bill', 'bkashBill')->name('front.bkash_bill');
+    Route::get('/payment-process', 'paymentProcess')->name('front.payment_process');
 });
 
 Route::controller(PacakgeBuyController::class)->group(function () {
@@ -99,6 +99,20 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
             Route::get('/edit-service/{id}', 'editService')->name('edit_service');
             Route::post('/update-service', 'updateService')->name('update_service');
             Route::post('/delete-service', 'deleteService')->name('delete_service');
+
+            Route::get('/add-payment-category', 'addPaymentCategory')->name('add_payment_category');
+            Route::post('/save-payment-category', 'savePaymentCategory')->name('save_payment_category');
+            Route::get('/manage-payment-category', 'managePaymentCategory')->name('manage_payment_category');
+            Route::get('/edit-payment-category/{id}', 'editPaymentCategory')->name('edit_payment_category');
+            Route::post('/update-payment-category', 'updatePaymentCategory')->name('update_payment_category');
+            Route::post('/delete-payment-category', 'deletePaymentCategory')->name('delete_payment_category');
+
+            Route::get('/add-payment', 'addPayment')->name('add_payment');
+            Route::post('/save-payment', 'savePayment')->name('save_payment');
+            Route::get('/manage-payment', 'managePayment')->name('manage_payment');
+            Route::get('/edit-payment/{id}', 'editPayment')->name('edit_payment');
+            Route::post('/update-payment', 'updatePayment')->name('update_payment');
+            Route::post('/delete-payment', 'deletePayment')->name('delete_payment');
         });
     });
 

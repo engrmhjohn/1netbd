@@ -30,10 +30,9 @@
                                 <ul class="slide-menu">
                                     <li class="side-menu-label1"><a href="javascript:void(0)">Submenu
                                             items</a></li>
-                                    <li><a href="{{ route('front.bkash_bill') }}" class="slide-item">bKash Payment
-                                            System</a></li>
+                                    <li><a href="{{ route('front.payment_process') }}" class="slide-item">Payment Process</a></li>
                                     <li><a href="https://onesky.com.bd/online-payment" class="slide-item">Online
-                                            Payment System</a></li>
+                                            Payment</a></li>
                                 </ul>
                             </li>
                             <li class="slide">

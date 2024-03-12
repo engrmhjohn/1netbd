@@ -17,9 +17,9 @@
                     <div class="col-xl-3 col-sm-4 col-lg-6">
                         <h6>Quick Link</h6>
                         <ul class="list-unstyled mb-5 mb-lg-0">
-                            <li><a href="index.html">Bill Pay Process</a></li>
-                            <li><a href="alerts.html">Online Payment Process</a></li>
-                            <li><a href="form-elements.html">About Us</a></li>
+                            <li><a href="">Bill Pay Process</a></li>
+                            <li><a href="https://onesky.com.bd/online-payment">Online Payment</a></li>
+                            <li><a href="{{ route('front.about') }}">About Us</a></li>
                             <li><a href="{{ route('front.btrc') }}">BTRC Approved Tariff</a></li>
                             <li><a href="{{ route('terms_condition') }}">Terms & Conditions</a></li>
                         </ul>

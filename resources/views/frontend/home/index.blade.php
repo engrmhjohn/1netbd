@@ -268,7 +268,7 @@
                                             <p class="fs-13 mb-1 mt-5">{{ $service->en_description }}</p>
                                         </div>
                                         <div class="card-footer text-center border-top-0 pt-1">
-                                            <a class="btn btn-danger btn-block" href="https://onesky.com.bd">{{ $service->en_button_text }} <i
+                                            <a class="btn btn-danger btn-block" href="{{ $service->button_link }}">{{ $service->en_button_text }} <i
                                                     class="text-white fa fa-paper-plane-o"></i></a>
                                         </div>
                                     </div>

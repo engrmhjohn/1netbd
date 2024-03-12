@@ -15,6 +15,8 @@ use App\Models\Counter;
 use App\Models\ChooseUs;
 use App\Models\Client;
 use App\Models\Service;
+use App\Models\PaymentCategory;
+use App\Models\Payment;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -636,6 +638,227 @@ class CMSController extends Controller
         $service->delete();
 
         return redirect()->route('admin.manage_service')->with('message', 'Successfully Deleted!');
+    }
+
+    public function addPaymentCategory()
+    {
+        return view('backend.cms.payment_category.show');
+    }
+    public function savePaymentCategory(Request $request)
+    {
+        $payment_category = new PaymentCategory();
+        $payment_category->en_title = $request->en_title;
+        $payment_category->status = $request->status;
+        $payment_category->save();
+        return redirect(route('admin.manage_payment_category'))->with('message', 'Successfully Added!');
+    }
+    public function managePaymentCategory()
+    {
+        return view('backend.cms.payment_category.index', [
+            'payment_category' => PaymentCategory::get(),
+        ]);
+    }
+    public function editPaymentCategory($id)
+    {
+        $payment_category = PaymentCategory::find($id);
+
+        return view('backend.cms.payment_category.edit', [
+            'payment_category' => $payment_category
+        ]);
+    }
+    public function updatePaymentCategory(Request $request)
+    {
+        $payment_category               = PaymentCategory::find($request->payment_category_id);
+        $payment_category->en_title = $request->en_title;
+        $payment_category->status = $request->status;
+        $payment_category->save();
+        return redirect(route('admin.manage_payment_category'))->with('message', 'Successfully Updated!');
+    }
+
+    public function deletePaymentCategory(Request $request)
+    {
+        $payment_category = PaymentCategory::find($request->payment_category_id);
+
+        if (!$payment_category) {
+            return redirect()->route('admin.manage_payment_category')->with('error', 'Payment Category not found.');
+        }
+
+        $payment_category->delete();
+
+        return redirect()->route('admin.manage_payment_category')->with('message', 'Successfully Deleted!');
+    }
+
+    public function addPayment()
+    {
+        return view('backend.cms.payment_method.show', [
+            'category' => PaymentCategory::where('status', 1)->get(),
+        ]);
+    }
+    public function savePayment(Request $request)
+    {
+        $payment = new Payment();
+        $payment->payment_category_id = $request->payment_category_id;
+
+        $payment->en_banner_text = $request->en_banner_text;
+
+        $payment->en_heading_one = $request->en_heading_one;
+        $payment->en_description_one = $request->en_description_one;
+        $payment->image_one = image_upload($request->image_one);
+
+        $payment->en_heading_two = $request->en_heading_two;
+        $payment->en_description_two = $request->en_description_two;
+        $payment->image_two = image_upload($request->image_two);
+
+        $payment->en_heading_three = $request->en_heading_three;
+        $payment->en_description_three = $request->en_description_three;
+        $payment->image_three = image_upload($request->image_three);
+
+        $payment->en_heading_four = $request->en_heading_four;
+        $payment->en_description_four = $request->en_description_four;
+        $payment->image_four = image_upload($request->image_four);
+
+        $payment->en_heading_five = $request->en_heading_five;
+        $payment->en_description_five = $request->en_description_five;
+        $payment->image_five = image_upload($request->image_five);
+
+        $payment->en_heading_six = $request->en_heading_six;
+        $payment->en_description_six = $request->en_description_six;
+        $payment->image_six = image_upload($request->image_six);
+
+        $payment->en_heading_seven = $request->en_heading_seven;
+        $payment->en_description_seven = $request->en_description_seven;
+        $payment->image_seven = image_upload($request->image_seven);
+
+        $payment->en_heading_eight = $request->en_heading_eight;
+        $payment->en_description_eight = $request->en_description_eight;
+        $payment->image_eight = image_upload($request->image_eight);
+
+
+        $payment->status = $request->status;
+        $payment->save();
+        return redirect(route('admin.manage_payment'))->with('message', 'Successfully Added!');
+    }
+    public function managePayment()
+    {
+        return view('backend.cms.payment_method.index', [
+            'bkash_payment' => Payment::where('payment_category_id', 2)->get(),
+            'rocket_payment' => Payment::where('payment_category_id', 3)->get(),
+            'nagad_payment' => Payment::where('payment_category_id', 4)->get(),
+        ]);
+    }
+    public function editPayment($id)
+    {
+        $payment = Payment::find($id);
+
+        return view('backend.cms.payment_method.edit', [
+            'category' => PaymentCategory::where('status', 1)->get(),
+            'payment' => $payment
+        ]);
+    }
+    public function updatePayment(Request $request)
+    {
+        $payment               = Payment::find($request->payment_id);
+        $payment->payment_category_id = $request->payment_category_id;
+
+        $payment->en_banner_text = $request->en_banner_text;
+
+        $payment->en_heading_one = $request->en_heading_one;
+        $payment->en_description_one = $request->en_description_one;
+
+        if ($request->file('image_one')) {
+            if (isset($payment)) {
+                delete_image($payment->image_one);
+                $payment->delete();
+            }
+            $payment->image_one = image_upload($request->image_one);
+        }
+
+        $payment->en_heading_two = $request->en_heading_two;
+        $payment->en_description_two = $request->en_description_two;
+        if ($request->file('image_two')) {
+            if (isset($payment)) {
+                delete_image($payment->image_two);
+                $payment->delete();
+            }
+            $payment->image_two = image_upload($request->image_two);
+        }
+
+        $payment->en_heading_three = $request->en_heading_three;
+        $payment->en_description_three = $request->en_description_three;
+        if ($request->file('image_three')) {
+            if (isset($payment)) {
+                delete_image($payment->image_three);
+                $payment->delete();
+            }
+            $payment->image_three = image_upload($request->image_three);
+        }
+
+        $payment->en_heading_four = $request->en_heading_four;
+        $payment->en_description_four = $request->en_description_four;
+        if ($request->file('image_four')) {
+            if (isset($payment)) {
+                delete_image($payment->image_four);
+                $payment->delete();
+            }
+            $payment->image_four = image_upload($request->image_four);
+        }
+
+        $payment->en_heading_five = $request->en_heading_five;
+        $payment->en_description_five = $request->en_description_five;
+        if ($request->file('image_five')) {
+            if (isset($payment)) {
+                delete_image($payment->image_five);
+                $payment->delete();
+            }
+            $payment->image_five = image_upload($request->image_five);
+        }
+
+        $payment->en_heading_six = $request->en_heading_six;
+        $payment->en_description_six = $request->en_description_six;
+        if ($request->file('image_six')) {
+            if (isset($payment)) {
+                delete_image($payment->image_six);
+                $payment->delete();
+            }
+            $payment->image_six = image_upload($request->image_six);
+        }
+        $payment->en_heading_seven = $request->en_heading_seven;
+        $payment->en_description_seven = $request->en_description_seven;
+
+        if ($request->file('image_seven')) {
+            if (isset($payment)) {
+                delete_image($payment->image_seven);
+                $payment->delete();
+            }
+            $payment->image_seven = image_upload($request->image_seven);
+        }
+
+        $payment->en_heading_eight = $request->en_heading_eight;
+        $payment->en_description_eight = $request->en_description_eight;
+
+        if ($request->file('image_eight')) {
+            if (isset($payment)) {
+                delete_image($payment->image_eight);
+                $payment->delete();
+            }
+            $payment->image_eight = image_upload($request->image_eight);
+        }
+
+        $payment->save();
+        return redirect(route('admin.manage_payment'))->with('message', 'Successfully Updated!');
+    }
+
+    public function deletePayment(Request $request)
+    {
+        $payment = Payment::find($request->payment_id);
+
+        if (isset($payment)) {
+            delete_image($payment->image);
+            $payment->delete();
+        }
+        $payment->delete();
+
+        return redirect()->route('admin.manage_payment')->with('message', 'Successfully Deleted!');
     }
 
 }

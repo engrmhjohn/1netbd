@@ -333,3 +333,204 @@ form .no-resize{
 .pricing-tabs img{
   width: 80px;
 }
+
+/* payment process  */
+.payment_process_section {
+  padding: 20px 0;
+}
+
+/* Bkash  */
+.payment_process_section #one-panel .card {
+  background: #e2136e;
+  color: white;
+  border: 1px solid yellowgreen !important;
+  height: 100%;
+}
+
+.payment_process_section #one-panel .card .card-header {
+  border: 1px solid yellowgreen !important;
+}
+
+.payment_process_section #one-panel .card .card-body {
+  border: 1px solid yellowgreen !important;
+}
+
+.payment_process_section #one-panel .card .card-footer {
+  border: 1px solid yellowgreen !important;
+  color: white;
+}
+
+/* Rocket  */
+.payment_process_section #two-panel .card {
+  background: #8a288f;
+  color: white;
+  border: 1px solid yellowgreen !important;
+  height: 100%;
+}
+
+.payment_process_section #two-panel .card .card-header {
+  border: 1px solid yellowgreen !important;
+}
+
+.payment_process_section #two-panel .card .card-body {
+  border: 1px solid yellowgreen !important;
+}
+
+.payment_process_section #two-panel .card .card-footer {
+  border: 1px solid yellowgreen !important;
+  color: white;
+}
+
+/* Nagad  */
+.payment_process_section #three-panel .card {
+  background: #d0392c;
+  color: white;
+  border: 1px solid yellowgreen !important;
+  height: 100%;
+}
+
+.payment_process_section #three-panel .card .card-header {
+  border: 1px solid yellowgreen !important;
+}
+
+.payment_process_section #three-panel .card .card-body {
+  border: 1px solid yellowgreen !important;
+}
+
+.payment_process_section #three-panel .card .card-footer {
+  border: 1px solid yellowgreen !important;
+  color: white;
+}
+
+.payment_process_section .card {
+  box-shadow: rgba(240, 46, 170, 0.4) -5px 5px,
+      rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px,
+      rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+}
+
+.payment_process_section .card h6 {
+  color: white;
+  font-weight: bold;
+}
+
+.payment_process_section .card p {
+  text-transform: capitalize;
+}
+
+.tab_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tab_wrapper .tab {
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 0px 2px;
+  display: inline-block;
+  border-radius: 3px 3px 0px 0px;
+  box-shadow: 0 0.5rem 0.8rem #00000080;
+  background: white;
+  color: #cc050c;
+  font-weight: bold;
+  border-top: 3px solid #cc050c;
+}
+
+.tab_wrapper .panels {
+  width: 100%;
+  border-radius: 3px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.tab_wrapper .panel {
+  display: none;
+  animation: fadein 0.8s;
+}
+
+@keyframes fadein {
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+  }
+}
+
+.tab_wrapper .radio {
+  display: none;
+}
+
+.tab_wrapper #one:checked~.panels #one-panel,
+.tab_wrapper #two:checked~.panels #two-panel,
+.tab_wrapper #three:checked~.panels #three-panel {
+  display: block;
+  color: #cc050c;
+}
+
+.tab_wrapper #one:checked~.tabs #one-tab,
+.tab_wrapper #two:checked~.tabs #two-tab,
+.tab_wrapper #three:checked~.tabs #three-tab {
+  background: black;
+  color: #cc050c;
+  border-top: 3px solid black;
+  border-bottom: 3px solid #cc050c;
+}
+
+.payment_process_section .modal-content {
+  background: black !important;
+  border: 1px solid yellowgreen !important;
+}
+
+.payment_process_section .modal-header {
+  background: white !important;
+  border-bottom: 1px solid yellowgreen !important;
+}
+
+.payment_process_section .modal-header h5 {
+  color: #cc050c !important;
+}
+
+.payment_process_section .modal-footer {
+  display: block;
+  border-top: 1px solid yellowgreen !important;
+  text-align: center;
+}
+
+.payment_process_section .modal-body img {
+  height: 100%;
+  width: 100%;
+}
+
+.payment_process_section #one-panel .key_point {
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background: #e2136e;
+  border-left: 10px solid black;
+  border-radius: 0 15px;
+}
+
+.payment_process_section #two-panel .key_point {
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background: #8a288f;
+  border-left: 10px solid black;
+  border-radius: 0 15px;
+}
+
+.payment_process_section #three-panel .key_point {
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background: #d0392c;
+  border-left: 10px solid black;
+  border-radius: 0 15px;
+}
+
+.payment_process_section .key_point h5 {
+  color: white;
+}
+
+.payment_process_section .key_point h5 i {
+  color: white;
+}

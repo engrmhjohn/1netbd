@@ -325,6 +325,54 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="slide">
+                        <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                            <i class="side-menu__icon fa fa-paint-brush"></i>
+                            <span class="side-menu__label">Payment Category</span><i
+                                class="angle fe fe-chevron-right"></i>
+                        </a>
+                        <ul class="slide-menu">
+                            <li class="panel sidetab-menu">
+                                <div class="panel-body tabs-menu-body p-0 border-0">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="side21">
+                                            <ul class="sidemenu-list">
+                                                <li class="side-menu-label1"></li>
+                                                <li><a href="{{ route('admin.add_payment_category') }}" class="slide-item">Add
+                                                    Payment Category</a></li>
+                                                <li><a href="{{ route('admin.manage_payment_category') }}"
+                                                        class="slide-item">Manage Payment Category</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                            <i class="side-menu__icon fa fa-paint-brush"></i>
+                            <span class="side-menu__label">Payment Method</span><i
+                                class="angle fe fe-chevron-right"></i>
+                        </a>
+                        <ul class="slide-menu">
+                            <li class="panel sidetab-menu">
+                                <div class="panel-body tabs-menu-body p-0 border-0">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="side21">
+                                            <ul class="sidemenu-list">
+                                                <li class="side-menu-label1"></li>
+                                                <li><a href="{{ route('admin.add_payment') }}" class="slide-item">Add
+                                                    Payment Method</a></li>
+                                                <li><a href="{{ route('admin.manage_payment') }}"
+                                                        class="slide-item">Manage Payment Method</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
                 @else
                 @endif
             </ul>

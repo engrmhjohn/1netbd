@@ -14,6 +14,8 @@ use App\Models\Counter;
 use App\Models\ChooseUs;
 use App\Models\Client;
 use App\Models\Service;
+use App\Models\PaymentCategory;
+use App\Models\Payment;
 
 class FrontviewController extends Controller
 {
@@ -72,9 +74,13 @@ class FrontviewController extends Controller
         return view('frontend.tc.tc',compact('tc', 'company_info'));
     }
 
-    public function bkashBill(){
+    public function paymentProcess(){
         $company_info = CompanyInfo::first();
-        return view('frontend.billing-system.bkash_bill', compact('company_info'));
+        $bkash_payment = Payment::where('status', 1)->where('payment_category_id', 2)->first();
+        $rocket_payment = Payment::where('status', 1)->where('payment_category_id', 3)->first();
+        $nagad_payment = Payment::where('status', 1)->where('payment_category_id', 4)->first();
+        $category = PaymentCategory::where('status', 1)->get();
+        return view('frontend.payment_process.payment_process', compact('company_info', 'category','bkash_payment','rocket_payment','nagad_payment'));
     }
 
 
