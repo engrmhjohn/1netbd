@@ -20,6 +20,7 @@ use App\Models\Payment;
 use App\Models\Mission;
 use App\Models\Vision;
 use App\Models\Faq;
+use App\Models\Testimonial;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -1067,7 +1068,54 @@ class CMSController extends Controller
 
         $faq->delete();
 
-        return redirect()->route('admin.manage_faq')->with('message', 'Successfully Deleted!');
+        return redirect()->route('admin.manage_faq')->with('message', 'Successfully Deleted!');
+    }
+
+    public function addTestimonial()
+    {
+        return view('backend.cms.testimonial.show');
+    }
+    public function saveTestimonial(Request $request)
+    {
+        $testimonial = new Testimonial();
+        $testimonial->en_name = $request->en_name;
+        $testimonial->en_designation = $request->en_designation;
+        $testimonial->en_description = $request->en_description;
+        $testimonial->status = $request->status;
+        $testimonial->save();
+        return redirect(route('admin.manage_testimonial'))->with('message', 'Successfully Added!');
+    }
+    public function manageTestimonial()
+    {
+        return view('backend.cms.testimonial.index', [
+            'testimonial' => Testimonial::orderBy('id', 'desc')->get(),
+        ]);
+    }
+    public function editTestimonial($id)
+    {
+        $testimonial = Testimonial::find($id);
+
+        return view('backend.cms.testimonial.edit', [
+            'testimonial' => $testimonial
+        ]);
+    }
+    public function updateTestimonial(Request $request)
+    {
+        $testimonial               = Testimonial::find($request->testimonial_id);
+        $testimonial->en_name = $request->en_name;
+        $testimonial->en_designation = $request->en_designation;
+        $testimonial->en_description = $request->en_description;
+        $testimonial->status = $request->status;
+        $testimonial->save();
+        return redirect(route('admin.manage_testimonial'))->with('message', 'Successfully Updated!');
+    }
+    public function deleteTestimonial(Request $request)
+    {
+        $testimonial = Testimonial::find($request->testimonial_id);
+
+        $testimonial->delete();
+
+        return redirect()->route('admin.manage_testimonial')->with('message', 'Successfully Deleted!');
     }
 
 }

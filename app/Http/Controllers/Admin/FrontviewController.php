@@ -19,6 +19,7 @@ use App\Models\Payment;
 use App\Models\Mission;
 use App\Models\Vision;
 use App\Models\Faq;
+use App\Models\Testimonial;
 
 class FrontviewController extends Controller
 {
@@ -53,8 +54,9 @@ class FrontviewController extends Controller
         $mission = Mission::first();
         $vision = Vision::first();
         $faq = Faq::first();
+        $testimonials = Testimonial::where('status', 1)->orderBy('id','desc')->get();
         $company_info = CompanyInfo::first();
-        return view('frontend.about.about', compact('company_info','mission','vision','faq'));
+        return view('frontend.about.about', compact('company_info','mission','vision','faq','testimonials'));
     }
     public function btrc(){
         $company_info = CompanyInfo::first();
@@ -80,13 +82,13 @@ class FrontviewController extends Controller
         return view('frontend.tc.tc',compact('tc', 'company_info'));
     }
 
-    public function paymentProcess(){
+    public function billPayment(){
         $company_info = CompanyInfo::first();
         $bkash_payment = Payment::where('status', 1)->where('payment_category_id', 2)->first();
         $rocket_payment = Payment::where('status', 1)->where('payment_category_id', 3)->first();
         $nagad_payment = Payment::where('status', 1)->where('payment_category_id', 4)->first();
         $category = PaymentCategory::where('status', 1)->get();
-        return view('frontend.payment_process.payment_process', compact('company_info', 'category','bkash_payment','rocket_payment','nagad_payment'));
+        return view('frontend.bill_payment.bill_payment', compact('company_info', 'category','bkash_payment','rocket_payment','nagad_payment'));
     }
 
 

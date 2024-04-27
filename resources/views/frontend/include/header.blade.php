@@ -23,31 +23,16 @@
                                         class="side-menu__label">Packages</span></a>
                             </li>
                             <li class="slide">
-                                <a class="" data-bs-toggle="slide"
-                                    href="javascript:void(0)">
-                                    <span class="side-menu__label">Payment</span><i
-                                        class="angle fe fe-chevron-right"></i></a>
-                                <ul class="slide-menu">
-                                    <li class="side-menu-label1"><a href="javascript:void(0)">Submenu
-                                            items</a></li>
-                                    <li><a href="{{ route('front.payment_process') }}" class="slide-item">Payment Process</a></li>
-                                    <li><a href="https://onesky.com.bd/online-payment" class="slide-item">Online
-                                            Payment</a></li>
-                                </ul>
+                                <a href="{{ route('front.bill_payment') }}"><span
+                                        class="side-menu__label">Bill Payment</span></a>
                             </li>
                             <li class="slide">
                                 <a href="{{ route('front.contact') }}"><span
                                         class="side-menu__label">Contact</span></a>
                             </li>
                             <li class="slide">
-                                <a class="" data-bs-toggle="slide"
-                                    href="javascript:void(0)">
-                                    <span class="side-menu__label">Admin Panel</span><i
-                                        class="angle fe fe-chevron-right"></i></a>
-                                <ul class="slide-menu">
-                                    <li><a href="{{ route('login') }}" class="slide-item">Login</a></li>
-                                    <li><a href="{{ route('register') }}" class="slide-item">Register</a></li>
-                                </ul>
+                                <a href="{{ route('login') }}"><span
+                                        class="side-menu__label">Login</span></a>
                             </li>
                         </ul>
                         <div class="header-nav-right d-none d-lg-flex">

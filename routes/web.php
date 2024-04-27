@@ -17,7 +17,7 @@ Route::controller(FrontviewController::class)->group(function () {
     Route::get('/buy-package/{id}', 'buyPackage')->name('buy_package');
     Route::get('/terms-condition', 'termsCondition')->name('terms_condition');
     Route::get('/campaign-details/{id}', 'campaignDetails')->name('campaign_details');
-    Route::get('/payment-process', 'paymentProcess')->name('front.payment_process');
+    Route::get('/bill-payment', 'billPayment')->name('front.bill_payment');
 });
 
 Route::controller(PacakgeBuyController::class)->group(function () {
@@ -132,6 +132,13 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
             Route::get('/edit-faq/{id}', 'editFaq')->name('edit_faq');
             Route::post('/update-faq', 'updateFaq')->name('update_faq');
             Route::post('/delete-faq', 'deleteFaq')->name('delete_faq');
+
+            Route::get('/add-testimonial', 'addTestimonial')->name('add_testimonial');
+            Route::post('/save-testimonial', 'saveTestimonial')->name('save_testimonial');
+            Route::get('/manage-testimonial', 'manageTestimonial')->name('manage_testimonial');
+            Route::get('/edit-testimonial/{id}', 'editTestimonial')->name('edit_testimonial');
+            Route::post('/update-testimonial', 'updateTestimonial')->name('update_testimonial');
+            Route::post('/delete-testimonial', 'deleteTestimonial')->name('delete_testimonial');
         });
     });
 

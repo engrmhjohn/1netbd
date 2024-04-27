@@ -1,6 +1,6 @@
 @extends('frontend.master')
 @section('title')
-Payment Process || One Net
+Bill Payment || One Net
 @endsection
 @section('content')
 

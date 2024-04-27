@@ -1,6 +1,6 @@
 @extends('frontend.master')
 @section('title')
-    One Net || Our Packages
+    One Net || BTRC Approved Packages
 @endsection
 @section('content')
 <div class="container mt-5 mb-5">
