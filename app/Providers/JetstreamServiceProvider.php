@@ -32,7 +32,7 @@ class JetstreamServiceProvider extends ServiceProvider
 
         Fortify::authenticateUsing(function (Request $request) {
             $user = User::where('email', $request->loginname)
-            ->orWhere('username', $request->loginname)
+            ->orWhere('employee_id', $request->loginname)
             ->orWhere('phone', $request->loginname)->first();
 
             if (

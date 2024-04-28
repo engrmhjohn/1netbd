@@ -90,7 +90,7 @@
                                                     <i class="zmdi zmdi-account text-muted" aria-hidden="true"></i>
                                                 </a>
                                                 <input class="input100 border-start-0 form-control ms-0" type="text"
-                                                    placeholder="Username/Phone/Email" name="loginname" id="loginname"
+                                                    placeholder="Employee ID/Phone/Email" name="loginname" id="loginname"
                                                     required>
                                             </div>
                                             <div class="wrap-input100 validate-input input-group" id="Password-toggle">

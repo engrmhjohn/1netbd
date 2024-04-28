@@ -99,7 +99,7 @@
                                                     <i class="zmdi zmdi-edit text-muted" aria-hidden="true"></i>
                                                 </a>
                                                 <input class="input100 border-start-0 form-control ms-0" type="text"
-                                                    placeholder="Username" name="username" :value="old('username')" required autofocus autocomplete="username">
+                                                    placeholder="Employee ID" name="employee_id" :value="old('employee_id')" required autofocus autocomplete="employee_id">
                                             </div>
                                             <div class="wrap-input100 validate-input input-group"
                                                 data-bs-validate="Valid phone is required: ex@abc.xyz">
@@ -124,14 +124,14 @@
                                                     class="input-group-text bg-white text-muted">
                                                     <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
                                                 </a>
-                                                <input class="input100 border-start-0 form-control ms-0" type="password" id="password" name="password" required autocomplete="new-password" placeholder="password">
+                                                <input class="input100 border-start-0 form-control ms-0" type="password" id="password" name="password" required autocomplete="new-password" placeholder="Password">
                                             </div>
                                             <div class="wrap-input100 validate-input input-group" id="Password-toggle">
                                                 <a href="javascript:void(0)"
                                                     class="input-group-text bg-white text-muted">
                                                     <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
                                                 </a>
-                                                <input class="input100 border-start-0 form-control ms-0" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="confirm password">
+                                                <input class="input100 border-start-0 form-control ms-0" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
                                             </div>
                                             <div class="container-login100-form-btn">
                                                 <button class="login100-form-btn btn-primary"
