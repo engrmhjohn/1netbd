@@ -36,18 +36,6 @@
                                     <td>{{ $package_buy->en_amount }} {{ $package_buy->en_amount_label }}</td>
                                     <input type="hidden" name="en_amount" value="{{ $package_buy->en_amount ?? 0 }}">
                                 </tr>
-                                <tr>
-                                    <td>OTC Charge</td>
-                                    <td>{{ $package_buy->en_otc_amount ?? 0 }} {{ $package_buy->en_amount_label }}</td>
-                                    <input type="hidden" name="en_otc_amount"
-                                        value="{{ $package_buy->en_otc_amount ?? 0 }}">
-                                </tr>
-                                <tr>
-                                    <td class="bg-success text-white fw-bold">Total Amount to Pay</td>
-                                    <td class="bg-success text-white fw-bold">{{ $formattedTotal }}
-                                        {{ $package_buy->en_amount_label }}</td>
-                                    <input type="hidden" name="formattedTotal" value="{{ $formattedTotal }}">
-                                </tr>
                             </tbody>
                         </table>
                     </div>

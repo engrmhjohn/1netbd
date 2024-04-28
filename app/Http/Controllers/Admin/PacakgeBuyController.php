@@ -177,7 +177,8 @@ class PacakgeBuyController extends Controller
 
         if ($userInfo) {
             return view('frontend.packages.success_package_buy', [
-                'userInfo' => $userInfo
+                'userInfo' => $userInfo,
+                'company_info' => CompanyInfo::latest('id')->first(),
             ]);
         } else {
             return redirect()->route('/');

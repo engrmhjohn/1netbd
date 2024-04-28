@@ -15,10 +15,6 @@ Packages :: One Sky Communications Limited
                     <table class="table table-bordered table-hover">
                         <tbody>
                             <tr>
-                                <td>Category</td>
-                                <td> {{ $userInfo->category }}</td>
-                            </tr>
-                            <tr>
                                 <td>Package Name</td>
                                 <td> {{ $userInfo->en_package_name }}</td>
                             </tr>
@@ -29,19 +25,6 @@ Packages :: One Sky Communications Limited
                             <tr>
                                 <td>Monthly Fee</td>
                                 <td>{{ $userInfo->en_amount }} TK</td>
-                            </tr>
-                            <tr>
-                                @if($userInfo->category==='SME')
-                                <td> <mark>OTC Charge will be added after negotiation</mark>
-                                </td>
-                                @else
-                                <td>OTC Charge</td>
-                                @endif
-                                <td>{{ $userInfo->en_otc_amount }} TK</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info text-white fw-bold">Total Amount</td>
-                                <td class="bg-info text-white fw-bold">{{$userInfo->formattedTotal}} TK</td>
                             </tr>
                         </tbody>
                     </table>
