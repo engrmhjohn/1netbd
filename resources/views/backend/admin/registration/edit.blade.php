@@ -171,7 +171,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-12 mb-3">
                     <label for="en_otc_amount">OTC</label>
-                    <input type="number" class="form-control" name="en_otc_amount" id="en_otc_amount" required readonly
+                    <input type="number" class="form-control" name="en_otc_amount" id="en_otc_amount" required 
                         value="{{ isset($registration->en_otc_amount) ? $registration->en_otc_amount : '' }}">
                     @error('en_otc_amount')
                         <strong class="error_form">{{ $message }}</strong>

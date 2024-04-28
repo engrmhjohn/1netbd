@@ -3,10 +3,6 @@
     Buy Package :: One Net
 @endsection
 @section('content')
-    @php
-        $formattedTotal = $package_buy->en_amount + $package_buy->en_otc_amount;
-    @endphp
-
     <section class="py-5">
         <div class="container">
             <form action="{{ route('save_buy_package') }}" method="post" enctype="multipart/form-data">
