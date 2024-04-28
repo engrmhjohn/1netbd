@@ -339,6 +339,19 @@ form .no-resize{
   padding: 20px 0;
 }
 
+.payment_process_section .card .card-header{
+  padding-bottom: 0 !important;
+}
+
+.payment_process_section .card .card-body{
+  padding-bottom: 0 !important;
+}
+
+.payment_process_section .card .card-footer{
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+
 /* Bkash  */
 .payment_process_section #one-panel .card {
   background: #e2136e;

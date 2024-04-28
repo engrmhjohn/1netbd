@@ -26,7 +26,7 @@ Bill Payment || One Net
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2">
+                     <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6> {{ $bkash_payment ? $bkash_payment->en_heading_one : '' }} </h6>
@@ -62,7 +62,7 @@ Bill Payment || One Net
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2">
+                     <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6>{{ $bkash_payment ? $bkash_payment->en_heading_two : '' }}</h6>
@@ -98,7 +98,7 @@ Bill Payment || One Net
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2">
+                     <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6>{{ $bkash_payment ? $bkash_payment->en_heading_three : '' }}</h6>
@@ -134,7 +134,7 @@ Bill Payment || One Net
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2">
+                     <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6> {{ $bkash_payment ? $bkash_payment->en_heading_four : '' }}</h6>
@@ -170,7 +170,7 @@ Bill Payment || One Net
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2">
+                     <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6>{{ $bkash_payment ? $bkash_payment->en_heading_five : '' }}</h6>
@@ -202,11 +202,11 @@ Bill Payment || One Net
                                 </div>
                             </div>
                             <div class="card-footer">
-                            <p> {{ $bkash_payment ? $bkash_payment->en_description_five : '' }}</p>
+                                <p> {{ $bkash_payment ? $bkash_payment->en_description_five : '' }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2">
+                     <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6>{{ $bkash_payment ? $bkash_payment->en_heading_six : '' }}</h6>
@@ -242,78 +242,6 @@ Bill Payment || One Net
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2">
-                        <div class="card text-center">
-                            <div class="card-header">
-                                <h6>{{ $bkash_payment ? $bkash_payment->en_heading_seven : '' }}</h6>
-                            </div>
-                            <div class="card-body">
-                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#show_big_imageb7">
-                                    <img class="main_img img-fluid" src="{{ asset($bkash_payment->image_seven ?? '') }}" alt="">
-                                </a>
-                                <div class="modal fade" id="show_big_imageb7" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">
-                                                    {{ $bkash_payment ? $bkash_payment->en_heading_seven : '' }}
-                                                </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
-                                            </div>
-
-                                            <div class="modal-body">
-                                                <div class="show_big_image">
-                                                    <img src="{{ asset($bkash_payment->image_seven ?? '') }}" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <p> {{ $bkash_payment ? $bkash_payment->en_description_seven : '' }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <p>{{ $bkash_payment ? $bkash_payment->en_description_seven : '' }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2">
-                        <div class="card text-center">
-                            <div class="card-header">
-                                <h6>{{ $bkash_payment ? $bkash_payment->en_heading_eight : '' }}</h6>
-                            </div>
-                            <div class="card-body">
-                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#show_big_imageb8">
-                                    <img class="main_img img-fluid" src="{{ asset($bkash_payment->image_eight ?? '') }}" alt="">
-                                </a>
-                                <div class="modal fade" id="show_big_imageb8" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">
-                                                    {{ $bkash_payment ? $bkash_payment->en_heading_eight : '' }}
-                                                </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
-                                            </div>
-
-                                            <div class="modal-body">
-                                                <div class="show_big_image">
-                                                    <img src="{{ asset($bkash_payment->image_eight ?? '') }}" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <p> {{ $bkash_payment ? $bkash_payment->en_description_eight : '' }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <p>{{ $bkash_payment ? $bkash_payment->en_description_eight : '' }}</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="panel" id="two-panel">
@@ -325,7 +253,7 @@ Bill Payment || One Net
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-2">
+                    <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6> {{ $rocket_payment ? $rocket_payment->en_heading_one : '' }} </h6>
@@ -361,7 +289,7 @@ Bill Payment || One Net
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-2">
+                    <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6>{{ $rocket_payment ? $rocket_payment->en_heading_two : '' }}</h6>
@@ -397,7 +325,7 @@ Bill Payment || One Net
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-2">
+                    <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6>{{ $rocket_payment ? $rocket_payment->en_heading_three : '' }}</h6>
@@ -433,7 +361,7 @@ Bill Payment || One Net
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-2">
+                    <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6> {{ $rocket_payment ? $rocket_payment->en_heading_four : '' }}</h6>
@@ -469,7 +397,7 @@ Bill Payment || One Net
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-2">
+                    <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6>{{ $rocket_payment ? $rocket_payment->en_heading_five : '' }}</h6>
@@ -501,11 +429,11 @@ Bill Payment || One Net
                                 </div>
                             </div>
                             <div class="card-footer">
-                            <p> {{ $rocket_payment ? $rocket_payment->en_description_five : '' }}</p>
+                                <p> {{ $rocket_payment ? $rocket_payment->en_description_five : '' }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-2">
+                    <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6>{{ $rocket_payment ? $rocket_payment->en_heading_six : '' }}</h6>
@@ -526,7 +454,7 @@ Bill Payment || One Net
 
                                             <div class="modal-body">
                                                 <div class="show_big_image">
-                                                <img src="{{ $rocket_payment ? asset($rocket_payment->image_six) : '' }}" alt="">
+                                                    <img src="{{ $rocket_payment ? asset($rocket_payment->image_six) : '' }}" alt="">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -552,7 +480,7 @@ Bill Payment || One Net
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-2">
+                    <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6> {{ $nagad_payment ? $nagad_payment->en_heading_one : '' }} </h6>
@@ -588,7 +516,7 @@ Bill Payment || One Net
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-2">
+                    <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6>{{ $nagad_payment ? $nagad_payment->en_heading_two : '' }}</h6>
@@ -624,7 +552,7 @@ Bill Payment || One Net
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-2">
+                    <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6>{{ $nagad_payment ? $nagad_payment->en_heading_three : '' }}</h6>
@@ -660,7 +588,7 @@ Bill Payment || One Net
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-2">
+                    <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6> {{ $nagad_payment ? $nagad_payment->en_heading_four : '' }}</h6>
@@ -696,7 +624,7 @@ Bill Payment || One Net
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-2">
+                    <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6>{{ $nagad_payment ? $nagad_payment->en_heading_five : '' }}</h6>
@@ -728,11 +656,11 @@ Bill Payment || One Net
                                 </div>
                             </div>
                             <div class="card-footer">
-                            <p> {{ $nagad_payment ? $nagad_payment->en_description_five : '' }}</p>
+                                <p> {{ $nagad_payment ? $nagad_payment->en_description_five : '' }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-2">
+                    <div class="col-xl-2 col-lg-4 col-sm-6 col-12 mb-2">
                         <div class="card text-center">
                             <div class="card-header">
                                 <h6>{{ $nagad_payment ? $nagad_payment->en_heading_six : '' }}</h6>
@@ -753,7 +681,7 @@ Bill Payment || One Net
 
                                             <div class="modal-body">
                                                 <div class="show_big_image">
-                                                <img src="{{ $nagad_payment ? asset($nagad_payment->image_six) : '' }}" alt="">
+                                                    <img src="{{ $nagad_payment ? asset($nagad_payment->image_six) : '' }}" alt="">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
