@@ -259,7 +259,7 @@ class PacakgeBuyController extends Controller
         // Send email with PDF attachment and personalized message
         Mail::send([], [], function ($message) use ($output, $recipientEmail, $recipientName, $pdfFileName, $greetings) {
             $message->to($recipientEmail, $recipientName)
-                    ->subject('One Sky New Connection Registration Details')
+                    ->subject('One Net New Connection Registration Details')
                     ->text($greetings)
                     ->attachData($output, $pdfFileName, [
                         'mime' => 'application/pdf',
