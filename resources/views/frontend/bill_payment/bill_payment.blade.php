@@ -9,11 +9,13 @@ Bill Payment || One Net
         <input class="radio" id="one" name="group" type="radio" checked>
         <input class="radio" id="two" name="group" type="radio">
         <input class="radio" id="three" name="group" type="radio">
+        <input class="radio" id="four" name="group" type="radio">
 
         <div class="tabs text-center">
             <label class="tab" id="one-tab" for="one" style="color: #dc136c;">{{ $category[0]->en_title }}</label>
             <label class="tab" id="two-tab" for="two" style="color: #8a288f;">{{ $category[1]->en_title }}</label>
             <label class="tab" id="three-tab" for="three" style="color: #d0392c">{{ $category[2]->en_title }}</label>
+            <label class="tab" id="four-tab" for="four" style="color: #198754">{{ $category[3]->en_title }}</label>
         </div>
 
         <div class="panels">
@@ -695,6 +697,13 @@ Bill Payment || One Net
                                 <p>{{ $nagad_payment ? $nagad_payment->en_description_six : '' }}</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel" id="four-panel">
+                <div class="row justify-content-center">
+                    <div class="col-lg-3 col-12 text-center">
+                        <a class="btn btn-success" href="{{ url('https://onesky.com.bd/online-payment') }}"><i class="fa fa-credit-card-alt"></i> Debit / Credit Card Payment</a>
                     </div>
                 </div>
             </div>

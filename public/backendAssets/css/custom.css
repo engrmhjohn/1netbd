@@ -477,14 +477,16 @@ form .no-resize{
 
 .tab_wrapper #one:checked~.panels #one-panel,
 .tab_wrapper #two:checked~.panels #two-panel,
-.tab_wrapper #three:checked~.panels #three-panel {
+.tab_wrapper #three:checked~.panels #three-panel,
+.tab_wrapper #four:checked~.panels #four-panel {
   display: block;
   color: #cc050c;
 }
 
 .tab_wrapper #one:checked~.tabs #one-tab,
 .tab_wrapper #two:checked~.tabs #two-tab,
-.tab_wrapper #three:checked~.tabs #three-tab {
+.tab_wrapper #three:checked~.tabs #three-tab,
+.tab_wrapper #four:checked~.tabs #four-tab {
   background: black;
   color: #cc050c;
   border-top: 3px solid black;
