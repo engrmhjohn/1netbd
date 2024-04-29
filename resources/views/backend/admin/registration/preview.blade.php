@@ -18,9 +18,9 @@ Admin :: Preview Online Registration
                 <table class="table table-bordered table-hover">
                     <tbody>
                         <tr>
-                            <td>Issued / Modified by</td>
+                            <td>Issued by</td>
                             @if($registration_details->admin_id)
-                            <td> {{ $registration_details->admin->name }}</td>
+                            <td> {{ $registration_details->admin->name }} (Admin)</td>
                             @else
                             <td> {{ $registration_details->name }} (Client)</td>
                             @endif
@@ -52,14 +52,6 @@ Admin :: Preview Online Registration
                         <tr>
                             <td class="bg-warning">Sub Total Amount</td>
                             <td class="bg-warning">{{$registration_details->subtotal ?? 0}} TK</td>
-                        </tr>
-                        <tr>
-                            <td>Discount Monthly Fee</td>
-                            <td>{{ $registration_details->en_discount_monthly_fee ?? 0}} Tk</td>
-                        </tr>
-                        <tr>
-                            <td>Discount OTC</td>
-                            <td>{{ $registration_details->en_discount_otc ?? 0}} TK</td>
                         </tr>
                         <tr>
                             <td class="bg-success text-white fw-bold">Total Amount</td>

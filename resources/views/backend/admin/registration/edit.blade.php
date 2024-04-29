@@ -44,8 +44,8 @@
                     @enderror
                 </div>
                 <div class="col-lg-4 col-md-4 col-12 mb-3">
-                    <label for="email">Email*</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="email" required
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="email" 
                         value="{{ isset($registration->email) ? $registration->email : '' }}">
                     @error('email')
                         <strong class="error_form">{{ $message }}</strong>
@@ -195,14 +195,6 @@
                     @enderror
                 </div>
                 <div class="col-lg-6 col-md-6 col-12 mb-3">
-                    <label for="en_discount_otc">Discount on OTC</label>
-                    <input type="number" class="form-control" name="en_discount_otc" id="en_discount_otc" required
-                        value="{{ isset($registration->en_discount_otc) ? $registration->en_discount_otc : '0' }}">
-                    @error('en_discount_otc')
-                        <strong class="error_form">{{ $message }}</strong>
-                    @enderror
-                </div>
-                <div class="col-lg-6 col-md-6 col-12 mb-3">
                     <label for="en_advance_bill_amount">Advance Bill Amount</label>
                     <input type="number" class="form-control" name="en_advance_bill_amount" id="en_advance_bill_amount"
                         value="{{ isset($registration->en_advance_bill_amount) ? $registration->en_advance_bill_amount : '0' }}">
@@ -232,13 +224,12 @@
             var otcAmount = parseFloat(document.getElementById('en_otc_amount').value) || 0;
             var advanceBillAmount = parseFloat(document.getElementById('en_advance_bill_amount').value) || 0;
             var discountMonthlyFee = parseFloat(document.getElementById('en_discount_monthly_fee').value) || 0;
-            var discountOTC = parseFloat(document.getElementById('en_discount_otc').value) || 0;
 
             // Calculate subtotal
             var subtotal = monthlyBill + otcAmount + advanceBillAmount;
 
             // Calculate formatted total
-            var formattedTotal = subtotal - (discountMonthlyFee + discountOTC);
+            var formattedTotal = subtotal - discountMonthlyFee;
 
             // Update the subtotal and formattedTotal fields
             document.getElementById('subtotal').value = subtotal;
@@ -250,6 +241,5 @@
         document.getElementById('en_otc_amount').onkeyup = updateTotal;
         document.getElementById('en_advance_bill_amount').onkeyup = updateTotal;
         document.getElementById('en_discount_monthly_fee').onkeyup = updateTotal;
-        document.getElementById('en_discount_otc').onkeyup = updateTotal;
     </script>
 @endsection

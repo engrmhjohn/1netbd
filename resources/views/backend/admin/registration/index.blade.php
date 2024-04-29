@@ -71,11 +71,13 @@
                                                         data-bs-original-title="Download"><span
                                                             class="fe fe-download fs-14"></span>
                                                     </button></a>
+                                                    @if($user->email)
                                                     <a href="{{ route('new_registration_send_mail', $user->id) }}"><button
                                                         class="btn btn-warning btn-sm" data-bs-toggle="tooltip"
                                                         data-bs-original-title="Email"><span
                                                             class="fe fe-mail fs-14"></span>
                                                     </button></a>
+                                                    @endif
                                                 <form action="{{ route('delete_buy_package') }}" method="post"
                                                     id="delete">
                                                     @csrf

@@ -195,14 +195,19 @@
             <tr class="w-100">
                 <td class="w-85" style="text-align: right;"> 
                     <p>Sub Total</p>
+                    <p>Monthly Bill</p>
                     <p>Discount on Monthly Running Bill</p>
-                    <p>Discount on OTC</p>
+                    <p>Running Month Bill</p>
                     <p>Total Payable</p>
                 </td>
                 <td class="w-15" style="text-align: right;"> 
                     <p>{{ $userInfo->subtotal ?? 0}} TK</p>
+                    <p>{{ $userInfo->en_amount ?? 0}} TK</p>
                     <p>{{ $userInfo->en_discount_monthly_fee ?? 0}} TK</p>
-                    <p>{{ $userInfo->en_discount_otc ?? 0}} TK</p>
+                    @php
+                        $running_month_bill = $userInfo->en_amount - $userInfo->en_discount_monthly_fee;
+                    @endphp
+                        <p>{{ $running_month_bill ?? 0}} TK</p>
                     <p>{{ $userInfo->formattedTotal }} TK</p>
                 </td>
             </tr>
