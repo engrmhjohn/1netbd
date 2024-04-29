@@ -69,6 +69,10 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-12 mb-3">
                         <label for="photo">Photo* (Passport Size)</label>
+                        <div class="card mb-2 text-center">
+                            <p class="bg-warning-transparent">User Pic should be as below, if not please crop and rotate before uploading</p>
+                            <img src="{{ asset('backendAssets') }}/static_images/user.jpeg" alt="Sample of User's Pic" style="max-height: 215px; margin: 0 auto;">
+                        </div>
                         <input type="file" class="dropify" name="photo" accept=".jpg, .png, image/jpeg, image/png">
                         @error('photo')
                             <strong class="error_form">{{ $message }}</strong>
@@ -76,6 +80,10 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-12 mb-3">
                         <label for="nid_front">NID Front Side*</label>
+                        <div class="card mb-2 text-center">
+                            <p class="bg-warning-transparent">NID Front Side Pic should be as below, if not please crop and rotate before uploading</p>
+                            <img src="{{ asset('backendAssets') }}/static_images/nid_front.jpg" alt="Sample of User's NID Front Side">
+                        </div>
                         <input type="file" class="dropify" name="nid_front" accept=".jpg, .png, image/jpeg, image/png">
                         @error('nid_front')
                             <strong class="error_form">{{ $message }}</strong>
@@ -83,6 +91,10 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-12 mb-3">
                         <label for="nid_back">NID Back Side*</label>
+                        <div class="card mb-2 text-center">
+                            <p class="bg-warning-transparent">NID Back Side Pic should be as below, if not please crop and rotate before uploading</p>
+                            <img src="{{ asset('backendAssets') }}/static_images/nid_back.jpg" alt="Sample of User's NID Back Side">
+                        </div>
                         <input type="file" class="dropify" name="nid_back" accept=".jpg, .png, image/jpeg, image/png">
                         @error('nid_back')
                             <strong class="error_form">{{ $message }}</strong>
@@ -90,7 +102,7 @@
                     </div>
                     <div class="col-md-12 mb-3">
                         <div class="input-group">
-                            <span class="input-group-text" id="nid_number">NID Number</span>
+                            <span class="input-group-text" id="nid_number">NID Number*</span>
                             <input type="text" class="form-control" name="nid_number" id="nid_number" aria-describedby="basic-addon3">
                         </div>
                         @error('nid_number')

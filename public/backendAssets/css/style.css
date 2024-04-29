@@ -23619,7 +23619,23 @@ ul.timeline>li:before {
     }
 
     .horizontal .side-menu>li>a.active {
-        color: var(--primary-bg-color);
+        color: red !important;
+    }
+    .horizontal .side-menu>li::after {
+        content: " ";
+        width: 0%;
+        height: 2px;
+        margin: auto;
+        background-color: red;
+        display: block;
+        transition: .5s;
+    }
+
+    .horizontal .side-menu>li:hover::after{
+        width: 70%;
+    }
+    .horizontal .side-menu>li.active::after{
+        width: 70%;
     }
 
     .horizontal .main-sidemenu i.angle {

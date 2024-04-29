@@ -11,24 +11,23 @@
                             <img src="{{ asset($company_info->white_logo) }}" alt="White logo" class="logo-3" style="height: auto; max-width: 165px; margin-top: -5px;">
                         </a>
                         <ul class="side-menu">
-                            <li class="slide">
-                                <a href="{{ route('/') }}"><span class="side-menu__label">Home</span></a>
+                            <li class="slide {{ (request()->is('/')) ? 'active' : '' }}">
+                                <a class="{{ (request()->is('/')) ? 'active' : '' }}" href="{{ route('/') }}"><span class="side-menu__label">Home</span></a>
                             </li>
-                            <li class="slide">
-                                <a href="{{ route('front.about') }}"><span
-                                        class="side-menu__label">About US</span></a>
+                            <li class="slide {{ (request()->is('about-us')) ? 'active' : '' }}">
+                                <a class="{{ (request()->is('about-us')) ? 'active' : '' }}" href="{{ route('front.about') }}"><span class="side-menu__label">About US</span></a>
                             </li>
-                            <li class="slide">
-                                <a href="{{ route('front.packages') }}"><span
+                            <li class="slide {{ (request()->is('internet-packages')) ? 'active' : '' }}">
+                                <a class="{{ (request()->is('internet-packages')) ? 'active' : '' }}" href="{{ route('front.packages') }}"><span
                                         class="side-menu__label">Packages</span></a>
                             </li>
-                            <li class="slide">
-                                <a href="{{ route('front.bill_payment') }}"><span
+                            <li class="slide {{ (request()->is('bill-payment')) ? 'active' : '' }}">
+                                <a class="{{ (request()->is('bill-payment')) ? 'active' : '' }}" href="{{ route('front.bill_payment') }}"><span
                                         class="side-menu__label">Bill Payment</span></a>
                             </li>
-                            <li class="slide">
-                                <a href="{{ route('front.contact') }}"><span
-                                        class="side-menu__label">Contact</span></a>
+                            <li class="slide {{ (request()->is('contact-us')) ? 'active' : '' }}">
+                                <a class="{{ (request()->is('contact-us')) ? 'active' : '' }}" href="{{ route('front.contact') }}"><span
+                                        class="side-menu__label">Contact US</span></a>
                             </li>
                             <li class="slide">
                                 <a href="{{ route('login') }}"><span
