@@ -20,10 +20,12 @@
                                         <img class="img-fluid" src="{{ asset($slider->mobile_image) }}"
                                             style="height: auto; width: 100%; padding: 0px;" alt="Slider Mobile Image">
                                     </a>
+                                    @if($slider->website_link)
                                     <div class="package_button">
                                         <a class="btn btn-danger fw-bold d-block" href="{{ $slider->website_link }}">
                                             {{ $slider->button_text }} <i class="fa fa-arrow-right"></i></a>
                                     </div>
+                                    @endif
                                 </div>
                             @else
                                 <div class="slide">
@@ -35,11 +37,12 @@
                                         <img class="img-fluid" src="{{ asset($slider->mobile_image) }}"
                                             style="height: auto; width: 100%; padding: 0px;" alt="Slider Mobile Image">
                                     </a>
+                                    @if($slider->website_link)
                                     <div class="package_button">
-                                        <a class="btn btn-danger fw-bold d-block"
-                                            href="{{ route('campaign_details', $slider->id) }}">
+                                        <a class="btn btn-danger fw-bold d-block" href="{{ $slider->website_link }}">
                                             {{ $slider->button_text }} <i class="fa fa-arrow-right"></i></a>
                                     </div>
+                                    @endif
                                 </div>
                             @endif
                         @endforeach

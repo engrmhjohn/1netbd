@@ -11,6 +11,9 @@
                     <input type="hidden" name="admin_id" value="{{ Auth::user()->id }}">
                 @endif
                 <div class="row justify-content-center">
+                    <div class="col-lg-4">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/B8iJkwwVo_s?si=mZElj5Wj3EZKG11p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
                     <div class="col-lg-8">
                         <h3 class="bg-success py-2 text-center text-white fw-bold">Package Details</h3>
                         <table class="table table-bordered table-hover">
