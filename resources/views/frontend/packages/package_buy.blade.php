@@ -62,9 +62,9 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-12 mb-3">
                         <div class="form-group">
-                            <label for="email" class="form-label">Email*</label>
+                            <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" name="email" id="email" placeholder="Email"
-                                autocomplete="email" required>
+                                autocomplete="email">
                             @error('email')
                                 <strong class="error_form">{{ $message }}</strong>
                             @enderror
@@ -145,8 +145,48 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row mb-3">
+                    <div class="col-xl-4 col-lg-5 col-md-6 col-12">
+                        <div class="mb-3">
+                            <label for="options" class="form-label"> <strong>Select KAM*</strong> </label>
+                            <select class="form-select" id="options" name="kam_category" onchange="showInputField()">
+                                <option value="" selected disabled>Please select one</option>
+                                @foreach ($kam as $item)
+                                <option value="{{ $item->en_title }}">{{ $item->en_title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5 col-md-6 col-12">
+                        <div class="mb-3 d-none" id="nameInputField">
+                            <label for="kam_name" class="form-label">Enter Name:</label>
+                            <input type="text" name="kam_name" class="form-control">
+                        </div>
+                        <div class="mt-4 d-none" id="nameMessage">
+                            <mark>Your Full Name will be taken as KAM Name</mark>
+                        </div>
+                    </div>
+                </div>
+
                 <button class="btn btn-success" type="submit">Confirm Registration</button>
             </form>
         </div>
     </section>
+    <script>
+        function showInputField() {
+            var selectBox = document.getElementById("options");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            var nameInputField = document.getElementById("nameInputField");
+            var nameMessage = document.getElementById("nameMessage");
+    
+            if (selectedValue === "Own") {
+                nameInputField.classList.add("d-none");
+                nameMessage.classList.remove("d-none");
+            } else {
+                nameInputField.classList.remove("d-none");
+                nameMessage.classList.add("d-none");
+            }
+        }
+    </script>  
 @endsection

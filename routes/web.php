@@ -59,6 +59,13 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
             Route::post('/update-package', 'updatePackage')->name('update_package');
             Route::post('/delete-package', 'deletePackage')->name('delete_package');
 
+            Route::get('/add-kam', 'addKAM')->name('add_kam');
+            Route::post('/save-kam', 'saveKAM')->name('save_kam');
+            Route::get('/manage-kam', 'manageKAM')->name('manage_kam');
+            Route::get('/edit-kam/{id}', 'editKAM')->name('edit_kam');
+            Route::post('/update-kam', 'updateKAM')->name('update_kam');
+            Route::post('/delete-kam', 'deleteKAM')->name('delete_kam');
+
             Route::get('/add-company-info', 'addCompanyInfo')->name('add_company_info');
             Route::post('/save-company-info', 'saveCompanyInfo')->name('save_company_info');
             Route::get('/manage-company-info', 'manageCompanyInfo')->name('manage_company_info');

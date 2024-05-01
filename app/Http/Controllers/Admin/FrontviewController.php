@@ -20,6 +20,7 @@ use App\Models\Mission;
 use App\Models\Vision;
 use App\Models\Faq;
 use App\Models\Testimonial;
+use App\Models\KAM;
 
 class FrontviewController extends Controller
 {
@@ -68,10 +69,12 @@ class FrontviewController extends Controller
     {
         $company_info = CompanyInfo::first();
         $package_buy = Package::where('id', $id)->where('status', 1)->first();
+        $kam = KAM::where('status', 1)->orderBy('position','asc')->get();
     
         return view('frontend.packages.package_buy', [
             'package_buy' => $package_buy,
-            'company_info' => $company_info
+            'company_info' => $company_info,
+            'kam' => $kam
         ]);
     }
 

@@ -21,6 +21,7 @@ use App\Models\Mission;
 use App\Models\Vision;
 use App\Models\Faq;
 use App\Models\Testimonial;
+use App\Models\KAM;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -183,6 +184,49 @@ class CMSController extends Controller
         $package->delete();
 
         return redirect()->route('admin.manage_package')->with('message', 'Successfully Deleted!');
+    }
+
+    public function addKAM(){
+        return view('backend.cms.kam.show');
+    }
+
+    public function saveKAM(Request $request){
+        $kam = new KAM();
+        $kam->en_title = $request->en_title;
+        $kam->position = $request->position;
+        $kam->status = $request->status;
+        $kam->save();
+        return redirect(route('admin.manage_kam'))->with('message', 'Successfully Added!');
+    }
+
+    public function manageKAM(){
+        return view('backend.cms.kam.index',[
+            'kam' => KAM::orderBy('position','asc')->get()
+        ]);
+    }
+
+    public function editKAM($id){
+        $kam = KAM::find($id);
+        return view('backend.cms.kam.edit',[
+            'kam' => $kam
+        ]);
+    }
+
+    public function updateKAM(Request $request){
+        $kam               = KAM::find($request->kam_id);
+        $kam->en_title = $request->en_title;
+        $kam->position = $request->position;
+        $kam->status = $request->status;
+        $kam->save();
+        return redirect(route('admin.manage_kam'))->with('message', 'Successfully Updated!');
+    }
+
+    public function deleteKAM(Request $request)
+    {
+        $kam = KAM::find($request->kam_id);
+        $kam->delete();
+
+        return redirect()->route('admin.manage_kam')->with('message', 'Successfully Deleted!');
     }
 
     public function addbtrcApprovedPackage(){

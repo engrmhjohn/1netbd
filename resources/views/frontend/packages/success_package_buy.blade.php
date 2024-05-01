@@ -8,8 +8,8 @@ Packages :: One Sky Communications Limited
         <div class="col-lg-7 col-md-12">
             <div class="card">
                 <div class="card-header bg-success text-white" style="display: flex; justify-content: center; flex-direction: column;">
-                    <h4>Registration Successful</h4>
-                    <small>You'll get confirmation email</small>
+                    <h2>Registration Successful</h2>
+                    <strong class="text-warning">You'll get confirmation email</strong>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-hover">

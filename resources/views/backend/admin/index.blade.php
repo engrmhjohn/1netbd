@@ -49,7 +49,7 @@
                                                 @if ($user->role == 0)
                                                     <a class="btn btn-sm btn-success"
                                                         href="{{ route('role', ['id' => $user->id, 'newRole' => 1]) }}" data-bs-toggle="tooltip"
-                                                        data-bs-original-title="Make Employee">
+                                                        data-bs-original-title="Make Admin">
                                                         <span class="fe fe-check-circle"> </span> Admin
                                                     </a>
                                                     <a class="btn btn-sm btn-danger"
@@ -60,7 +60,7 @@
                                                 @elseif($user->role == 1)
                                                     <a class="btn btn-sm btn-danger"
                                                         href="{{ route('role', ['id' => $user->id, 'newRole' => 0]) }}" data-bs-toggle="tooltip"
-                                                        data-bs-original-title="Remove Employee">
+                                                        data-bs-original-title="Remove Admin">
                                                         <span class="fe fe-user-x"> </span> Admin
                                                     </a>
                                                     <a class="btn btn-sm btn-danger"
@@ -76,7 +76,7 @@
                                                     </a>
                                                     <a class="btn btn-sm btn-success"
                                                         href="{{ route('role', ['id' => $user->id, 'newRole' => 1]) }}" data-bs-toggle="tooltip"
-                                                        data-bs-original-title="Make Employee">
+                                                        data-bs-original-title="Make Admin">
                                                         <span class="fe fe-check-circle"> </span> Admin
                                                     </a>
                                                 @endif

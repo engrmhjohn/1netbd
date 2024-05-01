@@ -20,11 +20,10 @@ CMS :: Edit Payment Method
                         <div class="col-lg-6 mb-3">
                             <div class="form-group">
                                 <label>Payment Category</label>
-                                <select name="payment_category_id" class="form-control form-select select2"
-                                    data-bs-placeholder="Select Category" required>
+                                <select name="payment_category_id" class="form-control form-select select2" data-bs-placeholder="Select Category" required>
                                     <option value="" disabled selected></option>
                                     @foreach ($category as $item)
-                                        <option value=" {{ $item->id }}" {{ isset($payment->payment_category_id) ? ($payment->payment_category_id == $item->id ? 'selected' : '') : '' }}>{{ $item->en_title }}</option>
+                                    <option value=" {{ $item->id }}" {{ isset($payment->payment_category_id) ? ($payment->payment_category_id == $item->id ? 'selected' : '') : '' }}>{{ $item->en_title }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -69,7 +68,7 @@ CMS :: Edit Payment Method
                         <div class="col-lg-12 mb-3">
                             <div class="form-group">
                                 <label for="en_description_one" class="form-label">Description 01</label>
-                                    <textarea class="form-control no-resize" name="en_description_one" id="en_description_one" cols="30" rows="2" required style="resize: none;">{{ isset($payment->en_description_one) ? $payment->en_description_one : '' }}</textarea>
+                                <textarea class="form-control no-resize" name="en_description_one" id="en_description_one" cols="30" rows="2" required style="resize: none;">{{ isset($payment->en_description_one) ? $payment->en_description_one : '' }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -107,7 +106,7 @@ CMS :: Edit Payment Method
                         <div class="col-lg-12 mb-3">
                             <div class="form-group">
                                 <label for="en_description_two" class="form-label">Description 02</label>
-                                    <textarea class="form-control no-resize" name="en_description_two" id="en_description_two" cols="30" rows="2" required style="resize: none;">{{ isset($payment->en_description_two) ? $payment->en_description_two : '' }}</textarea>
+                                <textarea class="form-control no-resize" name="en_description_two" id="en_description_two" cols="30" rows="2" required style="resize: none;">{{ isset($payment->en_description_two) ? $payment->en_description_two : '' }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -145,7 +144,7 @@ CMS :: Edit Payment Method
                         <div class="col-lg-12 mb-3">
                             <div class="form-group">
                                 <label for="en_description_three" class="form-label">Description 03</label>
-                                    <textarea class="form-control no-resize" name="en_description_three" id="en_description_three" cols="30" rows="2" required style="resize: none;">{{ isset($payment->en_description_three) ? $payment->en_description_three : '' }}</textarea>
+                                <textarea class="form-control no-resize" name="en_description_three" id="en_description_three" cols="30" rows="2" required style="resize: none;">{{ isset($payment->en_description_three) ? $payment->en_description_three : '' }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -183,7 +182,7 @@ CMS :: Edit Payment Method
                         <div class="col-lg-12 mb-3">
                             <div class="form-group">
                                 <label for="en_description_four" class="form-label">Description 04</label>
-                                    <textarea class="form-control no-resize" name="en_description_four" id="en_description_four" cols="30" rows="2" required style="resize: none;">{{ isset($payment->en_description_four) ? $payment->en_description_four : '' }}</textarea>
+                                <textarea class="form-control no-resize" name="en_description_four" id="en_description_four" cols="30" rows="2" required style="resize: none;">{{ isset($payment->en_description_four) ? $payment->en_description_four : '' }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -221,7 +220,7 @@ CMS :: Edit Payment Method
                         <div class="col-lg-12 mb-3">
                             <div class="form-group">
                                 <label for="en_description_five" class="form-label">Description 05</label>
-                                    <textarea class="form-control no-resize" name="en_description_five" id="en_description_five" cols="30" rows="2" required style="resize: none;">{{ isset($payment->en_description_five) ? $payment->en_description_five : '' }}</textarea>
+                                <textarea class="form-control no-resize" name="en_description_five" id="en_description_five" cols="30" rows="2" required style="resize: none;">{{ isset($payment->en_description_five) ? $payment->en_description_five : '' }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -259,7 +258,7 @@ CMS :: Edit Payment Method
                         <div class="col-lg-12 mb-3">
                             <div class="form-group">
                                 <label for="en_description_six" class="form-label">Description 06</label>
-                                    <textarea class="form-control no-resize" name="en_description_six" id="en_description_six" cols="30" rows="2" required style="resize: none;">{{ isset($payment->en_description_six) ? $payment->en_description_six : '' }}</textarea>
+                                <textarea class="form-control no-resize" name="en_description_six" id="en_description_six" cols="30" rows="2" required style="resize: none;">{{ isset($payment->en_description_six) ? $payment->en_description_six : '' }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -297,7 +296,7 @@ CMS :: Edit Payment Method
                         <div class="col-lg-12 mb-3">
                             <div class="form-group">
                                 <label for="en_description_seven" class="form-label">Description 07</label>
-                                    <textarea class="form-control no-resize" name="en_description_seven" id="en_description_seven" cols="30" rows="2" style="resize: none;">{{ isset($payment->en_description_seven) ? $payment->en_description_seven : '' }}</textarea>
+                                <textarea class="form-control no-resize" name="en_description_seven" id="en_description_seven" cols="30" rows="2" style="resize: none;">{{ isset($payment->en_description_seven) ? $payment->en_description_seven : '' }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -335,7 +334,7 @@ CMS :: Edit Payment Method
                         <div class="col-lg-12 mb-3">
                             <div class="form-group">
                                 <label for="en_description_eight" class="form-label">Description 08</label>
-                                    <textarea class="form-control no-resize" name="en_description_eight" id="en_description_eight" cols="30" rows="2" style="resize: none;">{{ isset($payment->en_description_eight) ? $payment->en_description_eight : '' }}</textarea>
+                                <textarea class="form-control no-resize" name="en_description_eight" id="en_description_eight" cols="30" rows="2" style="resize: none;">{{ isset($payment->en_description_eight) ? $payment->en_description_eight : '' }}</textarea>
                             </div>
                         </div>
                     </div>

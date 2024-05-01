@@ -30,6 +30,14 @@ Admin :: Preview Online Registration
                             <td> {{ $registration_details->created_at->format('d F Y'); }}</td>
                         </tr>
                         <tr>
+                            <td>KAM Category</td>
+                            <td>{{$registration_details->kam_category  }}</td>
+                        </tr>
+                        <tr>
+                            <td>KAM Name</td>
+                            <td>{{$registration_details->kam_name  }}</td>
+                        </tr>
+                        <tr>
                             <td>Package Name</td>
                             <td> {{ $registration_details->en_package_name }}</td>
                         </tr>

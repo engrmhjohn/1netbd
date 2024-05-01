@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\BuyPackage;
 use App\Models\TC;
+use App\Models\KAM;
 use App\Models\CompanyInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\NewForm;
 
 use \Mpdf\Mpdf;
 
@@ -47,6 +49,11 @@ class PacakgeBuyController extends Controller
         ]);
         $buy = new BuyPackage();
         $buy->admin_id = $request->admin_id;
+        $buy->kam_category = $request->kam_category;
+        $buy->kam_name = $request->kam_name;
+        if ($request->kam_category === 'Own') {
+            $buy->kam_name = $request->name;
+        }
         $buy->en_package_name = $request->en_package_name;
         $buy->en_mbps_value = $request->en_mbps_value;
         $buy->en_amount = $request->en_amount;
@@ -68,6 +75,10 @@ class PacakgeBuyController extends Controller
 
         $request->session()->put('user_info', $buy);
 
+        // Send email notification
+        $newForm = $request->all();
+        Mail::to('johnsubcse@gmail.com')->send(new NewForm($newForm));
+
         return redirect(route('success_buy_package', $buy->id));
     }
 
@@ -81,15 +92,19 @@ class PacakgeBuyController extends Controller
     public function editBuyPackage($id)
     {
         $registration = BuyPackage::find($id);
+        $kam = KAM::where('status','1')->get();
 
         return view('backend.admin.registration.edit', [
-            'registration' => $registration
+            'registration' => $registration,
+            'kam' => $kam
         ]);
     }
     public function updateBuyPackage(Request $request)
     {
         $buy = BuyPackage::find($request->buy_id);
         $buy->admin_id = $request->admin_id;
+        $buy->kam_category = $request->kam_category;
+        $buy->kam_name = $request->kam_name;
         $buy->en_package_name = $request->en_package_name;
         $buy->en_mbps_value = $request->en_mbps_value;
         $buy->en_amount = $request->en_amount;
@@ -105,6 +120,9 @@ class PacakgeBuyController extends Controller
         $buy->nid_number = $request->nid_number;
         $buy->address = $request->address;
         $buy->remarks = $request->remarks;
+
+        // If kam_name is empty, set it to the value of name
+        $buy->kam_name = $request->kam_name ?: $request->name;
 
         if ($request->file('photo')) {
             if (isset($buy)) {

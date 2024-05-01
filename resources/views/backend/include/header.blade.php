@@ -7,7 +7,7 @@
             <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar"
                 href="javascript:void(0)"></a>
             <!-- sidebar-toggle-->
-            <a class="logo-horizontal " href="{{ url('/') }}">
+            <a class="logo-horizontal " href="{{ url('dashboard') }}">
                 <img src="{{ asset($company_info->white_logo) }}" class="header-brand-img desktop-logo"
                     alt="logo" style="height: auto; max-width: 165px;">
                 <img src="{{ asset($company_info->color_logo) }}" class="header-brand-img light-logo1"
@@ -58,7 +58,7 @@
                                             @if( Auth::user()->role == '2')
                                             <small class="text-muted">Super Admin</small>
                                             @elseif( Auth::user()->role == '1')
-                                            <small class="text-muted">Employee</small>
+                                            <small class="text-muted">Admin</small>
                                             @else
                                             <small class="text-muted">Will be Admin</small>
                                             @endif
