@@ -16062,9 +16062,10 @@ table.table-bordered.dataTable thead tr:first-child td {
 }
 
 .dt-buttons.btn-group {
-    position: absolute;
+    /* position: absolute; */
+    position: relative;
     inset-block-start: 0;
-    inset-inline-start: 156px;
+    /* inset-inline-start: 156px; */
 }
 
 .notify-time {
