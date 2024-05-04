@@ -124,7 +124,7 @@
                                                     class="input-group-text bg-white text-muted">
                                                     <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
                                                 </a>
-                                                <input class="input100 border-start-0 form-control ms-0" type="password" id="password" name="password" required autocomplete="new-password" placeholder="Password">
+                                                <input class="input100 border-start-0 form-control ms-0" type="password" id="password" name="password" required autocomplete="new-password" placeholder="Password (Min. 8)">
                                             </div>
                                             <div class="wrap-input100 validate-input input-group" id="Password-toggle">
                                                 <a href="javascript:void(0)"

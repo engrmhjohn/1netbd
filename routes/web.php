@@ -152,8 +152,8 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
     Route::controller(AdminController::class)->prefix('/admin')->name('admin.')->group(function () {
         Route::get('/profile-admin', 'adminProfile')->name('profile_admin');
         Route::delete('/delete-admin/{id}', 'deleteAdmin')->name('delete_admin');
-        Route::get('/employee-list', 'employeeList')->name('employee_list');
-        Route::get('/pending-employee-list', 'pendingEmployeeList')->name('pending_employee_list');
+        Route::get('/admin-list', 'employeeList')->name('employee_list');
+        Route::get('/pending-admin-list', 'pendingEmployeeList')->name('pending_employee_list');
     });
 
     //both admin and user will change the avatar and packge and add
