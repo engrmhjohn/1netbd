@@ -74,6 +74,10 @@ Admin :: Preview Online Registration
                             <td>{{ $registration_details->name }}</td>
                         </tr>
                         <tr>
+                            <td>Username</td>
+                            <td>{{ $registration_details->username }}</td>
+                        </tr>
+                        <tr>
                             <td>Phone</td>
                             <td>{{ $registration_details->phone }}</td>
                         </tr>

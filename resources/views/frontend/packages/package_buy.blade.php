@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+                    <div class="col-lg-{{ Auth::check() && (Auth::user()->role == '1' || Auth::user()->role == '2') ? '3' : '4' }} col-md-4 col-12 mb-3">
                         <div class="form-group">
                             <label for="name" class="form-label">Full Name*</label>
                             <input type="text" class="form-control" name="name" id="name" placeholder="Full Name"
@@ -50,7 +50,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+                    <div class="col-lg-{{ Auth::check() && (Auth::user()->role == '1' || Auth::user()->role == '2') ? '3' : '4' }} col-md-4 col-12 mb-3">
                         <div class="form-group">
                             <label for="phone" class="form-label">Contact Number*</label>
                             <input type="text" class="form-control" name="phone" id="phone"
@@ -60,7 +60,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+                    <div class="col-lg-{{ Auth::check() && (Auth::user()->role == '1' || Auth::user()->role == '2') ? '3' : '4' }} col-md-4 col-12 mb-3">
                         <div class="form-group">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" name="email" id="email" placeholder="Email"
@@ -70,6 +70,20 @@
                             @enderror
                         </div>
                     </div>
+                    @auth
+                    @if (Auth::user()->role == '1' || Auth::user()->role == '2')
+                    <div class="col-lg-3 col-md-4 col-12 mb-3">
+                        <div class="form-group">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" name="username" id="username"
+                                placeholder="Username" autocomplete="username">
+                            @error('username')
+                                <strong class="error_form">{{ $message }}</strong>
+                            @enderror
+                        </div>
+                    </div>
+                    @endif
+                    @endauth
                     <div class="col-lg-4 col-md-4 col-12 mb-3">
                         <label for="photo">Photo* (Passport Size)</label>
                         <div class="card mb-2 text-center">

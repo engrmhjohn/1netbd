@@ -34,6 +34,7 @@ return new class extends Migration
             $table->longText('address');
             $table->longText('remarks');
             $table->longText('agree');
+            $table->string('username');
             $table->string('status')->default('0');
             $table->timestamps();
         });

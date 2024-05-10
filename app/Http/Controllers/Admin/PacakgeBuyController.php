@@ -68,6 +68,7 @@ class PacakgeBuyController extends Controller
         $buy->address = $request->address;
         $buy->remarks = $request->remarks;
         $buy->agree = $request->agree;
+        $buy->username = $request->username;
         $buy->photo = image_upload_passport_pic($request->photo);
         $buy->nid_front = image_upload_nid($request->nid_front);
         $buy->nid_back = image_upload_nid($request->nid_back);
@@ -120,6 +121,7 @@ class PacakgeBuyController extends Controller
         $buy->nid_number = $request->nid_number;
         $buy->address = $request->address;
         $buy->remarks = $request->remarks;
+        $buy->username = $request->username;
 
         // If kam_name is empty, set it to the value of name
         $buy->kam_name = $request->kam_name ?: $request->name;

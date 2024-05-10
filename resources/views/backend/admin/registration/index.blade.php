@@ -17,6 +17,7 @@ Admin :: Online Registration
                                 <th>SL</th>
                                 <th>Date</th>
                                 <th>Name</th>
+                                <th>Username</th>
                                 <th>Phone</th>
                                 <th>Package</th>
                                 <th>KAM</th>
@@ -30,6 +31,7 @@ Admin :: Online Registration
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->created_at->format('d F Y') }}</td>
                                 <td>{{ $user->name }}</td>
+                                <td>{{ $user->username }}</td>
                                 <td>{{ $user->phone }}</td>
                                 <td>{{ $user->en_package_name }} ({{ $user->en_mbps_value }} Mbps)</td>
                                 <td>{{ $user->kam_name }}</td>

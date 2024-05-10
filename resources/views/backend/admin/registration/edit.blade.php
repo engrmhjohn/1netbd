@@ -27,24 +27,31 @@ $formattedTotal = number_format($total, 0, '.', '');
                         <div class="col-lg-12">
                             <h2>{{ $registration->name }}'s Information</h2>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-12 mb-3">
+                        <div class="col-lg-3 col-md-4 col-12 mb-3">
                             <label for="name">Full Name*</label>
                             <input type="text" class="form-control" name="name" id="name" placeholder="Full name" required value="{{ isset($registration->name) ? $registration->name : '' }}">
                             @error('name')
                             <strong class="error_form">{{ $message }}</strong>
                             @enderror
                         </div>
-                        <div class="col-lg-4 col-md-4 col-12 mb-3">
+                        <div class="col-lg-3 col-md-4 col-12 mb-3">
                             <label for="phone">Contact Number*</label>
                             <input type="phone" class="form-control" name="phone" placeholder="Contact Number" required value="{{ isset($registration->phone) ? $registration->phone : '' }}">
                             @error('phone')
                             <strong class="error_form">{{ $message }}</strong>
                             @enderror
                         </div>
-                        <div class="col-lg-4 col-md-4 col-12 mb-3">
+                        <div class="col-lg-3 col-md-4 col-12 mb-3">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" name="email" id="email" placeholder="email" value="{{ isset($registration->email) ? $registration->email : '' }}">
                             @error('email')
+                            <strong class="error_form">{{ $message }}</strong>
+                            @enderror
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-12 mb-3">
+                            <label for="username">Username</label>
+                            <input type="username" class="form-control" name="username" placeholder="Username" value="{{ isset($registration->username) ? $registration->username : '' }}">
+                            @error('username')
                             <strong class="error_form">{{ $message }}</strong>
                             @enderror
                         </div>
