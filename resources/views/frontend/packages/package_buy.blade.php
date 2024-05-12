@@ -74,9 +74,9 @@
                     @if (Auth::user()->role == '1' || Auth::user()->role == '2')
                     <div class="col-lg-3 col-md-4 col-12 mb-3">
                         <div class="form-group">
-                            <label for="username" class="form-label">Username</label>
+                            <label for="username" class="form-label">User ID</label>
                             <input type="text" class="form-control" name="username" id="username"
-                                placeholder="Username" autocomplete="username">
+                                placeholder="User ID" autocomplete="username">
                             @error('username')
                                 <strong class="error_form">{{ $message }}</strong>
                             @enderror

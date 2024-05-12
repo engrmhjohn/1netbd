@@ -17,7 +17,7 @@ Admin :: Online Registration
                                 <th>SL</th>
                                 <th>Date</th>
                                 <th>Name</th>
-                                <th>Username</th>
+                                <th>UserID</th>
                                 <th>Phone</th>
                                 <th>Package</th>
                                 <th>KAM</th>

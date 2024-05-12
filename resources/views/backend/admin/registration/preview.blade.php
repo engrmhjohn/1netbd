@@ -74,7 +74,7 @@ Admin :: Preview Online Registration
                             <td>{{ $registration_details->name }}</td>
                         </tr>
                         <tr>
-                            <td>Username</td>
+                            <td>User ID</td>
                             <td>{{ $registration_details->username }}</td>
                         </tr>
                         <tr>

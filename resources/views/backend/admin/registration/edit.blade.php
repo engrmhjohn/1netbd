@@ -49,8 +49,8 @@ $formattedTotal = number_format($total, 0, '.', '');
                             @enderror
                         </div>
                         <div class="col-lg-3 col-md-4 col-12 mb-3">
-                            <label for="username">Username</label>
-                            <input type="username" class="form-control" name="username" placeholder="Username" value="{{ isset($registration->username) ? $registration->username : '' }}">
+                            <label for="username">User ID</label>
+                            <input type="username" class="form-control" name="username" placeholder="User ID" value="{{ isset($registration->username) ? $registration->username : '' }}">
                             @error('username')
                             <strong class="error_form">{{ $message }}</strong>
                             @enderror
