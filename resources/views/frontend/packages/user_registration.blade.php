@@ -107,7 +107,7 @@
 
 <body>
 	<div class="logo text-center">
-        {{-- <img src="{{ asset($color_logo) }}" alt="" style="height: auto; max-width: 175px;"> --}}
+      <img src="{{ asset($color_logo) }}" alt="" style="height: auto; max-width: 175px;">
     </div>
     <div class="head-title">
         <h1 class="text-center m-0 p-0">New Connection Form</h1>
@@ -119,6 +119,7 @@
                     <div class="box-text">
                         <p class="m-0 pt-5 text-bold w-100">Registration Date : <span class="gray-color">{{ $userInfo->created_at->format('d F Y') }} </span></p>
                         <p><strong>Office Address:</strong> {{ $en_address }}</p> 
+                        <strong>User ID:</strong> {{ $userInfo->username }}
                     </div>
                 </td>
             </tr>
@@ -138,7 +139,7 @@
                 </td>
                 <td style="width: 30%">
                     <div class="box-text">
-                     {{-- <img src="{{ asset($userInfo->photo) }}" alt="" style="height: 120px; width: 130px; margin-left: 300px;">  --}}
+                    <img src="{{ asset($userInfo->photo) }}" alt="" style="height: 120px; width: 130px; margin-left: 300px;">
                      </div>
                 </td>
             </tr>
@@ -146,6 +147,7 @@
     </div>
             <div class="table-section bill-tbl w-100 mt-10">
             <table class="table w-100 mt-10">
+                @if($userInfo->nid_have == 'yes')
                 <tr>
                     <th class="w-50">NID Front Side</th>
                     <th class="w-50">NID Back Side</th>
@@ -153,15 +155,27 @@
                 <tr>
                     <td>
                         <div class="box-text" style="margin-right: 10px;">
-                           {{-- <img src="{{ asset($userInfo->nid_front) }}" alt="" style="height: 160px; width: 320px;">  --}}
+                          <img src="{{ asset($userInfo->nid_front) }}" alt="" style="height: 160px; width: 320px;">
                         </div>
                     </td>
                     <td>
                         <div class="box-text">
-                            {{-- <img src="{{ asset($userInfo->nid_back) }}" alt="" style="height: 160px; width: 320px;">  --}}
+                           <img src="{{ asset($userInfo->nid_back) }}" alt="" style="height: 160px; width: 320px;">
                         </div>
                     </td>
                 </tr>
+                @else
+                <tr>
+                    <th class="w-100">Birth Certificate</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="box-text" style="margin-right: 10px;">
+                          <img src="{{ asset($userInfo->birth_certificate) }}" alt="" style="height: 350px; width: 250px;">
+                        </div>
+                    </td>
+                </tr>
+                @endif
             </table>
         </div>
     <div class="table-section bill-tbl w-100 mt-10">

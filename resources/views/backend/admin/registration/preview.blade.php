@@ -86,7 +86,7 @@ Admin :: Preview Online Registration
                             <td>{{ $registration_details->email }}</td>
                         </tr>
                         <tr>
-                            <td>NID Number</td>
+                            <td>NID Number / Birth Certificate No</td>
                             <td>{{ $registration_details->nid_number }}</td>
                         </tr>
                         <tr>
@@ -101,6 +101,7 @@ Admin :: Preview Online Registration
                             <td>Photo</td>
                             <td> <img src="{{asset($registration_details->photo)}}" alt="" style="max-height: 150px"> </td>
                         </tr>
+                        @if($registration_details->nid_have == 'yes')
                         <tr>
                             <td>NID Front Side</td>
                             <td> <img src="{{asset($registration_details->nid_front)}}" alt="" style="max-width: 300px"> </td>
@@ -109,6 +110,12 @@ Admin :: Preview Online Registration
                             <td>NID Back Side</td>
                             <td> <img src="{{asset($registration_details->nid_back)}}" alt="" style="max-width: 300px"> </td>
                         </tr>
+                        @else
+                        <tr>
+                            <td>Birth Certificate</td>
+                            <td> <img src="{{asset($registration_details->birth_certificate)}}" alt="" style="max-width: 300px"> </td>
+                        </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>

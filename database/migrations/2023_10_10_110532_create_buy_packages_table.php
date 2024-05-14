@@ -31,9 +31,11 @@ return new class extends Migration
             $table->longText('photo');
             $table->longText('nid_front');
             $table->longText('nid_back');
+            $table->longText('birth_certificate');
             $table->longText('address');
             $table->longText('remarks');
             $table->longText('agree');
+            $table->string('nid_have');
             $table->string('username');
             $table->string('status')->default('0');
             $table->timestamps();

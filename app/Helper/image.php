@@ -66,6 +66,28 @@ function image_upload_nid($image, $title = '')
     return null;
 }
 
+function image_upload_birth_certificate($image, $title = '')
+{
+    if ($image) {
+            // Generate a unique image name
+            $imageName = time() . rand(1, 999) . '.webp';
+            
+            // Set up the directory for uploading
+            $directory = 'adminAssets/online-registration/';
+            $imgUrl = $directory . $imageName;
+
+            // Resize the image to pixels
+            Image::make($image->getRealPath())
+                ->resize(250, 350)
+                ->encode('webp', 20) // You can adjust the compression quality
+                ->save($imgUrl);
+
+            return $imgUrl;
+    }
+
+    return null;
+}
+
 function image_upload_passport_pic($image, $title = '')
 {
     if ($image) {
@@ -77,7 +99,7 @@ function image_upload_passport_pic($image, $title = '')
             $directory = 'adminAssets/online-registration/';
             $imgUrl = $directory . $imageName;
 
-            // Resize the image to 95x112 pixels
+            // Resize the image to pixels
             Image::make($image->getRealPath())
                 ->resize(150, 200)
                 ->encode('webp', 20) // You can adjust the compression quality

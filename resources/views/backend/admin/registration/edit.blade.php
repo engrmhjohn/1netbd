@@ -75,6 +75,7 @@ $formattedTotal = number_format($total, 0, '.', '');
                             @enderror
                         </div>
                     </div>
+                    @if($registration->nid_have == 'yes')
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12 mb-3">
                             <label for="photo">NID Front Side</label>
@@ -115,9 +116,32 @@ $formattedTotal = number_format($total, 0, '.', '');
                             @enderror
                         </div>
                     </div>
+                    @else
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12 mb-3">
+                            <label for="photo">Birth Certificate</label>
+                            <div class="card text-center">
+                                <div class="body">
+                                    <img class="img-fluid" src="{{ asset($registration->birth_certificate) }}" alt="Birth Certificate">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12 mb-3">
+                            <label for="birth_certificate">Choose Birth Certificate*</label>
+                            <div class="card">
+                                <div class="body">
+                                    <input type="file" name="birth_certificate" class="dropify" id="inputGroupFile02" accept=".jpg, .png, .jpeg">
+                                </div>
+                            </div>
+                            @error('birth_certificate')
+                            <strong class="error_form">{{ $message }}</strong>
+                            @enderror
+                        </div>
+                    </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-12 mb-3">
-                            <label for="nid_number">NID Number*</label>
+                            <label for="nid_number">NID / Birth Certificate Number*</label>
                             <input type="phone" name="nid_number" class="form-control" id="nid_number" placeholder="NID Number" required value="{{ isset($registration->nid_number) ? $registration->nid_number : '' }}">
                             @error('nid_number')
                             <strong class="error_form">{{ $message }}</strong>

@@ -43,7 +43,7 @@ Packages :: One Sky Communications Limited
                                 <td>{{ $userInfo->email }}</td>
                             </tr>
                             <tr>
-                                <td>NID Number</td>
+                                <td>NID / Birth Certificate Number</td>
                                 <td>{{ $userInfo->nid_number }}</td>
                             </tr>
                             <tr>
@@ -58,6 +58,7 @@ Packages :: One Sky Communications Limited
                                 <td>Photo</td>
                                 <td> <img src="{{asset($userInfo->photo)}}" alt="" style="max-height: 150px"> </td>
                             </tr>
+                            @if($userInfo->nid_have == 'yes')
                             <tr>
                                 <td>NID Front Side</td>
                                 <td> <img src="{{asset($userInfo->nid_front)}}" alt="" style="max-width: 300px"> </td>
@@ -66,6 +67,12 @@ Packages :: One Sky Communications Limited
                                 <td>NID Back Side</td>
                                 <td> <img src="{{asset($userInfo->nid_back)}}" alt="" style="max-width: 300px"> </td>
                             </tr>
+                            @else
+                            <tr>
+                                <td>Birth Certificate</td>
+                                <td> <img src="{{asset($userInfo->birth_certificate)}}" alt="" style="max-width: 300px"> </td>
+                            </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>

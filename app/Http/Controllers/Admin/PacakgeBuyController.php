@@ -28,8 +28,8 @@ class PacakgeBuyController extends Controller
             'address' => 'required|max:300',
             'agree' => 'required',
             'photo' => 'required|mimes:jpeg,png,jpg',
-            'nid_front' => 'required|mimes:jpeg,png,jpg',
-            'nid_back' => 'required|mimes:jpeg,png,jpg',
+            'nid_front' => 'mimes:jpeg,png,jpg',
+            'nid_back' => 'mimes:jpeg,png,jpg',
         ], [
             'name.required' => 'Full Name is required',
             'name.alpha_spaces' => 'Full Name should contain only alphabetic characters and spaces',
@@ -42,9 +42,7 @@ class PacakgeBuyController extends Controller
             'agree.required' => 'You must agree to the terms',
             'photo.required' => 'User Photo is required',
             'photo.mimes' => 'User Photo must be in JPEG, PNG, or JPG format',
-            'nid_front.required' => 'NID Front is required',
             'nid_front.mimes' => 'NID Front must be in JPEG, PNG, or JPG format',
-            'nid_back.required' => 'NID Back is required',
             'nid_back.mimes' => 'NID Back must be in JPEG, PNG, or JPG format',
         ]);
         $buy = new BuyPackage();
@@ -68,10 +66,12 @@ class PacakgeBuyController extends Controller
         $buy->address = $request->address;
         $buy->remarks = $request->remarks;
         $buy->agree = $request->agree;
+        $buy->nid_have = $request->nid_have;
         $buy->username = $request->username;
         $buy->photo = image_upload_passport_pic($request->photo);
         $buy->nid_front = image_upload_nid($request->nid_front);
         $buy->nid_back = image_upload_nid($request->nid_back);
+        $buy->birth_certificate = image_upload_birth_certificate($request->birth_certificate);
         $buy->save();
 
         $request->session()->put('user_info', $buy);
@@ -143,6 +143,13 @@ class PacakgeBuyController extends Controller
                 delete_image_special($buy->nid_back);
             }
             $buy->nid_back = image_upload_nid($request->nid_back);
+        }
+
+        if ($request->file('birth_certificate')) {
+            if (isset($buy)) {
+                delete_image_special($buy->birth_certificate);
+            }
+            $buy->birth_certificate = image_upload_birth_certificate($request->birth_certificate);
         }
 
         $buy->save();
