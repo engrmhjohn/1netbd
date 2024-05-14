@@ -59,6 +59,8 @@
                                             <small class="text-muted">Super Admin</small>
                                             @elseif( Auth::user()->role == '1')
                                             <small class="text-muted">Admin</small>
+                                            @elseif( Auth::user()->role == '3')
+                                            <small class="text-muted">Moderator</small>
                                             @else
                                             <small class="text-muted">Will be Admin</small>
                                             @endif

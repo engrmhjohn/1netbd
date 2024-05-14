@@ -198,7 +198,7 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
         </div>
     </div>
 </div>
-@elseif( Auth::user()->role == '1')
+@elseif( Auth::user()->role == '1' || Auth::user()->role == '3')
 <div class="row">
     <div class="card bg-success py-3 px-3 text-white">
         Hii <strong class="fw-bold text-uppercase">{{Auth::user()->name}}</strong> Welcome Back to One Net Admin Panel.
@@ -216,7 +216,7 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
     <div class="col-md-12">
         <div class="card">
             <div class="card-header bg-warning" style="padding-bottom: 0px;">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-4">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
                     <a href="{{ route('manage_buy_package') }}">
                         <div class="card overflow-hidden">
                             <div class="card-body">
@@ -227,7 +227,45 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                                     </div>
                                     <div class="ms-auto">
                                         <div class="chart-wrapper mt-1">
-                                            <canvas id="saleschart" class="h-8 w-9 chart-dropshadow"></canvas>
+                                            <i class="fe fe-folder" style="font-size: 30px;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                    <a href="{{ route('manage_buy_package') }}">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Success Connection</h6>
+                                        <h2 class="mb-0 number-font">{{ $total_success_connection_count }}</h2>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <div class="chart-wrapper mt-1">
+                                            <i class="fe fe-folder-plus" style="font-size: 30px;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                    <a href="{{ route('manage_buy_package') }}">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Pending Connection</h6>
+                                        <h2 class="mb-0 number-font">{{ $total_pending_connection_count }}</h2>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <div class="chart-wrapper mt-1">
+                                            <i class="fe fe-folder-minus" style="font-size: 30px;"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -266,7 +304,6 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                                         <span class="badge bg-danger-transparent rounded-pill text-danger p-2 px-3">Pending</span>
                                     </div>
                                     @else
-                                    <span class="badge bg-success badge-lg  me-1 mb-1 mt-1">Success</span>
                                     <span class="badge bg-danger-transparent rounded-pill text-danger p-2 px-3">Success</span>
                                     @endif
                                 </td>

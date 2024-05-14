@@ -53,7 +53,7 @@ Admin :: Online Registration
                                             </button></a>
                                         <a href="{{ route('export_package_pdf', $user->id) }}"><button class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-original-title="Download"><span class="fe fe-download fs-14"></span>
                                             </button></a>
-                                        @if(Auth::user()->role == '2')
+                                        @if(Auth::user()->role == '2' || Auth::user()->role == '3')
                                         <a href="{{ route('edit_buy_package', $user->id) }}"><button class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-original-title="Edit"><span class="fe fe-edit fs-14"></span>
                                             </button></a>
                                         @if($user->email)
