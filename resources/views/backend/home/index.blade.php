@@ -16,9 +16,17 @@ $total_super_admin_count = $total_super_admin->count();
 $total_admin = App\Models\User::where('role', '1')->get();
 $total_admin_count = $total_admin->count();
 
+//total editor admin
+$total_editor = App\Models\User::where('role', '3')->get();
+$total_editor_count = $total_editor->count();
+
+//total viewer admin
+$total_viewer = App\Models\User::where('role', '4')->get();
+$total_viewer_count = $total_viewer->count();
+
 //total pending admin
-$total_pending_admin = App\Models\User::where('role', '0')->get();
-$total_pending_admin_count = $total_pending_admin->count();
+$total_pending = App\Models\User::where('role', '0')->get();
+$total_pending_count = $total_pending->count();
 
 //total contact
 $total_contact = App\Models\ContactUs::get();
@@ -49,7 +57,7 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="mt-2">
-                                    <h6 class="">All Admin</h6>
+                                    <h6 class="">All Users</h6>
                                     <h2 class="mb-0 number-font">{{ $all_admin_count }}</h2>
                                 </div>
                                 <div class="ms-auto">
@@ -63,7 +71,7 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                 </a>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('manage_admin') }}">
+                <a href="{{ route('admin.super_admin_user') }}">
                     <div class="card overflow-hidden">
                         <div class="card-body">
                             <div class="d-flex">
@@ -82,12 +90,12 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                 </a>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('manage_admin') }}">
+                <a href="{{ route('admin.admin_user') }}">
                     <div class="card overflow-hidden">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="mt-2">
-                                    <h6 class="">Admin</h6>
+                                    <h6 class="">Total Admin</h6>
                                     <h2 class="mb-0 number-font">{{ $total_admin_count }}</h2>
                                 </div>
                                 <div class="ms-auto">
@@ -101,17 +109,55 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                 </a>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('manage_admin') }}">
+                <a href="{{ route('admin.editor_user') }}">
+                    <div class="card overflow-hidden">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="mt-2">
+                                    <h6 class="">Total Editor</h6>
+                                    <h2 class="mb-0 number-font">{{ $total_editor_count }}</h2>
+                                </div>
+                                <div class="ms-auto">
+                                    <div class="chart-wrapper mt-1">
+                                        <i class="fe fe-users" style="font-size: 30px;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                <a href="{{ route('admin.viewer_user') }}">
+                    <div class="card overflow-hidden">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="mt-2">
+                                    <h6 class="">Total Viewer</h6>
+                                    <h2 class="mb-0 number-font">{{ $total_viewer_count }}</h2>
+                                </div>
+                                <div class="ms-auto">
+                                    <div class="chart-wrapper mt-1">
+                                        <i class="fe fe-users" style="font-size: 30px;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                <a href="{{ route('admin.pending_user') }}">
                     <div class="card overflow-hidden">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="mt-2">
                                     <h6 class="">Pending Admin</h6>
-                                    <h2 class="mb-0 number-font">{{ $total_pending_admin_count }}</h2>
+                                    <h2 class="mb-0 number-font">{{ $total_pending_count }}</h2>
                                 </div>
                                 <div class="ms-auto">
                                     <div class="chart-wrapper mt-1">
-                                        <i class="fe fe-user-x" style="font-size: 30px;"></i>
+                                        <i class="fe fe-loader" style="font-size: 30px;"></i>
                                     </div>
                                 </div>
                             </div>

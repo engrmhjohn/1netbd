@@ -1,6 +1,6 @@
 @extends('backend.master')
 @section('title')
-Admin :: User Management
+Admin :: Admin List
 @endsection
 @section('content')
 <div class="row">
@@ -26,7 +26,7 @@ Admin :: User Management
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($admin_user as $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->name }}</td>

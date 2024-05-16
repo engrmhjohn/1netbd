@@ -35,12 +35,29 @@ class AdminController extends Controller
         return redirect()->route('manage_admin')->with('message', 'Successfully Deleted!');
     }
 
-    public function employeeList(){
-        $employee = User::where('role','1')->get();
-        return view('backend.admin.employee',compact('employee'));
+    public function pendingUser(){
+        return view('backend.admin.pending_user',[
+            'pending_user' => User::where('role','0')->get()
+        ]);
     }
-    public function pendingEmployeeList(){
-        $pending_employee = User::where('role','0')->get();
-        return view('backend.admin.pending_employee',compact('pending_employee'));
+    public function adminUser(){
+        return view('backend.admin.admin_user',[
+            'admin_user' => User::where('role','1')->get()
+        ]);
+    }
+    public function superAdminUser(){
+        return view('backend.admin.super_admin_user',[
+            'super_admin_user' => User::where('role','2')->get()
+        ]);
+    }
+    public function viewerUser(){
+        return view('backend.admin.viewer_user',[
+            'viewer_user' => User::where('role','4')->get()
+        ]);
+    }
+    public function editorUser(){
+        return view('backend.admin.editor_user',[
+            'editor_user' => User::where('role','3')->get()
+        ]);
     }
 }
