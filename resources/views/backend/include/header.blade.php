@@ -60,9 +60,11 @@
                                             @elseif( Auth::user()->role == '1')
                                             <small class="text-muted">Admin</small>
                                             @elseif( Auth::user()->role == '3')
-                                            <small class="text-muted">Moderator</small>
+                                            <small class="text-muted">Editor</small>
+                                            @elseif( Auth::user()->role == '4')
+                                            <small class="text-muted">Viewer</small>
                                             @else
-                                            <small class="text-muted">Will be Admin</small>
+                                            <small class="text-muted">Not Verified</small>
                                             @endif
                                         </div>
                                     </div>

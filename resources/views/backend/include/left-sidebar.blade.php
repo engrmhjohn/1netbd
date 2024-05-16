@@ -62,7 +62,7 @@ $company_info = \App\Models\CompanyInfo::first();
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="side21">
                                         <ul class="sidemenu-list">
-                                            @if (Auth::user()->role == '1' || Auth::user()->role == '2' || Auth::user()->role == '3')
+                                            @if (Auth::user()->role == '1' || Auth::user()->role == '2' || Auth::user()->role == '3' || Auth::user()->role == '4')
                                             <li><a href="{{ route('manage_buy_package') }}" class="slide-item"> Registration
                                                     Manage</a></li>
                                             @endif

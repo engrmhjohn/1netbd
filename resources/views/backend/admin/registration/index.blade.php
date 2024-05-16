@@ -44,22 +44,26 @@ Admin :: Online Registration
                                 </td>
                                 <td name="bstable-actions">
                                     <div class="btn-list d-flex justify-content-center" style="gap: 10px;">
+                                        @if(Auth::user()->role !== '4')
                                         @if ($user->status == 0)
                                         <a class="btn btn-info btn-sm" href="{{ route('status', ['id' => $user->id]) }}">Mark as Done</a>
                                         @else
                                         <a class="btn btn-danger btn-sm" href="{{ route('status', ['id' => $user->id]) }}">Mark as Pending</a>
                                         @endif
+                                        @endif
                                         <a href="{{ route('preview_buy_package', $user->id) }}"><button class="btn btn-secondary btn-sm" data-bs-toggle="tooltip" data-bs-original-title="Preview"><span class="fe fe-eye fs-14"></span>
                                             </button></a>
                                         <a href="{{ route('export_package_pdf', $user->id) }}"><button class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-original-title="Download"><span class="fe fe-download fs-14"></span>
                                             </button></a>
-                                        @if(Auth::user()->role == '2' || Auth::user()->role == '3')
+                                        @if(Auth::user()->role == '2' || Auth::user()->role == '1' || Auth::user()->role == '3')
                                         <a href="{{ route('edit_buy_package', $user->id) }}"><button class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-original-title="Edit"><span class="fe fe-edit fs-14"></span>
                                             </button></a>
                                         @if($user->email)
                                         <a href="{{ route('new_registration_send_mail', $user->id) }}"><button class="btn btn-warning btn-sm" onclick="return confirm('Are you sure to send email?');" data-bs-toggle="tooltip" data-bs-original-title="Email"><span class="fe fe-mail fs-14"></span>
                                             </button></a>
                                         @endif
+                                        @endif
+                                        @if(Auth::user()->role !== '4' && Auth::user()->role !== '3')
                                         <form action="{{ route('delete_buy_package') }}" method="post" id="delete">
                                             @csrf
                                             <input type="hidden" name="registration_id" value="{{ $user->id }}">

@@ -40,7 +40,7 @@ Admin :: User Management
                                     </div>
                                     @elseif($user->role == 3)
                                     <div class="mt-sm-1 d-block">
-                                        <span class="tag tag-rounded text-primary">Moderator</span>
+                                        <span class="tag tag-rounded text-primary">Editor</span>
                                     </div>
                                     @else
                                     <div class="mt-sm-1 d-block">
@@ -54,22 +54,27 @@ Admin :: User Management
                                         <a class="btn btn-sm btn-success" href="{{ route('role', ['id' => $user->id, 'newRole' => 1]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Admin">
                                             <span class="fe fe-check-circle"> </span> Admin
                                         </a>
-                                        <a class="btn btn-sm btn-primary" href="{{ route('role', ['id' => $user->id, 'newRole' => 3]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Moderator">
-                                            <span class="fe fe-check-circle"> </span> Moderator
-                                        </a>
                                         <a class="btn btn-sm btn-danger" href="{{ route('role', ['id' => $user->id, 'newRole' => 2]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Super Admin">
                                             <span class="fe fe-check-circle"> </span> Super Admin
+                                        </a>
+                                        <a class="btn btn-sm btn-primary" href="{{ route('role', ['id' => $user->id, 'newRole' => 3]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Editor">
+                                            <span class="fe fe-check-circle"> </span> Editor
+                                        </a>
+                                        <a class="btn btn-sm btn-info" href="{{ route('role', ['id' => $user->id, 'newRole' => 4]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Viewer">
+                                            <span class="fe fe-check-circle"> </span> Viewer
                                         </a>
                                         @elseif($user->role == 1)
                                         <a class="btn btn-sm btn-danger" href="{{ route('role', ['id' => $user->id, 'newRole' => 0]) }}" data-bs-toggle="tooltip" data-bs-original-title="Remove Admin">
                                             <span class="fe fe-user-x"> </span> Admin
                                         </a>
-                                        <a class="btn btn-sm btn-primary" href="{{ route('role', ['id' => $user->id, 'newRole' => 3]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Moderator">
-                                            <span class="fe fe-check-circle"> </span> Moderator
-                                        </a>
                                         <a class="btn btn-sm btn-danger" href="{{ route('role', ['id' => $user->id, 'newRole' => 2]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Super Admin">
                                             <span class="fe fe-check-circle"> </span> Super Admin
                                         </a>
+                                        <a class="btn btn-sm btn-primary" href="{{ route('role', ['id' => $user->id, 'newRole' => 3]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Editor">
+                                            <span class="fe fe-check-circle"> </span> Editor
+                                        </a>
+                                        <a class="btn btn-sm btn-info" href="{{ route('role', ['id' => $user->id, 'newRole' => 4]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Viewer">
+                                            <span class="fe fe-check-circle"> </span> Viewer
                                         @elseif($user->role == 2)
                                         <a class="btn btn-sm btn-danger" href="{{ route('role', ['id' => $user->id, 'newRole' => 0]) }}" data-bs-toggle="tooltip" data-bs-original-title="Remove Super Admin">
                                             <span class="fe fe-user-x"> </span> Super Admin
@@ -77,18 +82,37 @@ Admin :: User Management
                                         <a class="btn btn-sm btn-success" href="{{ route('role', ['id' => $user->id, 'newRole' => 1]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Admin">
                                             <span class="fe fe-check-circle"> </span> Admin
                                         </a>
-                                        <a class="btn btn-sm btn-primary" href="{{ route('role', ['id' => $user->id, 'newRole' => 3]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Moderator">
-                                            <span class="fe fe-check-circle"> </span> Moderator
+                                        <a class="btn btn-sm btn-primary" href="{{ route('role', ['id' => $user->id, 'newRole' => 3]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Editor">
+                                            <span class="fe fe-check-circle"> </span> Editor
+                                        </a>
+                                        <a class="btn btn-sm btn-info" href="{{ route('role', ['id' => $user->id, 'newRole' => 4]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Viewer">
+                                            <span class="fe fe-check-circle"> </span> Viewer
                                         </a>
                                         @elseif($user->role == 3)
-                                        <a class="btn btn-sm btn-danger" href="{{ route('role', ['id' => $user->id, 'newRole' => 0]) }}" data-bs-toggle="tooltip" data-bs-original-title="Remove Moderator">
-                                            <span class="fe fe-user-x"> </span> Moderator
+                                        <a class="btn btn-sm btn-danger" href="{{ route('role', ['id' => $user->id, 'newRole' => 0]) }}" data-bs-toggle="tooltip" data-bs-original-title="Remove Editor">
+                                            <span class="fe fe-user-x"> </span> Editor
                                         </a>
                                         <a class="btn btn-sm btn-success" href="{{ route('role', ['id' => $user->id, 'newRole' => 1]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Admin">
                                             <span class="fe fe-check-circle"> </span> Admin
                                         </a>
                                         <a class="btn btn-sm btn-danger" href="{{ route('role', ['id' => $user->id, 'newRole' => 2]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Super Admin">
                                             <span class="fe fe-check-circle"> </span> Super Admin
+                                        </a>
+                                        <a class="btn btn-sm btn-info" href="{{ route('role', ['id' => $user->id, 'newRole' => 4]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Viewer">
+                                            <span class="fe fe-check-circle"> </span> Viewer
+                                        </a>
+                                        @elseif($user->role == 4)
+                                        <a class="btn btn-sm btn-danger" href="{{ route('role', ['id' => $user->id, 'newRole' => 0]) }}" data-bs-toggle="tooltip" data-bs-original-title="Remove Viewer">
+                                            <span class="fe fe-user-x"> </span> Viewer
+                                        </a>
+                                        <a class="btn btn-sm btn-success" href="{{ route('role', ['id' => $user->id, 'newRole' => 1]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Admin">
+                                            <span class="fe fe-check-circle"> </span> Admin
+                                        </a>
+                                        <a class="btn btn-sm btn-danger" href="{{ route('role', ['id' => $user->id, 'newRole' => 2]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Super Admin">
+                                            <span class="fe fe-check-circle"> </span> Super Admin
+                                        </a>
+                                        <a class="btn btn-sm btn-primary" href="{{ route('role', ['id' => $user->id, 'newRole' => 3]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Editor">
+                                            <span class="fe fe-check-circle"> </span> Editor
                                         </a>
                                         @endif
                                         <form action="{{ route('admin.delete_admin', ['id' => $user->id]) }}" method="post">
