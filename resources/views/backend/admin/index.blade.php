@@ -75,6 +75,7 @@ Admin :: User Management
                                         </a>
                                         <a class="btn btn-sm btn-info" href="{{ route('role', ['id' => $user->id, 'newRole' => 4]) }}" data-bs-toggle="tooltip" data-bs-original-title="Make Viewer">
                                             <span class="fe fe-check-circle"> </span> Viewer
+                                        </a>
                                         @elseif($user->role == 2)
                                         <a class="btn btn-sm btn-danger" href="{{ route('role', ['id' => $user->id, 'newRole' => 0]) }}" data-bs-toggle="tooltip" data-bs-original-title="Remove Super Admin">
                                             <span class="fe fe-user-x"> </span> Super Admin
