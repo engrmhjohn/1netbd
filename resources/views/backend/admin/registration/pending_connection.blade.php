@@ -1,13 +1,13 @@
 @extends('backend.master')
 @section('title')
-Admin :: Online Registration
+Admin :: Pending Connection List
 @endsection
 @section('content')
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                Online Registration List
+                Pending Connection List
             </div>
             <div class="card-body">
                 <a href="{{ route('dashboard') }}" class="btn btn-sm btn-success mb-3">
@@ -29,7 +29,7 @@ Admin :: Online Registration
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($registration as $user)
+                            @foreach ($pending_connection as $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->created_at->format('d F Y') }}</td>

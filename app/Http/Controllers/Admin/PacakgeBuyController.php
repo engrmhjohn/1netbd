@@ -90,6 +90,19 @@ class PacakgeBuyController extends Controller
         ]);
     }
 
+    public function pendingConnection()
+    {
+        return view('backend.admin.registration.pending_connection', [
+            'pending_connection' => BuyPackage::where('status','0')->orderBy('id', 'desc')->get()
+        ]);
+    }
+    public function completedConnection()
+    {
+        return view('backend.admin.registration.completed_connection', [
+            'completed_connection' => BuyPackage::where('status','1')->orderBy('id', 'desc')->get()
+        ]);
+    }
+
     public function editBuyPackage($id)
     {
         $registration = BuyPackage::find($id);

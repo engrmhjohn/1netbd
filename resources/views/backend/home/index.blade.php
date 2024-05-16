@@ -158,7 +158,7 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                 </a>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('manage_buy_package') }}">
+                <a href="{{ route('completed_connection') }}">
                     <div class="card overflow-hidden">
                         <div class="card-body">
                             <div class="d-flex">
@@ -177,7 +177,7 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                 </a>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('manage_buy_package') }}">
+                <a href="{{ route('pending_connection') }}">
                     <div class="card overflow-hidden">
                         <div class="card-body">
                             <div class="d-flex">
@@ -236,7 +236,7 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                     </a>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                    <a href="{{ route('manage_buy_package') }}">
+                    <a href="{{ route('completed_connection') }}">
                         <div class="card overflow-hidden">
                             <div class="card-body">
                                 <div class="d-flex">
@@ -255,7 +255,7 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                     </a>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                    <a href="{{ route('manage_buy_package') }}">
+                    <a href="{{ route('pending_connection') }}">
                         <div class="card overflow-hidden">
                             <div class="card-body">
                                 <div class="d-flex">

@@ -172,6 +172,8 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
 
     Route::controller(PacakgeBuyController::class)->group(function () {
         Route::get('/manage-buy-package', 'manageBuyPackage')->name('manage_buy_package');
+        Route::get('/pending-connection', 'pendingConnection')->name('pending_connection');
+        Route::get('/completed-connection', 'completedConnection')->name('completed_connection');
         Route::get('/status/{id}', 'status')->name('status');
         Route::post('/delete-buy-package', 'deleteBuyPackage')->name('delete_buy_package');
         Route::get('/edit-buy-package/{id}', 'editBuyPackage')->name('edit_buy_package');
