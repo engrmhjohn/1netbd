@@ -21,6 +21,7 @@ Admin :: User Management
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
+                                <th>Branch</th>
                                 <th>Role</th>
                                 <th class="text-center">Action</th>
                             </tr>
@@ -32,6 +33,7 @@ Admin :: User Management
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>
+                                <td>{{ $user->area->en_area_name ?? ''}}</td>
                                 <td>
                                     @if ($user->role == 2)
                                     <div class="mt-sm-1 d-block">
@@ -119,6 +121,9 @@ Admin :: User Management
                                             <span class="fe fe-check-circle"> </span> Editor
                                         </a>
                                         @endif
+                                        <a class="btn btn-sm btn-secondary" href="{{ route('edit_admin', $user->id) }}" data-bs-toggle="tooltip" data-bs-original-title="Edit Admin">
+                                            <span class="fe fe-edit"> </span> User
+                                        </a>
                                         <form action="{{ route('admin.delete_admin', ['id' => $user->id]) }}" method="post">
                                             <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');" type="submit" data-bs-toggle="tooltip" data-bs-original-title="Delete User"> <span class="fe fe-trash-2"> </span> User</button>
                                             @csrf

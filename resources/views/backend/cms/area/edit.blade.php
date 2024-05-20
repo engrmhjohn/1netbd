@@ -1,32 +1,26 @@
 @extends('backend.master')
 @section('title')
-CMS :: Edit KAM
+CMS :: Edit Registration Area
 @endsection
 @section('content')
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h2><strong> KAM</strong></h2>
+                <h2>Registration <strong>Area</strong></h2>
             </div>
             <div class="card-body">
-                <a href="{{ route('admin.manage_kam') }}" class="btn btn-sm btn-success">
-                    <i class="fa fa-mail-reply"></i> Back to Manage KAM
+                <a href="{{ route('admin.manage_area') }}" class="btn btn-sm btn-success">
+                    <i class="fa fa-mail-reply"></i> Back to Manage Registration Area
                 </a>
-                <form action="{{ route('admin.update_kam') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.update_area') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="kam_id" value="{{$kam->id}}">
+                    <input type="hidden" name="area_id" value="{{$area->id}}">
                     <div class="row">
                         <div class="col-lg-8 mb-3">
                             <div class="form-group">
-                                <label for="en_title">KAM Name</label>
-                                <input class="form-control" name="en_title" type="text" value="{{ isset($kam->en_title) ? $kam->en_title : '' }}">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="form-group">
-                                <label for="position">Position</label>
-                                <input class="form-control" name="position" type="text" value="{{ isset($kam->position) ? $kam->position : '' }}">
+                                <label for="en_area_name">Area Name</label>
+                                <input class="form-control" name="en_area_name" type="text" value="{{ isset($area->en_area_name) ? $area->en_area_name : '' }}">
                             </div>
                         </div>
                     </div>
@@ -37,11 +31,11 @@ CMS :: Edit KAM
                         <div class="col-md-9 mt-3">
                             <div class="form-group">
                                 <div class="radio inlineblock m-r-20">
-                                    <input type="radio" name="status" id="publish" class="with-gap" {{ isset($kam->status) && $kam->status == 1 ? 'checked' : '' }} checked value="1">
+                                    <input type="radio" name="status" id="publish" class="with-gap" {{ isset($area->status) && $area->status == 1 ? 'checked' : '' }} checked value="1">
                                     <label for="publish">Publish</label>
                                 </div>
                                 <div class="radio inlineblock">
-                                    <input type="radio" name="status" id="unpublish" class="with-gap" {{ isset($kam->status) && $kam->status == 0 ? 'checked' : '' }} value="0">
+                                    <input type="radio" name="status" id="unpublish" class="with-gap" {{ isset($area->status) && $area->status == 0 ? 'checked' : '' }} value="0">
                                     <label for="unpublish">Unpublish</label>
                                 </div>
                             </div>

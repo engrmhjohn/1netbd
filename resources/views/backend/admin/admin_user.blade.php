@@ -21,6 +21,7 @@ Admin :: Admin List
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
+                                <th>Branch</th>
                                 <th>Role</th>
                                 <th class="text-center">Action</th>
                             </tr>
@@ -32,6 +33,7 @@ Admin :: Admin List
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>
+                                <td>{{ $user->area->en_area_name ?? ''}}</td>
                                 <td>
                                     @if ($user->role == 2)
                                     <div class="mt-sm-1 d-block">

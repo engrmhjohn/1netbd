@@ -40,6 +40,7 @@
     form .error_text {
         color: red;
     }
+
 </style>
 
 <body class="app ltr landing-page horizontal light-mode">
@@ -58,12 +59,10 @@
             <div class="hor-header header">
                 <div class="container main-container">
                     <div class="mobile_nav">
-                        <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar"
-                            href="javascript:void(0)"></a>
+                        <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
                         <!-- sidebar-toggle-->
                         <a class="logo-horizontal" href="{{ route('/') }}">
-                            <img src="{{ asset($company_info->color_logo) }}" class="header-brand-img light-logo1" alt="Color logo"
-                                style="max-width: 165px; height: auto; margin-top: -5px;">
+                            <img src="{{ asset($company_info->color_logo) }}" class="header-brand-img light-logo1" alt="Color logo" style="max-width: 165px; height: auto; margin-top: -5px;">
                             <img src="{{ asset($company_info->white_logo) }}" class="logo-3" style="height: auto; max-width: 165px; margin-top: -5px;">
                         </a>
                         <!-- LOGO -->
@@ -128,6 +127,15 @@
     <!-- CUSTOM JS -->
     <script src="{{ asset('backendAssets') }}/js/landing.js"></script>
     <script src="{{ asset('backendAssets') }}/js/custom.js"></script>
+
+    <!-- INTERNAL SELECT2 JS -->
+    <script src="{{ asset('backendAssets') }}/plugins/select2/select2.full.min.js"></script>
+    <!-- SELECT2 JS -->
+    <script src="{{ asset('backendAssets') }}/js/select2.js"></script>
+
+    <!-- FORMELEMENTS JS -->
+    <script src="{{ asset('backendAssets') }}/js/formelementadvnced.js"></script>
+    <script src="{{ asset('backendAssets') }}/js/form-elements.js"></script>
 
 </body>
 

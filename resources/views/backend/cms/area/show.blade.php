@@ -1,31 +1,25 @@
 @extends('backend.master')
 @section('title')
-CMS :: KAM
+CMS :: Registration Area
 @endsection
 @section('content')
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h2><strong>KAM</strong></h2>
+                <h2>Registration <strong>Area</strong></h2>
             </div>
             <div class="card-body">
-                <a href="{{ route('admin.manage_kam') }}" class="btn btn-sm btn-success" title="Add New">
-                    Manage KAM
+                <a href="{{ route('admin.manage_area') }}" class="btn btn-sm btn-success" title="Add New">
+                    Manage Registration Area
                 </a>
-                <form action="{{ route('admin.save_kam') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.save_area') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-lg-8 mb-3">
                             <div class="form-group">
-                                <label for="en_title">KAM Name</label>
-                                <input class="form-control" name="en_title" type="text" required>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="form-group">
-                                <label for="position">Position</label>
-                                <input class="form-control" name="position" type="text" required>
+                                <label for="en_area_name">Area Name</label>
+                                <input class="form-control" name="en_area_name" type="text" required>
                             </div>
                         </div>
                     </div>

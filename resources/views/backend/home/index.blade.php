@@ -4,6 +4,7 @@ Admin :: Home
 @endsection
 @section('content')
 @php
+$user = Auth::user();
 //total admin (super and noraml)
 $all_admin = App\Models\User::get();
 $all_admin_count = $all_admin->count();
@@ -45,7 +46,15 @@ $total_connection = App\Models\BuyPackage::get();
 $total_connection_count = $total_connection->count();
 
 // last 10 query print
-$latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->get();
+$latest_registration = App\Models\BuyPackage::where('area_id', $user->area_id)->orderBy('id','desc')->take('10')->get();
+
+// reseller online count 
+$total_online_reseller_registration = App\Models\BuyPackage::where('area_id', $user->area_id)->get();
+$total_online_reseller_registration_count = $total_online_reseller_registration->count();
+$total_online_reseller_registration_pending = App\Models\BuyPackage::where('status', '0')->where('area_id', $user->area_id)->get();
+$total_online_reseller_registration_pending_count = $total_online_reseller_registration_pending->count();
+$total_online_reseller_registration_completed = App\Models\BuyPackage::where('status', '1')->where('area_id', $user->area_id)->get();
+$total_online_reseller_registration_completed_count = $total_online_reseller_registration_completed->count();
 @endphp
 @if (Auth::user()->role == '2')
 <div class="row">
@@ -244,7 +253,7 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
         </div>
     </div>
 </div>
-@elseif( Auth::user()->role == '1' || Auth::user()->role == '3')
+@elseif(Auth::user()->role == '1' || Auth::user()->role == '3' || Auth::user()->role == '4')
 <div class="row">
     <div class="card bg-success py-3 px-3 text-white">
         Hii <strong class="fw-bold text-uppercase">{{Auth::user()->name}}</strong> Welcome Back to One Net Admin Panel.
@@ -269,7 +278,7 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Online Registration</h6>
-                                        <h2 class="mb-0 number-font">{{ $total_connection_count }}</h2>
+                                        <h2 class="mb-0 number-font">{{ $total_online_reseller_registration_count }}</h2>
                                     </div>
                                     <div class="ms-auto">
                                         <div class="chart-wrapper mt-1">
@@ -288,7 +297,7 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Success Connection</h6>
-                                        <h2 class="mb-0 number-font">{{ $total_success_connection_count }}</h2>
+                                        <h2 class="mb-0 number-font">{{ $total_online_reseller_registration_completed_count }}</h2>
                                     </div>
                                     <div class="ms-auto">
                                         <div class="chart-wrapper mt-1">
@@ -307,7 +316,7 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Pending Connection</h6>
-                                        <h2 class="mb-0 number-font">{{ $total_pending_connection_count }}</h2>
+                                        <h2 class="mb-0 number-font">{{ $total_online_reseller_registration_pending_count }}</h2>
                                     </div>
                                     <div class="ms-auto">
                                         <div class="chart-wrapper mt-1">
@@ -331,7 +340,8 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Package</th>
-                                <th>KAM</th>
+                                <th>Branch</th>
+                                <th>Marketing</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -343,7 +353,8 @@ $latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->phone }}</td>
                                 <td>{{ $user->en_package_name }} ({{ $user->en_mbps_value }} Mbps)</td>
-                                <td>{{ $user->kam_name }}</td>
+                                <td>{{ $user->area->en_area_name ?? 'Nothing Selected'}}</td>
+                                <td>{{ $user->marketing_person_name }}</td>
                                 <td class="text-center">
                                     @if ($user->status == 0)
                                     <div class="mt-sm-1 d-block">

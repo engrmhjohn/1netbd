@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Area;
 use Illuminate\Http\Request;
 
 use App\Models\User;
@@ -63,16 +64,16 @@ class CMSController extends Controller
         return redirect(route('admin.profile_admin'))->with('message', 'User Email Successfully Updated!');
     }
 
-    public function updateUserUsername(Request $request)
+    public function updateUserEmployeeID(Request $request)
     {
         $request->validate([
-            'username' => 'required|string|unique:users,username',
+            'employee_id' => 'required|string|unique:users,employee_id',
         ]);
         
         $user_info               = User::find($request->id);
-        $user_info->username = $request->username;
+        $user_info->employee_id = $request->employee_id;
         $user_info->save();
-        return redirect(route('admin.profile_admin'))->with('message', 'User Username Successfully Updated!');
+        return redirect(route('admin.profile_admin'))->with('message', 'User Employee ID Successfully Updated!');
     }
 
     public function updateUserPhoto(Request $request)
@@ -100,6 +101,13 @@ class CMSController extends Controller
         $user_info->save();
 
         return redirect(route('admin.profile_admin'))->with('message', 'Password successfully updated!');
+    }
+    public function updateBranchName(Request $request)
+    {
+        $user_info               = User::find($request->id);
+        $user_info->area_id = $request->area_id;
+        $user_info->save();
+        return redirect(route('admin.profile_admin'))->with('message', 'Branch Name Successfully Updated!');
     }
 
     public function addPackage()
@@ -186,47 +194,45 @@ class CMSController extends Controller
         return redirect()->route('admin.manage_package')->with('message', 'Successfully Deleted!');
     }
 
-    public function addKAM(){
-        return view('backend.cms.kam.show');
+    public function addArea(){
+        return view('backend.cms.area.show');
     }
 
-    public function saveKAM(Request $request){
-        $kam = new KAM();
-        $kam->en_title = $request->en_title;
-        $kam->position = $request->position;
-        $kam->status = $request->status;
-        $kam->save();
-        return redirect(route('admin.manage_kam'))->with('message', 'Successfully Added!');
+    public function saveArea(Request $request){
+        $area = new Area();
+        $area->en_area_name = $request->en_area_name;
+        $area->status = $request->status;
+        $area->save();
+        return redirect(route('admin.manage_area'))->with('message', 'Successfully Added!');
     }
 
-    public function manageKAM(){
-        return view('backend.cms.kam.index',[
-            'kam' => KAM::orderBy('position','asc')->get()
+    public function manageArea(){
+        return view('backend.cms.area.index',[
+            'area' => Area::orderBy('id','asc')->get()
         ]);
     }
 
-    public function editKAM($id){
-        $kam = KAM::find($id);
-        return view('backend.cms.kam.edit',[
-            'kam' => $kam
+    public function editArea($id){
+        $area = Area::find($id);
+        return view('backend.cms.area.edit',[
+            'area' => $area
         ]);
     }
 
-    public function updateKAM(Request $request){
-        $kam               = KAM::find($request->kam_id);
-        $kam->en_title = $request->en_title;
-        $kam->position = $request->position;
-        $kam->status = $request->status;
-        $kam->save();
-        return redirect(route('admin.manage_kam'))->with('message', 'Successfully Updated!');
+    public function updateArea(Request $request){
+        $area               = Area::find($request->area_id);
+        $area->en_area_name = $request->en_area_name;
+        $area->status = $request->status;
+        $area->save();
+        return redirect(route('admin.manage_area'))->with('message', 'Successfully Updated!');
     }
 
-    public function deleteKAM(Request $request)
+    public function deleteArea(Request $request)
     {
-        $kam = KAM::find($request->kam_id);
-        $kam->delete();
+        $area = Area::find($request->area_id);
+        $area->delete();
 
-        return redirect()->route('admin.manage_kam')->with('message', 'Successfully Deleted!');
+        return redirect()->route('admin.manage_area')->with('message', 'Successfully Deleted!');
     }
 
     public function addbtrcApprovedPackage(){

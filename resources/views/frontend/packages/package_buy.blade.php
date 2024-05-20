@@ -38,7 +38,7 @@ Buy Package :: One Net
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-{{ Auth::check() && (Auth::user()->role == '1' || Auth::user()->role == '2') ? '3' : '4' }} col-md-4 col-12 mb-3">
+                <div class="col-lg-4 col-md-4 col-12 mb-3">
                     <div class="form-group">
                         <label for="name" class="form-label">Full Name*</label>
                         <input type="text" class="form-control" name="name" id="name" placeholder="Full Name" autocomplete="name" required>
@@ -47,7 +47,7 @@ Buy Package :: One Net
                         @enderror
                     </div>
                 </div>
-                <div class="col-lg-{{ Auth::check() && (Auth::user()->role == '1' || Auth::user()->role == '2') ? '3' : '4' }} col-md-4 col-12 mb-3">
+                <div class="col-lg-4 col-md-4 col-12 mb-3">
                     <div class="form-group">
                         <label for="phone" class="form-label">Contact Number*</label>
                         <input type="text" class="form-control" name="phone" id="phone" placeholder="Contact Number" autocomplete="phone" required>
@@ -56,7 +56,7 @@ Buy Package :: One Net
                         @enderror
                     </div>
                 </div>
-                <div class="col-lg-{{ Auth::check() && (Auth::user()->role == '1' || Auth::user()->role == '2') ? '3' : '4' }} col-md-4 col-12 mb-3">
+                <div class="col-lg-4 col-md-4 col-12 mb-3">
                     <div class="form-group">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" name="email" id="email" placeholder="Email" autocomplete="email">
@@ -65,20 +65,6 @@ Buy Package :: One Net
                         @enderror
                     </div>
                 </div>
-                @auth
-                @if (Auth::user()->role == '1' || Auth::user()->role == '2')
-                <div class="col-lg-3 col-md-4 col-12 mb-3">
-                    <div class="form-group">
-                        <label for="username" class="form-label">User ID</label>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="User ID" autocomplete="username">
-                        @error('username')
-                        <strong class="error_form">{{ $message }}</strong>
-                        @enderror
-                    </div>
-                </div>
-                @endif
-                @endauth
-                
                 <div class="col-xl-12 col-md-12">
                     <div class="form-group">
                         <div class="form-label">Register with</div>
@@ -89,7 +75,7 @@ Buy Package :: One Net
                             </label>
                             <label class="custom-control custom-radio-md">
                                 <input type="radio" class="custom-control-input" name="nid_have" value="no">
-                                <span class="custom-control-label">Birth Certificate</span>
+                                <span class="custom-control-label">Birth Certificate / Passport</span>
                             </label>
                         </div>
                     </div>
@@ -128,10 +114,10 @@ Buy Package :: One Net
                     @enderror
                 </div>
                 <div class="col-lg-6 col-md-6 col-12 mb-3" id="birth-1">
-                    <label for="birth_certificate">Birth Certificate*</label>
+                    <label for="birth_certificate">Birth Certificate / Passport*</label>
                     <div class="card mb-2 d-flex align-items-center">
-                        <p class="bg-warning-transparent">Birth Certificate Pic should be as below, if not please crop and rotate before uploading</p>
-                        <img src="{{ asset('backendAssets') }}/static_images/Birth Certificate.webp" style="height: 240px; width: 200px;" alt="Sample of User's Birth Certificate">
+                        <p class="bg-warning-transparent">Birth Certificate / Passport Pic should be as below, if not please crop and rotate before uploading</p>
+                        <img src="{{ asset('backendAssets') }}/static_images/Birth Certificate.webp" style="height: 240px; width: 200px;" alt="Sample of User's Birth Certificate / Passport">
                     </div>
                     <input type="file" class="dropify" name="birth_certificate" accept=".jpg, .png, image/jpeg, image/png">
                     @error('birth_certificate')
@@ -140,7 +126,7 @@ Buy Package :: One Net
                 </div>
                 <div class="col-md-12 mb-3">
                     <div class="input-group">
-                        <span class="input-group-text" id="nid_number">NID / Birth Certificate Number*</span>
+                        <span class="input-group-text" id="nid_number">NID / Birth Certificate / Passport Number*</span>
                         <input type="text" class="form-control" name="nid_number" id="nid_number" aria-describedby="basic-addon3">
                     </div>
                     @error('nid_number')
@@ -171,8 +157,7 @@ Buy Package :: One Net
                 <div class="form-check">
                     <input class="form-check-input is-invalid" type="checkbox" name="agree" value="1" id="invalidCheck3" required>
                     <label class="form-check-label" for="invalidCheck3">
-                        Agree to <a class="text-dark fw-bold" href="{{ route('terms_condition') }}">terms and
-                            conditions</a>
+                        Agree to <a class="text-dark fw-bold" href="{{ route('terms_condition') }}" style="text-decoration: underline;"> terms and conditions (Click to see)</a>
                     </label>
                     <div class="invalid-feedback">
 
@@ -183,22 +168,19 @@ Buy Package :: One Net
             <div class="row mb-3">
                 <div class="col-xl-4 col-lg-5 col-md-6 col-12">
                     <div class="mb-3">
-                        <label for="options" class="form-label"> <strong>Select KAM*</strong> </label>
-                        <select class="form-select" id="options" name="kam_category" onchange="showInputField()">
-                            <option value="" selected disabled>Please select one</option>
-                            @foreach ($kam as $item)
-                            <option value="{{ $item->en_title }}">{{ $item->en_title }}</option>
+                        <label class="form-label"> Select Branch / Area*</label>
+                        <select name="area_id" required class="form-control select2-show-search form-select" data-placeholder="Choose One">
+                            <option label="Choose one"></option>
+                            @foreach ($areas as $item)
+                            <option value="{{ $item->id }}">{{ $item->en_area_name }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-5 col-md-6 col-12">
-                    <div class="mb-3 d-none" id="nameInputField">
-                        <label for="kam_name" class="form-label">Enter Name:</label>
-                        <input type="text" name="kam_name" class="form-control">
-                    </div>
-                    <div class="mt-4 d-none" id="nameMessage">
-                        <mark>Your Full Name will be taken as KAM Name</mark>
+                    <div class="mb-3">
+                        <label for="marketing_person_name" class="form-label">Marketing Person Name (if any):</label>
+                        <input type="text" name="marketing_person_name" class="form-control">
                     </div>
                 </div>
             </div>
@@ -209,41 +191,22 @@ Buy Package :: One Net
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         // Initially, hide birth certificate fields
         $('#birth-1').hide();
 
         // Show/hide fields based on radio button selection
-        $('input[name="nid_have"]').change(function(){
-            if($(this).val() === 'yes'){
+        $('input[name="nid_have"]').change(function() {
+            if ($(this).val() === 'yes') {
                 $('#nid-1').show();
                 $('#nid-2').show();
                 $('#birth-1').hide();
-            } else if($(this).val() === 'no') {
+            } else if ($(this).val() === 'no') {
                 $('#nid-1').hide();
                 $('#nid-2').hide();
                 $('#birth-1').show();
             }
         });
     });
-</script>
-
-
-<script>
-    function showInputField() {
-        var selectBox = document.getElementById("options");
-        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-        var nameInputField = document.getElementById("nameInputField");
-        var nameMessage = document.getElementById("nameMessage");
-
-        if (selectedValue === "Own") {
-            nameInputField.classList.add("d-none");
-            nameMessage.classList.remove("d-none");
-        } else {
-            nameInputField.classList.remove("d-none");
-            nameMessage.classList.add("d-none");
-        }
-    }
-
 </script>
 @endsection

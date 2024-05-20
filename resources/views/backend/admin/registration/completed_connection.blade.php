@@ -23,7 +23,8 @@ Admin :: Completed Connection List
                                 <th>UserID</th>
                                 <th>Phone</th>
                                 <th>Package</th>
-                                <th>KAM</th>
+                                <th>Branch</th>
+                                <th>Marketing</th>
                                 <th>Status</th>
                                 <th class="text-center bg-warning text-white">Actions</th>
                             </tr>
@@ -37,7 +38,8 @@ Admin :: Completed Connection List
                                 <td>{{ $user->username }}</td>
                                 <td>{{ $user->phone }}</td>
                                 <td>{{ $user->en_package_name }} ({{ $user->en_mbps_value }} Mbps)</td>
-                                <td>{{ $user->kam_name }}</td>
+                                <td>{{ $user->area->en_area_name ?? 'Nothing Selected'}}</td>
+                                <td>{{ $user->marketing_person_name }}</td>
                                 <td class="text-center">
                                     @if ($user->status == 0)
                                     <span class="badge bg-warning badge-sm  me-1 mb-1 mt-1">Pending</span>

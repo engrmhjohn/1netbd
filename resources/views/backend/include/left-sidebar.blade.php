@@ -429,7 +429,7 @@ $company_info = \App\Models\CompanyInfo::first();
                 <li class="slide">
                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
                         <i class="side-menu__icon fa fa-paint-brush"></i>
-                        <span class="side-menu__label">KAM</span><i class="angle fe fe-chevron-right"></i>
+                        <span class="side-menu__label">Registration Area</span><i class="angle fe fe-chevron-right"></i>
                     </a>
                     <ul class="slide-menu">
                         <li class="panel sidetab-menu">
@@ -438,9 +438,9 @@ $company_info = \App\Models\CompanyInfo::first();
                                     <div class="tab-pane active" id="side21">
                                         <ul class="sidemenu-list">
                                             <li class="side-menu-label1"></li>
-                                            <li><a href="{{ route('admin.add_kam') }}" class="slide-item">Add
-                                                    KAM</a></li>
-                                            <li><a href="{{ route('admin.manage_kam') }}" class="slide-item">Manage KAM</a></li>
+                                            <li><a href="{{ route('admin.add_area') }}" class="slide-item">Add
+                                                    Area</a></li>
+                                            <li><a href="{{ route('admin.manage_area') }}" class="slide-item">Manage Area</a></li>
                                         </ul>
                                     </div>
                                 </div>

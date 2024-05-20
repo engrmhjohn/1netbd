@@ -14,4 +14,8 @@ class BuyPackage extends Model
     {
         return $this->hasOne(User::class,'id','admin_id');
     }
+    public function area()
+    {
+        return $this->hasOne(Area::class,'id','area_id');
+    }
 }

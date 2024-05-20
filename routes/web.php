@@ -35,6 +35,14 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
         Route::controller(AdminController::class)->prefix('/admin')->group(function () {
             Route::get('/role/{id}/{newRole}', 'role')->name('role');
             Route::get('/manage-admin', 'manageAdmin')->name('manage_admin');
+            Route::get('/edit-admin/{id}', 'editAdmin')->name('edit_admin');
+            Route::post('/update-user-name-by-admin', 'updateUserNameByAdmin')->name('update_user_name_by_admin');
+            Route::post('/update-user-phone-by-admin', 'updateUserPhoneByAdmin')->name('update_user_phone_by_admin');
+            Route::post('/update-user-email-by-admin', 'updateUserEmailByAdmin')->name('update_user_email_by_admin');
+            Route::post('/update-user-employee-id-by-admin', 'updateUserEmployeeIDByAdmin')->name('update_user_employee_id_by_admin');
+            Route::post('/update-user-photo-by-admin', 'updateUserPhotoByAdmin')->name('update_user_photo_by_admin');
+            Route::post('/update-user-password-by-admin', 'updateUserPasswordByAdmin')->name('update_user_password_by_admin');
+            Route::post('/update-branch-name-by-admin', 'updateBranchNameByAdmin')->name('update_branch_name_by_admin');
         });
     });
 
@@ -59,12 +67,12 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
             Route::post('/update-package', 'updatePackage')->name('update_package');
             Route::post('/delete-package', 'deletePackage')->name('delete_package');
 
-            Route::get('/add-kam', 'addKAM')->name('add_kam');
-            Route::post('/save-kam', 'saveKAM')->name('save_kam');
-            Route::get('/manage-kam', 'manageKAM')->name('manage_kam');
-            Route::get('/edit-kam/{id}', 'editKAM')->name('edit_kam');
-            Route::post('/update-kam', 'updateKAM')->name('update_kam');
-            Route::post('/delete-kam', 'deleteKAM')->name('delete_kam');
+            Route::get('/add-area', 'addArea')->name('add_area');
+            Route::post('/save-area', 'saveArea')->name('save_area');
+            Route::get('/manage-area', 'manageArea')->name('manage_area');
+            Route::get('/edit-area/{id}', 'editArea')->name('edit_area');
+            Route::post('/update-area', 'updateArea')->name('update_area');
+            Route::post('/delete-area', 'deleteArea')->name('delete_area');
 
             Route::get('/add-company-info', 'addCompanyInfo')->name('add_company_info');
             Route::post('/save-company-info', 'saveCompanyInfo')->name('save_company_info');
@@ -165,9 +173,10 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
         Route::post('/update-user-name', 'updateUserName')->name('update_user_name');
         Route::post('/update-user-phone', 'updateUserPhone')->name('update_user_phone');
         Route::post('/update-user-email', 'updateUserEmail')->name('update_user_email');
-        Route::post('/update-user-username', 'updateUserUsername')->name('update_user_username');
+        Route::post('/update-user-employee-id', 'updateUserEmployeeID')->name('update_user_employee_id');
         Route::post('/update-user-photo', 'updateUserPhoto')->name('update_user_photo');
         Route::post('/update-user-password', 'updateUserPassword')->name('update_user_password');
+        Route::post('/update-branch-name', 'updateBranchName')->name('update_branch_name');
 
         Route::get('/add-package', 'addPackage')->name('add_package');
         Route::post('/save-package', 'savePackage')->name('save_package');

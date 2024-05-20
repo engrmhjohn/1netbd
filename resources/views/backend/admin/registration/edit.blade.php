@@ -50,11 +50,37 @@ $formattedTotal = number_format($total, 0, '.', '');
                         </div>
                         <div class="col-lg-3 col-md-4 col-12 mb-3">
                             <label for="username">User ID</label>
-                            <input type="username" class="form-control" name="username" placeholder="User ID" value="{{ isset($registration->username) ? $registration->username : '' }}">
+                            <input type="username" class="form-control" name="username" placeholder="Ex: xyz10" value="{{ isset($registration->username) ? $registration->username : '' }}">
                             @error('username')
                             <strong class="error_form">{{ $message }}</strong>
                             @enderror
                         </div>
+                        <div class="col-lg-3 col-md-4 col-12 mb-3">
+                            <label for="ppoe_password">PPOE Password</label>
+                            <input type="ppoe_password" class="form-control" name="ppoe_password" placeholder="Password" value="{{ isset($registration->ppoe_password) ? $registration->ppoe_password : '' }}">
+                            @error('ppoe_password')
+                            <strong class="error_form">{{ $message }}</strong>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mt-3">
+                            Connection Type
+                        </div>
+                        <div class="col-md-9 mt-3">
+                            <div class="form-group">
+                                <div class="radio inlineblock m-r-20">
+                                    <input type="radio" name="connection_type" id="fiber_optics" class="with-gap" {{ isset($registration->connection_type) && $registration->connection_type == 1 ? 'checked' : '' }} value="1">
+                                    <label for="fiber_optics">Fiber Optics</label>
+                                </div>
+                                <div class="radio inlineblock">
+                                    <input type="radio" name="connection_type" id="utp" class="with-gap" {{ isset($registration->connection_type) && $registration->connection_type == 0 ? 'checked' : '' }} value="0">
+                                    <label for="utp">UTP</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-lg-2 col-md-3 col-12">
                             <label for="photo">Photo</label>
                             <div class="card">
@@ -141,7 +167,7 @@ $formattedTotal = number_format($total, 0, '.', '');
                     @endif
                     <div class="row">
                         <div class="col-md-12 mb-3">
-                            <label for="nid_number">NID / Birth Certificate Number*</label>
+                            <label for="nid_number">NID / Birth Certificate / Passport Number*</label>
                             <input type="phone" name="nid_number" class="form-control" id="nid_number" placeholder="NID Number" required value="{{ isset($registration->nid_number) ? $registration->nid_number : '' }}">
                             @error('nid_number')
                             <strong class="error_form">{{ $message }}</strong>
@@ -167,21 +193,21 @@ $formattedTotal = number_format($total, 0, '.', '');
                         </div>
                         <div class="col-lg-6 mb-3">
                             <div class="form-group">
-                                <label>KAM Category</label>
-                                <select name="kam_category" class="form-control form-select select2" data-bs-placeholder="Select a Category" required>
-                                    <option value="" disabled selected></option>
-                                    @foreach ($kam as $item)
-                                    <option value=" {{ $item->en_title }}" {{ isset($registration->kam_category) && $registration->kam_category == $item->en_title ? 'selected' : '' }}>
-                                        {{ $item->en_title }}
+                                <label>Select Branch*</label>
+                                <select name="area_id" class="form-control select2-show-search form-select" data-placeholder="Choose Branch" required>
+                                    <option value="" {{ empty($registration->area_id) ? 'selected' : 'Select a Branch' }}>Select a Branch</option>
+                                    @foreach ($areas as $item)
+                                    <option value="{{ $item->id }}" {{ !empty($registration->area_id) && $registration->area_id == $item->id ? 'selected' : '' }}>
+                                        {{ $item->en_area_name }}
                                     </option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="kam_name">KAM Person Name*</label>
-                            <input type="kam_name" name="kam_name" class="form-control" id="kam_name" required value="{{ isset($registration->kam_name) ? $registration->kam_name : '' }}">
-                            @error('kam_name')
+                            <label for="marketing_person_name">Marketing Person</label>
+                            <input type="marketing_person_name" name="marketing_person_name" class="form-control" id="marketing_person_name" value="{{ isset($registration->marketing_person_name) ? $registration->marketing_person_name : '' }}">
+                            @error('marketing_person_name')
                             <strong class="error_form">{{ $message }}</strong>
                             @enderror
                         </div>

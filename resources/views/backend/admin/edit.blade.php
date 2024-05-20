@@ -3,9 +3,6 @@
 Admin :: User Management
 @endsection
 @section('content')
-@php
-$areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->get();
-@endphp
 <!-- PAGE -->
 <div class="page">
     <div class="page-main">
@@ -15,7 +12,7 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title"> <strong>{{ Auth::user()->name }}</strong>'s Personal Information
+                            <div class="card-title"> <strong>{{ $user->name }}</strong>'s Personal Information
                             </div>
                         </div>
                     </div>
@@ -28,27 +25,27 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                         <div class="card-header">
                             <div class="card-title">Edit Profile Image</div>
                         </div>
-                        <form action="{{ route('admin.update_user_photo') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('update_user_photo_by_admin') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="id" value="{{ $user->id }}">
                             <div class="card-body">
                                 <div class="text-center chat-image mb-2">
                                     <div class="avatar avatar-xxl chat-profile mb-3 brround">
-                                        @if (Auth::user()->profile_photo_path)
-                                        <img alt="avatar" src="{{ asset(Auth::user()->profile_photo_path) }}" class="brround" style="width: 5rem; height: 5rem;">
+                                        @if ($user->profile_photo_path)
+                                        <img alt="avatar" src="{{ asset($user->profile_photo_path) }}" class="brround" style="width: 5rem; height: 5rem;">
                                         @else
                                         <img alt="avatar" src="{{ asset('backendAssets') }}/images/avatar/avatar.png" class="brround">
                                         @endif
                                     </div>
                                     <div class="main-chat-msg-name">
-                                        <h5 class="mb-1 text-dark fw-semibold">{{ Auth::user()->name }}</h5>
-                                        @if (Auth::user()->role == '2')
+                                        <h5 class="mb-1 text-dark fw-semibold">{{ $user->name }}</h5>
+                                        @if ($user->role == '2')
                                         <p class="text-muted mt-0 mb-0 pt-0 fs-13">Super Admin</p>
-                                        @elseif(Auth::user()->role == '1')
+                                        @elseif($user->role == '1')
                                         <p class="text-muted mt-0 mb-0 pt-0 fs-13">Admin</p>
-                                        @elseif(Auth::user()->role == '3')
+                                        @elseif($user->role == '3')
                                         <p class="text-muted mt-0 mb-0 pt-0 fs-13">Editor</p>
-                                        @elseif(Auth::user()->role == '4')
+                                        @elseif($user->role == '4')
                                         <p class="text-muted mt-0 mb-0 pt-0 fs-13">Viewer</p>
                                         @else
                                         <p class="text-muted mt-0 mb-0 pt-0 fs-13">Not Verified</p>
@@ -76,9 +73,9 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                             </div>
                             @endif
                         </div>
-                        <form action="{{ route('admin.update_user_password') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('update_user_password_by_admin') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="id" value="{{ $user->id }}">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -107,9 +104,9 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                         <div class="card-header">
                             <div class="card-title">Edit Name</div>
                         </div>
-                        <form action="{{ route('admin.update_user_name') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('update_user_name_by_admin') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="id" value="{{ $user->id }}">
                             <div class="card-body">
                                 @if ($errors->has('name'))
                                 <div class="alert alert-danger" role="alert">
@@ -122,7 +119,7 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="exampleInputname">Name</label>
-                                            <input type="text" class="form-control" name="name" id="exampleInputname" placeholder="Name" value="{{ Auth::user()->name }}">
+                                            <input type="text" class="form-control" name="name" id="exampleInputname" placeholder="Name" value="{{ $user->name }}">
                                         </div>
                                     </div>
                                 </div>
@@ -137,9 +134,9 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                         <div class="card-header">
                             <div class="card-title">Edit Employee ID</div>
                         </div>
-                        <form action="{{ route('admin.update_user_employee_id') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('update_user_employee_id_by_admin') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="id" value="{{ $user->id }}">
                             <div class="card-body">
                                 @if ($errors->has('employee_id'))
                                 <div class="alert alert-danger" role="alert">
@@ -152,7 +149,7 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="Employee ID">Employee ID</label>
-                                            <input type="text" class="form-control" name="employee_id" id="employee_id" placeholder="Employee ID" value="{{ Auth::user()->employee_id }}">
+                                            <input type="text" class="form-control" name="employee_id" id="employee_id" placeholder="Employee ID" value="{{ $user->employee_id }}">
                                         </div>
                                     </div>
                                 </div>
@@ -167,9 +164,9 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                         <div class="card-header">
                             <div class="card-title">Edit Email</div>
                         </div>
-                        <form action="{{ route('admin.update_user_email') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('update_user_email_by_admin') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="id" value="{{ $user->id }}">
                             <div class="card-body">
                                 @if ($errors->has('email'))
                                 <div class="alert alert-danger" role="alert">
@@ -182,7 +179,7 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Email</label>
-                                            <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="Email address" value="{{ Auth::user()->email }}">
+                                            <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="Email address" value="{{ $user->email }}">
                                         </div>
                                     </div>
                                 </div>
@@ -199,9 +196,9 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                         <div class="card-header">
                             <div class="card-title">Edit Number</div>
                         </div>
-                        <form action="{{ route('admin.update_user_phone') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('update_user_phone_by_admin') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="id" value="{{ $user->id }}">
                             <div class="card-body">
                                 @if ($errors->has('phone'))
                                 <div class="alert alert-danger" role="alert">
@@ -214,7 +211,7 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="exampleInputnumber">Contact Number</label>
-                                            <input type="number" class="form-control" id="exampleInputnumber" name="phone" placeholder="Contact number" value="{{ Auth::user()->phone }}">
+                                            <input type="number" class="form-control" id="exampleInputnumber" name="phone" placeholder="Contact number" value="{{ $user->phone }}">
                                         </div>
                                     </div>
                                 </div>
@@ -229,9 +226,9 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                         <div class="card-header">
                             <div class="card-title">Edit Branch</div>
                         </div>
-                        <form action="{{ route('admin.update_branch_name') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('update_branch_name_by_admin') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="id" value="{{ $user->id }}">
                             <div class="card-body">
                                 @if ($errors->has('area_id'))
                                 <div class="alert alert-danger" role="alert">
@@ -246,7 +243,7 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                                             <select name="area_id" required class="form-control select2-show-search form-select" data-placeholder="Choose Branch">
                                                 <option label="Choose one"></option>
                                                 @foreach ($areas as $item)
-                                                <option value="{{ $item->id }}" {{ isset(Auth::user()->area_id) ? (Auth::user()->area_id == $item->id ? 'selected' : '') : '' }}>
+                                                <option value="{{ $item->id }}" {{ isset($user->area_id) ? ($user->area_id == $item->id ? 'selected' : '') : '' }}>
                                                     {{ $item->en_area_name }}
                                                 </option>
                                                 @endforeach
@@ -271,18 +268,18 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                                     <tbody>
                                         <tr>
                                             <th>Account Created</th>
-                                            <td>{{ Auth::user()->created_at->format('d M Y') }}</td>
+                                            <td>{{ $user->created_at->format('d M Y') }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Your Role</th>
+                                            <th>User Role</th>
                                             <td>
-                                                @if (Auth::user()->role == 2)
+                                                @if ($user->role == 2)
                                                 Super Admin
-                                                @elseif(Auth::user()->role == 1)
+                                                @elseif($user->role == 1)
                                                 Admin
-                                                @elseif(Auth::user()->role == 3)
+                                                @elseif($user->role == 3)
                                                 Editor
-                                                @elseif(Auth::user()->role == 4)
+                                                @elseif($user->role == 4)
                                                 Viewer
                                                 @else
                                                 Not Verified
@@ -292,21 +289,6 @@ $areas = App\Models\Area::where('status', '1')->orderBy('en_area_name','asc')->g
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Delete Account</div>
-                        </div>
-                        <div class="card-body">
-                            <p>Please note, if you delete your account all of your data will be erased.</p>
-                        </div>
-                        <div class="card-footer text-end">
-                            <form action="{{ route('admin.delete_admin', ['id' => Auth::user()->id]) }}" method="post">
-                                <button class="btn btn-danger" onclick="return confirm('Are you sure?');" type="submit"> <span class="fe fe-trash-2"> </span> Delete Account</button>
-                                @csrf
-                                @method('delete')
-                            </form>
                         </div>
                     </div>
                 </div>

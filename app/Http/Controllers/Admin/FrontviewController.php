@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Area;
 use Illuminate\Http\Request;
 
 use App\Models\Package;
@@ -69,12 +70,12 @@ class FrontviewController extends Controller
     {
         $company_info = CompanyInfo::first();
         $package_buy = Package::where('id', $id)->where('status', 1)->first();
-        $kam = KAM::where('status', 1)->orderBy('position','asc')->get();
+        $areas = Area::where('status', 1)->orderBy('en_area_name','asc')->get();
     
         return view('frontend.packages.package_buy', [
             'package_buy' => $package_buy,
             'company_info' => $company_info,
-            'kam' => $kam
+            'areas' => $areas
         ]);
     }
 

@@ -24,6 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<int, string>
      */
     protected $fillable = [
+        'area_id',
         'name',
         'email',
         'employee_id',
@@ -60,4 +61,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+    public function area()
+    {
+        return $this->hasOne(Area::class,'id','area_id');
+    }
 }

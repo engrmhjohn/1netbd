@@ -30,19 +30,15 @@ Admin :: Preview Online Registration
                             <td> {{ $registration_details->created_at->format('d F Y'); }}</td>
                         </tr>
                         <tr>
-                            <td>KAM Category</td>
-                            <td>{{$registration_details->kam_category  }}</td>
-                        </tr>
-                        <tr>
-                            <td>KAM Name</td>
-                            <td>{{$registration_details->kam_name  }}</td>
+                            <td>Marketing Person</td>
+                            <td>{{$registration_details->marketing_person_name  }}</td>
                         </tr>
                         <tr>
                             <td>Package Name</td>
                             <td> {{ $registration_details->en_package_name }}</td>
                         </tr>
                         <tr>
-                            <td>Bandwith</td>
+                            <td>Bandwidth</td>
                             <td>{{ $registration_details->en_mbps_value }} MBPS</td>
                         </tr>
                         <tr>
@@ -78,6 +74,20 @@ Admin :: Preview Online Registration
                             <td>{{ $registration_details->username }}</td>
                         </tr>
                         <tr>
+                            <td>PPOE Password</td>
+                            <td>{{ $registration_details->ppoe_password }}</td>
+                        </tr>
+                        <tr>
+                            <td>Connection Type</td>
+                            @if ($registration_details->connection_type == '1')
+                            <td>Fiber Optics</td>
+                            @elseif ($registration_details->connection_type == '0')
+                            <td>UTP</td>
+                            @else
+                            <td>Nothing Selected</td>
+                            @endif
+                        </tr>
+                        <tr>
                             <td>Phone</td>
                             <td>{{ $registration_details->phone }}</td>
                         </tr>
@@ -86,7 +96,7 @@ Admin :: Preview Online Registration
                             <td>{{ $registration_details->email }}</td>
                         </tr>
                         <tr>
-                            <td>NID Number / Birth Certificate No</td>
+                            <td>NID Number / Birth Certificate / Passport No</td>
                             <td>{{ $registration_details->nid_number }}</td>
                         </tr>
                         <tr>

@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewForm;
+use App\Models\Area;
+use Illuminate\Support\Facades\Auth;
 
 use \Mpdf\Mpdf;
 
@@ -47,11 +49,7 @@ class PacakgeBuyController extends Controller
         ]);
         $buy = new BuyPackage();
         $buy->admin_id = $request->admin_id;
-        $buy->kam_category = $request->kam_category;
-        $buy->kam_name = $request->kam_name;
-        if ($request->kam_category === 'Own') {
-            $buy->kam_name = $request->name;
-        }
+        $buy->area_id = $request->area_id;
         $buy->en_package_name = $request->en_package_name;
         $buy->en_mbps_value = $request->en_mbps_value;
         $buy->en_amount = $request->en_amount;
@@ -67,7 +65,7 @@ class PacakgeBuyController extends Controller
         $buy->remarks = $request->remarks;
         $buy->agree = $request->agree;
         $buy->nid_have = $request->nid_have;
-        $buy->username = $request->username;
+        $buy->marketing_person_name = $request->marketing_person_name;
         $buy->photo = image_upload_passport_pic($request->photo);
         $buy->nid_front = image_upload_nid($request->nid_front);
         $buy->nid_back = image_upload_nid($request->nid_back);
@@ -78,47 +76,73 @@ class PacakgeBuyController extends Controller
 
         // Send email notification
         $newForm = $request->all();
-        Mail::to('johnsubcse@gmail.com')->send(new NewForm($newForm));
+        Mail::to('newclient@onesky.com.bd')->send(new NewForm($newForm));
 
         return redirect(route('success_buy_package', $buy->id));
     }
-
     public function manageBuyPackage()
     {
+        $user = Auth::user();
+
+        if ($user->role == '2') {
+            // Super admin can see all records
+            $registrations = BuyPackage::orderBy('id', 'desc')->get();
+        } else {
+            // Other admins can see only the records matching their area_id
+            $registrations = BuyPackage::where('area_id', $user->area_id)->orderBy('id', 'desc')->get();
+        }
+
         return view('backend.admin.registration.index', [
-            'registration' => BuyPackage::orderBy('id', 'desc')->get()
+            'registration' => $registrations
         ]);
     }
 
     public function pendingConnection()
     {
+        $user = Auth::user();
+
+        if ($user->role == '2') {
+            // Super admin can see all records
+            $pending_connection = BuyPackage::where('status', '0')->orderBy('id', 'desc')->get();
+        } else {
+            // Other admins can see only the records matching their area_id
+            $pending_connection = BuyPackage::where('area_id', $user->area_id)->where('status', '0')->orderBy('id', 'desc')->get();
+        }
         return view('backend.admin.registration.pending_connection', [
-            'pending_connection' => BuyPackage::where('status','0')->orderBy('id', 'desc')->get()
+            'pending_connection' => $pending_connection
         ]);
     }
     public function completedConnection()
     {
+        $user = Auth::user();
+
+        if ($user->role == '2') {
+            // Super admin can see all records
+            $completed_connection = BuyPackage::where('status', '1')->orderBy('id', 'desc')->get();
+        } else {
+            // Other admins can see only the records matching their area_id
+            $completed_connection = BuyPackage::where('area_id', $user->area_id)->where('status', '1')->orderBy('id', 'desc')->get();
+        }
         return view('backend.admin.registration.completed_connection', [
-            'completed_connection' => BuyPackage::where('status','1')->orderBy('id', 'desc')->get()
+            'completed_connection' => $completed_connection
         ]);
     }
 
     public function editBuyPackage($id)
     {
         $registration = BuyPackage::find($id);
-        $kam = KAM::where('status','1')->get();
+        $areas = Area::where('status','1')->orderBy('en_area_name','asc')->get();
 
         return view('backend.admin.registration.edit', [
             'registration' => $registration,
-            'kam' => $kam
+            'areas' => $areas
         ]);
     }
     public function updateBuyPackage(Request $request)
     {
         $buy = BuyPackage::find($request->buy_id);
         $buy->admin_id = $request->admin_id;
-        $buy->kam_category = $request->kam_category;
-        $buy->kam_name = $request->kam_name;
+        $buy->area_id = $request->area_id;
         $buy->en_package_name = $request->en_package_name;
         $buy->en_mbps_value = $request->en_mbps_value;
         $buy->en_amount = $request->en_amount;
@@ -135,9 +159,9 @@ class PacakgeBuyController extends Controller
         $buy->address = $request->address;
         $buy->remarks = $request->remarks;
         $buy->username = $request->username;
-
-        // If kam_name is empty, set it to the value of name
-        $buy->kam_name = $request->kam_name ?: $request->name;
+        $buy->ppoe_password = $request->ppoe_password;
+        $buy->connection_type = $request->connection_type;
+        $buy->marketing_person_name = $request->marketing_person_name;
 
         if ($request->file('photo')) {
             if (isset($buy)) {
