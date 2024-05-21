@@ -109,7 +109,6 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="form-label"> Select Branch </label>
                                                 <select name="area_id" required class="form-control select2-show-search form-select" data-placeholder="Choose Branch">
                                                     <option label="Choose one"></option>
                                                     @foreach ($areas as $item)
