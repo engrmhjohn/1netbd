@@ -125,8 +125,8 @@ Buy Package :: One Net
                     @enderror
                 </div>
                 <div class="col-md-12 mb-3">
+                    <label for="">NID / Birth Certificate / Passport Number*</label>
                     <div class="input-group">
-                        <span class="input-group-text" id="nid_number">NID / Birth Certificate / Passport Number*</span>
                         <input type="text" class="form-control" name="nid_number" id="nid_number" aria-describedby="basic-addon3">
                     </div>
                     @error('nid_number')
