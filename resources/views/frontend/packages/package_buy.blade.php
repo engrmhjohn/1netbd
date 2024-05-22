@@ -68,7 +68,7 @@ Buy Package :: One Net
                 <div class="col-xl-12 col-md-12">
                     <div class="form-group">
                         <div class="form-label">Register with</div>
-                        <div class="custom-controls-stacked">
+                        <div class="custom-controls-stacked" style="display: flex; gap: 20px;">
                             <label class="custom-control custom-radio-md">
                                 <input type="radio" class="custom-control-input" name="nid_have" value="yes" checked>
                                 <span class="custom-control-label">NID</span>
@@ -153,17 +153,21 @@ Buy Package :: One Net
                 </div>
             </div>
 
-            <div class="form-group mb-3">
-                <div class="form-check">
-                    <input class="form-check-input is-invalid" type="checkbox" name="agree" value="1" id="invalidCheck3" required>
-                    <label class="form-check-label" for="invalidCheck3">
-                        Agree to <a class="text-dark fw-bold" href="{{ route('terms_condition') }}" style="text-decoration: underline;"> terms and conditions (Click to see)</a>
-                    </label>
-                    <div class="invalid-feedback">
 
-                    </div>
+            <div class="form-group" style="display: flex; gap: 20px;">
+                <div class="form-label">Connection Type</div>
+                <div class="custom-controls-stacked" style="display: flex; gap: 20px;">
+                    <label class="custom-control custom-radio-md">
+                        <input type="radio" class="custom-control-input" name="connection_type" value="1" checked>
+                        <span class="custom-control-label">Fiber Optics</span>
+                    </label>
+                    <label class="custom-control custom-radio-md">
+                        <input type="radio" class="custom-control-input" name="connection_type" value="0">
+                        <span class="custom-control-label">UTP</span>
+                    </label>
                 </div>
             </div>
+
 
             <div class="row mb-3">
                 <div class="col-xl-4 col-lg-5 col-md-6 col-12">
@@ -181,6 +185,18 @@ Buy Package :: One Net
                     <div class="mb-3">
                         <label for="marketing_person_name" class="form-label">Marketing Person Name (if any):</label>
                         <input type="text" name="marketing_person_name" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <div class="form-check">
+                    <input class="form-check-input is-invalid" type="checkbox" name="agree" value="1" id="invalidCheck3" required>
+                    <label class="form-check-label" for="invalidCheck3">
+                        Agree to <a class="text-dark fw-bold" href="{{ route('terms_condition') }}" style="text-decoration: underline;"> terms and conditions (Click to see)</a>
+                    </label>
+                    <div class="invalid-feedback">
+
                     </div>
                 </div>
             </div>
@@ -208,5 +224,6 @@ Buy Package :: One Net
             }
         });
     });
+
 </script>
 @endsection

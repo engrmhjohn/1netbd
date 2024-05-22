@@ -64,6 +64,7 @@ class PacakgeBuyController extends Controller
         $buy->address = $request->address;
         $buy->remarks = $request->remarks;
         $buy->agree = $request->agree;
+        $buy->connection_type = $request->connection_type;
         $buy->nid_have = $request->nid_have;
         $buy->marketing_person_name = $request->marketing_person_name;
         $buy->photo = image_upload_passport_pic($request->photo);
