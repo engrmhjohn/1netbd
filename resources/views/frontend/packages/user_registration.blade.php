@@ -107,39 +107,54 @@
 
 <body>
 	<div class="logo text-center">
-      <img src="{{ asset($color_logo) }}" alt="" style="height: auto; max-width: 175px;">
+      {{-- <img src="{{ asset($color_logo) }}" alt="" style="height: auto; max-width: 175px;"> --}}
     </div>
     <div class="head-title">
         <h1 class="text-center m-0 p-0">New Connection Form</h1>
     </div>
-    <div class="table-section bill-tbl w-100 mt-10">
-        <table class="table w-100 mt-10">
-            <tr>
-                <td>
-                    <div class="box-text">
-                        <p class="m-0 pt-5 text-bold w-100">Registration Date : <span class="gray-color">{{ $userInfo->created_at->format('d F Y') }} </span></p>
-                        <p><strong>Office Address:</strong> {{ $en_address }}</p> 
-                        <strong>User ID:</strong> {{ $userInfo->username }}
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
+        <div class="table-section bill-tbl w-100 mt-10">
+            <table class="table w-100 mt-10">
+                <tr>
+                    <td>
+                        <div class="box-text">
+                        <p class="m-0 pt-5 text-bold">Registration Date : <span class="gray-color">{{ $userInfo->created_at->format('d F Y') }} </span></p>
+                        <p class="m-0 pt-5 text-bold">Connection Type: 
+                            <span class="gray-color">
+                            @if ($userInfo->connection_type == '1')
+                            Fiber Optics
+                            @elseif ($userInfo->connection_type == '0')
+                            UTP
+                            @else
+                            N/A
+                            @endif
+                            </span>
+                            </p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="box-text">
+                            <p class="m-0 pt-5 text-bold">User ID: <span class="gray-color">{{ $userInfo->username }} </span></p>
+                            <p class="m-0 pt-5 text-bold">Password: <span class="gray-color">{{ $userInfo->ppoe_password }} </span></p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     <div class="table-section bill-tbl w-100 mt-10">
         <table class="table w-100 mt-10">
             <tr style="width: 100%;">
                 <td style="height: 135px; width: 70%; font-size: 16px;">
                     <div class="box-text user_info">
-                        <p>Name : {{ $userInfo->name }}</p>
-                        <p>Phone : {{ $userInfo->phone }}</p>
-                        <p>Email : {{ $userInfo->email }}</p>
-                        <p>NID Number : {{ $userInfo->nid_number }}</p>
-                        <p>Address : {{ $userInfo->address }}</p>
+                        <p class="m-0 pt-5 text-bold">Name : <span class="gray-color">{{ $userInfo->name }}</span></p>
+                        <p class="m-0 pt-5 text-bold">Phone : <span class="gray-color">{{ $userInfo->phone }}</span></p>
+                        <p class="m-0 pt-5 text-bold">Email : <span class="gray-color">{{ $userInfo->email ?? 'N/A'}}</span></p>
+                        <p class="m-0 pt-5 text-bold">NID / Birth Certificate / Passport No : <span class="gray-color">{{ $userInfo->nid_number }}</span></p>
+                        <p class="m-0 pt-5 text-bold">Address : <span class="gray-color">{{ $userInfo->address }}</span></p>
                     </div>
                 </td>
                 <td style="width: 30%">
                     <div class="box-text">
-                    <img src="{{ asset($userInfo->photo) }}" alt="" style="height: 120px; width: 130px; margin-left: 300px;">
+                    {{-- <img src="{{ asset($userInfo->photo) }}" alt="" style="height: 120px; width: 130px; margin-left: 300px;"> --}}
                      </div>
                 </td>
             </tr>
@@ -155,23 +170,23 @@
                 <tr>
                     <td>
                         <div class="box-text" style="margin-right: 10px;">
-                          <img src="{{ asset($userInfo->nid_front) }}" alt="" style="height: 160px; width: 320px;">
+                          {{-- <img src="{{ asset($userInfo->nid_front) }}" alt="NID Front Side Pic" style="height: 160px; width: 320px;"> --}}
                         </div>
                     </td>
                     <td>
                         <div class="box-text">
-                           <img src="{{ asset($userInfo->nid_back) }}" alt="" style="height: 160px; width: 320px;">
+                           {{-- <img src="{{ asset($userInfo->nid_back) }}" alt="NID Back Side Pic" style="height: 160px; width: 320px;"> --}}
                         </div>
                     </td>
                 </tr>
                 @else
                 <tr>
-                    <th class="w-100">Birth Certificate</th>
+                    <th class="w-100">Birth Certificate / Passport</th>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="text-center">
                         <div class="box-text" style="margin-right: 10px;">
-                          <img src="{{ asset($userInfo->birth_certificate) }}" alt="" style="height: 350px; width: 250px;">
+                          {{-- <img src="{{ asset($userInfo->birth_certificate) }}" alt="Birth Certificate / Passport Pic" style="max-width: 500px; max-height: 380px;"> --}}
                         </div>
                     </td>
                 </tr>
@@ -209,14 +224,12 @@
             <tr class="w-100">
                 <td class="w-85" style="text-align: right;"> 
                     <p>Sub Total</p>
-                    <p>Monthly Bill</p>
                     <p>Discount on Monthly Running Bill</p>
                     <p>Running Month Bill</p>
                     <p>Total Payable</p>
                 </td>
                 <td class="w-15" style="text-align: right;"> 
                     <p>{{ $userInfo->subtotal ?? 0}} TK</p>
-                    <p>{{ $userInfo->en_amount ?? 0}} TK</p>
                     <p>{{ $userInfo->en_discount_monthly_fee ?? 0}} TK</p>
                     @php
                         $running_month_bill = $userInfo->en_amount - $userInfo->en_discount_monthly_fee;
