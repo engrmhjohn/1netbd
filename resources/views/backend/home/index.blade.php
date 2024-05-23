@@ -46,15 +46,35 @@ $total_connection = App\Models\BuyPackage::get();
 $total_connection_count = $total_connection->count();
 
 // last 10 query print
-$latest_registration = App\Models\BuyPackage::where('area_id', $user->area_id)->orderBy('id','desc')->take('10')->get();
+// $latest_registration = App\Models\BuyPackage::where('area_id', $user->area_id)->orderBy('id','desc')->take('10')->get();
 
-// reseller online count 
-$total_online_reseller_registration = App\Models\BuyPackage::where('area_id', $user->area_id)->get();
-$total_online_reseller_registration_count = $total_online_reseller_registration->count();
-$total_online_reseller_registration_pending = App\Models\BuyPackage::where('status', '0')->where('area_id', $user->area_id)->get();
-$total_online_reseller_registration_pending_count = $total_online_reseller_registration_pending->count();
-$total_online_reseller_registration_completed = App\Models\BuyPackage::where('status', '1')->where('area_id', $user->area_id)->get();
-$total_online_reseller_registration_completed_count = $total_online_reseller_registration_completed->count();
+$specific_area_ids = [1, 2, 5];
+
+if (in_array($user->area_id, $specific_area_ids)) {
+// Get all records if the en_area_name is one of the specified values
+$registrations = App\Models\BuyPackage::orderBy('id', 'desc')->get();
+$registrations_count = $registrations->count();
+// Get all pending records if the en_area_name is one of the specified values
+$pending_registrations = App\Models\BuyPackage::where('status', '0')->orderBy('id', 'desc')->get();
+$pending_registrations_count = $pending_registrations->count();
+// Get all success records if the en_area_name is one of the specified values
+$success_registrations = App\Models\BuyPackage::where('status', '1')->orderBy('id', 'desc')->get();
+$success_registrations_count = $success_registrations->count();
+// last 10 query print
+$latest_registration = App\Models\BuyPackage::orderBy('id','desc')->take('10')->get();
+} else {
+// Get all records based on area / branch
+$registrations = App\Models\BuyPackage::where('area_id', $user->area_id)->orderBy('id', 'desc')->get();
+$registrations_count = $registrations->count();
+// Get all pending records based on area / branch
+$pending_registrations = App\Models\BuyPackage::where('area_id', $user->area_id)->where('status', '0')->orderBy('id', 'desc')->get();
+$pending_registrations_count = $pending_registrations->count();
+// Get all success records based on area / branch
+$success_registrations = App\Models\BuyPackage::where('area_id', $user->area_id)->where('status', '1')->orderBy('id', 'desc')->get();
+$success_registrations_count = $success_registrations->count();
+// last 10 query print based on area / branch
+$latest_registration = App\Models\BuyPackage::where('area_id', $user->area_id)->orderBy('id','desc')->take('10')->get();
+}
 @endphp
 @if (Auth::user()->role == '2')
 <div class="row">
@@ -278,7 +298,7 @@ $total_online_reseller_registration_completed_count = $total_online_reseller_reg
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Online Registration</h6>
-                                        <h2 class="mb-0 number-font">{{ $total_online_reseller_registration_count }}</h2>
+                                        <h2 class="mb-0 number-font">{{ $registrations_count }}</h2>
                                     </div>
                                     <div class="ms-auto">
                                         <div class="chart-wrapper mt-1">
@@ -297,7 +317,7 @@ $total_online_reseller_registration_completed_count = $total_online_reseller_reg
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Success Connection</h6>
-                                        <h2 class="mb-0 number-font">{{ $total_online_reseller_registration_completed_count }}</h2>
+                                        <h2 class="mb-0 number-font">{{ $success_registrations_count }}</h2>
                                     </div>
                                     <div class="ms-auto">
                                         <div class="chart-wrapper mt-1">
@@ -316,7 +336,7 @@ $total_online_reseller_registration_completed_count = $total_online_reseller_reg
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Pending Connection</h6>
-                                        <h2 class="mb-0 number-font">{{ $total_online_reseller_registration_pending_count }}</h2>
+                                        <h2 class="mb-0 number-font">{{ $pending_registrations_count }}</h2>
                                     </div>
                                     <div class="ms-auto">
                                         <div class="chart-wrapper mt-1">

@@ -85,8 +85,11 @@ class PacakgeBuyController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->role == '2') {
-            // Super admin can see all records
+        // Array of specific area IDs
+        $specific_area_ids = [1, 2, 5];
+
+        if ($user->role == '2' || in_array($user->area_id, $specific_area_ids)) {
+            // Super admin or users with specified area IDs can see all records
             $registrations = BuyPackage::orderBy('id', 'desc')->get();
         } else {
             // Other admins can see only the records matching their area_id
@@ -102,22 +105,29 @@ class PacakgeBuyController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->role == '2') {
-            // Super admin can see all records
-            $pending_connection = BuyPackage::where('status', '0')->orderBy('id', 'desc')->get();
+        // Array of specific area IDs
+        $specific_area_ids = [1, 2, 5];
+
+        if ($user->role == '2' || in_array($user->area_id, $specific_area_ids)) {
+            // Super admin or users with specified area IDs can see all records
+            $registrations = BuyPackage::where('status', '0')->orderBy('id', 'desc')->get();
         } else {
             // Other admins can see only the records matching their area_id
-            $pending_connection = BuyPackage::where('area_id', $user->area_id)->where('status', '0')->orderBy('id', 'desc')->get();
+            $registrations = BuyPackage::where('area_id', $user->area_id)->where('status', '0')->orderBy('id', 'desc')->get();
         }
-        return view('backend.admin.registration.pending_connection', [
-            'pending_connection' => $pending_connection
+
+        return view('backend.admin.registration.index', [
+            'registration' => $registrations
         ]);
     }
     public function completedConnection()
     {
         $user = Auth::user();
 
-        if ($user->role == '2') {
+        // Array of specific area IDs
+        $specific_area_ids = [1, 2, 5];
+
+        if ($user->role == '2' || in_array($user->area_id, $specific_area_ids)) {
             // Super admin can see all records
             $completed_connection = BuyPackage::where('status', '1')->orderBy('id', 'desc')->get();
         } else {
@@ -132,7 +142,7 @@ class PacakgeBuyController extends Controller
     public function editBuyPackage($id)
     {
         $registration = BuyPackage::find($id);
-        $areas = Area::where('status','1')->orderBy('en_area_name','asc')->get();
+        $areas = Area::where('status', '1')->orderBy('en_area_name', 'asc')->get();
 
         return view('backend.admin.registration.edit', [
             'registration' => $registration,
@@ -194,9 +204,10 @@ class PacakgeBuyController extends Controller
         return redirect(route('manage_buy_package'))->with('message', 'Successfully Updated!');
     }
 
-    public function previewBuyPackage($id){
+    public function previewBuyPackage($id)
+    {
         $registration_details = BuyPackage::where('id', $id)->first();
-        return view('backend.admin.registration.preview',[
+        return view('backend.admin.registration.preview', [
             'registration_details' => $registration_details
         ]);
     }
@@ -256,32 +267,32 @@ class PacakgeBuyController extends Controller
         $tc = TC::latest('id')->first();
         $companyAddress = CompanyInfo::value('en_address');
         $logoImage = CompanyInfo::value('color_logo');
-    
+
         // Lazy load images or cache them before passing to the view
-    
+
         // Create mPDF instance
         $mpdf = new Mpdf([
             'default_font' => 'kohinoor',
         ]);
-    
+
         // Construct the PDF filename with the user's name
         $pdfFileName = $userInfo->name . '_registration_form.pdf';
-    
+
         // Load the view and pass data to it
         $html = view('frontend.packages.user_registration', [
             'userInfo' => $userInfo,
             'tc' => $tc,
-            'color_logo' => $logoImage, 
+            'color_logo' => $logoImage,
             'en_address' => $companyAddress
         ])->render();
-        
-    
+
+
         // Write HTML content to mPDF
         $mpdf->WriteHTML($html);
-    
+
         // Output the PDF with the constructed filename
         $mpdf->Output($pdfFileName, \Mpdf\Output\Destination::DOWNLOAD);
-    }    
+    }
 
     public function sendRegistrationEmail($id)
     {
@@ -289,50 +300,49 @@ class PacakgeBuyController extends Controller
         $tc = TC::latest('id')->first();
         $companyAddress = CompanyInfo::value('en_address');
         $logoImage = CompanyInfo::value('color_logo');
-    
+
         // Create an mPDF instance
         $mpdf = new Mpdf();
-    
+
         // Load the view into mPDF
         $pdf = \View::make('frontend.packages.user_registration', [
             'userInfo' => $userInfo,
             'tc' => $tc,
-            'color_logo' => $logoImage, 
+            'color_logo' => $logoImage,
             'en_address' => $companyAddress
         ]);
-    
+
         // Get the HTML content
         $html = $pdf->render();
-    
+
         // Write HTML content to mPDF
         $mpdf->WriteHTML($html);
-    
+
         // Get the output of mPDF
         $output = $mpdf->Output('', 'S');
-    
+
         // Replace 'recipient@example.com' with the user's email address
         $recipientEmail = $userInfo->email;
         $recipientName = $userInfo->name;
-        
+
         // Dynamically generate the PDF filename based on the username
         $pdfFileName = $userInfo->name . '_registration_form.pdf';
-    
+
         // Personalized message
         $greetings = "Congratulations, $recipientName! \n\n";
         $greetings .= "Thank you for registering for the new connection. We have initiated the process and created a ticket for your new connection. Please be patient as we work to complete your request. If you have any questions or need assistance, feel free to contact us at any time. Our hotline number is 09611 344 344.";
-    
+
         // Send email with PDF attachment and personalized message
         Mail::send([], [], function ($message) use ($output, $recipientEmail, $recipientName, $pdfFileName, $greetings) {
             $message->to($recipientEmail, $recipientName)
-                    ->subject('One Net New Connection Registration Details')
-                    ->text($greetings)
-                    ->attachData($output, $pdfFileName, [
-                        'mime' => 'application/pdf',
-                    ]);
+                ->subject('One Net New Connection Registration Details')
+                ->text($greetings)
+                ->attachData($output, $pdfFileName, [
+                    'mime' => 'application/pdf',
+                ]);
         });
-    
+
         // Optionally, you can redirect back to a specific route and include a success message
         return redirect()->route('manage_buy_package')->with('message', 'Email Successfully Sent!');
-    }    
-    
+    }
 }
