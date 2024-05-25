@@ -110,14 +110,14 @@ class PacakgeBuyController extends Controller
 
         if ($user->role == '2' || in_array($user->area_id, $specific_area_ids)) {
             // Super admin or users with specified area IDs can see all records
-            $registrations = BuyPackage::where('status', '0')->orderBy('id', 'desc')->get();
+            $pending_connection = BuyPackage::where('status', '0')->orderBy('id', 'desc')->get();
         } else {
             // Other admins can see only the records matching their area_id
-            $registrations = BuyPackage::where('area_id', $user->area_id)->where('status', '0')->orderBy('id', 'desc')->get();
+            $pending_connection = BuyPackage::where('area_id', $user->area_id)->where('status', '0')->orderBy('id', 'desc')->get();
         }
 
-        return view('backend.admin.registration.index', [
-            'registration' => $registrations
+        return view('backend.admin.registration.pending_connection', [
+            'pending_connection' => $pending_connection
         ]);
     }
     public function completedConnection()
@@ -344,5 +344,81 @@ class PacakgeBuyController extends Controller
 
         // Optionally, you can redirect back to a specific route and include a success message
         return redirect()->route('manage_buy_package')->with('message', 'Email Successfully Sent!');
+    }
+
+    public function filterRegistration(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+        $user = Auth::user();
+
+        // Array of specific area IDs
+        $specific_area_ids = [1, 2, 5];
+
+
+        if ($user->role == '2' || in_array($user->area_id, $specific_area_ids)) {
+            // Super admin can see all records
+            $registration = BuyPackage::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->get();
+        } else {
+            // Other admins can see only the records matching their area_id
+            $registration = BuyPackage::where('area_id', $user->area_id)->whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->get();
+        }
+        return view('backend.admin.registration.filter_index', [
+            'registration' => $registration
+        ]);
+    }
+
+    public function filterPendingRegistration(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+        $user = Auth::user();
+
+        // Array of specific area IDs
+        $specific_area_ids = [1, 2, 5];
+
+
+        if ($user->role == '2' || in_array($user->area_id, $specific_area_ids)) {
+            // Super admin or specific area's admin can see prending records
+            $registration = BuyPackage::whereDate('created_at', '>=', $start_date)
+                                        ->whereDate('created_at', '<=', $end_date)
+                                        ->where('status', '0')
+                                        ->get();
+        } else {
+            // Other admins can see only the pending records matching their area_id
+            $registration = BuyPackage::where('area_id', $user->area_id)
+                                        ->whereDate('created_at', '>=', $start_date)
+                                        ->whereDate('created_at', '<=', $end_date)
+                                        ->where('status', '0')
+                                        ->get();
+        }
+        return view('backend.admin.registration.filter_pending_connection', [
+            'registration' => $registration
+        ]);
+    }
+
+    public function filterCompletedRegistration(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+        $user = Auth::user();
+
+        // Array of specific area IDs
+        $specific_area_ids = [1, 2, 5];
+
+
+        if ($user->role == '2' || in_array($user->area_id, $specific_area_ids)) {
+            // Super admin can see all records
+            $registration = BuyPackage::where('status', '1')->whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->get();
+        } else {
+            // Other admins can see only the records matching their area_id
+            $registration = BuyPackage::where('status', '1')->where('area_id', $user->area_id)->whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->get();
+        }
+        return view('backend.admin.registration.filter_completed_connection', [
+            'registration' => $registration
+        ]);
     }
 }

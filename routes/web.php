@@ -28,8 +28,10 @@ Route::controller(PacakgeBuyController::class)->group(function () {
 
 Route::post('api/fetch-areas', [CMSController::class, 'fetchArea']);
 
-Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])->group(function () {
-    Route::get('/dashboard', function () { return view('backend.home.index');})->name('dashboard');
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('backend.home.index');
+    })->name('dashboard');
 
     Route::middleware(['authorizedadmin'])->group(function () {
         Route::controller(AdminController::class)->prefix('/admin')->group(function () {
@@ -193,6 +195,9 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
         Route::post('/update-buy-package', 'updateBuyPackage')->name('update_buy_package');
         Route::get('/export-package-pdf/{id}', 'exportPackagePdf')->name('export_package_pdf');
         Route::get('/new-registration-send-mail/{id}', 'sendRegistrationEmail')->name('new_registration_send_mail');
+        Route::get('/filter-registration', 'filterRegistration')->name('filter_registration');
+        Route::get('/filter-pending-registration', 'filterPendingRegistration')->name('filter_pending_registration');
+        Route::get('/filter-completed-registration', 'filterCompletedRegistration')->name('filter_completed_registration');
     });
 
     Route::middleware(['authorizedadmin'])->group(function () {

@@ -1,19 +1,19 @@
 @extends('backend.master')
 @section('title')
-Admin :: Online Registration
+Admin :: Completed Search Result 
 @endsection
 @section('content')
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                Online Registration List
+                Online Registration Completed Search Result List
             </div>
             <div class="card-body">
-                <a href="{{ route('dashboard') }}" class="btn btn-sm btn-success mb-3">
-                    <i class="fa fa-mail-reply"></i> Back to Dashboard
+                <a href="{{ route('manage_buy_package') }}" class="btn btn-sm btn-success mb-3">
+                    <i class="fa fa-mail-reply"></i> Back to Manage Registration
                 </a>
-                <form class="mb-3" action="/filter-registration" method="GET">
+                <form class="mb-3" action="/filter-completed-registration" method="GET">
                     <div class="row">
                         <div class="col-lg-2">
                             <label for=""> <strong>Start Date</strong> </label>
@@ -24,7 +24,7 @@ Admin :: Online Registration
                             <input type="date" name="end_date" class="form-control">
                         </div>
                         <div class="col-lg-2 mt-1">
-                            <button type="submit" class="btn btn-dark mt-5">Filter</button>
+                            <button type="submit" id="filter-button" class="btn btn-dark mt-5">Filter</button>
                         </div>
                     </div>
                 </form>

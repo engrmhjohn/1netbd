@@ -13,6 +13,21 @@ Admin :: Completed Connection List
                 <a href="{{ route('dashboard') }}" class="btn btn-sm btn-success mb-3">
                     <i class="fa fa-mail-reply"></i> Back to Dashboard
                 </a>
+                <form class="mb-3" action="/filter-completed-registration" method="GET">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <label for=""> <strong>Start Date</strong> </label>
+                            <input type="date" name="start_date" class="form-control">
+                        </div>
+                        <div class="col-lg-2">
+                            <label for=""> <strong>End Date</strong> </label>
+                            <input type="date" name="end_date" class="form-control">
+                        </div>
+                        <div class="col-lg-2 mt-1">
+                            <button type="submit" id="filter-button" class="btn btn-dark mt-5">Filter</button>
+                        </div>
+                    </div>
+                </form>
                 <div class="table-responsive">
                     <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom">
                         <thead>

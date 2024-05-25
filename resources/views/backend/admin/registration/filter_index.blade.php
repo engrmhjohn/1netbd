@@ -1,17 +1,17 @@
 @extends('backend.master')
 @section('title')
-Admin :: Online Registration
+Admin :: Online Registration Search Result 
 @endsection
 @section('content')
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                Online Registration List
+                Online Registration Search Result List
             </div>
             <div class="card-body">
-                <a href="{{ route('dashboard') }}" class="btn btn-sm btn-success mb-3">
-                    <i class="fa fa-mail-reply"></i> Back to Dashboard
+                <a href="{{ route('manage_buy_package') }}" class="btn btn-sm btn-success mb-3">
+                    <i class="fa fa-mail-reply"></i> Back to Manage Registration
                 </a>
                 <form class="mb-3" action="/filter-registration" method="GET">
                     <div class="row">
