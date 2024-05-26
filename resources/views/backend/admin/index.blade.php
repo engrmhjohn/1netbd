@@ -47,6 +47,10 @@ Admin :: User Management
                                     <div class="mt-sm-1 d-block">
                                         <span class="tag tag-rounded text-primary">Editor</span>
                                     </div>
+                                    @elseif($user->role == 4)
+                                    <div class="mt-sm-1 d-block">
+                                        <span class="tag tag-rounded text-danger">Viewer</span>
+                                    </div>
                                     @else
                                     <div class="mt-sm-1 d-block">
                                         <span class="tag tag-rounded text-danger">Not Admin</span>
