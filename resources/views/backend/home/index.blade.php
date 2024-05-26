@@ -78,199 +78,156 @@ $latest_registration = App\Models\BuyPackage::where('area_id', $user->area_id)->
 @endphp
 @if (Auth::user()->role == '2')
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('manage_admin') }}">
-                    <div class="card overflow-hidden">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="mt-2">
-                                    <h6 class="">All Users</h6>
-                                    <h2 class="mb-0 number-font">{{ $all_admin_count }}</h2>
-                                </div>
-                                <div class="ms-auto">
-                                    <div class="chart-wrapper mt-1">
-                                        <canvas id="saleschart" class="h-8 w-9 chart-dropshadow"></canvas>
-                                    </div>
-                                </div>
-                            </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+        <a href="{{ route('manage_admin') }}">
+            <div class="card bg-primary img-card box-primary-shadow">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="text-white">
+                            <h2 class="mb-0 number-font">{{ $all_admin_count }}</h2>
+                            <p class="text-white mb-0">All Users</p>
                         </div>
+                        <div class="ms-auto"> <i class="fa fa-user-o text-white fs-30 me-2 mt-2"></i> </div>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('admin.super_admin_user') }}">
-                    <div class="card overflow-hidden">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="mt-2">
-                                    <h6 class="">Super Admin</h6>
-                                    <h2 class="mb-0 number-font">{{ $total_super_admin_count }}</h2>
-                                </div>
-                                <div class="ms-auto">
-                                    <div class="chart-wrapper mt-1">
-                                        <i class="fe fe-user-check" style="font-size: 30px;"></i>
-                                    </div>
-                                </div>
-                            </div>
+        </a>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+        <a href="{{ route('admin.super_admin_user') }}">
+            <div class="card bg-secondary img-card box-secondary-shadow">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="text-white">
+                            <h2 class="mb-0 number-font">{{ $total_super_admin_count }}</h2>
+                            <p class="text-white mb-0">Super Admin</p>
                         </div>
+                        <div class="ms-auto"> <i class="fe fe-user-check text-white fs-30 me-2 mt-2"></i> </div>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('admin.admin_user') }}">
-                    <div class="card overflow-hidden">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="mt-2">
-                                    <h6 class="">Total Admin</h6>
-                                    <h2 class="mb-0 number-font">{{ $total_admin_count }}</h2>
-                                </div>
-                                <div class="ms-auto">
-                                    <div class="chart-wrapper mt-1">
-                                        <i class="fe fe-users" style="font-size: 30px;"></i>
-                                    </div>
-                                </div>
-                            </div>
+        </a>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+        <a href="{{ route('admin.admin_user') }}">
+            <div class="card bg-success img-card box-success-shadow">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="text-white">
+                            <h2 class="mb-0 number-font">{{ $total_admin_count }}</h2>
+                            <p class="text-white mb-0">Total Admin</p>
                         </div>
+                        <div class="ms-auto"> <i class="fe fe-users text-white fs-30 me-2 mt-2"></i> </div>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('admin.editor_user') }}">
-                    <div class="card overflow-hidden">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="mt-2">
-                                    <h6 class="">Total Editor</h6>
-                                    <h2 class="mb-0 number-font">{{ $total_editor_count }}</h2>
-                                </div>
-                                <div class="ms-auto">
-                                    <div class="chart-wrapper mt-1">
-                                        <i class="fe fe-users" style="font-size: 30px;"></i>
-                                    </div>
-                                </div>
-                            </div>
+        </a>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+        <a href="{{ route('admin.editor_user') }}">
+            <div class="card bg-info img-card box-info-shadow">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="text-white">
+                            <h2 class="mb-0 number-font">{{ $total_editor_count }}</h2>
+                            <p class="text-white mb-0">Total Editor</p>
                         </div>
+                        <div class="ms-auto"> <i class="fe fe-users text-white fs-30 me-2 mt-2"></i> </div>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('admin.viewer_user') }}">
-                    <div class="card overflow-hidden">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="mt-2">
-                                    <h6 class="">Total Viewer</h6>
-                                    <h2 class="mb-0 number-font">{{ $total_viewer_count }}</h2>
-                                </div>
-                                <div class="ms-auto">
-                                    <div class="chart-wrapper mt-1">
-                                        <i class="fe fe-users" style="font-size: 30px;"></i>
-                                    </div>
-                                </div>
-                            </div>
+        </a>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+        <a href="{{ route('admin.viewer_user') }}">
+            <div class="card bg-success img-card box-success-shadow">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="text-white">
+                            <h2 class="mb-0 number-font">{{ $total_viewer_count }}</h2>
+                            <p class="text-white mb-0">Total Viewer</p>
                         </div>
+                        <div class="ms-auto"> <i class="fe fe-users text-white fs-30 me-2 mt-2"></i> </div>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('admin.pending_user') }}">
-                    <div class="card overflow-hidden">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="mt-2">
-                                    <h6 class="">Pending Admin</h6>
-                                    <h2 class="mb-0 number-font">{{ $total_pending_count }}</h2>
-                                </div>
-                                <div class="ms-auto">
-                                    <div class="chart-wrapper mt-1">
-                                        <i class="fe fe-loader" style="font-size: 30px;"></i>
-                                    </div>
-                                </div>
-                            </div>
+        </a>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+        <a href="{{ route('admin.pending_user') }}">
+            <div class="card bg-info img-card box-info-shadow">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="text-white">
+                            <h2 class="mb-0 number-font">{{ $total_pending_count }}</h2>
+                            <p class="text-white mb-0">Pending Admin</p>
                         </div>
+                        <div class="ms-auto"> <i class="fe fe-loader text-white fs-30 me-2 mt-2"></i> </div>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('admin.manage_contact_message') }}">
-                    <div class="card overflow-hidden">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="mt-2">
-                                    <h6 class="">Total Contact Queries</h6>
-                                    <h2 class="mb-0 number-font">{{ $total_contact_count }}</h2>
-                                </div>
-                                <div class="ms-auto">
-                                    <div class="chart-wrapper mt-1">
-                                        <i class="fa fa-heartbeat" style="font-size: 30px;"></i>
-                                    </div>
-                                </div>
-                            </div>
+        </a>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+        <a href="{{ route('admin.manage_contact_message') }}">
+            <div class="card bg-secondary img-card box-secondary-shadow">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="text-white">
+                            <h2 class="mb-0 number-font">{{ $total_contact_count }}</h2>
+                            <p class="text-white mb-0">Total Contact Queries</p>
                         </div>
+                        <div class="ms-auto"> <i class="fa fa-heartbeat text-white fs-30 me-2 mt-2"></i> </div>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('manage_buy_package') }}">
-                    <div class="card overflow-hidden">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="mt-2">
-                                    <h6 class="">Online Registration</h6>
-                                    <h2 class="mb-0 number-font">{{ $total_connection_count }}</h2>
-                                </div>
-                                <div class="ms-auto">
-                                    <div class="chart-wrapper mt-1">
-                                        <i class="fe fe-folder" style="font-size: 30px;"></i>
-                                    </div>
-                                </div>
-                            </div>
+        </a>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+        <a href="{{ route('manage_buy_package') }}">
+            <div class="card bg-success img-card box-success-shadow">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="text-white">
+                            <h2 class="mb-0 number-font">{{ $total_connection_count }}</h2>
+                            <p class="text-white mb-0">Online Registration</p>
                         </div>
+                        <div class="ms-auto"> <i class="fe fe-folder text-white fs-30 me-2 mt-2"></i> </div>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('completed_connection') }}">
-                    <div class="card overflow-hidden">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="mt-2">
-                                    <h6 class="">Success Connection</h6>
-                                    <h2 class="mb-0 number-font">{{ $total_success_connection_count }}</h2>
-                                </div>
-                                <div class="ms-auto">
-                                    <div class="chart-wrapper mt-1">
-                                        <i class="fe fe-folder-plus" style="font-size: 30px;"></i>
-                                    </div>
-                                </div>
-                            </div>
+        </a>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+        <a href="{{ route('completed_connection') }}">
+            <div class="card bg-primary img-card box-primary-shadow">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="text-white">
+                            <h2 class="mb-0 number-font">{{ $total_success_connection_count }}</h2>
+                            <p class="text-white mb-0">Success Connection</p>
                         </div>
+                        <div class="ms-auto"> <i class="fe fe-folder-plus text-white fs-30 me-2 mt-2"></i> </div>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                <a href="{{ route('pending_connection') }}">
-                    <div class="card overflow-hidden">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="mt-2">
-                                    <h6 class="">Pending Connection</h6>
-                                    <h2 class="mb-0 number-font">{{ $total_pending_connection_count }}</h2>
-                                </div>
-                                <div class="ms-auto">
-                                    <div class="chart-wrapper mt-1">
-                                        <i class="fe fe-folder-minus" style="font-size: 30px;"></i>
-                                    </div>
-                                </div>
-                            </div>
+        </a>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+        <a href="{{ route('pending_connection') }}">
+            <div class="card bg-secondary img-card box-secondary-shadow">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="text-white">
+                            <h2 class="mb-0 number-font">{{ $total_pending_connection_count }}</h2>
+                            <p class="text-white mb-0">Pending Connection</p>
                         </div>
+                        <div class="ms-auto"> <i class="fe fe-folder-minus text-white fs-30 me-2 mt-2"></i> </div>
                     </div>
-                </a>
+                </div>
             </div>
-        </div>
+        </a>
     </div>
 </div>
 @elseif(Auth::user()->role == '1' || Auth::user()->role == '3' || Auth::user()->role == '4')
@@ -288,67 +245,55 @@ $latest_registration = App\Models\BuyPackage::where('area_id', $user->area_id)->
         </div>
     </div>
     @endif
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+            <a href="{{ route('manage_buy_package') }}">
+                <div class="card bg-primary img-card box-primary-shadow">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="text-white">
+                                <h2 class="mb-0 number-font">{{ $registrations_count }}</h2>
+                                <p class="text-white mb-0">Online Registration</p>
+                            </div>
+                            <div class="ms-auto"> <i class="fe fe-folder text-white fs-30 me-2 mt-2"></i> </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+            <a href="{{ route('completed_connection') }}">
+                <div class="card bg-secondary img-card box-secondary-shadow">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="text-white">
+                                <h2 class="mb-0 number-font">{{ $success_registrations_count }}</h2>
+                                <p class="text-white mb-0">Success Connection</p>
+                            </div>
+                            <div class="ms-auto"> <i class="fe fe-folder-plus text-white fs-30 me-2 mt-2"></i> </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+            <a href="{{ route('pending_connection') }}">
+                <div class="card bg-warning img-card box-warning-shadow">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="text-white">
+                                <h2 class="mb-0 number-font">{{ $pending_registrations_count }}</h2>
+                                <p class="text-white mb-0">Pending Connection</p>
+                            </div>
+                            <div class="ms-auto"> <i class="fe fe-folder-minus text-white fs-30 me-2 mt-2"></i> </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header bg-warning" style="padding-bottom: 0px;">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                    <a href="{{ route('manage_buy_package') }}">
-                        <div class="card overflow-hidden">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="mt-2">
-                                        <h6 class="">Online Registration</h6>
-                                        <h2 class="mb-0 number-font">{{ $registrations_count }}</h2>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <div class="chart-wrapper mt-1">
-                                            <i class="fe fe-folder" style="font-size: 30px;"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                    <a href="{{ route('completed_connection') }}">
-                        <div class="card overflow-hidden">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="mt-2">
-                                        <h6 class="">Success Connection</h6>
-                                        <h2 class="mb-0 number-font">{{ $success_registrations_count }}</h2>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <div class="chart-wrapper mt-1">
-                                            <i class="fe fe-folder-plus" style="font-size: 30px;"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                    <a href="{{ route('pending_connection') }}">
-                        <div class="card overflow-hidden">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="mt-2">
-                                        <h6 class="">Pending Connection</h6>
-                                        <h2 class="mb-0 number-font">{{ $pending_registrations_count }}</h2>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <div class="chart-wrapper mt-1">
-                                            <i class="fe fe-folder-minus" style="font-size: 30px;"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
             <div class="card-body">
                 <h3>Recent Online Registration List</h3>
                 <div class="table-responsive">

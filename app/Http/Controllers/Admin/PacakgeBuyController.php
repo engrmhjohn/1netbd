@@ -351,6 +351,11 @@ class PacakgeBuyController extends Controller
         $start_date = $request->start_date;
         $end_date = $request->end_date;
 
+        // Validate that both start_date and end_date are provided
+        if (empty($start_date) || empty($end_date)) {
+            return redirect()->back()->withErrors(['Both start date and end date are required.']);
+        }
+
         $user = Auth::user();
 
         // Array of specific area IDs
@@ -374,6 +379,11 @@ class PacakgeBuyController extends Controller
         $start_date = $request->start_date;
         $end_date = $request->end_date;
 
+        // Validate that both start_date and end_date are provided
+        if (empty($start_date) || empty($end_date)) {
+            return redirect()->back()->withErrors(['Both start date and end date are required.']);
+        }
+
         $user = Auth::user();
 
         // Array of specific area IDs
@@ -383,16 +393,16 @@ class PacakgeBuyController extends Controller
         if ($user->role == '2' || in_array($user->area_id, $specific_area_ids)) {
             // Super admin or specific area's admin can see prending records
             $registration = BuyPackage::whereDate('created_at', '>=', $start_date)
-                                        ->whereDate('created_at', '<=', $end_date)
-                                        ->where('status', '0')
-                                        ->get();
+                ->whereDate('created_at', '<=', $end_date)
+                ->where('status', '0')
+                ->get();
         } else {
             // Other admins can see only the pending records matching their area_id
             $registration = BuyPackage::where('area_id', $user->area_id)
-                                        ->whereDate('created_at', '>=', $start_date)
-                                        ->whereDate('created_at', '<=', $end_date)
-                                        ->where('status', '0')
-                                        ->get();
+                ->whereDate('created_at', '>=', $start_date)
+                ->whereDate('created_at', '<=', $end_date)
+                ->where('status', '0')
+                ->get();
         }
         return view('backend.admin.registration.filter_pending_connection', [
             'registration' => $registration
@@ -403,6 +413,11 @@ class PacakgeBuyController extends Controller
     {
         $start_date = $request->start_date;
         $end_date = $request->end_date;
+
+        // Validate that both start_date and end_date are provided
+        if (empty($start_date) || empty($end_date)) {
+            return redirect()->back()->withErrors(['Both start date and end date are required.']);
+        }
 
         $user = Auth::user();
 
