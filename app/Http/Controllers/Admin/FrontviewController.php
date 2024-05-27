@@ -21,7 +21,7 @@ use App\Models\Mission;
 use App\Models\Vision;
 use App\Models\Faq;
 use App\Models\Testimonial;
-use App\Models\KAM;
+use App\Models\ClientsReview;
 
 class FrontviewController extends Controller
 {
@@ -93,6 +93,15 @@ class FrontviewController extends Controller
         $nagad_payment = Payment::where('status', 1)->where('payment_category_id', 4)->first();
         $category = PaymentCategory::where('status', 1)->get();
         return view('frontend.bill_payment.bill_payment', compact('company_info', 'category','bkash_payment','rocket_payment','nagad_payment'));
+    }
+
+    public function clientsReview(){
+        $clients_review = ClientsReview::orderBy('id','desc')->get();
+        $company_info = CompanyInfo::first();
+        return view('frontend.clients_review.clients_review',[
+            'clients_review' => $clients_review,
+            'company_info' => $company_info,
+        ]);
     }
 
 

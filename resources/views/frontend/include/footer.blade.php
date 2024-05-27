@@ -21,6 +21,7 @@
                             <li><a href="https://onesky.com.bd/online-payment">Online Payment</a></li>
                             <li><a href="{{ route('front.about') }}">About Us</a></li>
                             <li><a href="{{ route('front.btrc') }}">BTRC Approved Tariff</a></li>
+                            <li><a href="{{ route('front.clients_review') }}">Client's Review</a></li>
                             <li><a href="{{ route('terms_condition') }}">Terms & Conditions</a></li>
                         </ul>
                     </div>

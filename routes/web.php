@@ -18,6 +18,7 @@ Route::controller(FrontviewController::class)->group(function () {
     Route::get('/terms-condition', 'termsCondition')->name('terms_condition');
     Route::get('/campaign-details/{id}', 'campaignDetails')->name('campaign_details');
     Route::get('/bill-payment', 'billPayment')->name('front.bill_payment');
+    Route::get('/clients-review', 'clientsReview')->name('front.clients_review');
 });
 
 Route::controller(PacakgeBuyController::class)->group(function () {
@@ -156,6 +157,13 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
             Route::get('/edit-testimonial/{id}', 'editTestimonial')->name('edit_testimonial');
             Route::post('/update-testimonial', 'updateTestimonial')->name('update_testimonial');
             Route::post('/delete-testimonial', 'deleteTestimonial')->name('delete_testimonial');
+
+            Route::get('/add-clients-review', 'addClientsReview')->name('add_clients_review');
+            Route::post('/save-clients-review', 'saveClientsReview')->name('save_clients_review');
+            Route::get('/manage-clients-review', 'manageClientsReview')->name('manage_clients_review');
+            Route::get('/edit-clients-review/{id}', 'editClientsReview')->name('edit_clients_review');
+            Route::post('/update-clients-review', 'updateClientsReview')->name('update_clients_review');
+            Route::post('/delete-clients-review', 'deleteClientsReview')->name('delete_clients_review');
         });
     });
 

@@ -22,7 +22,7 @@ use App\Models\Mission;
 use App\Models\Vision;
 use App\Models\Faq;
 use App\Models\Testimonial;
-use App\Models\KAM;
+use App\Models\ClientsReview;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -1166,6 +1166,58 @@ class CMSController extends Controller
         $testimonial->delete();
 
         return redirect()->route('admin.manage_testimonial')->with('message', 'Successfully Deleted!');
+    }
+
+    public function addClientsReview()
+    {
+        return view('backend.cms.clients_review.show');
+    }
+    public function saveClientsReview(Request $request)
+    {
+        $clients_review = new ClientsReview();
+        $clients_review->image = image_upload($request->image);
+        $clients_review->save();
+        return redirect(route('admin.manage_clients_review'))->with('message', 'Successfully Added!');
+    }
+    public function manageClientsReview()
+    {
+        return view('backend.cms.clients_review.index', [
+            'clients_review' => ClientsReview::orderBy('id', 'desc')->get(),
+        ]);
+    }
+    public function editClientsReview($id)
+    {
+        $clients_review = ClientsReview::find($id);
+
+        return view('backend.cms.clients_review.edit', [
+            'clients_review' => $clients_review
+        ]);
+    }
+    public function updateClientsReview(Request $request)
+    {
+        $clients_review               = ClientsReview::find($request->clients_review_id);
+        if ($request->file('image')) {
+            if (isset($clients_review)) {
+                delete_image($clients_review->image);
+                $clients_review->delete();
+            }
+            $clients_review->image = image_upload($request->image);
+        }
+        $clients_review->save();
+        return redirect(route('admin.manage_clients_review'))->with('message', 'Successfully Updated!');
+    }
+    public function deleteClientsReview(Request $request)
+    {
+        $clients_review = ClientsReview::find($request->clients_review_id);
+
+        if (isset($clients_review)) {
+            delete_image($clients_review->image);
+            $clients_review->delete();
+        }
+
+        $clients_review->delete();
+
+        return redirect()->route('admin.manage_clients_review')->with('message', 'Successfully Deleted!');
     }
 
 }

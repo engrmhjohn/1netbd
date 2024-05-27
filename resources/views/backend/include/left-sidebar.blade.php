@@ -448,6 +448,28 @@ $company_info = \App\Models\CompanyInfo::first();
                         </li>
                     </ul>
                 </li>
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                        <i class="side-menu__icon fa fa-paint-brush"></i>
+                        <span class="side-menu__label">Clients Review</span><i class="angle fe fe-chevron-right"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <li class="panel sidetab-menu">
+                            <div class="panel-body tabs-menu-body p-0 border-0">
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="side21">
+                                        <ul class="sidemenu-list">
+                                            <li class="side-menu-label1"></li>
+                                            <li><a href="{{ route('admin.add_clients_review') }}" class="slide-item">Add
+                                                Review</a></li>
+                                            <li><a href="{{ route('admin.manage_clients_review') }}" class="slide-item">Manage Review</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
                 @endif
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
