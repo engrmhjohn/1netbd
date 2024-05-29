@@ -10,19 +10,35 @@ Admin :: Pending Search Result
                 Online Registration Pending Search Result List
             </div>
             <div class="card-body">
-                <a href="{{ route('manage_buy_package') }}" class="btn btn-sm btn-success mb-3">
-                    <i class="fa fa-mail-reply"></i> Back to Manage Registration
+                <a href="{{ route('pending_connection') }}" class="btn btn-sm btn-success mb-3">
+                    <i class="fa fa-mail-reply"></i> Back to Pending Connection
                 </a>
                 <form class="mb-3" action="/filter-pending-registration" method="GET">
                     <div class="row">
                         <div class="col-lg-2">
-                            <label for=""> <strong>Start Date</strong> </label>
+                            <label for=""> <strong>Start Date*</strong> </label>
                             <input type="date" name="start_date" class="form-control">
                         </div>
                         <div class="col-lg-2">
-                            <label for=""> <strong>End Date</strong> </label>
+                            <label for=""> <strong>End Date*</strong> </label>
                             <input type="date" name="end_date" class="form-control">
                         </div>
+                        @php
+                        $user = Auth::user();
+                        $specific_area_ids = [1, 2, 5];
+                        @endphp
+                        @if ($user->role == '2' || in_array($user->area_id, $specific_area_ids))
+                        <div class="col-lg-2" style="margin-top: -7px;">
+                            <label class="form-label">Select Branch</label>
+                            <select name="area_id" class="form-control select2-show-search form-select" data-placeholder="Choose one">
+                                <option label="Choose one"></option>
+                                <option value="all">All</option>
+                                @foreach ($branches as $item)
+                                <option value="{{ $item->id }}">{{ $item->en_area_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @endif
                         <div class="col-lg-2 mt-1">
                             <button type="submit" class="btn btn-dark mt-5">Filter</button>
                         </div>

@@ -85,6 +85,8 @@ class PacakgeBuyController extends Controller
     {
         $user = Auth::user();
 
+        $branches = Area::orderBy('en_area_name', 'asc')->get();
+
         // Array of specific area IDs
         $specific_area_ids = [1, 2, 5];
 
@@ -97,13 +99,16 @@ class PacakgeBuyController extends Controller
         }
 
         return view('backend.admin.registration.index', [
-            'registration' => $registrations
+            'registration' => $registrations,
+            'branches' => $branches
         ]);
     }
 
     public function pendingConnection()
     {
         $user = Auth::user();
+
+        $branches = Area::orderBy('en_area_name', 'asc')->get();
 
         // Array of specific area IDs
         $specific_area_ids = [1, 2, 5];
@@ -117,12 +122,15 @@ class PacakgeBuyController extends Controller
         }
 
         return view('backend.admin.registration.pending_connection', [
-            'pending_connection' => $pending_connection
+            'pending_connection' => $pending_connection,
+            'branches' => $branches
         ]);
     }
     public function completedConnection()
     {
         $user = Auth::user();
+
+        $branches = Area::orderBy('en_area_name', 'asc')->get();
 
         // Array of specific area IDs
         $specific_area_ids = [1, 2, 5];
@@ -135,7 +143,8 @@ class PacakgeBuyController extends Controller
             $completed_connection = BuyPackage::where('area_id', $user->area_id)->where('status', '1')->orderBy('id', 'desc')->get();
         }
         return view('backend.admin.registration.completed_connection', [
-            'completed_connection' => $completed_connection
+            'completed_connection' => $completed_connection,
+            'branches' => $branches
         ]);
     }
 
@@ -350,27 +359,39 @@ class PacakgeBuyController extends Controller
     {
         $start_date = $request->start_date;
         $end_date = $request->end_date;
+        $area_id = $request->area_id;
+        $user = Auth::user();
 
         // Validate that both start_date and end_date are provided
         if (empty($start_date) || empty($end_date)) {
             return redirect()->back()->withErrors(['Both start date and end date are required.']);
         }
 
-        $user = Auth::user();
-
         // Array of specific area IDs
         $specific_area_ids = [1, 2, 5];
 
-
         if ($user->role == '2' || in_array($user->area_id, $specific_area_ids)) {
-            // Super admin can see all records
-            $registration = BuyPackage::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->get();
+            // Super admin or users with specified area IDs can see all records
+            $query = BuyPackage::whereDate('created_at', '>=', $start_date)
+                ->whereDate('created_at', '<=', $end_date);
+
+            if ($area_id != 'all' && $area_id != '') {
+                $query->where('area_id', $area_id);
+            }
+            $registrations = $query->get();
         } else {
             // Other admins can see only the records matching their area_id
-            $registration = BuyPackage::where('area_id', $user->area_id)->whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->get();
+            $registrations = BuyPackage::where('area_id', $user->area_id)
+                ->whereDate('created_at', '>=', $start_date)
+                ->whereDate('created_at', '<=', $end_date)
+                ->get();
         }
+
+        $branches = Area::orderBy('en_area_name', 'asc')->get();
+
         return view('backend.admin.registration.filter_index', [
-            'registration' => $registration
+            'registration' => $registrations,
+            'branches' => $branches
         ]);
     }
 
@@ -378,34 +399,41 @@ class PacakgeBuyController extends Controller
     {
         $start_date = $request->start_date;
         $end_date = $request->end_date;
+        $area_id = $request->area_id;
+        $user = Auth::user();
 
         // Validate that both start_date and end_date are provided
         if (empty($start_date) || empty($end_date)) {
             return redirect()->back()->withErrors(['Both start date and end date are required.']);
         }
 
-        $user = Auth::user();
-
         // Array of specific area IDs
         $specific_area_ids = [1, 2, 5];
 
-
         if ($user->role == '2' || in_array($user->area_id, $specific_area_ids)) {
-            // Super admin or specific area's admin can see prending records
-            $registration = BuyPackage::whereDate('created_at', '>=', $start_date)
+            // Super admin or users with specified area IDs can see all records
+            $query = BuyPackage::whereDate('created_at', '>=', $start_date)
                 ->whereDate('created_at', '<=', $end_date)
-                ->where('status', '0')
-                ->get();
+                ->where('status', '0');
+
+            if ($area_id != 'all' && $area_id != '') {
+                $query->where('area_id', $area_id);
+            }
+            $registration = $query->get();
         } else {
-            // Other admins can see only the pending records matching their area_id
+            // Other admins can see only the records matching their area_id
             $registration = BuyPackage::where('area_id', $user->area_id)
                 ->whereDate('created_at', '>=', $start_date)
                 ->whereDate('created_at', '<=', $end_date)
                 ->where('status', '0')
                 ->get();
         }
+
+        $branches = Area::orderBy('en_area_name', 'asc')->get();
+
         return view('backend.admin.registration.filter_pending_connection', [
-            'registration' => $registration
+            'registration' => $registration,
+            'branches' => $branches
         ]);
     }
 
@@ -413,27 +441,41 @@ class PacakgeBuyController extends Controller
     {
         $start_date = $request->start_date;
         $end_date = $request->end_date;
+        $area_id = $request->area_id;
+        $user = Auth::user();
 
         // Validate that both start_date and end_date are provided
         if (empty($start_date) || empty($end_date)) {
             return redirect()->back()->withErrors(['Both start date and end date are required.']);
         }
 
-        $user = Auth::user();
-
         // Array of specific area IDs
         $specific_area_ids = [1, 2, 5];
 
-
         if ($user->role == '2' || in_array($user->area_id, $specific_area_ids)) {
-            // Super admin can see all records
-            $registration = BuyPackage::where('status', '1')->whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->get();
+            // Super admin or users with specified area IDs can see all records
+            $query = BuyPackage::whereDate('created_at', '>=', $start_date)
+                ->whereDate('created_at', '<=', $end_date)
+                ->where('status', '1');
+
+            if ($area_id != 'all' && $area_id != '') {
+                $query->where('area_id', $area_id);
+            }
+            $registration = $query->get();
         } else {
             // Other admins can see only the records matching their area_id
-            $registration = BuyPackage::where('status', '1')->where('area_id', $user->area_id)->whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->get();
+            $registration = BuyPackage::where('area_id', $user->area_id)
+                ->whereDate('created_at', '>=', $start_date)
+                ->whereDate('created_at', '<=', $end_date)
+                ->where('status', '1')
+                ->get();
         }
+
+        $branches = Area::orderBy('en_area_name', 'asc')->get();
+
         return view('backend.admin.registration.filter_completed_connection', [
-            'registration' => $registration
+            'registration' => $registration,
+            'branches' => $branches
         ]);
     }
 }

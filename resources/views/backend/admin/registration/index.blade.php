@@ -16,13 +16,29 @@ Admin :: Online Registration
                 <form class="mb-3" action="/filter-registration" method="GET">
                     <div class="row">
                         <div class="col-lg-2">
-                            <label for=""> <strong>Start Date</strong> </label>
+                            <label for=""><strong>Start Date*</strong></label>
                             <input type="date" name="start_date" class="form-control">
                         </div>
                         <div class="col-lg-2">
-                            <label for=""> <strong>End Date</strong> </label>
+                            <label for=""><strong>End Date*</strong></label>
                             <input type="date" name="end_date" class="form-control">
                         </div>
+                        @php
+                        $user = Auth::user();
+                        $specific_area_ids = [1, 2, 5];
+                        @endphp
+                        @if ($user->role == '2' || in_array($user->area_id, $specific_area_ids))
+                        <div class="col-lg-2" style="margin-top: -7px;">
+                            <label class="form-label">Select Branch</label>
+                            <select name="area_id" class="form-control select2-show-search form-select" data-placeholder="Choose one">
+                                <option label="Choose one"></option>
+                                <option value="all">All</option>
+                                @foreach ($branches as $item)
+                                <option value="{{ $item->id }}">{{ $item->en_area_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @endif
                         <div class="col-lg-2 mt-1">
                             <button type="submit" class="btn btn-dark mt-5">Filter</button>
                         </div>
@@ -33,7 +49,10 @@ Admin :: Online Registration
                     <div class="">
                         <div class="alert alert-info">
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
-                            <span class=""><svg xmlns="http://www.w3.org/2000/svg" height="40" width="40" viewBox="0 0 24 24"><path fill="#70a9ee" d="M20.05713,22H3.94287A3.02288,3.02288,0,0,1,1.3252,17.46631L9.38232,3.51123a3.02272,3.02272,0,0,1,5.23536,0L22.6748,17.46631A3.02288,3.02288,0,0,1,20.05713,22Z"/><circle cx="12" cy="17" r="1" fill="#1170e4"/><path fill="#1170e4" d="M12,14a1,1,0,0,1-1-1V9a1,1,0,0,1,2,0v4A1,1,0,0,1,12,14Z"/></svg></span>
+                            <span class=""><svg xmlns="http://www.w3.org/2000/svg" height="40" width="40" viewBox="0 0 24 24">
+                                    <path fill="#70a9ee" d="M20.05713,22H3.94287A3.02288,3.02288,0,0,1,1.3252,17.46631L9.38232,3.51123a3.02272,3.02272,0,0,1,5.23536,0L22.6748,17.46631A3.02288,3.02288,0,0,1,20.05713,22Z" />
+                                    <circle cx="12" cy="17" r="1" fill="#1170e4" />
+                                    <path fill="#1170e4" d="M12,14a1,1,0,0,1-1-1V9a1,1,0,0,1,2,0v4A1,1,0,0,1,12,14Z" /></svg></span>
                             <strong>Info Message</strong>
                             <hr class="message-inner-separator">
                             <p>@foreach ($errors->all() as $error) {{ $error }} @endforeach</p>
@@ -110,7 +129,6 @@ Admin :: Online Registration
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
