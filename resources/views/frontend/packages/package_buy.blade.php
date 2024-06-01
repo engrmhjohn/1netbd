@@ -11,9 +11,6 @@ Buy Package :: One Net
             <input type="hidden" name="admin_id" value="{{ Auth::user()->id }}">
             @endif
             <div class="row justify-content-center">
-                {{-- <div class="col-lg-4">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/B8iJkwwVo_s?si=mZElj5Wj3EZKG11p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div> --}}
                 <div class="col-lg-8">
                     <h3 class="bg-success py-2 text-center text-white fw-bold">Package Details</h3>
                     <table class="table table-bordered table-hover">
@@ -41,7 +38,7 @@ Buy Package :: One Net
                 <div class="col-lg-4 col-md-4 col-12 mb-3">
                     <div class="form-group">
                         <label for="name" class="form-label">Full Name*</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Full Name" autocomplete="name" required>
+                        <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="Full Name" autocomplete="name" required>
                         @error('name')
                         <strong class="error_form">{{ $message }}</strong>
                         @enderror
@@ -50,7 +47,7 @@ Buy Package :: One Net
                 <div class="col-lg-4 col-md-4 col-12 mb-3">
                     <div class="form-group">
                         <label for="phone" class="form-label">Contact Number*</label>
-                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Contact Number" autocomplete="phone" required>
+                        <input type="text" class="form-control" name="phone" id="phone" value="{{ old('phone') }}" placeholder="Contact Number" autocomplete="phone" required>
                         @error('phone')
                         <strong class="error_form">{{ $message }}</strong>
                         @enderror
@@ -59,7 +56,7 @@ Buy Package :: One Net
                 <div class="col-lg-4 col-md-4 col-12 mb-3">
                     <div class="form-group">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" autocomplete="email">
+                        <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="Email" autocomplete="email">
                         @error('email')
                         <strong class="error_form">{{ $message }}</strong>
                         @enderror
@@ -127,7 +124,7 @@ Buy Package :: One Net
                 <div class="col-md-12 mb-3">
                     <label for="">NID / Birth Certificate / Passport Number*</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="nid_number" id="nid_number" aria-describedby="basic-addon3">
+                        <input type="text" class="form-control" name="nid_number" id="nid_number" value="{{ old('nid_number') }}" aria-describedby="basic-addon3">
                     </div>
                     @error('nid_number')
                     <strong class="error_form">{{ $message }}</strong>
@@ -136,7 +133,7 @@ Buy Package :: One Net
                 <div class="col-md-12 mb-3 mt-3">
                     <div class="input-group">
                         <span class="input-group-text">Address*</span>
-                        <textarea class="form-control no-resize" name="address" aria-label="Address"></textarea>
+                        <textarea class="form-control no-resize" name="address" aria-label="Address">{{ old('address') }}</textarea>
                     </div>
                     @error('address')
                     <strong class="error_form">{{ $message }}</strong>
@@ -145,7 +142,7 @@ Buy Package :: One Net
                 <div class="col-md-12 mb-3">
                     <div class="input-group">
                         <span class="input-group-text">Remarks</span>
-                        <textarea class="form-control no-resize" name="remarks" aria-label="Remarks (if any)"></textarea>
+                        <textarea class="form-control no-resize" name="remarks" aria-label="Remarks (if any)">{{ old('remarks') }}</textarea>
                     </div>
                     @error('remarks')
                     <strong class="error_form">{{ $message }}</strong>
@@ -184,7 +181,7 @@ Buy Package :: One Net
                 <div class="col-xl-4 col-lg-5 col-md-6 col-12">
                     <div class="mb-3">
                         <label for="marketing_person_name" class="form-label">Marketing Person Name (if any):</label>
-                        <input type="text" name="marketing_person_name" class="form-control">
+                        <input type="text" name="marketing_person_name" value="{{ old('marketing_person_name') }}" class="form-control">
                     </div>
                 </div>
             </div>

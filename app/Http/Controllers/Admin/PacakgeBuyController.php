@@ -26,7 +26,7 @@ class PacakgeBuyController extends Controller
         $request->validate([
             'name' => 'required|alpha_spaces',
             'phone' => 'required|numeric',
-            'nid_number' => 'required|numeric',
+            'nid_number' => 'required',
             'address' => 'required|max:300',
             'agree' => 'required',
             'photo' => 'required|mimes:jpeg,png,jpg',
@@ -38,7 +38,6 @@ class PacakgeBuyController extends Controller
             'phone.required' => 'Phone Number is required',
             'phone.numeric' => 'Phone Number must be numeric',
             'nid_number.required' => 'NID Number is required',
-            'nid_number.numeric' => 'NID Number must be numeric',
             'address.required' => 'Address is required',
             'address.max' => 'Address should not exceed 300 characters',
             'agree.required' => 'You must agree to the terms',
