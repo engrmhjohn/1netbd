@@ -47,7 +47,7 @@
     @include('sweetalert::alert')
     <!-- GLOBAL-LOADER -->
     <div id="global-loader">
-        <img src="{{ asset('backendAssets') }}/images/wifi.gif" class="loader-img" alt="Loader">
+        <img src="{{ asset('backendAssets') }}/images/wifii.gif" class="loader-img" alt="Loader">
     </div>
     <!-- /GLOBAL-LOADER -->
 
