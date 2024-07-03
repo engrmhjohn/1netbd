@@ -236,6 +236,13 @@ $formattedTotal = number_format($total, 0, '.', '');
                             @enderror
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 mb-3">
+                            <label for="real_ip">Real IP Bill</label>
+                            <input type="number" class="form-control" name="real_ip" id="real_ip" placeholder="Amount in TK" value="{{ isset($registration->real_ip) ? $registration->real_ip : '' }}">
+                            @error('real_ip')
+                            <strong class="error_form">{{ $message }}</strong>
+                            @enderror
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12 mb-3">
                             <label for="en_otc_amount">OTC</label>
                             <input type="number" class="form-control" name="en_otc_amount" id="en_otc_amount" required value="{{ isset($registration->en_otc_amount) ? $registration->en_otc_amount : '' }}">
                             @error('en_otc_amount')
@@ -287,9 +294,10 @@ $formattedTotal = number_format($total, 0, '.', '');
         var otcAmount = parseFloat(document.getElementById('en_otc_amount').value) || 0;
         var advanceBillAmount = parseFloat(document.getElementById('en_advance_bill_amount').value) || 0;
         var discountMonthlyFee = parseFloat(document.getElementById('en_discount_monthly_fee').value) || 0;
+        var real_ip_bill = parseFloat(document.getElementById('real_ip').value) || 0;
 
         // Calculate subtotal
-        var subtotal = monthlyBill + otcAmount + advanceBillAmount;
+        var subtotal = monthlyBill + real_ip_bill + otcAmount + advanceBillAmount;
 
         // Calculate formatted total
         var formattedTotal = subtotal - discountMonthlyFee;
@@ -304,6 +312,7 @@ $formattedTotal = number_format($total, 0, '.', '');
     document.getElementById('en_otc_amount').onkeyup = updateTotal;
     document.getElementById('en_advance_bill_amount').onkeyup = updateTotal;
     document.getElementById('en_discount_monthly_fee').onkeyup = updateTotal;
+    document.getElementById('real_ip').onkeyup = updateTotal;
 
 </script>
 @endsection

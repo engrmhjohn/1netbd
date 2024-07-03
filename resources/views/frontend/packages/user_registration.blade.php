@@ -107,7 +107,7 @@
 
 <body>
 	<div class="logo text-center">
-      {{-- <img src="{{ asset($color_logo) }}" alt="" style="height: auto; max-width: 175px;"> --}}
+        <img src="{{ asset($color_logo) }}" alt="" style="height: auto; max-width: 175px;">
     </div>
     <div class="head-title">
         <h1 class="text-center m-0 p-0">New Connection Form</h1>
@@ -154,7 +154,7 @@
                 </td>
                 <td style="width: 30%">
                     <div class="box-text">
-                    {{-- <img src="{{ asset($userInfo->photo) }}" alt="" style="height: 120px; width: 130px; margin-left: 300px;"> --}}
+                        <img src="{{ asset($userInfo->photo) }}" alt="" style="height: 120px; width: 130px; margin-left: 300px;">
                      </div>
                 </td>
             </tr>
@@ -170,12 +170,12 @@
                 <tr>
                     <td>
                         <div class="box-text" style="margin-right: 10px;">
-                          {{-- <img src="{{ asset($userInfo->nid_front) }}" alt="NID Front Side Pic" style="height: 160px; width: 320px;"> --}}
+                            <img src="{{ asset($userInfo->nid_front) }}" alt="NID Front Side Pic" style="height: 160px; width: 320px;">
                         </div>
                     </td>
                     <td>
                         <div class="box-text">
-                           {{-- <img src="{{ asset($userInfo->nid_back) }}" alt="NID Back Side Pic" style="height: 160px; width: 320px;"> --}}
+                          <img src="{{ asset($userInfo->nid_back) }}" alt="NID Back Side Pic" style="height: 160px; width: 320px;">
                         </div>
                     </td>
                 </tr>
@@ -186,7 +186,7 @@
                 <tr>
                     <td class="text-center">
                         <div class="box-text" style="margin-right: 10px;">
-                          {{-- <img src="{{ asset($userInfo->birth_certificate) }}" alt="Birth Certificate / Passport Pic" style="max-width: 500px; max-height: 380px;"> --}}
+                          <img src="{{ asset($userInfo->birth_certificate) }}" alt="Birth Certificate / Passport Pic" style="max-width: 500px; max-height: 380px;"> 
                         </div>
                     </td>
                 </tr>
@@ -208,14 +208,16 @@
     <div class="table-section bill-tbl w-100 mt-10">
         <table class="table w-100 mt-10">
             <tr>
-                <th class="w-33">Monthly Bill</th>
-                <th class="w-33">OTC</th>
-                <th class="w-33">Advance Bill</th>
+                <th class="w-25">Monthly Bill</th>
+                <th class="w-25">OTC</th>
+                <th class="w-25">Advance Bill</th>
+                <th class="w-25">Sub Total</th>
             </tr>
             <tr>
                 <td class="text-center"> {{ $userInfo->en_amount }} TK</td>
                 <td class="text-center"> {{ $userInfo->en_otc_amount }} TK</td>
                 <td class="text-center"> {{ $userInfo->en_advance_bill_amount }} TK</td>
+                <td class="text-center"> {{ $userInfo->subtotal ?? 0}} TK</td>
             </tr>
         </table>
     </div>
@@ -223,13 +225,17 @@
         <table class="table w-100 mt-10">
             <tr class="w-100">
                 <td class="w-85" style="text-align: right;"> 
-                    <p>Sub Total</p>
+                    @if($userInfo->real_ip)
+                        <p>Real IP Bill</p>
+                    @endif
                     <p>Discount on Monthly Running Bill</p>
                     <p>Running Month Bill</p>
                     <p>Total Payable</p>
                 </td>
                 <td class="w-15" style="text-align: right;"> 
-                    <p>{{ $userInfo->subtotal ?? 0}} TK</p>
+                    @if($userInfo->real_ip)
+                        <p>{{ $userInfo->real_ip ?? 0}} TK</p>
+                    @endif
                     <p>{{ $userInfo->en_discount_monthly_fee ?? 0}} TK</p>
                     @php
                         $running_month_bill = $userInfo->en_amount - $userInfo->en_discount_monthly_fee;

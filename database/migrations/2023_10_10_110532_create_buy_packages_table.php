@@ -35,6 +35,7 @@ return new class extends Migration
             $table->longText('address');
             $table->longText('remarks');
             $table->longText('agree');
+            $table->string('real_ip')->nullable();
             $table->string('nid_have');
             $table->string('username');
             $table->string('status')->default('0');

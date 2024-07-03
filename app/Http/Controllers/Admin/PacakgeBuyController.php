@@ -181,6 +181,7 @@ class PacakgeBuyController extends Controller
         $buy->ppoe_password = $request->ppoe_password;
         $buy->connection_type = $request->connection_type;
         $buy->marketing_person_name = $request->marketing_person_name;
+        $buy->real_ip = $request->real_ip;
 
         if ($request->file('photo')) {
             if (isset($buy)) {
