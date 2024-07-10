@@ -13622,14 +13622,14 @@ a.icon:hover {
 #back-to-top {
     color: #fff;
     position: fixed;
-    inset-block-end: 20px;
-    inset-inline-end: 20px;
+    bottom: 45px;
+    inset-inline-end: 15px;
     z-index: 99;
     display: none;
     text-align: center;
     z-index: 10000;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     background-repeat: no-repeat;
     background-position: center;
     transition: background-color 0.1s linear;
@@ -13640,8 +13640,8 @@ a.icon:hover {
 }
 
 #back-to-top i {
-    padding-block-start: 15px;
-    font-size: 16px;
+    /* padding-block-start: 15px; */
+    font-size: 32px;
 }
 
 #back-to-top:hover {

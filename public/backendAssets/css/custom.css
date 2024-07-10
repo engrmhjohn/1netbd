@@ -549,3 +549,16 @@ form .no-resize{
 .payment_process_section .key_point h5 i {
   color: white;
 }
+
+.messenger_div {
+  /* display: none; */
+  position: fixed;
+  bottom: 0px;
+  right: 16px;
+  z-index: 1000;
+}
+
+.messenger_logo {
+  width: 40px; /* Adjust the size as needed */
+  height: 40px; /* Adjust the size as needed */
+}

@@ -98,6 +98,13 @@
         <!-- FOOTER CLOSED -->
     </div>
 
+    <!-- Messenger Icon -->
+    <div class="messenger_div">
+        <a href="https://m.me/OneNet.ISP">
+            <img class="img-fluid messenger_logo" src="{{ asset('backendAssets') }}/static_images/messenger.png" alt="Messenger Icon">
+        </a>
+    </div>
+
     <!-- BACK-TO-TOP -->
     <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 
@@ -136,6 +143,24 @@
     <!-- FORMELEMENTS JS -->
     <script src="{{ asset('backendAssets') }}/js/formelementadvnced.js"></script>
     <script src="{{ asset('backendAssets') }}/js/form-elements.js"></script>
+
+
+            <!--Start of Tawk.to Script-->
+        {{-- <script type="text/javascript">
+            var Tawk_API = Tawk_API || {}
+                , Tawk_LoadStart = new Date();
+            (function() {
+                var s1 = document.createElement("script")
+                    , s0 = document.getElementsByTagName("script")[0];
+                s1.async = true;
+                s1.src = 'https://embed.tawk.to/668396079d7f358570d60985/1i1p044b7';
+                s1.charset = 'UTF-8';
+                s1.setAttribute('crossorigin', '*');
+                s0.parentNode.insertBefore(s1, s0);
+            })();
+
+        </script> --}}
+        <!--End of Tawk.to Script-->
 
 </body>
 
