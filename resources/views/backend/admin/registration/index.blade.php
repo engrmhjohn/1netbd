@@ -72,37 +72,23 @@ Admin :: Online Registration
                                 <th>Package</th>
                                 <th>Branch</th>
                                 <th>Marketing</th>
-                                <th>Status</th>
                                 <th class="text-center bg-warning text-white">Actions</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($registration as $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $user->created_at->format('d F Y') }}</td>
+                                <td>{{ $user->created_at->format('d M') }}</td>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->username }}</td>
+                                <td>{{ \Illuminate\Support\Str::limit($user->username, 10, '..') }}</td>
                                 <td>{{ $user->phone }}</td>
-                                <td>{{ $user->en_package_name }} ({{ $user->en_mbps_value }} Mbps)</td>
+                                <td>{{ $user->en_mbps_value }} Mbps</td>
                                 <td>{{ $user->area->en_area_name ?? 'Nothing Selected'}}</td>
                                 <td>{{ $user->marketing_person_name }}</td>
-                                <td class="text-center">
-                                    @if ($user->status == 0)
-                                    <span class="badge bg-warning badge-sm  me-1 mb-1 mt-1">Pending</span>
-                                    @else
-                                    <span class="badge bg-success badge-sm  me-1 mb-1 mt-1">Success</span>
-                                    @endif
-                                </td>
                                 <td name="bstable-actions">
                                     <div class="btn-list d-flex justify-content-center" style="gap: 10px;">
-                                        @if(Auth::user()->role !== '4')
-                                        @if ($user->status == 0)
-                                        <a class="btn btn-info btn-sm" href="{{ route('status', ['id' => $user->id]) }}">Mark as Done</a>
-                                        @else
-                                        <a class="btn btn-danger btn-sm" href="{{ route('status', ['id' => $user->id]) }}">Mark as Pending</a>
-                                        @endif
-                                        @endif
                                         <a href="{{ route('preview_buy_package', $user->id) }}"><button class="btn btn-secondary btn-sm" data-bs-toggle="tooltip" data-bs-original-title="Preview"><span class="fe fe-eye fs-14"></span>
                                             </button></a>
                                         <a href="{{ route('export_package_pdf', $user->id) }}"><button class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-original-title="Download"><span class="fe fe-download fs-14"></span>
@@ -122,7 +108,21 @@ Admin :: Online Registration
                                             <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');" type="submit" data-bs-toggle="tooltip" data-bs-original-title="Delete"> <span class="fe fe-trash-2"> </span></button>
                                         </form>
                                         @endif
+                                        @if(Auth::user()->role !== '4')
+                                        @if ($user->status == 0)
+                                        <a class="btn btn-info btn-sm" href="{{ route('status', ['id' => $user->id]) }}"><span class="fe fe-check fs-14"></span> Done</a>
+                                        @else
+                                        <a class="btn btn-danger btn-sm" href="{{ route('status', ['id' => $user->id]) }}"><span class="fe fe-check fs-14"></span> Pending</a>
+                                        @endif
+                                        @endif
                                     </div>
+                                </td>
+                                <td class="text-center">
+                                    @if ($user->status == 0)
+                                    <span class="badge bg-warning badge-sm  me-1 mb-1 mt-1">Pending</span>
+                                    @else
+                                    <span class="badge bg-success badge-sm  me-1 mb-1 mt-1">Success</span>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

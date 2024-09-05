@@ -50,7 +50,7 @@ $formattedTotal = number_format($total, 0, '.', '');
                         </div>
                         <div class="col-lg-3 col-md-4 col-12 mb-3">
                             <label for="username">User ID</label>
-                            <input type="username" class="form-control" name="username" placeholder="Ex: xyz10" value="{{ isset($registration->username) ? $registration->username : '' }}">
+                            <input type="number" class="form-control" name="username" placeholder="Ex: 123" value="{{ isset($registration->username) ? $registration->username : '' }}">
                             @error('username')
                             <strong class="error_form">{{ $message }}</strong>
                             @enderror
