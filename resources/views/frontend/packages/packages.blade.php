@@ -13,7 +13,7 @@
                         <div class="icon_box">
                             <i class="fe fe-wifi"></i>
                         </div>
-                        <p>{{ $package->en_mbps_value }}</p>
+                        <p>{{ $package->en_mbps_value }} Mbps</p>
                     </div>
                     <div class="package_name">
                         <strong>{{ $package->en_package_name }}</strong>
