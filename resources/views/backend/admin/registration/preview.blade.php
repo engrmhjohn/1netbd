@@ -27,7 +27,7 @@ Admin :: Preview Online Registration
                         </tr>
                         <tr>
                             <td>Registration Date</td>
-                            <td> {{ $registration_details->created_at->format('d F Y'); }}</td>
+                            <td> {{ $registration_details->created_at->format('Y-m-d g:i:A') }} </td>
                         </tr>
                         <tr>
                             <td>Marketing Person</td>
