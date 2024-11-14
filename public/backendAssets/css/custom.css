@@ -24,541 +24,706 @@
     cursor: pointer;
     z-index: 2;
 }
-.testimonial-carousel .slick_left img{
+
+.testimonial-carousel .slick_left img {
     position: relative;
-  top: -8px;
-  left: -4px;
+    top: -8px;
+    left: -4px;
 }
+
 .testimonial-carousel .slick_right img {
     position: relative;
-  top: -8px;
-  right: -4px;
+    top: -8px;
+    right: -4px;
 }
+
 .top_social_info {
-  padding: 6px 0;
-  background: #cc050c;
-  color: white;
-  font-size: 14px;
-  padding-top: 70px;
+    padding: 6px 0;
+    background: #cc050c;
+    color: white;
+    font-size: 14px;
+    padding-top: 70px;
 }
+
 .top_social_info .left li {
-  display: inline-block;
-  margin-right: 20px;
+    display: inline-block;
+    margin-right: 20px;
 }
+
 .top_social_info .left .btn {
-  background: #333043;
-  color: white;
-  padding: 2px 5px;
+    background: #333043;
+    color: white;
+    padding: 2px 5px;
 }
+
 .top_social_info .right li {
-  margin-left: 10px;
-  font-size: 14px;
-  float: right;
-  padding: 2px 7px;
-  height: 25px;
-  width: 25px;
-  border-radius: 50%;
-  background-color: #f0eeff;
+    margin-left: 10px;
+    font-size: 14px;
+    float: right;
+    padding: 2px 7px;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: #f0eeff;
 }
-.top_social_info .right a:hover{
-  background-color: #f0eeff;
-  border: none;
-  outline: none;
+
+.top_social_info .right a:hover {
+    background-color: #f0eeff;
+    border: none;
+    outline: none;
 }
-.top_social_info .right i:hover{
-  background-color: #f0eeff !important;
-  border: none;
-  outline: none;
+
+.top_social_info .right i:hover {
+    background-color: #f0eeff !important;
+    border: none;
+    outline: none;
 }
-.package_card .bg-primary-transparent{
-  padding: 35px 40px 36px;
+
+.package_card .bg-primary-transparent {
+    padding: 35px 40px 36px;
 }
-.package_header .package_icon_mbps{
-  display: flex;
-  align-items: center;
-  gap: 15px;
+
+.package_header .package_icon_mbps {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
-.package_header .package_title strong{
-  color: #84858d;
+
+.package_header .package_title strong {
+    color: #84858d;
 }
-.package_header .package_icon_mbps p{
-  margin: 0;
-  font-size: 40px;
-  font-weight: bold;
-  color: #cc050c;
+
+.package_header .package_icon_mbps p {
+    margin: 0;
+    font-size: 40px;
+    font-weight: bold;
+    color: #cc050c;
 }
-.package_header .package_icon_mbps .icon_box{
-  border-radius: 50px 50px 0 50px;
-  background-color: rgba(108, 95, 252, 0.1);
-  margin-block-end: 1.5rem;
-  margin-block-start: 14px;
-  display: inline-flex;
-  width: 4rem;
-  height: 4rem;
-  padding: 1.3rem 1.4rem;
-  text-align: center;
+
+.package_header .package_icon_mbps .icon_box {
+    border-radius: 50px 50px 0 50px;
+    background-color: rgba(108, 95, 252, 0.1);
+    margin-block-end: 1.5rem;
+    margin-block-start: 14px;
+    display: inline-flex;
+    width: 4rem;
+    height: 4rem;
+    padding: 1.3rem 1.4rem;
+    text-align: center;
 }
-.package_header .package_icon_mbps i{
-  font-size: 23px;
-  color: #cc050c;
-  font-weight: bold;
+
+.package_header .package_icon_mbps i {
+    font-size: 23px;
+    color: #cc050c;
+    font-weight: bold;
 }
-.package_header .package_title h1{
-  letter-spacing: -.04em;
-  margin-bottom: 5px;
-  font-weight: bold;
+
+.package_header .package_title h1 {
+    letter-spacing: -.04em;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
-.package_header .package_title span{
-  font-size: 16px;
-  letter-spacing: -.04em;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #84858d;
+
+.package_header .package_title span {
+    font-size: 16px;
+    letter-spacing: -.04em;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #84858d;
 }
-.package_header .package_name{
-  position: absolute;
-  right: 20px;
-  top: 20px;
+
+.package_header .package_name {
+    position: absolute;
+    right: 20px;
+    top: 20px;
 }
-.package_header .package_name strong{
-  background: #cc050c;
-  border-radius: 14px;
-  box-shadow: 0 1px 2px #03041c1a;
-  color: white;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 500;
-  padding: 0 19px;
-  text-align: center;
+
+.package_header .package_name strong {
+    background: #cc050c;
+    border-radius: 14px;
+    box-shadow: 0 1px 2px #03041c1a;
+    color: white;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 19px;
+    text-align: center;
 }
-.package_body{
-  border: 1px solid rgba(4,18,31,.08);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-top: 0;
-  height: 100%;
-  padding: 30px 40px;
+
+.package_body {
+    border: 1px solid rgba(4, 18, 31, .08);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top: 0;
+    height: 100%;
+    padding: 30px 40px;
 }
-.package_body p{
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 15px
+
+.package_body p {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px
 }
-.package_body ul li{
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -.02em;
-  list-style: none;
-  margin-bottom: 12px;
-  position: relative;
+
+.package_body ul li {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -.02em;
+    list-style: none;
+    margin-bottom: 12px;
+    position: relative;
 }
-.package_body ul li i{
-  color: #cc050c;
-  margin-right: 5px;
-  margin-top: 3px;
+
+.package_body ul li i {
+    color: #cc050c;
+    margin-right: 5px;
+    margin-top: 3px;
 }
-.package_body .package_button{
-  display: flex;
-  justify-content: center;
+
+.package_body .package_button {
+    display: flex;
+    justify-content: center;
 }
-.statistics-info2 p{
-  text-align: justify;
-  font-size: 18px;
+
+.statistics-info2 p {
+    text-align: justify;
+    font-size: 18px;
 }
-.demo-footer h6{
-  color: whitesmoke;
+
+.demo-footer h6 {
+    color: whitesmoke;
 }
-.mobile_slide{
-  display: none;
+
+.mobile_slide {
+    display: none;
 }
+
 .pdf_preview {
-  height: 100vh;
+    height: 100vh;
 }
 
 .pdf_preview iframe {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 iframe {
-  border-radius: 5px;
+    border-radius: 5px;
 }
-form .error_form{
-  color: red;
+
+form .error_form {
+    color: red;
 }
-.contact_form .error_text{
-  margin-top: -10px;
-  display: block;
-  margin-bottom: 10px;
+
+.contact_form .error_text {
+    margin-top: -10px;
+    display: block;
+    margin-bottom: 10px;
 }
-form .no-resize{
-  resize: none;
+
+form .no-resize {
+    resize: none;
 }
-.dark-mode .day_night_titles{
-  color: black;
+
+.dark-mode .day_night_titles {
+    color: black;
 }
+
 .mobile_nav {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
-.light-mode .light-logo1{
-  display: block;
+
+.light-mode .light-logo1 {
+    display: block;
 }
-.testimonial-carousel .package_button{
-  position: relative;
-  bottom: 75px;
-  left: 50px;
-  display: inline-block;
+
+.testimonial-carousel .package_button {
+    position: relative;
+    bottom: 75px;
+    left: 50px;
+    display: inline-block;
 }
 
 /* promo offer  */
 .promo_details_section {
-  padding: 30px 0;
+    padding: 30px 0;
 }
 
 .promo_details_section .discount_image {
-  height: auto;
-  width: 100%;
+    height: auto;
+    width: 100%;
 }
 
 .offer_area {
-  padding: 30px 0 0;
-  position: relative;
-  z-index: 1;
+    padding: 30px 0 0;
+    position: relative;
+    z-index: 1;
 }
 
 .offer_content .sub_title {
-  display: inline-block;
-  color: #cc050c;
-  font-size: 18px;
-  margin-bottom: 5px;
-  font-weight: bold;
+    display: inline-block;
+    color: #cc050c;
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .offer_content h2 {
-  color: black;
-  margin-bottom: 13px;
-  font-weight: 700;
+    color: black;
+    margin-bottom: 13px;
+    font-weight: 700;
 }
 
 .offer_content .list {
-  padding-left: 0;
-  margin-bottom: 20px;
-  list-style-type: none;
-  border-bottom: 1px solid #484850;
-  padding-bottom: 20px;
+    padding-left: 0;
+    margin-bottom: 20px;
+    list-style-type: none;
+    border-bottom: 1px solid #484850;
+    padding-bottom: 20px;
 }
 
 .offer_content .list li {
-  display: inline-block;
-  margin-right: 20px;
-  color: rgba(1, 0, 0, 0.78);
-  text-transform: uppercase;
+    display: inline-block;
+    margin-right: 20px;
+    color: rgba(1, 0, 0, 0.78);
+    text-transform: uppercase;
 }
 
 .offer_content .price .old_price {
-  color: #cc050c;
-  text-decoration: line-through;
-  display: inline-block;
-  font-size: 24px;
+    color: #cc050c;
+    text-decoration: line-through;
+    display: inline-block;
+    font-size: 24px;
 }
 
 .offer_content .price .new_price {
-  color: black;
-  display: inline-block;
-  margin-left: 10px;
-  font-weight: 700;
-  font-size: 30px;
+    color: black;
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: 700;
+    font-size: 30px;
 }
 
 .offer_content .features_list {
-  padding-left: 0;
-  list-style-type: none;
-  margin-bottom: 0;
-  margin-top: 10px;
-  color: rgba(1, 0, 0, 0.78);
+    padding-left: 0;
+    list-style-type: none;
+    margin-bottom: 0;
+    margin-top: 10px;
+    color: rgba(1, 0, 0, 0.78);
 }
 
 .offer_time {
-  background-color: #cc050c;
-  padding: 20px 10px;
-  position: relative;
-  z-index: 1;
-  color: white;
-  border-radius: 5px;
+    background-color: #cc050c;
+    padding: 20px 10px;
+    position: relative;
+    z-index: 1;
+    color: white;
+    border-radius: 5px;
 }
 
 .offer_time h2 {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .offer_time span {
-  color: #e1ff19;
+    color: #e1ff19;
 }
 
 .coundown_area {
-  margin: 0 auto;
-  text-align: center;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .offer_time h1 {
-  font-weight: normal;
-  letter-spacing: 0.125rem;
-  text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 0.125rem;
+    text-transform: uppercase;
 }
 
 .offer_time li {
-  display: inline-block;
-  font-size: 14px;
-  font-weight: bold;
-  list-style-type: none;
-  padding: 2em 1em;
-  text-transform: uppercase;
-  border: 1px solid white;
-  height: 125px;
-  width: 125px;
-  border-radius: 50%;
-  color: whitesmoke;
-  margin-bottom: 10px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    list-style-type: none;
+    padding: 2em 1em;
+    text-transform: uppercase;
+    border: 1px solid white;
+    height: 125px;
+    width: 125px;
+    border-radius: 50%;
+    color: whitesmoke;
+    margin-bottom: 10px;
 }
 
 .offer_time li span {
-  display: block;
-  font-size: 30px;
-  color: #e1ff19;
+    display: block;
+    font-size: 30px;
+    color: #e1ff19;
 }
+
 .mobile_slider {
-  display: none;
+    display: none;
 }
-.pricing-tabs img{
-  width: 80px;
+
+.pricing-tabs img {
+    width: 80px;
 }
 
 /* payment process  */
 .payment_process_section {
-  padding: 20px 0;
+    padding: 20px 0;
 }
 
-.payment_process_section .card .card-header{
-  padding-bottom: 0 !important;
+.payment_process_section .card .card-header {
+    padding-bottom: 0 !important;
 }
 
-.payment_process_section .card .card-body{
-  padding-bottom: 0 !important;
+.payment_process_section .card .card-body {
+    padding-bottom: 0 !important;
 }
 
-.payment_process_section .card .card-footer{
-  padding-bottom: 0 !important;
-  padding-top: 0 !important;
+.payment_process_section .card .card-footer {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
 }
 
 /* Bkash  */
 .payment_process_section #one-panel .card {
-  background: #e2136e;
-  color: white;
-  border: 1px solid yellowgreen !important;
-  height: 100%;
+    background: #e2136e;
+    color: white;
+    border: 1px solid yellowgreen !important;
+    height: 100%;
 }
 
 .payment_process_section #one-panel .card .card-header {
-  border: 1px solid yellowgreen !important;
+    border: 1px solid yellowgreen !important;
 }
 
 .payment_process_section #one-panel .card .card-body {
-  border: 1px solid yellowgreen !important;
+    border: 1px solid yellowgreen !important;
 }
 
 .payment_process_section #one-panel .card .card-footer {
-  border: 1px solid yellowgreen !important;
-  color: white;
+    border: 1px solid yellowgreen !important;
+    color: white;
 }
 
 /* Rocket  */
 .payment_process_section #two-panel .card {
-  background: #8a288f;
-  color: white;
-  border: 1px solid yellowgreen !important;
-  height: 100%;
+    background: #8a288f;
+    color: white;
+    border: 1px solid yellowgreen !important;
+    height: 100%;
 }
 
 .payment_process_section #two-panel .card .card-header {
-  border: 1px solid yellowgreen !important;
+    border: 1px solid yellowgreen !important;
 }
 
 .payment_process_section #two-panel .card .card-body {
-  border: 1px solid yellowgreen !important;
+    border: 1px solid yellowgreen !important;
 }
 
 .payment_process_section #two-panel .card .card-footer {
-  border: 1px solid yellowgreen !important;
-  color: white;
+    border: 1px solid yellowgreen !important;
+    color: white;
 }
 
 /* Nagad  */
 .payment_process_section #three-panel .card {
-  background: #d0392c;
-  color: white;
-  border: 1px solid yellowgreen !important;
-  height: 100%;
+    background: #d0392c;
+    color: white;
+    border: 1px solid yellowgreen !important;
+    height: 100%;
 }
 
 .payment_process_section #three-panel .card .card-header {
-  border: 1px solid yellowgreen !important;
+    border: 1px solid yellowgreen !important;
 }
 
 .payment_process_section #three-panel .card .card-body {
-  border: 1px solid yellowgreen !important;
+    border: 1px solid yellowgreen !important;
 }
 
 .payment_process_section #three-panel .card .card-footer {
-  border: 1px solid yellowgreen !important;
-  color: white;
+    border: 1px solid yellowgreen !important;
+    color: white;
 }
 
 .payment_process_section .card {
-  box-shadow: rgba(240, 46, 170, 0.4) -5px 5px,
-      rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px,
-      rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+    box-shadow: rgba(240, 46, 170, 0.4) -5px 5px,
+        rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px,
+        rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
 }
 
 .payment_process_section .card h6 {
-  color: white;
-  font-weight: bold;
+    color: white;
+    font-weight: bold;
 }
 
 .payment_process_section .card p {
-  text-transform: capitalize;
+    text-transform: capitalize;
 }
 
 .tab_wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .tab_wrapper .tab {
-  cursor: pointer;
-  padding: 10px 20px;
-  margin: 0px 2px;
-  display: inline-block;
-  border-radius: 3px 3px 0px 0px;
-  box-shadow: 0 0.5rem 0.8rem #00000080;
-  background: white;
-  color: #cc050c;
-  font-weight: bold;
-  border-top: 3px solid #cc050c;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 0px 2px;
+    display: inline-block;
+    border-radius: 3px 3px 0px 0px;
+    box-shadow: 0 0.5rem 0.8rem #00000080;
+    background: white;
+    color: #cc050c;
+    font-weight: bold;
+    border-top: 3px solid #cc050c;
 }
 
 .tab_wrapper .panels {
-  width: 100%;
-  border-radius: 3px;
-  overflow: hidden;
-  padding: 20px;
+    width: 100%;
+    border-radius: 3px;
+    overflow: hidden;
+    padding: 20px;
 }
 
 .tab_wrapper .panel {
-  display: none;
-  animation: fadein 0.8s;
+    display: none;
+    animation: fadein 0.8s;
 }
 
 @keyframes fadein {
-  from {
-      opacity: 0;
-  }
+    from {
+        opacity: 0;
+    }
 
-  to {
-      opacity: 1;
-  }
+    to {
+        opacity: 1;
+    }
 }
 
 .tab_wrapper .radio {
-  display: none;
+    display: none;
 }
 
 .tab_wrapper #one:checked~.panels #one-panel,
 .tab_wrapper #two:checked~.panels #two-panel,
 .tab_wrapper #three:checked~.panels #three-panel,
 .tab_wrapper #four:checked~.panels #four-panel {
-  display: block;
-  color: #cc050c;
+    display: block;
+    color: #cc050c;
 }
 
 .tab_wrapper #one:checked~.tabs #one-tab,
 .tab_wrapper #two:checked~.tabs #two-tab,
 .tab_wrapper #three:checked~.tabs #three-tab,
 .tab_wrapper #four:checked~.tabs #four-tab {
-  background: black;
-  color: #cc050c;
-  border-top: 3px solid black;
-  border-bottom: 3px solid #cc050c;
+    background: black;
+    color: #cc050c;
+    border-top: 3px solid black;
+    border-bottom: 3px solid #cc050c;
 }
 
 .payment_process_section .modal-content {
-  background: black !important;
-  border: 1px solid yellowgreen !important;
+    background: black !important;
+    border: 1px solid yellowgreen !important;
 }
 
 .payment_process_section .modal-header {
-  background: white !important;
-  border-bottom: 1px solid yellowgreen !important;
+    background: white !important;
+    border-bottom: 1px solid yellowgreen !important;
 }
 
 .payment_process_section .modal-header h5 {
-  color: #cc050c !important;
+    color: #cc050c !important;
 }
 
 .payment_process_section .modal-footer {
-  display: block;
-  border-top: 1px solid yellowgreen !important;
-  text-align: center;
+    display: block;
+    border-top: 1px solid yellowgreen !important;
+    text-align: center;
 }
 
 .payment_process_section .modal-body img {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 .payment_process_section #one-panel .key_point {
-  margin-bottom: 10px;
-  padding: 10px 20px;
-  background: #e2136e;
-  border-left: 10px solid black;
-  border-radius: 0 15px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background: #e2136e;
+    border-left: 10px solid black;
+    border-radius: 0 15px;
 }
 
 .payment_process_section #two-panel .key_point {
-  margin-bottom: 10px;
-  padding: 10px 20px;
-  background: #8a288f;
-  border-left: 10px solid black;
-  border-radius: 0 15px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background: #8a288f;
+    border-left: 10px solid black;
+    border-radius: 0 15px;
 }
 
 .payment_process_section #three-panel .key_point {
-  margin-bottom: 10px;
-  padding: 10px 20px;
-  background: #d0392c;
-  border-left: 10px solid black;
-  border-radius: 0 15px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background: #d0392c;
+    border-left: 10px solid black;
+    border-radius: 0 15px;
 }
 
 .payment_process_section .key_point h5 {
-  color: white;
+    color: white;
 }
 
 .payment_process_section .key_point h5 i {
-  color: white;
+    color: white;
 }
 
 .messenger_div {
-  /* display: none; */
-  position: fixed;
-  bottom: 0px;
-  right: 16px;
-  z-index: 1000;
+    /* display: none; */
+    position: fixed;
+    bottom: 0px;
+    right: 16px;
+    z-index: 1000;
 }
 
 .messenger_logo {
-  width: 40px; /* Adjust the size as needed */
-  height: 40px; /* Adjust the size as needed */
+    width: 40px;
+    /* Adjust the size as needed */
+    height: 40px;
+    /* Adjust the size as needed */
+}
+
+/* Chat widget container */
+#chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Toggle button styling */
+#toggle-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    background-color: #d32f2f;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+#toggle-button i {
+    font-size: 30px;
+}
+
+/* Chat options container */
+.chat-options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 45px;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, transform 0.5s;
+    z-index: 9999;
+}
+
+/* Show chat options when active */
+#chat-options.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Chat option buttons */
+.chat-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    color: #333;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 4px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+    overflow: hidden;
+}
+
+/* Fade-up and fade-down animations */
+#chat-options.show .chat-option {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#chat-options.hide .chat-option {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Rotate and fade effect for toggle button */
+#toggle-button.spin-right {
+    animation: spinRight 0.3s forwards;
+}
+
+#toggle-button.spin-left {
+    animation: spinLeft 0.3s forwards;
+}
+
+/* Keyframes for spinning toggle button */
+@keyframes spinRight {
+    0% {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    50% {
+        transform: rotate(90deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(180deg);
+        opacity: 1;
+    }
+}
+
+@keyframes spinLeft {
+    0% {
+        transform: rotate(180deg);
+        opacity: 1;
+    }
+
+    50% {
+        transform: rotate(90deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Close button */
+.close-button {
+    background-color: #d32f2f;
+    color: white;
 }

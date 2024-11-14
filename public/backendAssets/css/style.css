@@ -13627,7 +13627,7 @@ a.icon:hover {
     z-index: 99;
     display: none;
     text-align: center;
-    z-index: 10000;
+    z-index: 1;
     height: 40px;
     width: 40px;
     background-repeat: no-repeat;
@@ -13637,6 +13637,7 @@ a.icon:hover {
     -webkit-transition: background-color 0.1s linear;
     -o-transition: background-color 0.1s linear;
     border-radius: 7px;
+    right: 20px;
 }
 
 #back-to-top i {

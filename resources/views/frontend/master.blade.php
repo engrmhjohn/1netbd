@@ -98,11 +98,20 @@
         <!-- FOOTER CLOSED -->
     </div>
 
-    <!-- Messenger Icon -->
-    <div class="messenger_div">
-        <a href="https://m.me/OneNet.ISP">
-            <img class="img-fluid messenger_logo" src="{{ asset('backendAssets') }}/static_images/messenger.png" alt="Messenger Icon">
-        </a>
+    <!-- Chat Widget Toggle Button -->
+    <div id="chat-widget" class="wow zoomIn" data-wow-delay="0.1s">
+        <button id="toggle-button" onclick="toggleChat()">
+            <i class="fa fa-comments-o"></i>
+        </button>
+
+        <!-- Chat options -->
+        <div id="chat-options" class="chat-options">
+            <a href="https://maps.app.goo.gl/16jiftsFNSZoCVZc7" target="_blank" class="chat-option"> <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/maps.jpg" alt="Social Logo"> </a>
+            <a href="mailto:info@1netbd.com" class="chat-option"> <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/mail.jpg" alt="Social Logo"> </a>
+            <a href="tel:+8801720930101" class="chat-option"> <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/call.jpg" alt="Social Logo"> </a>
+            <a href="https://m.me/OneNet.ISP" target="_blank" class="chat-option"> <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/messenger.jpg" alt="Social Logo"> </a>
+            <a href="https://wa.me/+8801909102555" target="_blank" class="chat-option"> <img class="img-fluid" src="{{ asset('backendAssets') }}/static_images/wa.jpg" alt="Social Logo"> </a>
+        </div>
     </div>
 
     <!-- BACK-TO-TOP -->
@@ -145,8 +154,8 @@
     <script src="{{ asset('backendAssets') }}/js/form-elements.js"></script>
 
 
-            <!--Start of Tawk.to Script-->
-        {{-- <script type="text/javascript">
+    <!--Start of Tawk.to Script-->
+    {{-- <script type="text/javascript">
             var Tawk_API = Tawk_API || {}
                 , Tawk_LoadStart = new Date();
             (function() {
@@ -160,7 +169,7 @@
             })();
 
         </script> --}}
-        <!--End of Tawk.to Script-->
+    <!--End of Tawk.to Script-->
 
 </body>
 
