@@ -8,8 +8,8 @@ Packages :: One Net
         <div class="col-lg-7 col-md-12">
             <div class="card">
                 <div class="card-header bg-success text-white" style="display: flex; justify-content: center; flex-direction: column;">
-                    <h2>Registration Successful</h2>
-                    <strong class="text-warning">You'll get confirmation email with registration form shortly</strong>
+                    <h2 class="text-warning fw-bold">Registration Successful</h2>
+                    {{-- <strong class="text-warning">You'll get confirmation email with registration form shortly</strong> --}}
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-hover">

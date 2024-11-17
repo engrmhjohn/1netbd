@@ -74,9 +74,8 @@ class PacakgeBuyController extends Controller
 
         $request->session()->put('user_info', $buy);
 
-        // Send email notification
-        $newForm = $request->all();
-        Mail::to('newclient@onesky.com.bd')->send(new NewForm($newForm));
+        // $newForm = $request->all();
+        // Mail::to('newclient@onesky.com.bd')->send(new NewForm($newForm));
 
         return redirect(route('success_buy_package', $buy->id));
     }
