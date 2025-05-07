@@ -19,6 +19,8 @@ Route::controller(FrontviewController::class)->group(function () {
     Route::get('/campaign-details/{id}', 'campaignDetails')->name('campaign_details');
     Route::get('/bill-payment', 'billPayment')->name('front.bill_payment');
     Route::get('/clients-review', 'clientsReview')->name('front.clients_review');
+    Route::get('/privacy-policy', 'privacyPolicy')->name('privacy_policy');
+    Route::get('/refund-policy', 'refundPolicy')->name('refund_policy');
 });
 
 Route::controller(PacakgeBuyController::class)->group(function () {

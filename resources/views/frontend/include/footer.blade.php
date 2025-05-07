@@ -32,14 +32,29 @@
                             width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
+                    <div class="col-lg-12 mb-2">
+                        <img class="img-fluid" src="{{ asset('backendAssets/static_images/ssl2.png') }}" alt="SSLCommerze">
+                    </div>
                 </div>
             </div>
             <footer class="main-footer px-0 pb-3 text-center">
                 <div class="row" style="color: whitesmoke;">
-                    <div class="col-md-12">
+                    {{-- <div class="col-md-12">
                         Copyright © <span id="year"></span> <strong>{{ $company_info->en_name }}</strong> | All
                         rights reserved.
-                    </div>
+                    </div> --}}
+                    <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                        <strong> <span id="year"></span> {{ $company_info->en_name }} </strong> | All
+                        rights reserved. </a>
+                   </div>
+                   <div class="col-md-8 text-center text-md-end">
+                       <div class="footer-menu">
+                           <a class="text-white" href="javascript:void(0)">Trade Lisence: TRAD/DSCC/263224/2019 |</a>
+                           <a class="text-white" href="{{ route('refund_policy') }}">Refund Policy |</a>
+                           <a class="text-white" href="{{ route('privacy_policy') }}">Privacy Policy |</a>
+                           <a class="text-white" href="{{ route('terms_condition') }}">Terms & Conditions</a>
+                       </div>
+                   </div>
                 </div>
             </footer>
         </div>

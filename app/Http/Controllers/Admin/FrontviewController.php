@@ -86,6 +86,18 @@ class FrontviewController extends Controller
         return view('frontend.tc.tc',compact('tc', 'company_info'));
     }
 
+    public function privacyPolicy()
+    {
+        $company_info = CompanyInfo::first();
+        return view('frontend.privacy-policy.privacy_policy', compact('company_info'));
+    }
+
+    public function refundPolicy()
+    {
+        $company_info = CompanyInfo::first();
+        return view('frontend.refund-policy.refund_policy', compact('company_info'));
+    }
+
     public function billPayment(){
         $company_info = CompanyInfo::first();
         $bkash_payment = Payment::where('status', 1)->where('payment_category_id', 2)->first();
