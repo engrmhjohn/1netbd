@@ -49,7 +49,7 @@ class FrontviewController extends Controller
     }
     public function packages(){
         $company_info = CompanyInfo::first();
-        $packages = Package::where('status','1')->get();
+        $packages = Package::where('status','1')->orderBy('en_mbps_value','asc')->get();
         return view('frontend.packages.packages',compact('packages','company_info'));
     }
     public function about(){
