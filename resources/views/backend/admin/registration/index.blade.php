@@ -121,7 +121,7 @@ Admin :: Online Registration
                                     @if ($user->status == 0)
                                     <span class="badge bg-warning badge-sm  me-1 mb-1 mt-1">Pending</span>
                                     @else
-                                    <span class="badge bg-success badge-sm  me-1 mb-1 mt-1">Success</span>
+                                    <span class="badge bg-success badge-sm  me-1 mb-1 mt-1">Done</span>
                                     @endif
                                 </td>
                             </tr>
