@@ -29,6 +29,10 @@ Admin :: Preview Online Registration
                             <td>Registration Date</td>
                             <td> {{ $registration_details->created_at->format('Y-m-d g:i:A') }} </td>
                         </tr>
+                                                <tr>
+                            <td>Form Updated</td>
+                            <td> {{ $registration_details->updated_at->format('Y-m-d g:i:A') }} </td>
+                        </tr>
                         <tr>
                             <td>Marketing Person</td>
                             <td>{{$registration_details->marketing_person_name  }}</td>
