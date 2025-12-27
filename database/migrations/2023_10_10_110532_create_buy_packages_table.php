@@ -39,6 +39,8 @@ return new class extends Migration
             $table->string('nid_have');
             $table->string('username');
             $table->string('status')->default('0');
+            $table->string('otp')->nullable();
+            $table->boolean('is_verified')->default(false);
             $table->timestamps();
         });
     }

@@ -727,3 +727,82 @@ form .no-resize {
     background-color: #d32f2f;
     color: white;
 }
+.otp-card {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+}
+.otp-card h4{
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: var(--font-size-20);
+
+}
+.otp-card .resend-otp {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: var(--font-size-14);
+    color: var(--one-color);
+    cursor: pointer;
+}
+.otp-button {
+  text-decoration: none;
+  line-height: 1;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 10px 10px 20px rgba(0,0,0,.05);
+  background-color: #fff;
+  color: #121212;
+  border: none;
+  cursor: pointer;
+}
+
+.button-decor {
+  position: absolute;
+  inset: 0;
+  background-color: var(--clr);
+  transform: translateX(-100%);
+  transition: transform .3s;
+  z-index: 0;
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.button__icon {
+  width: 48px;
+  height: 40px;
+  background-color: var(--clr);
+  display: grid;
+  place-items: center;
+}
+
+.button__text {
+  display: inline-block;
+  transition: color .2s;
+  padding: 2px 1.5rem 2px;
+  padding-left: .75rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.otp-button:hover .button__text {
+  color: #fff;
+}
+
+.otp-button:hover .button-decor {
+  transform: translate(0);
+}
+.otp-section .btn-link{
+    margin-top: -14px !important;
+}

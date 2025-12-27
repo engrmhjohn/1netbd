@@ -24,6 +24,9 @@ Route::controller(FrontviewController::class)->group(function () {
 });
 
 Route::controller(PacakgeBuyController::class)->group(function () {
+    Route::post('/send-otp', 'sendOtp')->name('send_otp');
+    Route::post('/verify-otp', 'verifyOtp')->name('verify_otp');
+    Route::post('/reset-otp', 'resetOtp')->name('reset_otp');
     Route::post('/save-buy-package', 'saveBuyPackage')->name('save_buy_package');
     Route::get('/success-buy-package', 'successBuyPackage')->name('success_buy_package');
     Route::get('/export-package-pdf/{id}', 'exportPackagePdf')->name('export_package_pdf');

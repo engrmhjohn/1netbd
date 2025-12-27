@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\NewForm;
 use App\Models\Area;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 use \Mpdf\Mpdf;
 
@@ -21,8 +22,115 @@ require_once app_path('Helper/image.php');
 
 class PacakgeBuyController extends Controller
 {
+    private function normalizePhone($phone)
+    {
+        $phone = preg_replace('/\D/', '', $phone); // remove non-numeric
+
+        if (strlen($phone) == 11 && substr($phone, 0, 2) == '01') {
+            return '88' . $phone;
+        }
+
+        if (strlen($phone) == 13 && substr($phone, 0, 2) == '88') {
+            return $phone;
+        }
+
+        return null; // invalid
+    }
+
+    public function sendOtp(Request $request)
+    {
+        $phone = $this->normalizePhone($request->phone);
+
+        if (!$phone) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Invalid phone number format'
+            ]);
+        }
+
+        $attempts = session('otp_attempts', 0);
+
+        if ($attempts >= 3) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Too many OTP requests. Please wait 10 minutes.'
+            ]);
+        }
+
+        session(['otp_attempts' => $attempts + 1]);
+
+        // reset attempts after 10 min
+        session(['otp_attempts_expires' => now()->addMinutes(10)->timestamp]);
+
+        $otp = rand(100000, 999999);
+
+        session([
+            'otp' => $otp,
+            'otp_phone' => $phone,
+            'otp_verified' => false,
+            'otp_expires_at' => now()->addMinutes(5)->timestamp
+        ]);
+
+        $this->sendSMS($phone, "Your OTP is {$otp}. Valid for 5 minutes.");
+
+        return response()->json([
+            'status' => true,
+            'message' => 'OTP sent successfully'
+        ]);
+    }
+
+
+    public function verifyOtp(Request $request)
+    {
+        if (!session('otp') || !session('otp_expires_at')) {
+            return response()->json([
+                'status' => false,
+                'message' => 'OTP expired. Please request again.'
+            ]);
+        }
+
+        if (now()->timestamp > session('otp_expires_at')) {
+            Session::forget(['otp', 'otp_expires_at']);
+            return response()->json([
+                'status' => false,
+                'message' => 'OTP expired. Please resend.'
+            ]);
+        }
+
+        if ($request->otp == session('otp')) {
+            session(['otp_verified' => true]);
+
+            return response()->json([
+                'status' => true,
+                'phone' => session('otp_phone')
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Invalid OTP'
+        ]);
+    }
+
+    public function resetOtp()
+    {
+        Session::forget([
+            'otp',
+            'otp_verified',
+            'otp_phone',
+            'otp_expires_at',
+            'otp_attempts'
+        ]);
+
+        return response()->json(['status' => true]);
+    }
     public function saveBuyPackage(Request $request)
     {
+        if (!Session::get('otp_verified')) {
+            return back()->withErrors([
+                'phone' => 'Please verify OTP before submitting the form'
+            ]);
+        }
         $request->validate([
             'name' => 'required|alpha_spaces',
             'phone' => 'required|numeric',
@@ -73,11 +181,40 @@ class PacakgeBuyController extends Controller
         $buy->save();
 
         $request->session()->put('user_info', $buy);
-
+        Session::forget(['otp', 'otp_verified', 'otp_phone']);
         // $newForm = $request->all();
         // Mail::to('newclient@onesky.com.bd')->send(new NewForm($newForm));
 
         return redirect(route('success_buy_package', $buy->id));
+    }
+    private function sendSMS($recipient, $smsBody)
+    {
+        $apiUrl = env('SMS_API_URL');
+        $username = env('SMS_USERNAME');
+        $password = env('SMS_PASSWORD');
+        $source = env('SMS_SOURCE');
+
+        $postData = [
+            'username' => $username,
+            'password' => $password,
+            'type'     => '0',
+            'dlr'      => '1',
+            'destination' => $recipient,
+            'source'   => $source,
+            'message'  => $smsBody,
+        ];
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $apiUrl);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        return $response;
     }
     public function manageBuyPackage()
     {
