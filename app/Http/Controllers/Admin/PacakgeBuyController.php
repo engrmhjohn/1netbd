@@ -15,6 +15,7 @@ use App\Mail\NewForm;
 use App\Models\Area;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cache;
 
 use \Mpdf\Mpdf;
 
@@ -37,93 +38,133 @@ class PacakgeBuyController extends Controller
         return null; // invalid
     }
 
-    public function sendOtp(Request $request)
-    {
-        $phone = $this->normalizePhone($request->phone);
+public function sendOtp(Request $request)
+{
+    $phone = $this->normalizePhone($request->phone);
 
-        if (!$phone) {
-            return response()->json([
-                'status' => false,
-                'message' => 'Invalid phone number format'
-            ]);
-        }
-
-        $attempts = session('otp_attempts', 0);
-
-        if ($attempts >= 3) {
-            return response()->json([
-                'status' => false,
-                'message' => 'Too many OTP requests. Please wait 10 minutes.'
-            ]);
-        }
-
-        session(['otp_attempts' => $attempts + 1]);
-
-        // reset attempts after 10 min
-        session(['otp_attempts_expires' => now()->addMinutes(10)->timestamp]);
-
-        $otp = rand(100000, 999999);
-
-        session([
-            'otp' => $otp,
-            'otp_phone' => $phone,
-            'otp_verified' => false,
-            'otp_expires_at' => now()->addMinutes(5)->timestamp
+    if (!$phone) {
+        return response()->json([
+            'status' => false,
+            'message' => 'Invalid phone number format'
         ]);
+    }
 
-        $this->sendSMS($phone, "Your OTP is {$otp}. Valid for 5 minutes.");
+    $ip = $request->ip();
+
+    /* ==============================
+       LIMIT CONFIG
+    =============================== */
+    $PHONE_LIMIT = 2;            // per phone
+    $IP_LIMIT    = 20;           // per IP
+    $PHONE_TTL   = now()->addDays(30);
+    $IP_TTL      = now()->addHours(24);
+
+    /* ==============================
+       CACHE KEYS
+    =============================== */
+    $phoneKey = 'otp_phone_' . $phone;
+    $ipKey    = 'otp_ip_' . $ip;
+
+    $phoneAttempts = Cache::get($phoneKey, 0);
+    $ipAttempts    = Cache::get($ipKey, 0);
+
+    /* ==============================
+       BLOCK CONDITIONS
+    =============================== */
+    if ($phoneAttempts >= $PHONE_LIMIT) {
+        return response()->json([
+            'status' => false,
+            'message' => 'OTP limit reached for this number. Please contact support.'
+        ]);
+    }
+
+    if ($ipAttempts >= $IP_LIMIT) {
+        return response()->json([
+            'status' => false,
+            'message' => 'Too many OTP requests from this IP. Please try again after 24 hours.'
+        ]);
+    }
+
+    /* ==============================
+       GENERATE OTP
+    =============================== */
+    $otp = rand(100, 999);
+
+    session([
+        'otp' => $otp,
+        'otp_phone' => $phone,
+        'otp_verified' => false,
+        'otp_expires_at' => now()->addHours(24)->timestamp // OTP valid 24h
+    ]);
+
+    /* ==============================
+       INCREMENT COUNTERS
+    =============================== */
+    Cache::put($phoneKey, $phoneAttempts + 1, $PHONE_TTL);
+    Cache::put($ipKey, $ipAttempts + 1, $IP_TTL);
+
+    /* ==============================
+       SEND SMS
+    =============================== */
+    $this->sendSMS(
+        $phone,
+        "Your OTP for internet package registration is {$otp}. Valid for 24 hours."
+    );
+
+    return response()->json([
+        'status' => true,
+        'message' => 'OTP sent successfully'
+    ]);
+}
+
+
+
+
+public function verifyOtp(Request $request)
+{
+    if (!session('otp') || !session('otp_expires_at')) {
+        return response()->json([
+            'status' => false,
+            'message' => 'OTP expired. Please request again.'
+        ]);
+    }
+
+    if (now()->timestamp > session('otp_expires_at')) {
+        Session::forget(['otp', 'otp_expires_at']);
+        return response()->json([
+            'status' => false,
+            'message' => 'OTP expired. Please resend.'
+        ]);
+    }
+
+    if ($request->otp == session('otp')) {
+        session(['otp_verified' => true]);
 
         return response()->json([
             'status' => true,
-            'message' => 'OTP sent successfully'
+            'phone' => session('otp_phone')
         ]);
     }
 
+    return response()->json([
+        'status' => false,
+        'message' => 'Invalid OTP'
+    ]);
+}
 
-    public function verifyOtp(Request $request)
-    {
-        if (!session('otp') || !session('otp_expires_at')) {
-            return response()->json([
-                'status' => false,
-                'message' => 'OTP expired. Please request again.'
-            ]);
-        }
 
-        if (now()->timestamp > session('otp_expires_at')) {
-            Session::forget(['otp', 'otp_expires_at']);
-            return response()->json([
-                'status' => false,
-                'message' => 'OTP expired. Please resend.'
-            ]);
-        }
+public function resetOtp()
+{
+    Session::forget([
+        'otp',
+        'otp_verified',
+        'otp_phone',
+        'otp_expires_at'
+    ]);
 
-        if ($request->otp == session('otp')) {
-            session(['otp_verified' => true]);
+    return response()->json(['status' => true]);
+}
 
-            return response()->json([
-                'status' => true,
-                'phone' => session('otp_phone')
-            ]);
-        }
-
-        return response()->json([
-            'status' => false,
-            'message' => 'Invalid OTP'
-        ]);
-    }
-
-    public function resetOtp()
-    {
-        Session::forget([
-            'otp',
-            'otp_verified',
-            'otp_phone',
-            'otp_expires_at',
-            'otp_attempts'
-        ]);
-
-        return response()->json(['status' => true]);
-    }
     public function saveBuyPackage(Request $request)
     {
         if (!Session::get('otp_verified')) {

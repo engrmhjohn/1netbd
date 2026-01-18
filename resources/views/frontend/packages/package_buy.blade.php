@@ -321,7 +321,7 @@ function openOtpPopup() {
     Swal.fire({
         title: 'Enter OTP',
         input: 'text',
-        inputPlaceholder: '6 digit OTP',
+        inputPlaceholder: '3 digit OTP',
         confirmButtonText: 'Verify',
         showCancelButton: true,
         cancelButtonText: 'Close',
@@ -335,10 +335,10 @@ function openOtpPopup() {
                 return false;
             }
 
-            if (!/^\d{6}$/.test(otp)) {
-                Swal.showValidationMessage('OTP must be 6 digits');
-                return false;
-            }
+if (!/^\d{3}$/.test(otp)) {
+    Swal.showValidationMessage('OTP must be 3 digits');
+    return false;
+}
 
             // 🔒 VERIFY OTP (SYNC VIA PROMISE)
             return $.post("{{ route('verify_otp') }}", {

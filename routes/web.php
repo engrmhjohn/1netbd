@@ -226,7 +226,7 @@ Route::controller(ContactUsController::class)->group(function () {
     Route::post('contact-us', 'store')->name('contact.us.store');
 });
 
-Route::get('/clear', function () {
+Route::get('/clear-koro', function () {
     \Artisan::call('optimize:clear');
     return redirect()->back();
 })->name('clear');
