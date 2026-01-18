@@ -2,179 +2,35 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\BuyPackage;
+use \Mpdf\Mpdf;
 use App\Models\TC;
 use App\Models\KAM;
+use App\Models\Area;
+use App\Mail\NewForm;
+use App\Models\BuyPackage;
 use App\Models\CompanyInfo;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\NewForm;
-use App\Models\Area;
+use Mpdf\Output\Destination;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cache;
+use App\Mail\newConnectionNotification;
 
-use \Mpdf\Mpdf;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 require_once app_path('Helper/image.php');
 
 class PacakgeBuyController extends Controller
 {
-    private function normalizePhone($phone)
-    {
-        $phone = preg_replace('/\D/', '', $phone); // remove non-numeric
-
-        if (strlen($phone) == 11 && substr($phone, 0, 2) == '01') {
-            return '88' . $phone;
-        }
-
-        if (strlen($phone) == 13 && substr($phone, 0, 2) == '88') {
-            return $phone;
-        }
-
-        return null; // invalid
-    }
-
-public function sendOtp(Request $request)
-{
-    $phone = $this->normalizePhone($request->phone);
-
-    if (!$phone) {
-        return response()->json([
-            'status' => false,
-            'message' => 'Invalid phone number format'
-        ]);
-    }
-
-    $ip = $request->ip();
-
-    /* ==============================
-       LIMIT CONFIG
-    =============================== */
-    $PHONE_LIMIT = 2;            // per phone
-    $IP_LIMIT    = 20;           // per IP
-    $PHONE_TTL   = now()->addDays(30);
-    $IP_TTL      = now()->addHours(24);
-
-    /* ==============================
-       CACHE KEYS
-    =============================== */
-    $phoneKey = 'otp_phone_' . $phone;
-    $ipKey    = 'otp_ip_' . $ip;
-
-    $phoneAttempts = Cache::get($phoneKey, 0);
-    $ipAttempts    = Cache::get($ipKey, 0);
-
-    /* ==============================
-       BLOCK CONDITIONS
-    =============================== */
-    if ($phoneAttempts >= $PHONE_LIMIT) {
-        return response()->json([
-            'status' => false,
-            'message' => 'OTP limit reached for this number. Please contact support.'
-        ]);
-    }
-
-    if ($ipAttempts >= $IP_LIMIT) {
-        return response()->json([
-            'status' => false,
-            'message' => 'Too many OTP requests from this IP. Please try again after 24 hours.'
-        ]);
-    }
-
-    /* ==============================
-       GENERATE OTP
-    =============================== */
-    $otp = rand(100, 999);
-
-    session([
-        'otp' => $otp,
-        'otp_phone' => $phone,
-        'otp_verified' => false,
-        'otp_expires_at' => now()->addHours(24)->timestamp // OTP valid 24h
-    ]);
-
-    /* ==============================
-       INCREMENT COUNTERS
-    =============================== */
-    Cache::put($phoneKey, $phoneAttempts + 1, $PHONE_TTL);
-    Cache::put($ipKey, $ipAttempts + 1, $IP_TTL);
-
-    /* ==============================
-       SEND SMS
-    =============================== */
-    $this->sendSMS(
-        $phone,
-        "Your OTP for internet package registration is {$otp}. Valid for 24 hours."
-    );
-
-    return response()->json([
-        'status' => true,
-        'message' => 'OTP sent successfully'
-    ]);
-}
-
-
-
-
-public function verifyOtp(Request $request)
-{
-    if (!session('otp') || !session('otp_expires_at')) {
-        return response()->json([
-            'status' => false,
-            'message' => 'OTP expired. Please request again.'
-        ]);
-    }
-
-    if (now()->timestamp > session('otp_expires_at')) {
-        Session::forget(['otp', 'otp_expires_at']);
-        return response()->json([
-            'status' => false,
-            'message' => 'OTP expired. Please resend.'
-        ]);
-    }
-
-    if ($request->otp == session('otp')) {
-        session(['otp_verified' => true]);
-
-        return response()->json([
-            'status' => true,
-            'phone' => session('otp_phone')
-        ]);
-    }
-
-    return response()->json([
-        'status' => false,
-        'message' => 'Invalid OTP'
-    ]);
-}
-
-
-public function resetOtp()
-{
-    Session::forget([
-        'otp',
-        'otp_verified',
-        'otp_phone',
-        'otp_expires_at'
-    ]);
-
-    return response()->json(['status' => true]);
-}
-
     public function saveBuyPackage(Request $request)
     {
-        if (!Session::get('otp_verified')) {
-            return back()->withErrors([
-                'phone' => 'Please verify OTP before submitting the form'
-            ]);
-        }
         $request->validate([
             'name' => 'required|alpha_spaces',
             'phone' => 'required|numeric',
+            'email' => 'required|email',
             'nid_number' => 'required',
             'address' => 'required|max:300',
             'agree' => 'required',
@@ -186,6 +42,8 @@ public function resetOtp()
             'name.alpha_spaces' => 'Full Name should contain only alphabetic characters and spaces',
             'phone.required' => 'Phone Number is required',
             'phone.numeric' => 'Phone Number must be numeric',
+            'email.required' => 'Email is required',
+            'email.email' => 'Email must be a valid email address',
             'nid_number.required' => 'NID Number is required',
             'address.required' => 'Address is required',
             'address.max' => 'Address should not exceed 300 characters',
@@ -222,41 +80,24 @@ public function resetOtp()
         $buy->save();
 
         $request->session()->put('user_info', $buy);
-        Session::forget(['otp', 'otp_verified', 'otp_phone']);
-        // $newForm = $request->all();
-        // Mail::to('newclient@onesky.com.bd')->send(new NewForm($newForm));
 
-        return redirect(route('success_buy_package', $buy->id));
+        $emailStatus = 'not_sent';
+
+        if (!empty($buy->email)) {
+            try {
+                Mail::to($buy->email)->send(new newConnectionNotification($buy));
+                $emailStatus = 'sent';
+            } catch (\Exception $e) {
+                $emailStatus = 'failed';
+            }
+        }
+
+        return redirect(route('success_buy_package', $buy->id))->with([
+            'emailStatus' => $emailStatus
+        ]);
+
     }
-    private function sendSMS($recipient, $smsBody)
-    {
-        $apiUrl = env('SMS_API_URL');
-        $username = env('SMS_USERNAME');
-        $password = env('SMS_PASSWORD');
-        $source = env('SMS_SOURCE');
 
-        $postData = [
-            'username' => $username,
-            'password' => $password,
-            'type'     => '0',
-            'dlr'      => '1',
-            'destination' => $recipient,
-            'source'   => $source,
-            'message'  => $smsBody,
-        ];
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $apiUrl);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-
-        $response = curl_exec($ch);
-        curl_close($ch);
-
-        return $response;
-    }
     public function manageBuyPackage()
     {
         $user = Auth::user();
@@ -441,6 +282,7 @@ public function resetOtp()
             return view('frontend.packages.success_package_buy', [
                 'userInfo' => $userInfo,
                 'company_info' => CompanyInfo::latest('id')->first(),
+                'tc' => TC::latest('id')->first(),
             ]);
         } else {
             return redirect()->route('/');

@@ -8,8 +8,34 @@ Packages :: One Net
         <div class="col-lg-7 col-md-12">
             <div class="card">
                 <div class="card-header bg-success text-white" style="display: flex; justify-content: center; flex-direction: column;">
-                    <h2 class="text-warning fw-bold">Registration Successful</h2>
-                    {{-- <strong class="text-warning">You'll get confirmation email with registration form shortly</strong> --}}
+                    @if(session('emailStatus') === 'sent')
+                        <div class="alert alert-success text-white">
+                            Registration successful! Package details have been emailed to you. N:B: Dont't forget to check spam folder.
+                        </div>
+                    @elseif(session('emailStatus') === 'failed')
+                        <div class="alert alert-warning">
+                            Registration successful, but email could not be sent.
+                        </div>
+                    @else
+                        <div class="alert alert-info">
+                            Registration successful.
+                        </div>
+                    @endif
+
+                    <hr>
+
+                    <h3>Terms & Conditions You Agreed To</h3>
+
+                    @if($tc)
+                        {!! $tc->en_payment_mode !!} <br>
+                        {!! $tc->en_documentation !!} <br>
+                        {!! $tc->en_after_sales_service !!} <br>
+                        {!! $tc->en_client_responsibility !!} <br>
+                        {!! $tc->en_others !!} <br>
+                        {!! $tc->en_contact_termination !!} <br>
+                    @else
+                        <p>Terms & Conditions not available.</p>
+                    @endif
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
