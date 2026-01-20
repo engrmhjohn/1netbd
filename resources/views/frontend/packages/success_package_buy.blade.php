@@ -23,19 +23,27 @@ Packages :: One Net
                     @endif
 
                     <hr>
-
-                    <h3>Terms & Conditions You Agreed To</h3>
-
-                    @if($tc)
-                        {!! $tc->en_payment_mode !!} <br>
-                        {!! $tc->en_documentation !!} <br>
-                        {!! $tc->en_after_sales_service !!} <br>
-                        {!! $tc->en_client_responsibility !!} <br>
-                        {!! $tc->en_others !!} <br>
-                        {!! $tc->en_contact_termination !!} <br>
-                    @else
-                        <p>Terms & Conditions not available.</p>
-                    @endif
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Terms & Conditions You Agreed To. Click to View
+                        </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                @if($tc)
+                                {!! $tc->en_payment_mode !!} <br>
+                                {!! $tc->en_documentation !!} <br>
+                                {!! $tc->en_after_sales_service !!} <br>
+                                {!! $tc->en_client_responsibility !!} <br>
+                                {!! $tc->en_others !!} <br>
+                                {!! $tc->en_contact_termination !!} <br>
+                                @else
+                                <strong>Terms & Conditions not available.</strong>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
