@@ -174,6 +174,21 @@ $formattedTotal = number_format($total, 0, '.', '');
                     @endif
                     <div class="row">
                         <div class="col-md-12 mb-3">
+                            <label for="additional_docs">Additional docs (optional)</label>
+                            @if($registration->additional_docs)
+                            <div class="mb-2">
+                                <a href="{{ asset($registration->additional_docs) }}" target="_blank" rel="noopener">
+                                    <img src="{{ asset($registration->additional_docs) }}" alt="Additional docs" style="max-width: 100%; max-height: 300px;">
+                                </a>
+                            </div>
+                            <label><input type="checkbox" name="remove_additional_docs" value="1" @checked(old('remove_additional_docs'))> Remove current document</label>
+                            @endif
+                            <input type="file" name="additional_docs" class="dropify" id="additional_docs" accept="image/jpeg,image/png,image/webp">
+                            @error('additional_docs')
+                            <strong class="error_form">{{ $message }}</strong>
+                            @enderror
+                        </div>
+                        <div class="col-md-12 mb-3">
                             <label for="nid_number">NID / Birth Certificate / Passport Number*</label>
                             <input type="phone" name="nid_number" class="form-control" id="nid_number" placeholder="NID Number" required value="{{ isset($registration->nid_number) ? $registration->nid_number : '' }}">
                             @error('nid_number')

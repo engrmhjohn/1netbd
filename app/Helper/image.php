@@ -88,6 +88,20 @@ function image_upload_birth_certificate($image, $title = '')
     return null;
 }
 
+function image_upload_additional_docs($image)
+{
+    if (!$image) {
+        return null;
+    }
+
+    $path = 'adminAssets/online-registration/' . \Illuminate\Support\Str::uuid() . '.webp';
+    Image::make($image->getRealPath())
+        ->encode('webp', 85)
+        ->save(public_path($path));
+
+    return $path;
+}
+
 function image_upload_passport_pic($image, $title = '')
 {
     if ($image) {

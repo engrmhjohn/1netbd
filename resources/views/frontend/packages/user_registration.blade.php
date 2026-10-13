@@ -249,26 +249,33 @@
     <div class="table-section bill-tbl w-100 mt-10">
         <table class="table w-100 mt-10">
             <tr>
-                <td style="font-size: 13px;">
+                <td style="font-size: 12px;">
                     <h3 class="text-center">Terms & Conditions</h3> {!! $tc->en_payment_mode !!}
                 </td>
             </tr>
             <tr>
-                <td style="font-size: 13px;"> {!! $tc->en_documentation !!} </td>
+                <td style="font-size: 12px;"> {!! $tc->en_documentation !!} </td>
             </tr>
             <tr>
-                <td style="font-size: 13px;"> {!! $tc->en_after_sales_service !!} </td>
+                <td style="font-size: 12px;"> {!! $tc->en_after_sales_service !!} </td>
             </tr>
             <tr>
-                <td style="font-size: 13px;"> {!! $tc->en_client_responsibility !!} </td>
+                <td style="font-size: 12px;"> {!! $tc->en_client_responsibility !!} </td>
             </tr>
             <tr>
-                <td style="font-size: 13px;"> {!! $tc->en_others !!} </td>
+                <td style="font-size: 12px;"> {!! $tc->en_others !!} </td>
             </tr>
             <tr>
-                <td style="font-size: 16px;"> <mark>*Terms & conditions approved by client, this is why doesn't require any signature</mark> </td>
+                <td style="font-size: 14px;"> <mark>*Terms & conditions approved by client, this is why doesn't require any signature</mark> </td>
             </tr>
         </table>
     </div>
 
+    @if($userInfo->additional_docs)
+    <pagebreak />
+    <div style="text-align: center;">
+        <h3>Additional docs</h3>
+        <img src="{{ public_path($userInfo->additional_docs) }}" alt="Additional docs" style="max-width: 170mm; max-height: 235mm;">
+    </div>
+    @endif
 </html>

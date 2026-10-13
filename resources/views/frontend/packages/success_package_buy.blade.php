@@ -111,6 +111,12 @@ Packages :: One Net
                                 <td> <img src="{{asset($userInfo->birth_certificate)}}" alt="" style="max-width: 300px"> </td>
                             </tr>
                             @endif
+                            @if($userInfo->additional_docs)
+                            <tr>
+                                <td>Additional docs</td>
+                                <td><a href="{{ asset($userInfo->additional_docs) }}" target="_blank" rel="noopener"><img src="{{ asset($userInfo->additional_docs) }}" alt="Additional docs" style="max-width: 300px; height: auto;"></a></td>
+                            </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>

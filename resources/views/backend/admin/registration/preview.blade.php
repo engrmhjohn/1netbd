@@ -133,6 +133,12 @@ Admin :: Preview Online Registration
                             <td> <img src="{{asset($registration_details->birth_certificate)}}" alt="" style="max-width: 300px"> </td>
                         </tr>
                         @endif
+                        @if($registration_details->additional_docs)
+                        <tr>
+                            <td>Additional docs</td>
+                            <td><a href="{{ asset($registration_details->additional_docs) }}" target="_blank" rel="noopener"><img src="{{ asset($registration_details->additional_docs) }}" alt="Additional docs" style="max-width: 300px; height: auto;"></a></td>
+                        </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>

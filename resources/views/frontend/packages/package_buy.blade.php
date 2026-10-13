@@ -131,6 +131,13 @@ Buy Package :: One Net
                     @enderror
                 </div>
                 <div class="col-md-12 mb-3">
+                    <label for="additional_docs">Additional docs (optional)</label>
+                    <input type="file" class="dropify" name="additional_docs" id="additional_docs" accept="image/jpeg,image/png,image/webp">
+                    @error('additional_docs')
+                    <strong class="error_form">{{ $message }}</strong>
+                    @enderror
+                </div>
+                <div class="col-md-12 mb-3">
                     <label for="">NID / Birth Certificate / Passport Number*</label>
                     <div class="input-group">
                         <input type="text" class="form-control" name="nid_number" id="nid_number" value="{{ old('nid_number') }}" aria-describedby="basic-addon3">

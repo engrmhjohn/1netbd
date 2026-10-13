@@ -38,6 +38,7 @@ class PacakgeBuyController extends Controller
             'photo' => 'required|mimes:jpeg,png,jpg',
             'nid_front' => 'mimes:jpeg,png,jpg',
             'nid_back' => 'mimes:jpeg,png,jpg',
+            'additional_docs' => 'nullable|image|mimes:jpeg,png,jpg,webp',
         ], [
             'name.required' => 'Full Name is required',
             'name.alpha_spaces' => 'Full Name should contain only alphabetic characters and spaces',
@@ -80,6 +81,7 @@ class PacakgeBuyController extends Controller
         $buy->nid_front = image_upload_nid($request->nid_front);
         $buy->nid_back = image_upload_nid($request->nid_back);
         $buy->birth_certificate = image_upload_birth_certificate($request->birth_certificate);
+        $buy->additional_docs = image_upload_additional_docs($request->file('additional_docs'));
         $buy->save();
 
         $request->session()->put('user_info', $buy);
@@ -180,6 +182,11 @@ class PacakgeBuyController extends Controller
     }
     public function updateBuyPackage(Request $request)
     {
+        $request->validate([
+            'additional_docs' => 'nullable|image|mimes:jpeg,png,jpg,webp',
+            'remove_additional_docs' => 'nullable|boolean',
+        ]);
+
         $buy = BuyPackage::find($request->buy_id);
         $buy->admin_id = $request->admin_id;
         $buy->area_id = $request->area_id;
@@ -231,7 +238,17 @@ class PacakgeBuyController extends Controller
             $buy->birth_certificate = image_upload_birth_certificate($request->birth_certificate);
         }
 
+        $oldAdditionalDocs = $buy->additional_docs;
+        if ($request->hasFile('additional_docs')) {
+            $buy->additional_docs = image_upload_additional_docs($request->file('additional_docs'));
+        } elseif ($request->boolean('remove_additional_docs')) {
+            $buy->additional_docs = null;
+        }
+
         $buy->save();
+        if ($oldAdditionalDocs && $oldAdditionalDocs !== $buy->additional_docs) {
+            delete_image($oldAdditionalDocs);
+        }
         return redirect(route('manage_buy_package'))->with('message', 'Successfully Updated!');
     }
 
@@ -261,6 +278,7 @@ class PacakgeBuyController extends Controller
         $registration = BuyPackage::find($request->registration_id);
 
         if (isset($registration)) {
+            delete_image($registration->additional_docs);
             delete_image_special($registration->photo);
             $registration->delete();
         }
