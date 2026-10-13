@@ -58,6 +58,9 @@
             <div class="row mb-5">
                 <h2 class="text-center fw-semibold">Our Popular Packages</h2>
                 <span class="landing-title"></span>
+                <div class="col-lg-12 text-center">
+                <small class="text-danger fw-bold">5% VAT will be added on all the packages</small>
+            </div>
             </div>
             <div class="row">
                 @foreach ($packages as $package)

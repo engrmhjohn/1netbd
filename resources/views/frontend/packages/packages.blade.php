@@ -5,6 +5,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-lg-12 text-center mt-3">
+            <strong>5% VAT will be added on all the packages</strong>
+        </div>
         @foreach ($packages as $package)
         <div class="col-lg-4 col-md-6 mt-5 wow fadeInUp reveal revealleft">
             <div class="card card-shadow package_card">

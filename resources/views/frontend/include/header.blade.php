@@ -21,10 +21,10 @@
                                 <a class="{{ (request()->is('internet-packages')) ? 'active' : '' }}" href="{{ route('front.packages') }}"><span
                                         class="side-menu__label">Packages</span></a>
                             </li>
-                            <li class="slide {{ (request()->is('bill-payment')) ? 'active' : '' }}">
-                                <a class="{{ (request()->is('bill-payment')) ? 'active' : '' }}" href="{{ route('front.bill_payment') }}"><span
-                                        class="side-menu__label">Bill Payment</span></a>
-                            </li>
+                            <!--<li class="slide {{ (request()->is('bill-payment')) ? 'active' : '' }}">-->
+                            <!--    <a class="{{ (request()->is('bill-payment')) ? 'active' : '' }}" href="{{ route('front.bill_payment') }}"><span-->
+                            <!--            class="side-menu__label">Bill Payment</span></a>-->
+                            <!--</li>-->
                             <li class="slide {{ (request()->is('contact-us')) ? 'active' : '' }}">
                                 <a class="{{ (request()->is('contact-us')) ? 'active' : '' }}" href="{{ route('front.contact') }}"><span
                                         class="side-menu__label">Contact US</span></a>

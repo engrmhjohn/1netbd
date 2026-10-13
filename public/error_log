@@ -1,0 +1,3 @@
+[22-Feb-2026 03:47:37 Asia/Dhaka] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 24576 bytes) in /home/netbdcom/public_html/vendor/intervention/image/src/Intervention/Image/Gd/Decoder.php on line 154
+[22-Feb-2026 03:48:01 Asia/Dhaka] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 24576 bytes) in /home/netbdcom/public_html/vendor/intervention/image/src/Intervention/Image/Gd/Decoder.php on line 154
+[22-Feb-2026 03:49:53 Asia/Dhaka] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 24576 bytes) in /home/netbdcom/public_html/vendor/intervention/image/src/Intervention/Image/Gd/Decoder.php on line 154
