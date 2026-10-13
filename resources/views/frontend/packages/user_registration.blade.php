@@ -146,7 +146,7 @@
                 <td style="height: 135px; width: 70%; font-size: 16px;">
                     <div class="box-text user_info">
                         <p class="m-0 pt-5 text-bold">Name : <span class="gray-color">{{ $userInfo->name }}</span></p>
-                        <p class="m-0 pt-5 text-bold">Phone : <span class="gray-color">{{ $userInfo->phone }}</span></p>
+                        <p class="m-0 pt-5 text-bold">Phone : <span class="gray-color">{{ $userInfo->phone }} / {{ $userInfo->alternative_number }}</span></p>
                         <p class="m-0 pt-5 text-bold">Email : <span class="gray-color">{{ $userInfo->email ?? 'N/A'}}</span></p>
                         <p class="m-0 pt-5 text-bold">NID / Birth Certificate / Passport No : <span class="gray-color">{{ $userInfo->nid_number }}</span></p>
                         <p class="m-0 pt-5 text-bold">Address : <span class="gray-color">{{ $userInfo->address }}</span></p>

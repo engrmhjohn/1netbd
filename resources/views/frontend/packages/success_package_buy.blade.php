@@ -73,6 +73,10 @@ Packages :: One Net
                                 <td>{{ $userInfo->phone }}</td>
                             </tr>
                             <tr>
+                                <td>Alternative Number</td>
+                                <td>{{ $userInfo->alternative_number }}</td>
+                            </tr>
+                            <tr>
                                 <td>Email</td>
                                 <td>{{ $userInfo->email }}</td>
                             </tr>

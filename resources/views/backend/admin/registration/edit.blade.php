@@ -42,6 +42,13 @@ $formattedTotal = number_format($total, 0, '.', '');
                             @enderror
                         </div>
                         <div class="col-lg-3 col-md-4 col-12 mb-3">
+                            <label for="alternative_number">Alternative Number*</label>
+                            <input type="phone" class="form-control" name="alternative_number" placeholder="Alternative Number" required value="{{ isset($registration->alternative_number) ? $registration->alternative_number : '' }}">
+                            @error('alternative_number')
+                            <strong class="error_form">{{ $message }}</strong>
+                            @enderror
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-12 mb-3">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" name="email" id="email" placeholder="email" value="{{ isset($registration->email) ? $registration->email : '' }}">
                             @error('email')

@@ -26,7 +26,8 @@ return new class extends Migration
             $table->string('formattedTotal');
             $table->string('name');
             $table->string('phone');
-            $table->string('email')->nullable();
+            $table->string('alternative_number');
+            $table->string('email');
             $table->string('nid_number');
             $table->longText('photo');
             $table->longText('nid_front');

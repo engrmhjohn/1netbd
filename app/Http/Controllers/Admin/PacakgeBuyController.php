@@ -30,6 +30,7 @@ class PacakgeBuyController extends Controller
         $request->validate([
             'name' => 'required|alpha_spaces',
             'phone' => 'required|numeric',
+            'alternative_number' => 'nullable|numeric',
             'email' => 'required|email',
             'nid_number' => 'required',
             'address' => 'required|max:300',
@@ -42,6 +43,7 @@ class PacakgeBuyController extends Controller
             'name.alpha_spaces' => 'Full Name should contain only alphabetic characters and spaces',
             'phone.required' => 'Phone Number is required',
             'phone.numeric' => 'Phone Number must be numeric',
+            'alternative_number.nullable' => 'Alternative Number must be numeric',
             'email.required' => 'Email is required',
             'email.email' => 'Email must be a valid email address',
             'nid_number.required' => 'NID Number is required',
@@ -65,6 +67,7 @@ class PacakgeBuyController extends Controller
         $buy->formattedTotal = $request->formattedTotal;
         $buy->name = $request->name;
         $buy->phone = $request->phone;
+        $buy->alternative_number = $request->alternative_number;
         $buy->email = $request->email;
         $buy->nid_number = $request->nid_number;
         $buy->address = $request->address;
@@ -191,6 +194,7 @@ class PacakgeBuyController extends Controller
         $buy->formattedTotal = $request->formattedTotal;
         $buy->name = $request->name;
         $buy->phone = $request->phone;
+        $buy->alternative_number = $request->alternative_number;
         $buy->email = $request->email;
         $buy->nid_number = $request->nid_number;
         $buy->address = $request->address;

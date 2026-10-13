@@ -96,6 +96,9 @@ Admin :: Preview Online Registration
                             <td>{{ $registration_details->phone }}</td>
                         </tr>
                         <tr>
+                            <td>Alternative Number</td>
+                            <td>{{ $registration_details->alternative_number }}</td>
+                        <tr>
                             <td>Email</td>
                             <td>{{ $registration_details->email }}</td>
                         </tr>

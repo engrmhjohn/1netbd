@@ -35,7 +35,7 @@ Buy Package :: One Net
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-12 mb-3">
+                <div class="col-lg-3 col-md-4 col-12 mb-3">
                     <div class="form-group">
                         <label for="name" class="form-label">Full Name*</label>
                         <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="Full Name" autocomplete="name" required>
@@ -44,16 +44,25 @@ Buy Package :: One Net
                         @enderror
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-12 mb-3">
+                <div class="col-lg-3 col-md-4 col-12 mb-3">
                     <div class="form-group">
-                        <label for="phone" class="form-label">Verified Number*</label>
+                        <label for="phone" class="form-label">Contact Number*</label>
                         <input type="text" class="form-control" name="phone" id="phone" value="{{ old('phone') }}" placeholder="Contact Number" autocomplete="phone" required>
                         @error('phone')
                         <strong class="error_form">{{ $message }}</strong>
                         @enderror
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-12 mb-3">
+                <div class="col-lg-3 col-md-4 col-12 mb-3">
+                    <div class="form-group">
+                        <label for="alternative_number" class="form-label">Alternative Number*</label>
+                        <input type="text" class="form-control" name="alternative_number" id="alternative_number" value="{{ old('alternative_number') }}" placeholder="Alternative Number" autocomplete="alternative_number" required>
+                        @error('alternative_number')
+                        <strong class="error_form">{{ $message }}</strong>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-12 mb-3">
                     <div class="form-group">
                         <label for="email" class="form-label">Email*</label>
                         <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="Email" autocomplete="email">
